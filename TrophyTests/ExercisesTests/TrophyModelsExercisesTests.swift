@@ -229,7 +229,7 @@ final class TrophyModelsExercisesTests: XCTestCase {
     //MARK: Attribute Appending + Removing Tests
     
     //Test adding an Attribute increases attributes[] length
-    func testExerciseAttributesAppend() {
+    func testExercisesAttributesAppend() {
         let id = UUID()
         let name = "My Running Exercise"
         let type = ExerciseType.running
@@ -251,7 +251,7 @@ final class TrophyModelsExercisesTests: XCTestCase {
     }
     
     //Test removing an Attribute decreases attributes[] length
-    func testExerciseAttributesRemoval() {
+    func testExercisesAttributesRemoval() {
         let id = UUID()
         let name = "My Running Exercise"
         let type = ExerciseType.running

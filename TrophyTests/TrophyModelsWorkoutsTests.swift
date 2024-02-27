@@ -141,5 +141,91 @@ final class TrophyModelsWorkoutsTests: XCTestCase {
         XCTAssertEqual(workout.duration, duration)
         XCTAssertEqual(workout.notes, notes)
     }
+    
+    //MARK: Equality Tests
+    
+    func testWorkoutsAreEqual() {
+        //Workouts with the same ID should be equal
+        let workoutID = UUID()
+        
+        //First Empty Workout
+        let name1 = "My Home Workout!"
+        let exercises1: [Exercise] = []
+        let date1 = Date()
+        
+        //Second Empty Workout
+        let name2 = "My Gym Workout!"
+        let exercises2: [Exercise] = []
+        let date2 = Date()
+        
+        let workoutOne = Workout(id: workoutID, name: name1, exercises: exercises1, date: date1)
+        let workoutTwo = Workout(id: workoutID, name: name2, exercises: exercises2, date: date2)
+        
+        XCTAssertEqual(workoutOne, workoutTwo)
+    }
+    
+    func testWorkoutsNotEqual() {
+        //Workouts with different ID should not be equal
+        let workoutID1 = UUID()
+        let workoutID2 = UUID()
+        
+        //Same Empty Workout
+        let name = "My Home Workout!"
+        let exercises: [Exercise] = []
+        let date = Date()
+        
+        let workoutOne = Workout(id: workoutID1, name: name, exercises: exercises, date: date)
+        let workoutTwo = Workout(id: workoutID2, name: name, exercises: exercises, date: date)
+        
+        XCTAssertNotEqual(workoutOne, workoutTwo)
+    }
+    
+    func testWorkoutsNotNil() {
+        //Workouts with different ID should not be equal
+        let workoutID = UUID()
+        
+        //Same Empty Workout
+        let name = "My Home Workout!"
+        let exercises: [Exercise] = []
+        let date = Date()
+        
+        let workout = Workout(id: workoutID, name: name, exercises: exercises, date: date)
+        
+        XCTAssertNotNil(workout)
+    }
+    
+    
+    //MARK: Attribute Appending + Removing Tests
 
+    func testWorkoutsAppendExercise() {
+        let workoutID = UUID()
+        
+        let name = "Appending an Exericse"
+        let exercises: [Exercise] = []
+        let date = Date()
+        
+        let workout = Workout(id: workoutID, name: name, exercises: exercises, date: date)
+        
+        let exercisesLength = workout.exercises.count
+        //Append the Exercise object from the test setup function
+        workout.exercises.append(exercise)
+        
+        XCTAssertEqual(workout.exercises.count, exercisesLength+1)
+    }
+    
+    func testWorkoutsRemoveExercise() {
+        let workoutID = UUID()
+        
+        let name = "Appending an Exericse"
+        let exercises: [Exercise] = [exercise]
+        let date = Date()
+        
+        let workout = Workout(id: workoutID, name: name, exercises: exercises, date: date)
+        
+        let exercisesLength = workout.exercises.count
+        //Remove the Exercise object from the test setup function by referencing the first index
+        workout.exercises.remove(at: 0)
+        
+        XCTAssertEqual(workout.exercises.count, exercisesLength-1)
+    }
 }

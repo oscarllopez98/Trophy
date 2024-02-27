@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Workout {
+class Workout: Equatable {
     
     //Members
     var id: UUID
@@ -30,5 +30,8 @@ class Workout {
         exercises.reduce(0.0) { $0 + ($1.duration ?? 0) }
     }
     
+    static func == (lhs: Workout, rhs: Workout) -> Bool {
+        lhs.id == rhs.id
+    }
     
 }
