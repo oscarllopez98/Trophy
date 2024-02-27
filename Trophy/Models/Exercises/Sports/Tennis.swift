@@ -11,9 +11,15 @@ class Tennis: Exercise {
     
     //Members
     
-    init(id: UUID, attributes: [ExerciseAttribute], duration: TimeInterval? = nil, notes: String? = nil) {
+    init(id: UUID, attributes: [Exercise.AttributeName: ExerciseAttribute], duration: TimeInterval? = nil, notes: String? = nil) {
         
-        super.init(id: id, name: "Tennis", type: .cardio, attributes: attributes, date: Date(), duration: duration, notes: notes)
+        super.init(id: id, 
+                   name: "Tennis",
+                   type: .cardio,
+                   attributes: attributes,
+                   date: Date(), 
+                   duration: duration,
+                   notes: notes)
     }
 
     

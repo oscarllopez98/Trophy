@@ -18,15 +18,15 @@ final class TrophyModelsWorkoutsTests: XCTestCase {
         let name = "My Test Exercise"
         let type = ExerciseType.other
         
-        let attributes = [
-            UserDefinedAttribute(name: "Percent Effort", value: "85%", unit: nil),
-            DistanceAttribute(distance: 100, unit: DistanceUnit(distanceSymbol: .yd)),
-            TimeAttribute(time: 60 * 1.5),
-            SetsAttribute(sets: 3),
-            RepsAttribute(reps: 1),
-            WeightAttribute(weight: 25, unit: WeightUnit(weightSymbol: .kg)),
-            IntensityAttribute(value: .high),
-            LevelAttribute(value: .eight)
+        let attributes: [Exercise.AttributeName: ExerciseAttribute] = [
+            .userDefined: UserDefinedAttribute(name: "Percent Effort", value: "85%", unit: nil),
+            .distance: DistanceAttribute(distance: 100, unit: DistanceUnit(distanceSymbol: .yd)),
+            .time: TimeAttribute(time: 60 * 1.5),
+            .sets: SetsAttribute(sets: 3),
+            .reps: RepsAttribute(reps: 1),
+            .weight: WeightAttribute(weight: 25, unit: WeightUnit(weightSymbol: .kg)),
+            .intensity: IntensityAttribute(value: .high),
+            .level: LevelAttribute(value: .eight)
         ]
         
         let date = Date()
@@ -80,6 +80,7 @@ final class TrophyModelsWorkoutsTests: XCTestCase {
         let date = Date()
         let notes = "Here are my Workout notes!"
         let exercises: [Exercise] = [exercise]
+        //Determine the combined duration for every Exercise object
         let duration = exercises.reduce(0.0) { $0 + ($1.duration ?? 0) }
         
         let workout = Workout(id: id,
@@ -106,7 +107,10 @@ final class TrophyModelsWorkoutsTests: XCTestCase {
         let temp_id = UUID()
         let temp_name = "My Temp Exercise"
         let temp_type = ExerciseType.other
-        let temp_attributes = [SetsAttribute(sets: 4), RepsAttribute(reps: 6)]
+        let temp_attributes: [Exercise.AttributeName: ExerciseAttribute] = [
+            .sets: SetsAttribute(sets: 4),
+            .reps: RepsAttribute(reps: 6)
+        ]
         let temp_date = Date()
         
         let tempExercise = Exercise(id: temp_id,
