@@ -75,6 +75,19 @@ final class TrophyStrengthExercisesTests: XCTestCase {
     }
     
     func testDeadlift() throws {
+        //Setup
+        let id = UUID()
+        let sets = 3
+        let reps = 6
+        let weight = 135.0
+        
+        let deadlift = Deadlift(id: id, sets: sets, reps: reps, weight: weight, unit: WeightUnit(weightSymbol: .kg))
+        
+        //Initializer Tests: Boolean values
+        let idInitialized = deadlift.id == id
+        let setsInitialized: Bool = (deadlift[.sets]?.value == .integer(sets)) ? true : false
+        let repsInitialized: Bool = (deadlift[.reps]?.value == .integer(reps)) ? true : false
+        let weightInitialized: Bool = (deadlift[.weight]?.value == .double(weight)) ? true: false
         
     }
     

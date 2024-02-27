@@ -18,10 +18,15 @@ final class TrophyModelsExercisesTests: XCTestCase {
         let name = "My Running Exercise"
         let type = ExerciseType.running
         
-        let attributes = [
-            DistanceAttribute(distance: 3.1, unit: DistanceUnit(distanceSymbol: .mi)),
+        let attributes: [AttributeName: ExerciseAttribute] =
+        [
+            Exercise.AttributeName.distance.rawValue
+            : DistanceAttribute(distance: 3.1, unit: DistanceUnit(distanceSymbol: .mi)),
+            
             TimeAttribute(time: 60 * 20)
         ]
+        
+        let attributes: [AttributeName: ExerciseAttribute] = [.sets: SetsAttribute(sets: sets), .reps: RepsAttribute(reps: reps), .weight: WeightAttribute(weight: weight, unit: unit)]
         
         let date = Date()
         let dateFormatter = DateFormatter()
@@ -29,6 +34,8 @@ final class TrophyModelsExercisesTests: XCTestCase {
         let formattedDate = dateFormatter.string(from: date)
         
         let exercise = Exercise(id: id, name: name, type: type, attributes: attributes, date: date)
+        
+        Exercise(id: <#T##UUID#>, name: <#T##String#>, type: <#T##ExerciseType#>, attributes: <#T##[Exercise.AttributeName : ExerciseAttribute]#>, date: <#T##Date#>)
         
         XCTAssertEqual(exercise.id, id)
         XCTAssertEqual(exercise.name, name)
