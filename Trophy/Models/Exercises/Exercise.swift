@@ -60,3 +60,16 @@ enum ExerciseType {
     case sport
     // Add other exercise types as needed
 }
+
+extension ExerciseType {
+    var asString: String {
+        switch self {
+        case .running: return "running"
+        case .strength: return "strength"
+        case .flexibility: return "flexibility"
+        case .other: return "other"
+        case .cardio: return "cardio"
+        case .sport: return "sport"
+        }
+    }
+}
