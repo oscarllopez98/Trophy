@@ -15,7 +15,8 @@ class ExerciseViewModel {
         return ExerciseFactory.shared.createTestExercise()
     }
     
-    func createExercise(name: String, 
+    //Use Factory for creating the desired Exercise
+    func createExercise(name: String,
                         type: ExerciseType,
                         attributes: [Exercise.AttributeName: ExerciseAttribute],
                         date: Date,

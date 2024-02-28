@@ -24,6 +24,17 @@ class ExerciseFactory {
                         notes: "These are the notes of my Test Exercise :)")
     }
     
+    func createTestExerciseWithName(_ name: String) -> Exercise {
+        let id = UUID()
+        return Exercise(id: id,
+                        name: name,
+                        type: .other,
+                        attributes: [.level: LevelAttribute(value: .five)],
+                        date: Date(),
+                        duration: 10,
+                        notes: "These are the notes of my Test Exercise :)")
+    }
+    
     func createNewExercise(name: String, type: ExerciseType, attributes: [Exercise.AttributeName: ExerciseAttribute], date: Date, duration: TimeInterval? = nil, notes: String? = nil) -> Exercise {
         let id = UUID()
         return Exercise(id: id,
