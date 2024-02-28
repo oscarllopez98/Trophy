@@ -33,7 +33,7 @@ final class ExerciseFactoryTests: XCTestCase {
         }
     }
     
-    //MARK: Exercise OBject Creation
+    //MARK: Exercise Object Creation
     func testExerciseFactoryObjectCreation() {
         let exercise = ExerciseFactory.shared.createTestExercise()
         XCTAssertNotNil(exercise)

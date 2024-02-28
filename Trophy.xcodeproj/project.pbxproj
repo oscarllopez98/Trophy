@@ -34,6 +34,9 @@
 		9F76C1EB2B8EBFF400EB276F /* ExerciseFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F76C1EA2B8EBFF400EB276F /* ExerciseFactoryTests.swift */; };
 		9F76C1F02B8EC10400EB276F /* ExerciseCreationErrorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F76C1EF2B8EC10400EB276F /* ExerciseCreationErrorHelper.swift */; };
 		9F76C1F22B8EC23800EB276F /* ExerciseValidationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F76C1F12B8EC23800EB276F /* ExerciseValidationHelper.swift */; };
+		9F76C1F42B8EC65000EB276F /* WorkoutFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F76C1F32B8EC65000EB276F /* WorkoutFactory.swift */; };
+		9F76C1F62B8EC86900EB276F /* WorkoutFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F76C1F52B8EC86900EB276F /* WorkoutFactoryTests.swift */; };
+		9F76C1F92B8EC91B00EB276F /* WorkoutValidationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F76C1F82B8EC91B00EB276F /* WorkoutValidationHelper.swift */; };
 		9FF1D8342B147F5E002F6EAC /* TrophyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF1D8332B147F5E002F6EAC /* TrophyApp.swift */; };
 		9FF1D8362B147F5E002F6EAC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF1D8352B147F5E002F6EAC /* ContentView.swift */; };
 		9FF1D8382B147F5F002F6EAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FF1D8372B147F5F002F6EAC /* Assets.xcassets */; };
@@ -98,6 +101,9 @@
 		9F76C1EA2B8EBFF400EB276F /* ExerciseFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseFactoryTests.swift; sourceTree = "<group>"; };
 		9F76C1EF2B8EC10400EB276F /* ExerciseCreationErrorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCreationErrorHelper.swift; sourceTree = "<group>"; };
 		9F76C1F12B8EC23800EB276F /* ExerciseValidationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseValidationHelper.swift; sourceTree = "<group>"; };
+		9F76C1F32B8EC65000EB276F /* WorkoutFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutFactory.swift; sourceTree = "<group>"; };
+		9F76C1F52B8EC86900EB276F /* WorkoutFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutFactoryTests.swift; sourceTree = "<group>"; };
+		9F76C1F82B8EC91B00EB276F /* WorkoutValidationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutValidationHelper.swift; sourceTree = "<group>"; };
 		9FF1D8302B147F5E002F6EAC /* Trophy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Trophy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FF1D8332B147F5E002F6EAC /* TrophyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrophyApp.swift; sourceTree = "<group>"; };
 		9FF1D8352B147F5E002F6EAC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -222,6 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				9F76C1E62B8EBD6900EB276F /* ExerciseFactory.swift */,
+				9F76C1F32B8EC65000EB276F /* WorkoutFactory.swift */,
 			);
 			path = Factories;
 			sourceTree = "<group>";
@@ -230,6 +237,7 @@
 			isa = PBXGroup;
 			children = (
 				9F76C1EA2B8EBFF400EB276F /* ExerciseFactoryTests.swift */,
+				9F76C1F52B8EC86900EB276F /* WorkoutFactoryTests.swift */,
 			);
 			path = FactoryTests;
 			sourceTree = "<group>";
@@ -262,6 +270,7 @@
 			isa = PBXGroup;
 			children = (
 				9F76C1F12B8EC23800EB276F /* ExerciseValidationHelper.swift */,
+				9F76C1F82B8EC91B00EB276F /* WorkoutValidationHelper.swift */,
 			);
 			path = DataValidation;
 			sourceTree = "<group>";
@@ -539,6 +548,7 @@
 				9FF1D8362B147F5E002F6EAC /* ContentView.swift in Sources */,
 				9F5860132B3B6B1C0061F1EB /* Tennis.swift in Sources */,
 				9F585FF02B3A1CFD0061F1EB /* LevelAttribute.swift in Sources */,
+				9F76C1F92B8EC91B00EB276F /* WorkoutValidationHelper.swift in Sources */,
 				9F5860052B3B69C20061F1EB /* Sprints.swift in Sources */,
 				9FF1D8342B147F5E002F6EAC /* TrophyApp.swift in Sources */,
 				9F58600C2B3B6AD40061F1EB /* Pilates.swift in Sources */,
@@ -549,6 +559,7 @@
 				9F585FFE2B3B691D0061F1EB /* Deadlift.swift in Sources */,
 				9FF1D8582B1484A8002F6EAC /* UserManager.swift in Sources */,
 				9F76C1D82B8EAED100EB276F /* ItemListViewModel.swift in Sources */,
+				9F76C1F42B8EC65000EB276F /* WorkoutFactory.swift in Sources */,
 				9F585FF32B3A389E0061F1EB /* PredefinedTag.swift in Sources */,
 				9F585FEC2B3A19FF0061F1EB /* IntensityAttribute.swift in Sources */,
 				9FF1D8782B148C50002F6EAC /* Unit.swift in Sources */,
@@ -586,6 +597,7 @@
 				9F76C1EB2B8EBFF400EB276F /* ExerciseFactoryTests.swift in Sources */,
 				9FF1D88F2B37D31B002F6EAC /* TrophyModelsExercisesTests.swift in Sources */,
 				9FF1D8892B378B67002F6EAC /* TrophyAttributeTests.swift in Sources */,
+				9F76C1F62B8EC86900EB276F /* WorkoutFactoryTests.swift in Sources */,
 				9F585FF92B3A6C110061F1EB /* TrophyModelsWorkoutsTests.swift in Sources */,
 				9FF1D88B2B37CBAC002F6EAC /* TrophyUnitsTests.swift in Sources */,
 				9F76C1E22B8EB1EC00EB276F /* ItemListViewModelTests.swift in Sources */,
