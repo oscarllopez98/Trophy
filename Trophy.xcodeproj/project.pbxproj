@@ -37,6 +37,8 @@
 		9F76C1F42B8EC65000EB276F /* WorkoutFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F76C1F32B8EC65000EB276F /* WorkoutFactory.swift */; };
 		9F76C1F62B8EC86900EB276F /* WorkoutFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F76C1F52B8EC86900EB276F /* WorkoutFactoryTests.swift */; };
 		9F76C1F92B8EC91B00EB276F /* WorkoutValidationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F76C1F82B8EC91B00EB276F /* WorkoutValidationHelper.swift */; };
+		9F76C2012B90222B00EB276F /* WorkoutCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F76C2002B90222B00EB276F /* WorkoutCardViewController.swift */; };
+		9F76C2032B90273600EB276F /* ExerciseCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F76C2022B90273600EB276F /* ExerciseCardViewController.swift */; };
 		9FF1D8342B147F5E002F6EAC /* TrophyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF1D8332B147F5E002F6EAC /* TrophyApp.swift */; };
 		9FF1D8362B147F5E002F6EAC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF1D8352B147F5E002F6EAC /* ContentView.swift */; };
 		9FF1D8382B147F5F002F6EAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FF1D8372B147F5F002F6EAC /* Assets.xcassets */; };
@@ -104,6 +106,8 @@
 		9F76C1F32B8EC65000EB276F /* WorkoutFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutFactory.swift; sourceTree = "<group>"; };
 		9F76C1F52B8EC86900EB276F /* WorkoutFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutFactoryTests.swift; sourceTree = "<group>"; };
 		9F76C1F82B8EC91B00EB276F /* WorkoutValidationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutValidationHelper.swift; sourceTree = "<group>"; };
+		9F76C2002B90222B00EB276F /* WorkoutCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCardViewController.swift; sourceTree = "<group>"; };
+		9F76C2022B90273600EB276F /* ExerciseCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCardViewController.swift; sourceTree = "<group>"; };
 		9FF1D8302B147F5E002F6EAC /* Trophy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Trophy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FF1D8332B147F5E002F6EAC /* TrophyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrophyApp.swift; sourceTree = "<group>"; };
 		9FF1D8352B147F5E002F6EAC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -212,6 +216,8 @@
 			isa = PBXGroup;
 			children = (
 				9F76C1DE2B8EB00800EB276F /* ItemListViewController.swift */,
+				9F76C2002B90222B00EB276F /* WorkoutCardViewController.swift */,
+				9F76C2022B90273600EB276F /* ExerciseCardViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -275,6 +281,20 @@
 			path = DataValidation;
 			sourceTree = "<group>";
 		};
+		9F76C1FE2B90097000EB276F /* Workout */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Workout;
+			sourceTree = "<group>";
+		};
+		9F76C1FF2B90097C00EB276F /* Exercise */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Exercise;
+			sourceTree = "<group>";
+		};
 		9FF1D8272B147F5D002F6EAC = {
 			isa = PBXGroup;
 			children = (
@@ -296,6 +316,10 @@
 		9FF1D8322B147F5E002F6EAC /* Trophy */ = {
 			isa = PBXGroup;
 			children = (
+				9FF1D8332B147F5E002F6EAC /* TrophyApp.swift */,
+				9FF1D8352B147F5E002F6EAC /* ContentView.swift */,
+				9FF1D8372B147F5F002F6EAC /* Assets.xcassets */,
+				9FF1D8392B147F5F002F6EAC /* Preview Content */,
 				9F76C1EC2B8EC09200EB276F /* Utils */,
 				9F76C1E52B8EBD5000EB276F /* Factories */,
 				9F76C1D92B8EAF9000EB276F /* Controllers */,
@@ -306,10 +330,6 @@
 				9FF1D8492B14831C002F6EAC /* Sessions */,
 				9FF1D84A2B148323002F6EAC /* Units */,
 				9FF1D84B2B148327002F6EAC /* Attributes */,
-				9FF1D8332B147F5E002F6EAC /* TrophyApp.swift */,
-				9FF1D8352B147F5E002F6EAC /* ContentView.swift */,
-				9FF1D8372B147F5F002F6EAC /* Assets.xcassets */,
-				9FF1D8392B147F5F002F6EAC /* Preview Content */,
 			);
 			path = Trophy;
 			sourceTree = "<group>";
@@ -383,6 +403,8 @@
 		9FF1D8522B148405002F6EAC /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				9F76C1FF2B90097C00EB276F /* Exercise */,
+				9F76C1FE2B90097000EB276F /* Workout */,
 				9F76C1D72B8EAED100EB276F /* ItemListViewModel.swift */,
 				9F76C1E32B8EB51900EB276F /* ExerciseViewModel.swift */,
 			);
@@ -545,6 +567,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F585FFC2B3B655C0061F1EB /* BenchPress.swift in Sources */,
+				9F76C2032B90273600EB276F /* ExerciseCardViewController.swift in Sources */,
 				9FF1D8362B147F5E002F6EAC /* ContentView.swift in Sources */,
 				9F5860132B3B6B1C0061F1EB /* Tennis.swift in Sources */,
 				9F585FF02B3A1CFD0061F1EB /* LevelAttribute.swift in Sources */,
@@ -574,6 +597,7 @@
 				9FF1D8722B14858E002F6EAC /* RepsAttribute.swift in Sources */,
 				9F76C1E72B8EBD6900EB276F /* ExerciseFactory.swift in Sources */,
 				9FF1D8552B14847A002F6EAC /* DatabaseManager.swift in Sources */,
+				9F76C2012B90222B00EB276F /* WorkoutCardViewController.swift in Sources */,
 				9F76C1F22B8EC23800EB276F /* ExerciseValidationHelper.swift in Sources */,
 				9FF1D8642B148518002F6EAC /* WeightUnit.swift in Sources */,
 				9F58600A2B3B6A670061F1EB /* Yoga.swift in Sources */,
