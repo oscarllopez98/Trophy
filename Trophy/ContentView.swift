@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+
+
+
 struct ContentView: View {
     
     //TODO: Replace hardcoded Exercises
@@ -25,6 +28,28 @@ struct ContentView: View {
                  date: Date(),
                  duration: nil,
                  notes: nil),
+    ]
+    
+    let workouts: [Workout] = [
+        Workout(id: UUID(),
+                name: "First Workout",
+                exercises: [
+                    Exercise(id: UUID(),
+                             name: "First Workout Exercise",
+                             type: ExerciseType.other,
+                             attributes: [.level: LevelAttribute(value: .nine)],
+                             date: Date(),
+                             duration: nil,
+                             notes: nil),
+                    Exercise(id: UUID(),
+                             name: "Second Workout Exercise",
+                             type: ExerciseType.other,
+                             attributes: [.level: LevelAttribute(value: .seven)],
+                             date: Date(),
+                             duration: nil,
+                             notes: nil),
+                ],
+                date: Date())
     ]
     
     
@@ -46,11 +71,19 @@ struct ContentView: View {
                 HStack {
                     ScrollView {
                         
+                        //TODO: Dispaly Workouts and Exercises
+                        
                         //Display the Exercises
-                        ForEach(mapExercisesToViewModels(
-                            exercises: exercises), id: \.id) { viewModel in
+                        ForEach(mapExercisesToViewModels(exercises: exercises), id: \.id) { viewModel in
                             ExerciseCardView(viewModel: viewModel)
                         }
+                        
+                        //Display the Workouts
+                        ForEach(mapWorkoutsToViewModels(workouts: workouts),
+                                id: \.id) { viewModel in
+                            WorkoutCardView(viewModel: viewModel)
+                        }
+
                         
                     }
                     .frame(width: geometry.size.width,
@@ -73,6 +106,32 @@ struct ContentView: View {
             .frame(width: geometry.size.width,
                 height: geometry.size.height)
         }
+    }
+}
+
+
+//This helps create ExerciseCardViews based on a given list of Exercises
+func mapExercisesToViewModels(exercises: [Exercise]) -> [ExerciseViewModel] {
+    return exercises.map { exercise in
+        return ExerciseViewModel(id: exercise.id,
+                                 name: exercise.name,
+                                 type: exercise.type,
+                                 attributes: exercise.attributes,
+                                 date: exercise.date,
+                                 duration: exercise.duration,
+                                 notes: exercise.notes)
+    }
+}
+
+//This helps create ExerciseCardViews based on a given list of Exercises
+func mapWorkoutsToViewModels(workouts: [Workout]) -> [WorkoutViewModel] {
+    return workouts.map { workout in
+        return WorkoutViewModel(id: workout.id,
+                                name: workout.name,
+                                exercises: workout.exercises,
+                                date: workout.date,
+                                duration: workout.duration,
+                                notes: workout.notes)
     }
 }
 
@@ -133,7 +192,7 @@ struct WorkoutCardView: View {
                             .foregroundStyle(.black)
                     }
                     .frame(maxWidth: maxFrameWidth, maxHeight: maxFrameHeight)
-                    .background(.pink)
+                    .background(.brown)
                     
                     Spacer()
                     
@@ -214,16 +273,7 @@ struct ExerciseCardView: View {
     }
 }
 
-//This helps create ExerciseCardViews based on a given list of Exercises
-func mapExercisesToViewModels(exercises: [Exercise]) -> [ExerciseViewModel] {
-    return exercises.map { exercise in
-        return ExerciseViewModel(id: exercise.id,
-                                 name: exercise.name,
-                                 type: exercise.type,
-                                 attributes: exercise.attributes,
-                                 date: exercise.date)
-    }
-}
+
 
 
 struct ContentView_Previews: PreviewProvider {
