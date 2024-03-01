@@ -100,17 +100,18 @@ let maxFrameHeight = CGFloat(40)
 
 struct WorkoutCardView: View {
     
-    //TODO: Add
-    let name = "Workout Name"
-    let date = "February 28, 2024"
-    let workoutSymbol = "W"
-    
     @StateObject var controller = WorkoutCardViewController()
+    let viewModel: WorkoutViewModel
+    
+    //TODO: Add
+    let workoutSymbol = "W"
     
     var body: some View {
         
         Button(action: {
+            controller.configure(with: viewModel)
             controller.sayHi()
+            controller.printTestExerciseName()
         }) {
             ZStack() {
                 //Shape of Card
@@ -122,22 +123,28 @@ struct WorkoutCardView: View {
                         .background(.white)
                 }
                 
+                //ExerciseCardView Content
                 HStack {
+                    
+                    //Symbol for Workout
                     VStack(alignment: .leading) {
                         Text(workoutSymbol)
                             .font(.title)
                             .foregroundStyle(.black)
                     }
                     .frame(maxWidth: maxFrameWidth, maxHeight: maxFrameHeight)
-                    .background(.brown)
+                    .background(.pink)
                     
                     Spacer()
                     
+                    //Name + Date
                     VStack {
                         Spacer()
-                        Text(name).foregroundStyle(.black)
+                        Text(viewModel.getName())
+                            .foregroundStyle(.black)
                         Spacer()
-                        Text(date).foregroundStyle(.black)
+                        Text(viewModel.getDateFormatted())
+                            .foregroundStyle(.black)
                         Spacer()
                     }
                     

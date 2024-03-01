@@ -53,6 +53,14 @@ class WorkoutViewModel {
         date
     }
     
+    func getDateFormatted() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "d MMMM YYYY"
+        
+        let formattedDate = dateFormatter.string(from: date)
+        return formattedDate
+    }
+    
     
     //MARK: Getters Duration
     func getDuration() -> TimeInterval? {
