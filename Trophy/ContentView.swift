@@ -170,7 +170,7 @@ struct WorkoutCardView: View {
         Button(action: {
             controller.configure(with: viewModel)
             controller.sayHi()
-            controller.printTestExerciseName()
+            controller.printTestWorkoutName()
         }) {
             ZStack() {
                 //Shape of Card
