@@ -24,6 +24,15 @@ class ExerciseFactory {
                         notes: "These are the notes of my Test Exercise :)")
     }
     
+    func createTestExerciseList(numExercises: Int) -> [Exercise] {
+        var exerciseList: [Exercise] = []
+        for num in 0...numExercises-1 {
+            let name = "Test Exercise \(num)"
+            exerciseList.append(createTestExerciseWithName(name))
+        }
+        return exerciseList
+    }
+    
     func createTestExerciseWithName(_ name: String) -> Exercise {
         let id = UUID()
         return Exercise(id: id,

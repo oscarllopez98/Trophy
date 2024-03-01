@@ -8,6 +8,26 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    //TODO: Replace hardcoded Exercises
+    let exercises: [Exercise] = [
+        Exercise(id: UUID(),
+                 name: "First Exercise",
+                 type: ExerciseType.other,
+                 attributes: [.level: LevelAttribute(value: .nine)],
+                 date: Date(),
+                 duration: nil,
+                 notes: nil),
+        Exercise(id: UUID(),
+                 name: "Second Exercise",
+                 type: ExerciseType.other,
+                 attributes: [.level: LevelAttribute(value: .seven)],
+                 date: Date(),
+                 duration: nil,
+                 notes: nil),
+    ]
+    
+    
     var body: some View {
         
         //Our Main Container
@@ -25,12 +45,13 @@ struct ContentView: View {
                 //Bodybar
                 HStack {
                     ScrollView {
-                        WorkoutCardView()
-                        ExerciseCardView()
-                        WorkoutCardView()
-                        WorkoutCardView()
-                        ExerciseCardView()
-                        ExerciseCardView()
+                        
+                        //Display the Exercises
+                        ForEach(mapExercisesToViewModels(
+                            exercises: exercises), id: \.id) { viewModel in
+                            ExerciseCardView(viewModel: viewModel)
+                        }
+                        
                     }
                     .frame(width: geometry.size.width,
                            height: geometry.size.height * 0.89)
@@ -72,6 +93,7 @@ struct ContentView: View {
     * Workout Card
     * Exercise Card
  */
+
 
 let maxFrameWidth = CGFloat(40)
 let maxFrameHeight = CGFloat(40)
@@ -129,13 +151,11 @@ struct WorkoutCardView: View {
 
 struct ExerciseCardView: View {
     
-    //TODO: Add
-    let name = "Exercise Name"
-    let date = "February 28, 2024"
-    let workoutSymbol = "E"
-    
     @StateObject var controller = ExerciseCardViewController()
-    let viewModel = ExerciseViewModel()
+    let viewModel: ExerciseViewModel
+    
+    //TODO: Add
+    let workoutSymbol = "E"
     
     var body: some View {
         
@@ -154,7 +174,10 @@ struct ExerciseCardView: View {
                         .background(.white)
                 }
                 
+                //ExerciseCardView Content
                 HStack {
+                    
+                    //Symbol for Workout
                     VStack(alignment: .leading) {
                         Text(workoutSymbol)
                             .font(.title)
@@ -165,11 +188,14 @@ struct ExerciseCardView: View {
                     
                     Spacer()
                     
+                    //Name + Date
                     VStack {
                         Spacer()
-                        Text(name).foregroundStyle(.black)
+                        Text(viewModel.getExerciseName())
+                            .foregroundStyle(.black)
                         Spacer()
-                        Text(date).foregroundStyle(.black)
+                        Text(viewModel.getExerciseDateFormatted())
+                            .foregroundStyle(.black)
                         Spacer()
                     }
                     
@@ -178,6 +204,17 @@ struct ExerciseCardView: View {
             }
             .padding()
         }
+    }
+}
+
+//This helps create ExerciseCardViews based on a given list of Exercises
+func mapExercisesToViewModels(exercises: [Exercise]) -> [ExerciseViewModel] {
+    return exercises.map { exercise in
+        return ExerciseViewModel(id: exercise.id,
+                                 name: exercise.name,
+                                 type: exercise.type,
+                                 attributes: exercise.attributes,
+                                 date: exercise.date)
     }
 }
 
