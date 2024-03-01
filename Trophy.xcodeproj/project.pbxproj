@@ -40,6 +40,7 @@
 		9F76C2012B90222B00EB276F /* WorkoutCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F76C2002B90222B00EB276F /* WorkoutCardViewController.swift */; };
 		9F76C2032B90273600EB276F /* ExerciseCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F76C2022B90273600EB276F /* ExerciseCardViewController.swift */; };
 		9FB372622B9261D800FFE87C /* WorkoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB372612B9261D800FFE87C /* WorkoutViewModel.swift */; };
+		9FB372642B92761B00FFE87C /* WorkoutViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB372632B92761B00FFE87C /* WorkoutViewModelTests.swift */; };
 		9FF1D8342B147F5E002F6EAC /* TrophyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF1D8332B147F5E002F6EAC /* TrophyApp.swift */; };
 		9FF1D8362B147F5E002F6EAC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF1D8352B147F5E002F6EAC /* ContentView.swift */; };
 		9FF1D8382B147F5F002F6EAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FF1D8372B147F5F002F6EAC /* Assets.xcassets */; };
@@ -110,6 +111,7 @@
 		9F76C2002B90222B00EB276F /* WorkoutCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCardViewController.swift; sourceTree = "<group>"; };
 		9F76C2022B90273600EB276F /* ExerciseCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCardViewController.swift; sourceTree = "<group>"; };
 		9FB372612B9261D800FFE87C /* WorkoutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutViewModel.swift; sourceTree = "<group>"; };
+		9FB372632B92761B00FFE87C /* WorkoutViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutViewModelTests.swift; sourceTree = "<group>"; };
 		9FF1D8302B147F5E002F6EAC /* Trophy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Trophy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FF1D8332B147F5E002F6EAC /* TrophyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrophyApp.swift; sourceTree = "<group>"; };
 		9FF1D8352B147F5E002F6EAC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				9F76C1E12B8EB1EC00EB276F /* ItemListViewModelTests.swift */,
+				9FB372632B92761B00FFE87C /* WorkoutViewModelTests.swift */,
 			);
 			path = ViewModelsTests;
 			sourceTree = "<group>";
@@ -622,6 +625,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FB372642B92761B00FFE87C /* WorkoutViewModelTests.swift in Sources */,
 				9F76C1EB2B8EBFF400EB276F /* ExerciseFactoryTests.swift in Sources */,
 				9FF1D88F2B37D31B002F6EAC /* TrophyModelsExercisesTests.swift in Sources */,
 				9FF1D8892B378B67002F6EAC /* TrophyAttributeTests.swift in Sources */,
