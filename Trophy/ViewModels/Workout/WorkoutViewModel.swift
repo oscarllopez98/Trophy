@@ -31,6 +31,10 @@ class WorkoutViewModel {
         id
     }
     
+    func getIDAsString() -> String {
+        id.uuidString
+    }
+    
     
     //MARK: Getters Name
     func getName() -> String {
@@ -52,13 +56,79 @@ class WorkoutViewModel {
     
     //MARK: Getters Duration
     func getDuration() -> TimeInterval? {
-        duration ?? 0
+        duration ?? nil
+    }
+    
+    func getDuration_HHMMSS() -> String? {
+        //Check if our duration is set
+        if let timeInterval = duration {
+            
+            let formatter = DateComponentsFormatter()
+            formatter.allowedUnits = [.hour, .minute, .second]
+            formatter.unitsStyle = .positional
+            formatter.zeroFormattingBehavior = .pad
+            
+            if let formattedString = formatter.string(from: timeInterval) {
+                return formattedString
+            } else {
+                return nil
+            }
+        }
+        
+        //Else, duration is nil, so return nil
+        else {
+            return nil
+        }
+    }
+    
+    func getDuration_HHMM() -> String? {
+        //Check if our duration is set
+        if let timeInterval = duration {
+            
+            let formatter = DateComponentsFormatter()
+            formatter.allowedUnits = [.hour, .minute]
+            formatter.unitsStyle = .positional
+            formatter.zeroFormattingBehavior = .pad
+            
+            if let formattedString = formatter.string(from: timeInterval) {
+                return formattedString
+            } else {
+                return nil
+            }
+        }
+        
+        //Else, duration is nil, so return nil
+        else {
+            return nil
+        }
+    }
+    
+    func getDuration_MMSS() -> String? {
+        //Check if our duration is set
+        if let timeInterval = duration {
+            
+            let formatter = DateComponentsFormatter()
+            formatter.allowedUnits = [.minute, .second]
+            formatter.unitsStyle = .positional
+            formatter.zeroFormattingBehavior = .pad
+            
+            if let formattedString = formatter.string(from: timeInterval) {
+                return formattedString
+            } else {
+                return nil
+            }
+        }
+        
+        //Else, duration is nil, so return nil
+        else {
+            return nil
+        }
     }
     
     
     //MARK: Getters Notes
     func getNotes() -> String? {
-        notes ?? ""
+        notes ?? nil
     }
 
 }
