@@ -21,8 +21,7 @@ class ExerciseCardViewController: ObservableObject {
     }
     
     func printTestExerciseName() {
-        let testExercise = viewModel?.getTestExercise()
-        let name = testExercise?.name ?? "No Test Name"
+        let name: String = viewModel?.getExerciseName() ?? "No Name!"
         print(name)
     }
 }

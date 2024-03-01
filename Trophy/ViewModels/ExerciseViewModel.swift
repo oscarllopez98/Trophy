@@ -9,64 +9,57 @@ import Foundation
 
 class ExerciseViewModel {
     
-    //Use Factory for creating the Test Exercise
-    func getTestExercise() -> Exercise {
-        return ExerciseFactory.shared.createTestExercise()
+    let id: UUID
+    let name: String
+    let type: ExerciseType
+    let attributes: [Exercise.AttributeName: ExerciseAttribute]
+    let date: Date
+    let duration: TimeInterval? = nil
+    let notes: String? = nil
+    
+    init(id: UUID, name: String, type: ExerciseType, attributes: [Exercise.AttributeName : ExerciseAttribute], date: Date) {
+        self.id = id
+        self.name = name
+        self.type = type
+        self.attributes = attributes
+        self.date = date
     }
-    
-    //Use Factory for creating the desired Exercise
-    func createExercise(name: String,
-                        type: ExerciseType,
-                        attributes: [Exercise.AttributeName: ExerciseAttribute],
-                        date: Date,
-                        duration: TimeInterval? = nil,
-                        notes: String? = nil) -> Exercise {
-        
-        return ExerciseFactory.shared.createNewExercise(name: name,
-                                                        type: type,
-                                                        attributes: attributes,
-                                                        date: date,
-                                                        duration: duration,
-                                                        notes: notes)
-    }
-    
-    
     
     //MARK: Getters - ID
     
-    func getExerciseID(_ exercise: Exercise) -> UUID {
-        return exercise.id
+    func getExerciseID() -> UUID {
+        id
     }
     
-    func getExerciseIDAsString(_ exercise: Exercise) -> String {
-        return exercise.id.uuidString
+    func getExerciseIDAsString() -> String {
+        id.uuidString
     }
     
     //MARK: Getters - Name
     
-    func getExerciseName(_ exercise: Exercise) -> String {
-        return exercise.name
+    func getExerciseName() -> String {
+        name
     }
     
     //MARK: Getters - Exercise Type
     
-    func getExerciseType(_ exercise: Exercise) -> ExerciseType {
-        return exercise.type
+    func getExerciseType() -> ExerciseType {
+        type
     }
     
-    func getExerciseTypeAsString(_ exercise: Exercise) -> String {
-        return exercise.type.asString
+    func getExerciseTypeAsString() -> String {
+        type.asString
     }
     
     //MARK: Getters - Exercise Attributes
     
-    func getExerciseAttributes(_ exercise: Exercise) -> [Exercise.AttributeName: ExerciseAttribute] {
-        return exercise.attributes
+    func getExerciseAttributes() -> [Exercise.AttributeName: ExerciseAttribute] {
+        attributes
     }
     
-    func getExerciseAttributesAsString(_ exercise: Exercise) -> [String: String] {
+    func getExerciseAttributesAsString() -> [String: String] {
         var attributesString: [String: String] = [:]
-        for item in exercise.attributes {
+        for item in attributes {
             attributesString[item.key.rawValue] = item.value.name
         }
         return attributesString
@@ -74,26 +67,26 @@ class ExerciseViewModel {
     
     //MARK: Getters - Date
     
-    func getExerciseDate(_ exercise: Exercise) -> Date {
-        return exercise.date
+    func getExerciseDate() -> Date {
+        date
     }
     
-    func getExerciseDateFormatted(_ exercise: Exercise) -> String {
+    func getExerciseDateFormatted() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "d MMMM YYYY"
         
-        let formattedDate = dateFormatter.string(from: exercise.date)
+        let formattedDate = dateFormatter.string(from: date)
         return formattedDate
     }
     
     //MARK: Getters - Duration
     
-    func getExerciseDuration(_ exercise: Exercise) -> TimeInterval {
-        return exercise.duration ?? 0
+    func getExerciseDuration() -> TimeInterval {
+        return duration ?? 0
     }
     
-    func getExerciseDuration_HHMMSS(_ exercise: Exercise) -> String? {
-        let timeInterval: TimeInterval = exercise.duration ?? 0 // Example time interval in seconds
+    func getExerciseDuration_HHMMSS() -> String? {
+        let timeInterval: TimeInterval = duration ?? 0 // Example time interval in seconds
 
         let formatter = DateComponentsFormatter()
         formatter.allowedUnits = [.hour, .minute, .second]
@@ -107,8 +100,8 @@ class ExerciseViewModel {
         }
     }
     
-    func getExerciseDuration_HHMM(_ exercise: Exercise) -> String? {
-        let timeInterval: TimeInterval = exercise.duration ?? 0 // Example time interval in seconds
+    func getExerciseDuration_HHMM() -> String? {
+        let timeInterval: TimeInterval = duration ?? 0 // Example time interval in seconds
 
         let formatter = DateComponentsFormatter()
         formatter.allowedUnits = [.hour, .minute]
@@ -122,8 +115,8 @@ class ExerciseViewModel {
         }
     }
     
-    func getExerciseDuration_MMSS(_ exercise: Exercise) -> String? {
-        let timeInterval: TimeInterval = exercise.duration ?? 0 // Example time interval in seconds
+    func getExerciseDuration_MMSS() -> String? {
+        let timeInterval: TimeInterval = duration ?? 0 // Example time interval in seconds
 
         let formatter = DateComponentsFormatter()
         formatter.allowedUnits = [.minute, .second]
@@ -139,8 +132,8 @@ class ExerciseViewModel {
     
     //MARK: Getters - Notes
     
-    func getExerciseNotes(_ exercise: Exercise) -> String {
-        return exercise.notes ?? ""
+    func getExerciseNotes() -> String {
+        return notes ?? ""
     }    
     
 }
