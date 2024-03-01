@@ -14,15 +14,17 @@ class ExerciseViewModel {
     let type: ExerciseType
     let attributes: [Exercise.AttributeName: ExerciseAttribute]
     let date: Date
-    let duration: TimeInterval? = nil
-    let notes: String? = nil
+    var duration: TimeInterval? = nil
+    var notes: String? = nil
     
-    init(id: UUID, name: String, type: ExerciseType, attributes: [Exercise.AttributeName : ExerciseAttribute], date: Date) {
+    init(id: UUID, name: String, type: ExerciseType, attributes: [Exercise.AttributeName : ExerciseAttribute], date: Date, duration: TimeInterval? = nil, notes: String? = nil) {
         self.id = id
         self.name = name
         self.type = type
         self.attributes = attributes
         self.date = date
+        self.duration = duration
+        self.notes = notes
     }
     
     //MARK: Getters - ID
