@@ -191,10 +191,10 @@ struct ExerciseCardView: View {
                     //Name + Date
                     VStack {
                         Spacer()
-                        Text(viewModel.getExerciseName())
+                        Text(viewModel.getName())
                             .foregroundStyle(.black)
                         Spacer()
-                        Text(viewModel.getExerciseDateFormatted())
+                        Text(viewModel.getDateFormatted())
                             .foregroundStyle(.black)
                         Spacer()
                     }
