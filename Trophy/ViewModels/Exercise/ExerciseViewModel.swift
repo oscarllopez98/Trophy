@@ -156,8 +156,8 @@ class ExerciseViewModel {
     
     //MARK: Getters - Notes
     
-    func getNotes() -> String {
-        return notes ?? ""
-    }    
+    func getNotes() -> String? {
+        return notes ?? nil
+    }
     
 }
