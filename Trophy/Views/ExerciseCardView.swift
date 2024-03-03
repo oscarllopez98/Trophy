@@ -22,9 +22,10 @@ struct ExerciseCardView: View {
         
         Button(action: {
             controller.configure(with: viewModel)
-            controller.sayHi()
             controller.printTestExerciseName()
-            controller.buttonClicked()
+            let modalView = AnyView(ExerciseModalView(modalTitle: "Modal Title!"))
+            let modalPresenter = ModalPresenter<ExerciseCardView>(view: modalView)
+            modalPresenter.present()
         }) {
             ZStack() {
                 //Shape of Card
