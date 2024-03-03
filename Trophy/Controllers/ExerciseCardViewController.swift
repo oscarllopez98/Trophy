@@ -5,9 +5,9 @@
 //  Created by Oscar Lopez on 2/28/24.
 //
 
-import Foundation
+import UIKit
 
-class ExerciseCardViewController {
+class ExerciseCardViewController: UIViewController {
     
     var viewModel: ExerciseViewModel?
     
@@ -23,6 +23,27 @@ class ExerciseCardViewController {
     func printTestExerciseName() {
         let name: String = viewModel?.getName() ?? "No Name!"
         print(name)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        // Call buttonClicked() when the view controller appears
+        // You can remove this if you want to trigger buttonClicked() from elsewhere
+        buttonClicked()
+    }
+    
+    // Your button action
+    @IBAction func buttonClicked() {
+        
+        // Create and configure view data for the modal
+        let modalView = ExerciseModalView(modalTitle: "Exercise Modal")
+        
+        // Instantiate modal view controller and set its modal view
+        let exerciseModalViewController = ExerciseModalViewController()
+        exerciseModalViewController.modalView = modalView
+        
+        exerciseModalViewController.modalPresentationStyle = .overFullScreen
+        present(exerciseModalViewController, animated: true, completion: nil)
     }
     
 }

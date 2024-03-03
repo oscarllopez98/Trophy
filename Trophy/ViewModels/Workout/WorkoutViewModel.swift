@@ -7,7 +7,7 @@
 
 import Foundation
 
-class WorkoutViewModel {
+class WorkoutViewModel: ObservableObject {
     
     let id: UUID
     let name: String
@@ -139,4 +139,24 @@ class WorkoutViewModel {
         notes ?? nil
     }
 
+}
+
+
+extension WorkoutViewModel {
+    static func sample() -> WorkoutViewModel {
+        
+        let id = UUID()
+        let name = "Sample Preview Workout"
+        let exercises: [Exercise] = ExerciseFactory.shared.createTestExerciseList(numExercises: 3)
+        let date = Date()
+        let duration: TimeInterval? = 60*60
+        let notes: String? = "Sample Preview Notes"
+        
+        return WorkoutViewModel(id: id,
+                         name: name,
+                         exercises: exercises,
+                         date: date,
+                         duration: duration,
+                         notes: notes)
+    }
 }

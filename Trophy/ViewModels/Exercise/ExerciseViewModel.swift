@@ -161,3 +161,24 @@ class ExerciseViewModel: ObservableObject {
     }
     
 }
+
+//Extension for SwiftUI Previews
+extension ExerciseViewModel {
+    static func sample() -> ExerciseViewModel {
+        let id = UUID()
+        let name = "Sample Preview Exercise"
+        let type = ExerciseType.sport
+        let attributes: [Exercise.AttributeName: ExerciseAttribute] = [:]
+        let date = Date()
+        let duration: TimeInterval? = 60*60
+        let notes: String? = "Sample Preview Notes"
+        
+        return ExerciseViewModel(id: id,
+                                 name: name,
+                                 type: type,
+                                 attributes: attributes,
+                                 date: date,
+                                 duration: duration,
+                                 notes: notes)
+    }
+}
