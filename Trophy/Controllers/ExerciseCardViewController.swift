@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ExerciseCardViewController: ObservableObject {
+class ExerciseCardViewController {
     
     var viewModel: ExerciseViewModel?
     
@@ -24,4 +24,5 @@ class ExerciseCardViewController: ObservableObject {
         let name: String = viewModel?.getName() ?? "No Name!"
         print(name)
     }
+    
 }

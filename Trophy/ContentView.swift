@@ -217,8 +217,8 @@ struct WorkoutCardView: View {
 
 struct ExerciseCardView: View {
     
-    @StateObject var controller = ExerciseCardViewController()
-    let viewModel: ExerciseViewModel
+    let controller = ExerciseCardViewController()
+    @StateObject var viewModel: ExerciseViewModel
     
     //TODO: Add
     let workoutSymbol = "E"
@@ -273,7 +273,13 @@ struct ExerciseCardView: View {
     }
 }
 
-
+struct ExerciseCardModalView: View {
+    var body: some View {
+        VStack {
+            Text("Exercise Modal!")
+        }
+    }
+}
 
 
 struct ContentView_Previews: PreviewProvider {

@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ExerciseViewModel {
+class ExerciseViewModel: ObservableObject {
     
     let id: UUID
     let name: String
