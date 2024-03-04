@@ -7,27 +7,46 @@
 
 import SwiftUI
 
-
-
-
 struct ContentView: View {
     
-    //TODO: Replace hardcoded Exercises
+    //TODO: Replace hardcoded Exercises using Controller.DBController
     let exercises: [Exercise] = [
         Exercise(id: UUID(),
-                 name: "First Exercise",
-                 type: ExerciseType.other,
-                 attributes: [.level: LevelAttribute(value: .nine)],
+                 name: "3 Mile Run",
+                 type: ExerciseType.cardio,
+                 attributes: [
+                    .distance: DistanceAttribute(
+                        distance: 3,
+                        unit: DistanceUnit(distanceSymbol: .mi)),
+                    .time: TimeAttribute(time: 20 * 60),
+                    .intensity: IntensityAttribute(value: .med)
+                 ],
+                 date: Date(),
+                 duration: TimeInterval(20 * 60),
+                 notes: "This was a good run!"),
+        Exercise(id: UUID(),
+                 name: "Bench Max",
+                 type: ExerciseType.strength,
+                 attributes: [
+                    .weight: WeightAttribute(
+                        weight: 165,
+                        unit: WeightUnit(weightSymbol: .lb)),
+                    .sets: SetsAttribute(sets: 1),
+                    .reps: RepsAttribute(reps: 3)
+                 ],
                  date: Date(),
                  duration: nil,
                  notes: nil),
         Exercise(id: UUID(),
-                 name: "Second Exercise",
-                 type: ExerciseType.other,
-                 attributes: [.level: LevelAttribute(value: .seven)],
+                 name: "Soccer Practice",
+                 type: ExerciseType.sport,
+                 attributes: [
+                    .level: LevelAttribute(value: .seven),
+                    .time: TimeAttribute(time: 1 * 60 * 60 + 22 * 60)
+                 ],
                  date: Date(),
-                 duration: nil,
-                 notes: nil),
+                 duration: TimeInterval(1 * 60 * 60 + 22 * 60 ),
+                 notes: "Need new cleats"),
     ]
     
     let workouts: [Workout] = [

@@ -29,7 +29,7 @@ struct ExerciseModalView: View {
                                     .font(.subheadline)
                                 if let unit = value.unit {
                                     Text("\(unit.symbolAsString)")
-                                        .font(.footnote)
+                                        .font(.subheadline)
                                 }
                             }
                         } else {
@@ -63,20 +63,14 @@ struct ExerciseModalView: View {
                         }
                     }
                 }
-                //Else, duration is not set
+                //Else, duration is not set, so just display Date
                 else {
                     HStack {
-                        GeometryReader { geometry in
-                            VStack(alignment: .center) {
-                                Text("Date")
-                                    .font(.headline)
-                                Text("\(viewModel.getDateFormatted())")
-                                    .frame(width: geometry.size.width,
-                                           alignment: .center)
-                            }
-                        }
+                        Text("Date")
+                            .font(.headline)
+                        Text("\(viewModel.getDateFormatted())")
+                            .font(.subheadline)
                     }
-                    .padding(EdgeInsets(top: 10, leading: 0, bottom: 30, trailing: 0)) // Adjust padding as needed
                 }
                 
 
