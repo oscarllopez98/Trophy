@@ -19,6 +19,24 @@ enum AttributeValue: Equatable {
     case double(Double)
     case integer(Int)
     case timeInterval(TimeInterval)
+    
+    var stringValue: String {
+        switch self {
+        case .string(let str):
+            return str
+        case .double(let value):
+            return String(value)
+        case .integer(let value):
+            return String(value)
+        case .timeInterval(let interval):
+            // Convert time interval to a formatted string
+            let formatter = DateComponentsFormatter()
+            formatter.allowedUnits = [.hour, .minute, .second]
+            formatter.unitsStyle = .positional
+            formatter.zeroFormattingBehavior = .pad
+            return formatter.string(from: interval) ?? ""
+        }
+    }
 }
 
 extension AttributeType {

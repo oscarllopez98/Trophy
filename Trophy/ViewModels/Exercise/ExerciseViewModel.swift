@@ -168,7 +168,10 @@ extension ExerciseViewModel {
         let id = UUID()
         let name = "Sample Preview Exercise"
         let type = ExerciseType.sport
-        let attributes: [Exercise.AttributeName: ExerciseAttribute] = [:]
+        let attributes: [Exercise.AttributeName: ExerciseAttribute] = [
+            .sets: SetsAttribute(sets: 4),
+            .reps: RepsAttribute(reps: 6)
+        ]
         let date = Date()
         let duration: TimeInterval? = 60*60
         let notes: String? = "Sample Preview Notes"

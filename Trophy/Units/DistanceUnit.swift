@@ -9,7 +9,7 @@ import Foundation
 
 class DistanceUnit: Unit {
     
-    enum Symbol: String {
+    enum Symbol: String, RawRepresentable {
         // Add other units as needed
         case mi
         case ft
@@ -25,4 +25,5 @@ class DistanceUnit: Unit {
     convenience init(distanceSymbol: Symbol) {
         self.init(symbol: .custom(distanceSymbol.rawValue))
     }
+    
 }

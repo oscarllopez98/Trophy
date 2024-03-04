@@ -20,7 +20,7 @@ struct ModalPresenter<T: View> {
         
         //Controller for dispalying SwiftUI views that are within UIKit
         let modalViewController = UIHostingController(rootView: view)
-        //Display
+        //Display content but still see background content a little
         modalViewController.modalPresentationStyle = .popover
         window.rootViewController?.present(modalViewController, animated: true, completion: nil)
     }
@@ -28,7 +28,7 @@ struct ModalPresenter<T: View> {
 
 
 #Preview {
-    let modalView = AnyView(ExerciseModalView(modalTitle: "Preview Exercise Modal"))
+    let modalView = AnyView(ExerciseModalView(viewModel: ExerciseViewModel.sample()))
     let modalPresenter = ModalPresenter<AnyView>(view: modalView)
     
     return Group {

@@ -23,7 +23,7 @@ struct ExerciseCardView: View {
         Button(action: {
             controller.configure(with: viewModel)
             controller.printTestExerciseName()
-            let modalView = AnyView(ExerciseModalView(modalTitle: "Modal Title!"))
+            let modalView = AnyView(ExerciseModalView(viewModel: viewModel))
             let modalPresenter = ModalPresenter<ExerciseCardView>(view: modalView)
             modalPresenter.present()
         }) {

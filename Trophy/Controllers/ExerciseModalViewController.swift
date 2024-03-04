@@ -21,7 +21,7 @@ class ExerciseModalViewController: UIViewController {
         view.backgroundColor = .white
         
         let label = UILabel()
-        label.text = modalView?.modalTitle
+        label.text = modalView?.viewModel.name
         label.textAlignment = .center
         label.font = UIFont.boldSystemFont(ofSize: 20)
         label.translatesAutoresizingMaskIntoConstraints = false

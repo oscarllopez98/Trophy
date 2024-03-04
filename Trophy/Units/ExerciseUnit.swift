@@ -9,7 +9,7 @@ import Foundation
 
 class ExerciseUnit: Unit {
     
-    enum Symbol: String {
+    enum Symbol: String, RawRepresentable {
         // Add other units as needed
         case reps
         case laps
@@ -22,4 +22,5 @@ class ExerciseUnit: Unit {
     convenience init(exerciseSymbol: Symbol) {
         self.init(symbol: .custom(exerciseSymbol.rawValue))
     }
+    
 }
