@@ -10,11 +10,14 @@ import SwiftUI
 struct ExerciseModalView: View {
     
     @ObservedObject var viewModel: ExerciseViewModel
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         VStack {
+            
             Text(viewModel.getName())
                 .font(.title)
+                .foregroundStyle(colorScheme == .dark ? Color.white : Color.black)
                 .padding()
             
             List {
@@ -46,19 +49,15 @@ struct ExerciseModalView: View {
                         ForEach(0..<1) { _ in // Adjust the number of rows as needed
                             VStack {
                                 Text("Date Created")
-                                    .foregroundColor(.black)
                                     .font(.headline) // Adjust font and styling as needed
                                 Text("\(viewModel.getDateFormatted())")
-                                    .foregroundColor(.black)
                                     .font(.subheadline) // Adjust font and styling as needed
                             }
                             
                             VStack {
                                 Text("Duration")
-                                    .foregroundColor(.black)
                                     .font(.headline) // Adjust font and styling as needed
                                 Text("\(duration)")
-                                    .foregroundColor(.black)
                                     .font(.subheadline) // Adjust font and styling as needed
                             }
                         }
@@ -79,7 +78,6 @@ struct ExerciseModalView: View {
                     HStack() {
                         Text("Notes")
                             .font(.headline)
-                            .foregroundStyle(.black)
                         Text("\(notes)")
                             .font(.subheadline)
                     }
