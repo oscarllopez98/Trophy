@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     
-    //TODO: Replace hardcoded Exercises using Controller.DBController
+    //TODO: Replace hardcoded Exercises using Controller.DBConnector
     let exercises: [Exercise] = [
         Exercise(id: UUID(),
                  name: "3 Mile Run",
@@ -49,6 +49,8 @@ struct ContentView: View {
                  notes: "Need new cleats"),
     ]
     
+    
+    //TODO: Replace hardcoded Workouts with Controller.DBConnector
     let workouts: [Workout] = [
         Workout(id: UUID(),
                 name: "First Workout",
@@ -89,8 +91,8 @@ struct ContentView: View {
                 //Bodybar
                 HStack {
                     ScrollView {
-                        
-                        //TODO: Dispaly Workouts and Exercises
+                                  
+                        //TODO: Sort Exercises and Workouts by Date
                         
                         //Display the Exercises
                         ForEach(mapExercisesToViewModels(exercises: exercises), id: \.id) { viewModel in
@@ -103,7 +105,6 @@ struct ContentView: View {
                             WorkoutCardView(viewModel: viewModel)
                         }
 
-                        
                     }
                     .frame(width: geometry.size.width,
                            height: geometry.size.height * 0.89)
@@ -151,14 +152,6 @@ func mapWorkoutsToViewModels(workouts: [Workout]) -> [WorkoutViewModel] {
                                 date: workout.date,
                                 duration: workout.duration,
                                 notes: workout.notes)
-    }
-}
-
-struct ExerciseCardModalView: View {
-    var body: some View {
-        VStack {
-            Text("Exercise Modal!")
-        }
     }
 }
 

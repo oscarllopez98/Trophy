@@ -26,7 +26,7 @@ struct ModalPresenter<T: View> {
     }
 }
 
-
+//Sample Preview of a Modal
 #Preview {
     let modalView = AnyView(ExerciseModalView(viewModel: ExerciseViewModel.sample()))
     let modalPresenter = ModalPresenter<AnyView>(view: modalView)

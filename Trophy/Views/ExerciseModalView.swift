@@ -18,6 +18,8 @@ struct ExerciseModalView: View {
                 .padding()
             
             List {
+                
+                //Display all Exercise Attributes
                 let items = viewModel.attributes
                 ForEach(items.keys
                     .sorted(by: { $0.rawValue < $1.rawValue }), id: \.self) { key in
@@ -36,7 +38,6 @@ struct ExerciseModalView: View {
                             Text("ERROR: Could not locate Exercise Attribute")
                         }
                 }
-                
                 
                 //Save space and display Date and Duration (if it is available)
                 if let duration = viewModel.getDuration_HHMMSS() {
@@ -72,12 +73,11 @@ struct ExerciseModalView: View {
                             .font(.subheadline)
                     }
                 }
-                
-
+            
                 //Display Exercise Notes if they are available
                 if let notes = viewModel.getNotes() {
                     HStack() {
-                        Text("Notes:")
+                        Text("Notes")
                             .font(.headline)
                             .foregroundStyle(.black)
                         Text("\(notes)")
@@ -85,6 +85,7 @@ struct ExerciseModalView: View {
                     }
                 }
                 
+                //TODO: Make it where only certain Users can see this
                 //Display Exercise ID
                 HStack {
                     Text("ID")
@@ -102,6 +103,7 @@ struct ExerciseModalView: View {
     
 }
 
+//Sample Preview of the ExerciseModalView
 #Preview {
     ExerciseModalView(viewModel: ExerciseViewModel.sample())
 }
