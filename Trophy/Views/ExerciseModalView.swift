@@ -44,14 +44,13 @@ struct ExerciseModalView: View {
                     LazyVGrid(columns: [GridItem(.flexible(), spacing: 8), GridItem(.flexible(), spacing: 8)], spacing: 8) {
                         ForEach(0..<1) { _ in // Adjust the number of rows as needed
                             VStack {
-                                Text("Date")
+                                Text("Date Created")
                                     .foregroundColor(.black)
                                     .font(.headline) // Adjust font and styling as needed
                                 Text("\(viewModel.getDateFormatted())")
                                     .foregroundColor(.black)
                                     .font(.subheadline) // Adjust font and styling as needed
                             }
-                            .padding(EdgeInsets(top: 8, leading: 16, bottom: 2, trailing: 16)) // Adjust padding as needed
                             
                             VStack {
                                 Text("Duration")
@@ -61,7 +60,6 @@ struct ExerciseModalView: View {
                                     .foregroundColor(.black)
                                     .font(.subheadline) // Adjust font and styling as needed
                             }
-                            .padding(EdgeInsets(top: 8, leading: 16, bottom: 2, trailing: 16)) // Adjust padding as needed
                         }
                     }
                 }
@@ -84,17 +82,21 @@ struct ExerciseModalView: View {
 
                 //Display Exercise Notes if they are available
                 if let notes = viewModel.getNotes() {
-                    HStack {
-                        Text("Notes\n\(notes)")
+                    HStack() {
+                        Text("Notes:")
+                            .font(.headline)
                             .foregroundStyle(.black)
-                            .multilineTextAlignment(.center)
+                        Text("\(notes)")
+                            .font(.subheadline)
                     }
                 }
                 
                 //Display Exercise ID
                 HStack {
-                    Text("ID\n\(viewModel.getIDAsString())")
-                        .multilineTextAlignment(.center)
+                    Text("ID")
+                        .font(.headline)
+                    Text("\(viewModel.getIDAsString())")
+                        .font(.subheadline)
                 }
             }
             .listStyle(InsetListStyle())

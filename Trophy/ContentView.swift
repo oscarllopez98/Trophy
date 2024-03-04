@@ -135,29 +135,6 @@ func mapWorkoutsToViewModels(workouts: [Workout]) -> [WorkoutViewModel] {
     }
 }
 
-
-/***
- What do we need:
-    * VStack
-        * Top Navbar
-        * Body Content
-            * Vertical Scrolling
-                * VStack - For showing our components Vertically
-        * Bottom Action Bar
- 
- Needed Components
-    * Navbar
-    * BodyView
-    * Action bar
-    * Workout Card
-    * Exercise Card
- */
-
-
-
-
-
-
 struct ExerciseCardModalView: View {
     var body: some View {
         VStack {
