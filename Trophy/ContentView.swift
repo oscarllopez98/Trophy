@@ -7,29 +7,50 @@
 
 import SwiftUI
 
-
-
-
 struct ContentView: View {
     
-    //TODO: Replace hardcoded Exercises
+    //TODO: Replace hardcoded Exercises using Controller.DBConnector
     let exercises: [Exercise] = [
         Exercise(id: UUID(),
-                 name: "First Exercise",
-                 type: ExerciseType.other,
-                 attributes: [.level: LevelAttribute(value: .nine)],
+                 name: "3 Mile Run",
+                 type: ExerciseType.cardio,
+                 attributes: [
+                    .distance: DistanceAttribute(
+                        distance: 3,
+                        unit: DistanceUnit(distanceSymbol: .mi)),
+                    .time: TimeAttribute(time: 20 * 60),
+                    .intensity: IntensityAttribute(value: .med)
+                 ],
+                 date: Date(),
+                 duration: TimeInterval(20 * 60),
+                 notes: "This was a good run!"),
+        Exercise(id: UUID(),
+                 name: "Bench Max",
+                 type: ExerciseType.strength,
+                 attributes: [
+                    .weight: WeightAttribute(
+                        weight: 165,
+                        unit: WeightUnit(weightSymbol: .lb)),
+                    .sets: SetsAttribute(sets: 1),
+                    .reps: RepsAttribute(reps: 3)
+                 ],
                  date: Date(),
                  duration: nil,
                  notes: nil),
         Exercise(id: UUID(),
-                 name: "Second Exercise",
-                 type: ExerciseType.other,
-                 attributes: [.level: LevelAttribute(value: .seven)],
+                 name: "Soccer Practice",
+                 type: ExerciseType.sport,
+                 attributes: [
+                    .level: LevelAttribute(value: .seven),
+                    .time: TimeAttribute(time: 1 * 60 * 60 + 22 * 60)
+                 ],
                  date: Date(),
-                 duration: nil,
-                 notes: nil),
+                 duration: TimeInterval(1 * 60 * 60 + 22 * 60 ),
+                 notes: "Need new cleats"),
     ]
     
+    
+    //TODO: Replace hardcoded Workouts with Controller.DBConnector
     let workouts: [Workout] = [
         Workout(id: UUID(),
                 name: "First Workout",
@@ -70,8 +91,8 @@ struct ContentView: View {
                 //Bodybar
                 HStack {
                     ScrollView {
-                        
-                        //TODO: Dispaly Workouts and Exercises
+                                  
+                        //TODO: Sort Exercises and Workouts by Date
                         
                         //Display the Exercises
                         ForEach(mapExercisesToViewModels(exercises: exercises), id: \.id) { viewModel in
@@ -84,7 +105,6 @@ struct ContentView: View {
                             WorkoutCardView(viewModel: viewModel)
                         }
 
-                        
                     }
                     .frame(width: geometry.size.width,
                            height: geometry.size.height * 0.89)
@@ -134,146 +154,6 @@ func mapWorkoutsToViewModels(workouts: [Workout]) -> [WorkoutViewModel] {
                                 notes: workout.notes)
     }
 }
-
-
-/***
- What do we need:
-    * VStack
-        * Top Navbar
-        * Body Content
-            * Vertical Scrolling
-                * VStack - For showing our components Vertically
-        * Bottom Action Bar
- 
- Needed Components
-    * Navbar
-    * BodyView
-    * Action bar
-    * Workout Card
-    * Exercise Card
- */
-
-
-let maxFrameWidth = CGFloat(40)
-let maxFrameHeight = CGFloat(40)
-
-struct WorkoutCardView: View {
-    
-    @StateObject var controller = WorkoutCardViewController()
-    let viewModel: WorkoutViewModel
-    
-    //TODO: Add
-    let workoutSymbol = "W"
-    
-    var body: some View {
-        
-        Button(action: {
-            controller.configure(with: viewModel)
-            controller.sayHi()
-            controller.printTestWorkoutName()
-        }) {
-            ZStack() {
-                //Shape of Card
-                GeometryReader { geometry in
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(.black, lineWidth: 1)
-                        .frame(width: geometry.size.width, height: 100)
-                        .foregroundColor(.black)
-                        .background(.white)
-                }
-                
-                //ExerciseCardView Content
-                HStack {
-                    
-                    //Symbol for Workout
-                    VStack(alignment: .leading) {
-                        Text(workoutSymbol)
-                            .font(.title)
-                            .foregroundStyle(.black)
-                    }
-                    .frame(maxWidth: maxFrameWidth, maxHeight: maxFrameHeight)
-                    .background(.brown)
-                    
-                    Spacer()
-                    
-                    //Name + Date
-                    VStack {
-                        Spacer()
-                        Text(viewModel.getName())
-                            .foregroundStyle(.black)
-                        Spacer()
-                        Text(viewModel.getDateFormatted())
-                            .foregroundStyle(.black)
-                        Spacer()
-                    }
-                    
-                    Spacer()
-                }.padding()
-            }
-            .padding()
-        }
-    }
-}
-
-struct ExerciseCardView: View {
-    
-    @StateObject var controller = ExerciseCardViewController()
-    let viewModel: ExerciseViewModel
-    
-    //TODO: Add
-    let workoutSymbol = "E"
-    
-    var body: some View {
-        
-        Button(action: {
-            controller.configure(with: viewModel)
-            controller.sayHi()
-            controller.printTestExerciseName()
-        }) {
-            ZStack() {
-                //Shape of Card
-                GeometryReader { geometry in
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(.black, lineWidth: 1)
-                        .frame(width: geometry.size.width, height: 100)
-                        .foregroundColor(.black)
-                        .background(.white)
-                }
-                
-                //ExerciseCardView Content
-                HStack {
-                    
-                    //Symbol for Workout
-                    VStack(alignment: .leading) {
-                        Text(workoutSymbol)
-                            .font(.title)
-                            .foregroundStyle(.black)
-                    }
-                    .frame(maxWidth: maxFrameWidth, maxHeight: maxFrameHeight)
-                    .background(.pink)
-                    
-                    Spacer()
-                    
-                    //Name + Date
-                    VStack {
-                        Spacer()
-                        Text(viewModel.getName())
-                            .foregroundStyle(.black)
-                        Spacer()
-                        Text(viewModel.getDateFormatted())
-                            .foregroundStyle(.black)
-                        Spacer()
-                    }
-                    
-                    Spacer()
-                }.padding()
-            }
-            .padding()
-        }
-    }
-}
-
-
 
 
 struct ContentView_Previews: PreviewProvider {

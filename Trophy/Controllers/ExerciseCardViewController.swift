@@ -5,9 +5,9 @@
 //  Created by Oscar Lopez on 2/28/24.
 //
 
-import Foundation
+import UIKit
 
-class ExerciseCardViewController: ObservableObject {
+class ExerciseCardViewController: UIViewController {
     
     var viewModel: ExerciseViewModel?
     
@@ -24,4 +24,6 @@ class ExerciseCardViewController: ObservableObject {
         let name: String = viewModel?.getName() ?? "No Name!"
         print(name)
     }
+
+    
 }
