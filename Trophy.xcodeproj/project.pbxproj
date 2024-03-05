@@ -48,6 +48,7 @@
 		9FB372732B95169500FFE87C /* ModalPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB372722B95169500FFE87C /* ModalPresenter.swift */; };
 		9FB372752B9518A700FFE87C /* WorkoutCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB372742B9518A700FFE87C /* WorkoutCardView.swift */; };
 		9FB372772B951CA800FFE87C /* ModalPresenterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB372762B951CA800FFE87C /* ModalPresenterView.swift */; };
+		9FB372792B96C76800FFE87C /* ExerciseCardViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB372782B96C76800FFE87C /* ExerciseCardViewControllerTests.swift */; };
 		9FF1D8342B147F5E002F6EAC /* TrophyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF1D8332B147F5E002F6EAC /* TrophyApp.swift */; };
 		9FF1D8362B147F5E002F6EAC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF1D8352B147F5E002F6EAC /* ContentView.swift */; };
 		9FF1D8382B147F5F002F6EAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FF1D8372B147F5F002F6EAC /* Assets.xcassets */; };
@@ -126,6 +127,7 @@
 		9FB372722B95169500FFE87C /* ModalPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalPresenter.swift; sourceTree = "<group>"; };
 		9FB372742B9518A700FFE87C /* WorkoutCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCardView.swift; sourceTree = "<group>"; };
 		9FB372762B951CA800FFE87C /* ModalPresenterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalPresenterView.swift; sourceTree = "<group>"; };
+		9FB372782B96C76800FFE87C /* ExerciseCardViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCardViewControllerTests.swift; sourceTree = "<group>"; };
 		9FF1D8302B147F5E002F6EAC /* Trophy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Trophy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FF1D8332B147F5E002F6EAC /* TrophyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrophyApp.swift; sourceTree = "<group>"; };
 		9FF1D8352B147F5E002F6EAC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -272,6 +274,7 @@
 		9F76C1E92B8EBFC200EB276F /* ControllerTests */ = {
 			isa = PBXGroup;
 			children = (
+				9FB372782B96C76800FFE87C /* ExerciseCardViewControllerTests.swift */,
 			);
 			path = ControllerTests;
 			sourceTree = "<group>";
@@ -668,6 +671,7 @@
 				9F76C1F62B8EC86900EB276F /* WorkoutFactoryTests.swift in Sources */,
 				9F585FF92B3A6C110061F1EB /* TrophyModelsWorkoutsTests.swift in Sources */,
 				9FF1D88B2B37CBAC002F6EAC /* TrophyUnitsTests.swift in Sources */,
+				9FB372792B96C76800FFE87C /* ExerciseCardViewControllerTests.swift in Sources */,
 				9F76C1E22B8EB1EC00EB276F /* ItemListViewModelTests.swift in Sources */,
 				9F5860162B3B6C9C0061F1EB /* TrophyStrengthExercisesTests.swift in Sources */,
 				9FF1D8802B37889E002F6EAC /* TrophyTests.swift in Sources */,
