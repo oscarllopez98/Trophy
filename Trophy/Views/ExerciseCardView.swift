@@ -11,6 +11,7 @@ struct ExerciseCardView: View {
     
     let maxFrameWidth = CGFloat(40)
     let maxFrameHeight = CGFloat(40)
+    let buttonAccessibilityIdentifier = "AID_ExerciseCardView_Button"
     
     let controller = ExerciseCardViewController()
     @StateObject var viewModel: ExerciseViewModel
@@ -67,6 +68,7 @@ struct ExerciseCardView: View {
             }
             .padding()
         }
+        .accessibilityIdentifier(buttonAccessibilityIdentifier)
     }
 }
 

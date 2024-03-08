@@ -11,6 +11,7 @@ struct ExerciseModalView: View {
     
     @ObservedObject var viewModel: ExerciseViewModel
     @Environment(\.colorScheme) var colorScheme
+    let accessibilityIdentifier = "AID_ExerciseModalView"
     
     var body: some View {
         VStack {
@@ -96,7 +97,9 @@ struct ExerciseModalView: View {
 
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .accessibilityIdentifier(/*@START_MENU_TOKEN@*/"Identifier"/*@END_MENU_TOKEN@*/)
     }
+        
     
 }
 
