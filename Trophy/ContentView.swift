@@ -10,6 +10,8 @@ import SwiftUI
 struct ContentView: View {
     
     //TODO: Replace hardcoded Exercises using Controller.DBConnector
+    
+    
     let exercises: [Exercise] = [
         Exercise(id: UUID(),
                  name: "3 Mile Run",
