@@ -11,7 +11,9 @@ struct NewExerciseModalView: View {
     
     @ObservedObject var viewModel: ExerciseViewModel
     
-    //State values for Custom Pickers
+    //State values for Custom Input Views
+    @State private var newExerciseTitle: String = ""
+    
     @State private var isExpandedDistance = false
     @State private var isExpandedTime = false
     @State private var isExpandedSets = false
@@ -19,185 +21,340 @@ struct NewExerciseModalView: View {
     @State private var isExpandedWeight = false
     @State private var isExpandedIntensity = false
     @State private var isExpandedLevel = false
-
+        
+    let addSymbol: Image = Image(systemName: "plus.circle")
+    let minusSymbol: Image = Image(systemName: "minus.circle")
     
-
-    //Duration (hours, minutes, seconds)
+    let textForegroundeStyleColor: Color = .primary
+    let addSymbolForegroundStyleColor: Color = .green
+    let minusSymbolForegroundStyleColor: Color = .red
     
     var body: some View {
         
-        ScrollView {
-            //Distance Attribute
-            Button(action : {
-                withAnimation {
-                    self.isExpandedDistance.toggle()
-                }
-            }) {
-                VStack {
+        GeometryReader { geometry in
+            VStack {
+                TextField (
+                    "Enter New Exercise Title",
+                    text: $newExerciseTitle
+                )
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .padding()
+                
+                ScrollView {
+                    VStack {
+                        //MARK: Distance
+                        Button(action : {
+                            withAnimation {
+                                self.isExpandedDistance.toggle()
+                            }
+                        }) {
+                            if isExpandedDistance {
+                                HStack {
+                                    Text("Distance")
+                                        .font(.title)
+                                        .foregroundStyle(textForegroundeStyleColor)
+                                        .padding()
+                                    Spacer()
+                                    Text("\(minusSymbol)")
+                                        .font(.title)
+                                        .foregroundStyle(minusSymbolForegroundStyleColor)
+                                        .padding()
+                                }
+                            } else {
+                                HStack {
+                                    Text("Distance")
+                                        .font(.title)
+                                        .foregroundStyle(textForegroundeStyleColor)
+                                        .padding()
+                                    Spacer()
+                                    Text("\(addSymbol)")
+                                        .font(.title)
+                                        .foregroundStyle(addSymbolForegroundStyleColor)
+                                        .padding()
+                                }
+                            }
+                        }
+                        .frame(width: geometry.size.width, alignment: .leading)
+                        .border(Color.black)
 
-                    //Expand DistancePickerView
-                    if isExpandedDistance {
-                        Text("- Distance")
-                            .font(.title)
-                            .foregroundStyle(.blue)
-                            .padding()
-                        DistanceInputView()
-                    } else {
-                        Text("+ Distance")
-                            .font(.title)
-                            .foregroundStyle(.blue)
-                            .padding()
-                    }
-                }
-            }
-            
-            //Time Attribute
-            Button(action : {
-                withAnimation {
-                    self.isExpandedTime.toggle()
-                }
-            }) {
-                VStack {
+                        //Distance Input View
+                        VStack {
+                            if isExpandedDistance {
+                                DistanceInputView()
+                            }
+                        }
 
-                    //Expand SetsPickerView
-                    if isExpandedTime {
-                        Text("- Time")
-                            .font(.title)
-                            .foregroundStyle(.blue)
-                            .padding()
-                        TimeInputView()
-                    } else {
-                        Text("+ Time")
-                            .font(.title)
-                            .foregroundStyle(.blue)
-                            .padding()
-                    }
-                }
+                        
+                        //MARK: Time
+                        Button(action : {
+                            withAnimation {
+                                self.isExpandedTime.toggle()
+                            }
+                        }) {
+                            VStack {
+                                if isExpandedTime {
+                                    HStack {
+                                        Text("Time")
+                                            .font(.title)
+                                            .foregroundStyle(textForegroundeStyleColor)
+                                            .padding()
+                                        Spacer()
+                                        Text("\(minusSymbol)")
+                                            .font(.title)
+                                            .foregroundStyle(minusSymbolForegroundStyleColor)
+                                            .padding()
+                                    }
+                                } else {
+                                    HStack {
+                                        Text("Time")
+                                            .font(.title)
+                                            .foregroundStyle(textForegroundeStyleColor)
+                                            .padding()
+                                        Spacer()
+                                        Text("\(addSymbol)")
+                                            .font(.title)
+                                            .foregroundStyle(addSymbolForegroundStyleColor)
+                                            .padding()
+                                    }
+                                }
+                            }
+                        }
+                        .frame(width: geometry.size.width, alignment: .leading)
+                        .border(Color.black)
+                        //Time Input View
+                        VStack {
+                            if isExpandedTime {
+                                TimeInputView()
+                            }
+                        }
+                        
+                        
+                        //MARK: Sets
+                        Button(action : {
+                            withAnimation {
+                                self.isExpandedSets.toggle()
+                            }
+                        }) {
+                            VStack {
+                                if isExpandedSets {
+                                    HStack {
+                                        Text("Sets")
+                                            .font(.title)
+                                            .foregroundStyle(textForegroundeStyleColor)
+                                            .padding()
+                                        Spacer()
+                                        Text("\(minusSymbol)")
+                                            .font(.title)
+                                            .foregroundStyle(minusSymbolForegroundStyleColor)
+                                            .padding()
+                                    }
+                                } else {
+                                    HStack {
+                                        Text("Sets")
+                                            .font(.title)
+                                            .foregroundStyle(textForegroundeStyleColor)
+                                            .padding()
+                                        Spacer()
+                                        Text("\(addSymbol)")
+                                            .font(.title)
+                                            .foregroundStyle(addSymbolForegroundStyleColor)
+                                            .padding()
+                                    }
+                                }                        }
+                        }
+                        .frame(width: geometry.size.width, alignment: .leading)
+                        .border(Color.black)
+                        //Time Input View
+                        VStack {
+                            if isExpandedSets {
+                                SetsInputView()
+                            }
+                        }
+                        
+                        //MARK: Reps
+                        Button(action : {
+                            withAnimation {
+                                self.isExpandedReps.toggle()
+                            }
+                        }) {
+                            VStack {
+                                if isExpandedReps {
+                                    HStack {
+                                        Text("Reps")
+                                            .font(.title)
+                                            .foregroundStyle(textForegroundeStyleColor)
+                                            .padding()
+                                        Spacer()
+                                        Text("\(minusSymbol)")
+                                            .font(.title)
+                                            .foregroundStyle(minusSymbolForegroundStyleColor)
+                                            .padding()
+                                    }
+                                } else {
+                                    HStack {
+                                        Text("Reps")
+                                            .font(.title)
+                                            .foregroundStyle(textForegroundeStyleColor)
+                                            .padding()
+                                        Spacer()
+                                        Text("\(addSymbol)")
+                                            .font(.title)
+                                            .foregroundStyle(addSymbolForegroundStyleColor)
+                                            .padding()
+                                    }
+                                }
+                            }
+                        }
+                        .frame(width: geometry.size.width, alignment: .leading)
+                        .border(Color.black)
+                        //Reps Input View
+                        VStack {
+                            if isExpandedReps {
+                                RepsInputView()
+                            }
+                        }
+                        
+                        
+                        //MARK: Weight
+                        Button(action : {
+                            withAnimation {
+                                self.isExpandedWeight.toggle()
+                            }
+                        }) {
+                            VStack {
+                                if isExpandedWeight {
+                                    HStack {
+                                        Text("Weight")
+                                            .font(.title)
+                                            .foregroundStyle(textForegroundeStyleColor)
+                                            .padding()
+                                        Spacer()
+                                        Text("\(minusSymbol)")
+                                            .font(.title)
+                                            .foregroundStyle(minusSymbolForegroundStyleColor)
+                                            .padding()
+                                    }
+                                } else {
+                                    HStack {
+                                        Text("Weight")
+                                            .font(.title)
+                                            .foregroundStyle(textForegroundeStyleColor)
+                                            .padding()
+                                        Spacer()
+                                        Text("\(addSymbol)")
+                                            .font(.title)
+                                            .foregroundStyle(addSymbolForegroundStyleColor)
+                                            .padding()
+                                    }
+                                }
+                            }
+                        }
+                        .frame(width: geometry.size.width, alignment: .leading)
+                        .border(Color.black)
+                        //Weight Input View
+                        VStack {
+                            if isExpandedWeight {
+                                WeightInputView()
+                            }
+                        }
+                        
+                        
+                        //MARK: Intensity
+                        Button(action : {
+                            withAnimation {
+                                self.isExpandedIntensity.toggle()
+                            }
+                        }) {
+                            VStack {
+                                if isExpandedIntensity {
+                                    HStack {
+                                        Text("Intensity")
+                                            .font(.title)
+                                            .foregroundStyle(textForegroundeStyleColor)
+                                            .padding()
+                                        Spacer()
+                                        Text("\(minusSymbol)")
+                                            .font(.title)
+                                            .foregroundStyle(minusSymbolForegroundStyleColor)
+                                            .padding()
+                                    }
+                                } else {
+                                    HStack {
+                                        Text("Intensity")
+                                            .font(.title)
+                                            .foregroundStyle(textForegroundeStyleColor)
+                                            .padding()
+                                        Spacer()
+                                        Text("\(addSymbol)")
+                                            .font(.title)
+                                            .foregroundStyle(addSymbolForegroundStyleColor)
+                                            .padding()
+                                    }
+                                }
+                            }
+                        }
+                        .frame(width: geometry.size.width, alignment: .leading)
+                        .border(Color.black)
+                        //Intensity Input View
+                        VStack {
+                            if isExpandedIntensity {
+                                IntensityInputView()
+                            }
+                        }
+                        
+                        //MARK: Level
+                        Button(action : {
+                            withAnimation {
+                                self.isExpandedLevel.toggle()
+                            }
+                        }) {
+                            VStack {
+                                if isExpandedLevel {
+                                    HStack {
+                                        Text("Level")
+                                            .font(.title)
+                                            .foregroundStyle(textForegroundeStyleColor)
+                                            .padding()
+                                        Spacer()
+                                        Text("\(minusSymbol)")
+                                            .font(.title)
+                                            .foregroundStyle(minusSymbolForegroundStyleColor)
+                                            .padding()
+                                    }
+                                } else {
+                                    HStack {
+                                        Text("Level")
+                                            .font(.title)
+                                            .foregroundStyle(textForegroundeStyleColor)
+                                            .padding()
+                                        Spacer()
+                                        Text("\(addSymbol)")
+                                            .font(.title)
+                                            .foregroundStyle(addSymbolForegroundStyleColor)
+                                            .padding()
+                                    }
+                                }
+                            }
+                        }
+                        .frame(width: geometry.size.width, alignment: .leading)
+                        .border(Color.black)
+                        //Level Input View
+                        VStack {
+                            if isExpandedLevel {
+                                LevelInputView()
+                            }
+                        }
+                    }//VStack
+                    .frame(width: geometry.size.width)
+                    .border(Color.red)
+                }//ScrollView
+                .frame(width: geometry.size.width)
+                .border(Color.black)
             }
-            
-            //Sets Attribute
-            Button(action : {
-                withAnimation {
-                    self.isExpandedSets.toggle()
-                }
-            }) {
-                VStack {
 
-                    //Expand SetsPickerView
-                    if isExpandedSets {
-                        Text("- Sets")
-                            .font(.title)
-                            .foregroundStyle(.blue)
-                            .padding()
-                        SetsInputView()
-                    } else {
-                        Text("+ Sets")
-                            .font(.title)
-                            .foregroundStyle(.blue)
-                            .padding()
-                    }
-                }
-            }
-            
-            //Reps Attribute
-            Button(action : {
-                withAnimation {
-                    self.isExpandedReps.toggle()
-                }
-            }) {
-                VStack {
-
-                    //Expand RepsPickerView
-                    if isExpandedReps {
-                        Text("- Reps")
-                            .font(.title)
-                            .foregroundStyle(.blue)
-                            .padding()
-                        RepsInputView()
-                    } else {
-                        Text("+ Reps")
-                            .font(.title)
-                            .foregroundStyle(.blue)
-                            .padding()
-                    }
-                }
-            }
             
             
-            //Weight Attribute
-            Button(action : {
-                withAnimation {
-                    self.isExpandedWeight.toggle()
-                }
-            }) {
-                VStack {
-
-                    //Expand RepsPickerView
-                    if isExpandedWeight {
-                        Text("- Weight")
-                            .font(.title)
-                            .foregroundStyle(.blue)
-                            .padding()
-                        WeightInputView()
-                    } else {
-                        Text("+ Weight")
-                            .font(.title)
-                            .foregroundStyle(.blue)
-                            .padding()
-                    }
-                }
-            }
-            
-            
-            //Intensity Attribute
-            Button(action : {
-                withAnimation {
-                    self.isExpandedIntensity.toggle()
-                }
-            }) {
-                VStack {
-
-                    //Expand RepsPickerView
-                    if isExpandedIntensity {
-                        Text("- Intensity")
-                            .font(.title)
-                            .foregroundStyle(.blue)
-                            .padding()
-                        IntensityInputView()
-                    } else {
-                        Text("+ Intensity")
-                            .font(.title)
-                            .foregroundStyle(.blue)
-                            .padding()
-                    }
-                }
-            }
-            
-            
-            //Level Attribute
-            Button(action : {
-                withAnimation {
-                    self.isExpandedLevel.toggle()
-                }
-            }) {
-                VStack {
-
-                    //Expand LevelPickerView
-                    if isExpandedLevel {
-                        Text("- Level")
-                            .font(.title)
-                            .foregroundStyle(.blue)
-                            .padding()
-                        LevelInputView()
-                    } else {
-                        Text("+ Level")
-                            .font(.title)
-                            .foregroundStyle(.blue)
-                            .padding()
-                    }
-                }
-            }
-        }
+        }//GeometryReader
     }
 }
 
