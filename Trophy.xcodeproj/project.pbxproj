@@ -56,6 +56,7 @@
 		9FB62FA62B9F725500421424 /* DistanceInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB62FA52B9F725500421424 /* DistanceInputView.swift */; };
 		9FB62FAA2B9F7E7200421424 /* TimeInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB62FA92B9F7E7200421424 /* TimeInputView.swift */; };
 		9FB62FAC2B9F7F7B00421424 /* SetsInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB62FAB2B9F7F7B00421424 /* SetsInputView.swift */; };
+		9FB62FAE2B9F812D00421424 /* RepsInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB62FAD2B9F812D00421424 /* RepsInputView.swift */; };
 		9FF1D8342B147F5E002F6EAC /* TrophyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF1D8332B147F5E002F6EAC /* TrophyApp.swift */; };
 		9FF1D8362B147F5E002F6EAC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF1D8352B147F5E002F6EAC /* ContentView.swift */; };
 		9FF1D8382B147F5F002F6EAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FF1D8372B147F5F002F6EAC /* Assets.xcassets */; };
@@ -143,6 +144,7 @@
 		9FB62FA52B9F725500421424 /* DistanceInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceInputView.swift; sourceTree = "<group>"; };
 		9FB62FA92B9F7E7200421424 /* TimeInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeInputView.swift; sourceTree = "<group>"; };
 		9FB62FAB2B9F7F7B00421424 /* SetsInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetsInputView.swift; sourceTree = "<group>"; };
+		9FB62FAD2B9F812D00421424 /* RepsInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepsInputView.swift; sourceTree = "<group>"; };
 		9FF1D8302B147F5E002F6EAC /* Trophy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Trophy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FF1D8332B147F5E002F6EAC /* TrophyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrophyApp.swift; sourceTree = "<group>"; };
 		9FF1D8352B147F5E002F6EAC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -383,6 +385,7 @@
 				9FB62FA52B9F725500421424 /* DistanceInputView.swift */,
 				9FB62FA92B9F7E7200421424 /* TimeInputView.swift */,
 				9FB62FAB2B9F7F7B00421424 /* SetsInputView.swift */,
+				9FB62FAD2B9F812D00421424 /* RepsInputView.swift */,
 			);
 			path = AttributeInputs;
 			sourceTree = "<group>";
@@ -674,6 +677,7 @@
 				9F5860132B3B6B1C0061F1EB /* Tennis.swift in Sources */,
 				9F585FF02B3A1CFD0061F1EB /* LevelAttribute.swift in Sources */,
 				9F76C1F92B8EC91B00EB276F /* WorkoutValidationHelper.swift in Sources */,
+				9FB62FAE2B9F812D00421424 /* RepsInputView.swift in Sources */,
 				9F5860052B3B69C20061F1EB /* Sprints.swift in Sources */,
 				9FF1D8342B147F5E002F6EAC /* TrophyApp.swift in Sources */,
 				9F58600C2B3B6AD40061F1EB /* Pilates.swift in Sources */,
