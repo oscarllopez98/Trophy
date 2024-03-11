@@ -53,6 +53,7 @@
 		9FB372802B96CA1F00FFE87C /* ExerciseCardViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB3727F2B96CA1F00FFE87C /* ExerciseCardViewUITests.swift */; };
 		9FB372822B96CFA800FFE87C /* NewExerciseModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB372812B96CFA800FFE87C /* NewExerciseModalView.swift */; };
 		9FB372842B97930300FFE87C /* DurationPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB372832B97930200FFE87C /* DurationPickerView.swift */; };
+		9FB62FA62B9F725500421424 /* DistanceInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB62FA52B9F725500421424 /* DistanceInputView.swift */; };
 		9FF1D8342B147F5E002F6EAC /* TrophyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF1D8332B147F5E002F6EAC /* TrophyApp.swift */; };
 		9FF1D8362B147F5E002F6EAC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF1D8352B147F5E002F6EAC /* ContentView.swift */; };
 		9FF1D8382B147F5F002F6EAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FF1D8372B147F5F002F6EAC /* Assets.xcassets */; };
@@ -137,6 +138,7 @@
 		9FB372812B96CFA800FFE87C /* NewExerciseModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewExerciseModalView.swift; sourceTree = "<group>"; };
 		9FB372832B97930200FFE87C /* DurationPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationPickerView.swift; sourceTree = "<group>"; };
 		9FB3728C2B9A9DE200FFE87C /* ExerciseModalDemo.v1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = ExerciseModalDemo.v1.gif; sourceTree = "<group>"; };
+		9FB62FA52B9F725500421424 /* DistanceInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceInputView.swift; sourceTree = "<group>"; };
 		9FF1D8302B147F5E002F6EAC /* Trophy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Trophy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FF1D8332B147F5E002F6EAC /* TrophyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrophyApp.swift; sourceTree = "<group>"; };
 		9FF1D8352B147F5E002F6EAC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -330,13 +332,6 @@
 			path = Exercise;
 			sourceTree = "<group>";
 		};
-		9FB372712B95166600FFE87C /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Preview Content";
-			sourceTree = "<group>";
-		};
 		9FB3727A2B96C9CE00FFE87C /* ViewTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -370,6 +365,22 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
+		9FB62FA32B9F71D700421424 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		9FB62FA42B9F720400421424 /* AttributeInputs */ = {
+			isa = PBXGroup;
+			children = (
+				9FB372832B97930200FFE87C /* DurationPickerView.swift */,
+				9FB62FA52B9F725500421424 /* DistanceInputView.swift */,
+			);
+			path = AttributeInputs;
+			sourceTree = "<group>";
+		};
 		9FF1D8272B147F5D002F6EAC = {
 			isa = PBXGroup;
 			children = (
@@ -391,8 +402,8 @@
 		9FF1D8322B147F5E002F6EAC /* Trophy */ = {
 			isa = PBXGroup;
 			children = (
+				9FB62FA32B9F71D700421424 /* Preview Content */,
 				9FB372852B9A9C9900FFE87C /* Assets */,
-				9FB372712B95166600FFE87C /* Preview Content */,
 				9FF1D8332B147F5E002F6EAC /* TrophyApp.swift */,
 				9FF1D8352B147F5E002F6EAC /* ContentView.swift */,
 				9FF1D8372B147F5F002F6EAC /* Assets.xcassets */,
@@ -474,12 +485,12 @@
 		9FF1D8512B148401002F6EAC /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9FB62FA42B9F720400421424 /* AttributeInputs */,
 				9FB3726D2B95136600FFE87C /* ExerciseModalView.swift */,
 				9FB3726F2B9513B300FFE87C /* ExerciseCardView.swift */,
 				9FB372742B9518A700FFE87C /* WorkoutCardView.swift */,
 				9FB372762B951CA800FFE87C /* ModalPresenterView.swift */,
 				9FB372812B96CFA800FFE87C /* NewExerciseModalView.swift */,
-				9FB372832B97930200FFE87C /* DurationPickerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -688,6 +699,7 @@
 				9FF1D8622B14850F002F6EAC /* ExerciseUnit.swift in Sources */,
 				9FF1D8722B14858E002F6EAC /* RepsAttribute.swift in Sources */,
 				9F76C1E72B8EBD6900EB276F /* ExerciseFactory.swift in Sources */,
+				9FB62FA62B9F725500421424 /* DistanceInputView.swift in Sources */,
 				9FF1D8552B14847A002F6EAC /* DatabaseManager.swift in Sources */,
 				9F76C2012B90222B00EB276F /* WorkoutCardViewController.swift in Sources */,
 				9FB3726E2B95136600FFE87C /* ExerciseModalView.swift in Sources */,

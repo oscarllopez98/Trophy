@@ -9,7 +9,7 @@ import Foundation
 
 class ExerciseUnit: Unit {
     
-    enum Symbol: String, RawRepresentable {
+    enum Symbol: String, RawRepresentable, CaseIterable, Hashable {
         // Add other units as needed
         case reps
         case laps

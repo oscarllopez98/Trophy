@@ -10,21 +10,44 @@ import SwiftUI
 struct NewExerciseModalView: View {
     
     @ObservedObject var viewModel: ExerciseViewModel
-    @State private var isExpanded = false
+    @State private var isExpandedDuration = false
 
     //Duration (hours, minutes, seconds)
     
     var body: some View {
         
+        
+        //Distance Attribute
+        
+        
+        //Time Attribute
+        
+        
+        //Sets Attribute
+        
+        
+        //Reps Attribute
+        
+        
+        //Weight Attribute
+        
+        
+        //Intensity Attribute
+        
+        
+        //Level Attribute
+        
+        
+        //Duration Attribute
         Button(action : {
             withAnimation {
-                self.isExpanded.toggle()
+                self.isExpandedDuration.toggle()
             }
         }) {
             VStack {
 
                 //Expand DurationPickerView
-                if isExpanded {
+                if isExpandedDuration {
                     Text("- Duration")
                         .font(.title)
                         .foregroundStyle(.blue)
