@@ -56,6 +56,8 @@ struct DurationPickerView: View {
                 .pickerStyle(WheelPickerStyle())
             }
         }
+        
+        Text("You Entered: HH(\(selectedHours)) MM(\(selectedMinutes)) SS(\(selectedSeconds))")
     }
 }
 
