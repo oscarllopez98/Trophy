@@ -9,8 +9,8 @@ import SwiftUI
 
 struct IntensityInputView: View {
     //State variables for tracking:
-    @State private var selectedIntensity: String = ""    //Distance Value
-    @State private var selectedIntensityUnitIndex: Int = 0   //Distance Unit Value (by index)
+    @State private var selectedIntensity: String = ""    //Intensity Value
+    @State private var selectedIntensityUnitIndex: Int = 0   //Intensity Value (by index)
     
     var selectedIntensityUnit: IntensityAttribute.Intensity {
         return IntensityAttribute.Intensity.allCases[selectedIntensityUnitIndex]
