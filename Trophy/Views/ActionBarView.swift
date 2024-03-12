@@ -30,9 +30,7 @@ struct ActionBarView: View {
             .frame(width: geometry.size.width, 
                    height: geometry.size.height,
                    alignment: .center)
-            .border(Color.black)
         }
-        .border(Color.blue)
     }
 
 }

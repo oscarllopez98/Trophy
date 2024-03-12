@@ -43,7 +43,41 @@ struct ContentView: View {
                  name: "Soccer Practice",
                  type: ExerciseType.sport,
                  attributes: [
-                    .level: LevelAttribute(value: .seven),
+                    .time: TimeAttribute(time: 1 * 60 * 60 + 22 * 60)
+                 ],
+                 date: Date(),
+                 duration: TimeInterval(1 * 60 * 60 + 22 * 60 ),
+                 notes: "Need new cleats"),
+        Exercise(id: UUID(),
+                 name: "5 Mile Run",
+                 type: ExerciseType.cardio,
+                 attributes: [
+                    .distance: DistanceAttribute(
+                        distance: 3,
+                        unit: DistanceUnit(distanceSymbol: .mi)),
+                    .time: TimeAttribute(time: 20 * 60),
+                    .intensity: IntensityAttribute(value: .med)
+                 ],
+                 date: Date(),
+                 duration: TimeInterval(20 * 60),
+                 notes: "This was a good run!"),
+        Exercise(id: UUID(),
+                 name: "Squat Max",
+                 type: ExerciseType.strength,
+                 attributes: [
+                    .weight: WeightAttribute(
+                        weight: 165,
+                        unit: WeightUnit(weightSymbol: .lb)),
+                    .sets: SetsAttribute(sets: 1),
+                    .reps: RepsAttribute(reps: 3)
+                 ],
+                 date: Date(),
+                 duration: nil,
+                 notes: nil),
+        Exercise(id: UUID(),
+                 name: "Rugby Practice",
+                 type: ExerciseType.sport,
+                 attributes: [
                     .time: TimeAttribute(time: 1 * 60 * 60 + 22 * 60)
                  ],
                  date: Date(),
@@ -97,11 +131,12 @@ struct ContentView: View {
                                       
                             //TODO: Sort Exercises and Workouts by Date
                             
-                            //Display the Exercises
-                            ForEach(mapExercisesToViewModels(exercises: exercises), id: \.id) { viewModel in
+                            //Display each ExerciseCardViews
+                            ForEach(Array(mapExercisesToViewModels(exercises: exercises).enumerated()), id: \.element.id) { index, viewModel in
                                 ExerciseCardView(viewModel: viewModel)
+                                    .padding(index == 0 ? [.horizontal, .top] : .horizontal)
                             }
-                            
+
                             //Display the Workouts
                             ForEach(mapWorkoutsToViewModels(workouts: workouts),
                                     id: \.id) { viewModel in
@@ -123,7 +158,6 @@ struct ContentView: View {
                         ActionBarView()
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                     }
-                    .border(Color.cyan)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
                 .background(.purple)
@@ -132,7 +166,6 @@ struct ContentView: View {
             }//VStack
             .frame(width: geometry.size.width,
                 height: geometry.size.height)
-            .border(Color.white)
         }//GeometryReader
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .ignoresSafeArea(edges: Edge.Set.bottom)
