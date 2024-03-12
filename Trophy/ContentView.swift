@@ -81,53 +81,60 @@ struct ContentView: View {
         //Our Main Container
         GeometryReader { geometry in
             VStack(spacing: 0) {
-                //Navbar
+                //MARK: Navbar
                 HStack {
                     Text("1")
                 }
                 .frame(width: geometry.size.width,
-                    height: geometry.size.height * 0.05)
+                    height: geometry.size.height * 0.1)
                 .background(.red)
                 
                 
-                //Bodybar
+                //MARK: Bodybar
                 HStack {
-                    ScrollView {
-                                  
-                        //TODO: Sort Exercises and Workouts by Date
-                        
-                        //Display the Exercises
-                        ForEach(mapExercisesToViewModels(exercises: exercises), id: \.id) { viewModel in
-                            ExerciseCardView(viewModel: viewModel)
+                    GeometryReader { scrollGeo in
+                        ScrollView {
+                                      
+                            //TODO: Sort Exercises and Workouts by Date
+                            
+                            //Display the Exercises
+                            ForEach(mapExercisesToViewModels(exercises: exercises), id: \.id) { viewModel in
+                                ExerciseCardView(viewModel: viewModel)
+                            }
+                            
+                            //Display the Workouts
+                            ForEach(mapWorkoutsToViewModels(workouts: workouts),
+                                    id: \.id) { viewModel in
+                                WorkoutCardView(viewModel: viewModel)
+                            }
                         }
-                        
-                        //Display the Workouts
-                        ForEach(mapWorkoutsToViewModels(workouts: workouts),
-                                id: \.id) { viewModel in
-                            WorkoutCardView(viewModel: viewModel)
-                        }
-
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .background(.yellow)
                     }
-                    .frame(width: geometry.size.width,
-                           height: geometry.size.height * 0.89)
-                    .background(.yellow)
                 }
                 .frame(width: geometry.size.width,
-                       height: geometry.size.height * 0.90)
+                       height: geometry.size.height * 0.80)
                 .background(.blue)
                 
                 
-                //Actionbar
-                HStack {
-                    Text("3")
+                //MARK: Actionbar
+                GeometryReader { actionBarGeo in
+                    HStack {
+                        ActionBarView()
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    }
+                    .border(Color.cyan)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
-                .frame(width: geometry.size.width,
-                    height: geometry.size.height * 0.05)
-                .background(.green)
-            }
+                .background(.purple)
+                .frame(maxWidth: .infinity)
+
+            }//VStack
             .frame(width: geometry.size.width,
                 height: geometry.size.height)
-        }
+            .border(Color.white)
+        }//GeometryReader
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
 
