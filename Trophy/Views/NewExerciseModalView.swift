@@ -70,19 +70,19 @@ struct NewExerciseModalView: View {
                             print("Submit!")
                             
                             //Print Distance
-                            print("Distance: \($selectedDistance)")
+                            print("Distance: \(selectedDistance)")
                             //Print Time
-                            print("Time (HH:MM:SS): \($selectedHours):\($selectedMinutes):\($selectedSeconds)")
+                            print("Time (HH:MM:SS): \(selectedHours):\(selectedMinutes):\(selectedSeconds)")
                             //Print Sets
-                            print("Sets: \($selectedSets)")
+                            print("Sets: \(selectedSets)")
                             //Print Reps
-                            print("Reps: \($selectedReps)")
+                            print("Reps: \(selectedReps)")
                             //Print Weight
-                            print("Weight: \($selectedWeight)")
+                            print("Weight: \(selectedWeight)")
                             //Print Intensity
-                            print("Intensity: \($selectedIntensity)")
+                            print("Intensity: \(selectedIntensity)")
                             //Print Level
-                            print("Level Index: \($selectedLevelUnitIndex)")
+                            print("Level Index: \(selectedLevelUnitIndex)")
                         }) {
                             RoundedRectangle(cornerRadius: 20)
                                 .overlay(
@@ -95,6 +95,7 @@ struct NewExerciseModalView: View {
                         .padding(.horizontal)
                     }
                     .frame(maxWidth: .infinity, maxHeight: row.size.height)
+                    .padding(.top)
 
                 }
                 .frame(maxWidth: .infinity, maxHeight: submitRowHeight)

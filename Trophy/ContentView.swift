@@ -168,7 +168,6 @@ struct ContentView: View {
                 height: geometry.size.height)
         }//GeometryReader
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .ignoresSafeArea(edges: Edge.Set.bottom)
     }
 }
 
