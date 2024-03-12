@@ -115,7 +115,9 @@ struct NewExerciseModalView: View {
                         //Distance Input View
                         VStack {
                             if isExpandedDistance {
-                                DistanceInputView()
+                                DistanceInputView(
+                                    selectedDistance: .constant(""),
+                                    selectedDistanceUnitIndex: .constant(0))
                             }
                         }
 

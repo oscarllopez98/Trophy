@@ -10,8 +10,8 @@ import SwiftUI
 struct DistanceInputView: View {
     
     //State variables for tracking:
-    @State private var selectedDistance: String = ""    //Distance Value
-    @State private var selectedDistanceUnitIndex: Int = 0   //Distance Unit Value (by index)
+    @Binding var selectedDistance: String   //Distance Value
+    @Binding var selectedDistanceUnitIndex: Int  //Distance Unit Value (by index)
     
     var selectedDistanceUnit: DistanceUnit.Symbol {
         return DistanceUnit.Symbol.allCases[selectedDistanceUnitIndex]
@@ -38,10 +38,9 @@ struct DistanceInputView: View {
         
         Text("You Entered: \(selectedDistance) \(selectedDistanceUnit.rawValue)")
     }
-    
-    
 }
 
 #Preview {
-    DistanceInputView()
+    DistanceInputView(selectedDistance: .constant(""),
+                      selectedDistanceUnitIndex: .constant(0))
 }
