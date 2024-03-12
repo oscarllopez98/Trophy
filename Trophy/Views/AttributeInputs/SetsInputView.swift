@@ -19,7 +19,6 @@ struct SetsInputView: View {
                 .keyboardType(.numberPad)
                 .padding()
         }
-        .border(Color.black)
         
         Text("You Entered: \(selectedSets)")
     }

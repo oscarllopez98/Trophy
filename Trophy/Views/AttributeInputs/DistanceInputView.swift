@@ -34,7 +34,6 @@ struct DistanceInputView: View {
             }
             .pickerStyle(WheelPickerStyle())
         }
-        .border(Color.black)
         
         Text("You Entered: \(selectedDistance) \(selectedDistanceUnit.rawValue)")
     }

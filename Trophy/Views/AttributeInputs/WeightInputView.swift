@@ -34,7 +34,6 @@ struct WeightInputView: View {
             }
             .pickerStyle(WheelPickerStyle())
         }
-        .border(Color.black)
         
         Text("You Entered: \(selectedWeight) \(selectedWeightUnit.rawValue)")
     }

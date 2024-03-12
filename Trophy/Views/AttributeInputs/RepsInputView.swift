@@ -19,7 +19,6 @@ struct RepsInputView: View {
                 .keyboardType(.numberPad)
                 .padding()
         }
-        .border(Color.black)
         
         Text("You Entered: \(selectedReps)")
     }

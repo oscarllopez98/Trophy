@@ -110,7 +110,6 @@ struct NewExerciseModalView: View {
                             }
                         }
                         .frame(width: geometry.size.width, alignment: .leading)
-                        .border(Color.black)
 
                         //Distance Input View
                         VStack {
@@ -157,7 +156,7 @@ struct NewExerciseModalView: View {
                             }
                         }
                         .frame(width: geometry.size.width, alignment: .leading)
-                        .border(Color.black)
+
                         //Time Input View
                         VStack {
                             if isExpandedTime {
@@ -200,7 +199,7 @@ struct NewExerciseModalView: View {
                                 }                        }
                         }
                         .frame(width: geometry.size.width, alignment: .leading)
-                        .border(Color.black)
+
                         //Time Input View
                         VStack {
                             if isExpandedSets {
@@ -243,7 +242,7 @@ struct NewExerciseModalView: View {
                             }
                         }
                         .frame(width: geometry.size.width, alignment: .leading)
-                        .border(Color.black)
+
                         //Reps Input View
                         VStack {
                             if isExpandedReps {
@@ -287,7 +286,7 @@ struct NewExerciseModalView: View {
                             }
                         }
                         .frame(width: geometry.size.width, alignment: .leading)
-                        .border(Color.black)
+
                         //Weight Input View
                         VStack {
                             if isExpandedWeight {
@@ -331,7 +330,7 @@ struct NewExerciseModalView: View {
                             }
                         }
                         .frame(width: geometry.size.width, alignment: .leading)
-                        .border(Color.black)
+
                         //Intensity Input View
                         VStack {
                             if isExpandedIntensity {
@@ -374,7 +373,6 @@ struct NewExerciseModalView: View {
                             }
                         }
                         .frame(width: geometry.size.width, alignment: .leading)
-                        .border(Color.black)
                         //Level Input View
                         VStack {
                             if isExpandedLevel {
@@ -383,10 +381,8 @@ struct NewExerciseModalView: View {
                         }
                     }//VStack
                     .frame(width: geometry.size.width)
-                    .border(Color.red)
                 }//ScrollView
                 .frame(width: geometry.size.width)
-                .border(Color.black)
             }
 
             
