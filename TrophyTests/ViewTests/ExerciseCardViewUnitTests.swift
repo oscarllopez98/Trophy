@@ -38,8 +38,8 @@ final class ExerciseCardViewUnitTests: XCTestCase {
     func testExerciseCardViewInitialization() {
         let cardView: ExerciseCardView = ExerciseCardView(viewModel: ExerciseViewModel.sample())
         XCTAssertNotNil(cardView)
-        XCTAssertNotNil(cardView.maxFrameHeight)
-        XCTAssertNotNil(cardView.maxFrameWidth)
+        XCTAssertNotNil(cardView.symbolContainerWidth)
+        XCTAssertNotNil(cardView.symbolContainerHeight)
         XCTAssertNotNil(cardView.controller)
         XCTAssertNotNil(cardView.workoutSymbol)
     }
