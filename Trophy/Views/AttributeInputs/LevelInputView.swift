@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LevelInputView: View {
     //State variables for tracking:
-    @State private var selectedLevelUnitIndex: Int = 0   //Level Unit Value (by index)
+    @Binding var selectedLevelUnitIndex: Int   //Level Unit Value (by index)
     
     var selectedLevelUnit: LevelAttribute.Level {
         return LevelAttribute.Level.allCases[selectedLevelUnitIndex]
@@ -33,5 +33,5 @@ struct LevelInputView: View {
 }
 
 #Preview {
-    LevelInputView()
+    LevelInputView(selectedLevelUnitIndex: .constant(0))
 }

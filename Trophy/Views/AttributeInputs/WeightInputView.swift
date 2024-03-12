@@ -10,8 +10,8 @@ import SwiftUI
 struct WeightInputView: View {
     
     //State variables for tracking:
-    @State private var selectedWeight: String = ""    //Weight Value
-    @State private var selectedWeightUnitIndex: Int = 0   //Weight Unit Value (by index)
+    @Binding var selectedWeight: String    //Weight Value
+    @Binding var selectedWeightUnitIndex: Int   //Weight Unit Value (by index)
     
     var selectedWeightUnit: WeightUnit.Symbol {
         return WeightUnit.Symbol.allCases[selectedWeightUnitIndex]
@@ -41,5 +41,5 @@ struct WeightInputView: View {
 }
 
 #Preview {
-    WeightInputView()
+    WeightInputView(selectedWeight: .constant(""), selectedWeightUnitIndex: .constant(0))
 }

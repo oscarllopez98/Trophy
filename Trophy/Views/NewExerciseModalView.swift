@@ -23,8 +23,13 @@ struct NewExerciseModalView: View {
     
     @State var selectedSets: String = ""   //Sets value
     @State var selectedReps: String = ""    //Reps value
-
+    @State var selectedWeight: String = ""    //Weight Value
+    @State var selectedWeightUnitIndex: Int = 0   //Weight Unit Value (by index)
     
+    @State var selectedIntensity: String = ""    //Intensity Value
+    @State var selectedIntensityUnitIndex: Int = 0   //Intensity Value (by index)
+    
+    @State var selectedLevelUnitIndex: Int = 0   //Level Unit Value (by index)
     
     //State trackers for expanded animation
     @State private var isExpandedDistance = false
@@ -305,7 +310,7 @@ struct NewExerciseModalView: View {
                         //Weight Input View
                         VStack {
                             if isExpandedWeight {
-                                WeightInputView()
+                                WeightInputView(selectedWeight: $selectedWeight, selectedWeightUnitIndex: $selectedWeightUnitIndex)
                             }
                         }
                         
@@ -349,7 +354,7 @@ struct NewExerciseModalView: View {
                         //Intensity Input View
                         VStack {
                             if isExpandedIntensity {
-                                IntensityInputView()
+                                IntensityInputView(selectedIntensity: $selectedIntensity, selectedIntensityUnitIndex: $selectedIntensityUnitIndex)
                             }
                         }
                         
@@ -391,7 +396,7 @@ struct NewExerciseModalView: View {
                         //Level Input View
                         VStack {
                             if isExpandedLevel {
-                                LevelInputView()
+                                LevelInputView(selectedLevelUnitIndex: $selectedLevelUnitIndex)
                             }
                         }
                     }//VStack
