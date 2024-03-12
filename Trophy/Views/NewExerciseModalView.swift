@@ -12,6 +12,18 @@ struct NewExerciseModalView: View {
     //State values for Custom Input Views
     @State private var newExerciseTitle: String = ""
     
+    //State trackers for values
+    //State variables for tracking:
+    @State private var selectedDistance: String = ""  //Distance Value
+    @State private var selectedDistanceUnitIndex: Int = 0  //Distance Unit Value (by index)
+    
+    @State private var selectedHours: Int = 0
+    @State private var selectedMinutes: Int = 0
+    @State private var selectedSeconds: Int = 0
+    
+    
+    
+    //State trackers for expanded animation
     @State private var isExpandedDistance = false
     @State private var isExpandedTime = false
     @State private var isExpandedSets = false
@@ -115,8 +127,8 @@ struct NewExerciseModalView: View {
                         VStack {
                             if isExpandedDistance {
                                 DistanceInputView(
-                                    selectedDistance: .constant(""),
-                                    selectedDistanceUnitIndex: .constant(0))
+                                    selectedDistance: $selectedDistance,
+                                    selectedDistanceUnitIndex: $selectedDistanceUnitIndex)
                             }
                         }
 
@@ -160,7 +172,7 @@ struct NewExerciseModalView: View {
                         //Time Input View
                         VStack {
                             if isExpandedTime {
-                                TimeInputView()
+                                TimeInputView(selectedHours: $selectedHours, selectedMinutes: $selectedMinutes, selectedSeconds: $selectedSeconds)
                             }
                         }
                         

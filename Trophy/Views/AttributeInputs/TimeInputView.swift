@@ -9,9 +9,9 @@ import SwiftUI
 
 struct TimeInputView: View {
     
-    @State private var selectedHours: Int = 0
-    @State private var selectedMinutes: Int = 0
-    @State private var selectedSeconds: Int = 0
+    @Binding var selectedHours: Int
+    @Binding var selectedMinutes: Int
+    @Binding var selectedSeconds: Int
     
     let hoursNumbers = Array((0...23).reversed())
     let minutesNumbers = Array((0...59).reversed())
@@ -62,5 +62,5 @@ struct TimeInputView: View {
 }
 
 #Preview {
-    DurationPickerView()
+    TimeInputView(selectedHours: .constant(0), selectedMinutes: .constant(0), selectedSeconds: .constant(0))
 }
