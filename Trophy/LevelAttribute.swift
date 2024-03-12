@@ -10,7 +10,7 @@ import Foundation
 class LevelAttribute: ExerciseAttribute {
     private var level: Level
     
-    enum Level: Int {
+    enum Level: Int, CaseIterable, Hashable {
         // Add other units as needed
         case NA = 0
         case one = 1

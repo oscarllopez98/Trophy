@@ -10,7 +10,7 @@ import Foundation
 class IntensityAttribute: ExerciseAttribute {
     private var intensity: Intensity
     
-    enum Intensity: String {
+    enum Intensity: String, CaseIterable, Hashable {
         // Add other units as needed
         case high
         case med

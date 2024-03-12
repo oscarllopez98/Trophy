@@ -9,7 +9,7 @@ import Foundation
 
 class DistanceUnit: Unit {
     
-    enum Symbol: String, RawRepresentable {
+    enum Symbol: String, RawRepresentable, CaseIterable, Hashable {
         // Add other units as needed
         case mi
         case ft

@@ -9,8 +9,10 @@ import SwiftUI
 
 struct ExerciseCardView: View {
     
-    let maxFrameWidth = CGFloat(40)
-    let maxFrameHeight = CGFloat(40)
+    let symbolContainerWidth = CGFloat(30)
+    let symbolContainerHeight = CGFloat(30)
+    let cardHeight = CGFloat(80)
+    
     let buttonAccessibilityIdentifier = "AID_ExerciseCardView_Button"
     
     let controller = ExerciseCardViewController()
@@ -20,55 +22,53 @@ struct ExerciseCardView: View {
     let workoutSymbol = "E"
     
     var body: some View {
-        
-        Button(action: {
-            controller.configure(with: viewModel)
-            controller.printTestExerciseName()
-            let modalView = AnyView(ExerciseModalView(viewModel: viewModel))
-            let modalPresenter = ModalPresenter<ExerciseCardView>(view: modalView)
-            modalPresenter.present()
-        }) {
-            ZStack() {
-                //Shape of Card
-                GeometryReader { geometry in
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(.black, lineWidth: 1)
-                        .frame(width: geometry.size.width, height: 100)
-                        .foregroundColor(.black)
-                        .background(.white)
-                }
-                
-                //ExerciseCardView Content
-                HStack {
-                    
-                    //Symbol for Workout
-                    VStack(alignment: .leading) {
-                        Text(workoutSymbol)
-                            .font(.title)
-                            .foregroundStyle(.black)
-                    }
-                    .frame(maxWidth: maxFrameWidth, maxHeight: maxFrameHeight)
-                    .background(.pink)
-                    
-                    Spacer()
-                    
-                    //Name + Date
-                    VStack {
-                        Spacer()
-                        Text(viewModel.getName())
-                            .foregroundStyle(.black)
-                        Spacer()
-                        Text(viewModel.getDateFormatted())
-                            .foregroundStyle(.black)
-                        Spacer()
+        HStack {
+            Button(action: {
+                controller.configure(with: viewModel)
+                controller.printTestExerciseName()
+                let modalView = AnyView(ExerciseModalView(viewModel: viewModel))
+                let modalPresenter = ModalPresenter<ExerciseCardView>(view: modalView)
+                modalPresenter.present()
+            }) {
+                ZStack(alignment: .center) {
+                    //Shape of Card
+                    GeometryReader { geometry in
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(.black, lineWidth: 1)
+                            .frame(height: cardHeight)
+                            .foregroundColor(.white)
+                            .background(.white)
                     }
                     
-                    Spacer()
-                }.padding()
+                    //ExerciseCardView Content
+                    HStack(alignment: .center, spacing: 0) {
+                        
+                        //Symbol for Workout
+                        VStack(alignment: .center) {
+                            Text(workoutSymbol)
+                                .font(.title)
+                                .foregroundStyle(.black)
+                        }
+                        .frame(width: symbolContainerWidth,
+                               height: symbolContainerHeight)
+                        .background(.pink)
+                        .padding(.horizontal)
+                        
+                        //Name + Date
+                        VStack {
+                            Text(viewModel.getName())
+                                .foregroundStyle(.black)
+                            Text(viewModel.getDateFormatted())
+                                .foregroundStyle(.black)
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: cardHeight)
+                    }
+                }            
             }
-            .padding()
+            .frame(width: .infinity, height: cardHeight)
+            .accessibilityIdentifier(buttonAccessibilityIdentifier)
         }
-        .accessibilityIdentifier(buttonAccessibilityIdentifier)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
 
