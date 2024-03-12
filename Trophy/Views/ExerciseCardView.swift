@@ -9,9 +9,9 @@ import SwiftUI
 
 struct ExerciseCardView: View {
     
-    let maxFrameWidth = CGFloat(30)
-    let maxFrameHeight = CGFloat(30)
-    let cardHeight: CGFloat = CGFloat(80)
+    let symbolContainerWidth = CGFloat(30)
+    let symbolContainerHeight = CGFloat(30)
+    let cardHeight = CGFloat(80)
     
     let buttonAccessibilityIdentifier = "AID_ExerciseCardView_Button"
     
@@ -49,7 +49,8 @@ struct ExerciseCardView: View {
                                 .font(.title)
                                 .foregroundStyle(.black)
                         }
-                        .frame(width: maxFrameWidth, height: maxFrameHeight)
+                        .frame(width: symbolContainerWidth,
+                               height: symbolContainerHeight)
                         .background(.pink)
                         .padding(.horizontal)
                         
