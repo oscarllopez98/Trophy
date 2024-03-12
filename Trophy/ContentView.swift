@@ -135,6 +135,7 @@ struct ContentView: View {
             .border(Color.white)
         }//GeometryReader
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .ignoresSafeArea(edges: Edge.Set.bottom)
     }
 }
 
