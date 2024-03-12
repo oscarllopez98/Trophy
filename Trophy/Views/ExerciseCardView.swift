@@ -36,7 +36,7 @@ struct ExerciseCardView: View {
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(.black, lineWidth: 1)
                             .frame(height: cardHeight)
-                            .foregroundColor(.black)
+                            .foregroundColor(.white)
                             .background(.white)
                     }
                     

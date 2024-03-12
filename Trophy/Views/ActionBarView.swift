@@ -12,11 +12,18 @@ struct ActionBarView: View {
     let addSymbol: Image = Image(systemName: "plus.square")
     let addSymbolForegroundStyleColor: Color = .green
 
+    let controller: ActionBarViewController = ActionBarViewController()
+    @State var viewModel: ActionBarViewModel = ActionBarViewModel()
+    
     var body: some View {
         GeometryReader { geometry in
             HStack {
                 Button(action:  {
-                    
+                    controller.configure(with: viewModel)
+                    controller.sayHi()
+                    let modalView = AnyView(NewExerciseModalView())
+                    let modalPresenter = ModalPresenter<NewExerciseModalView>(view: modalView)
+                    modalPresenter.present()
                 }) {
                     addSymbol
                         .resizable()

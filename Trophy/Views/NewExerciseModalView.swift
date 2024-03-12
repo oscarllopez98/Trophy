@@ -9,8 +9,6 @@ import SwiftUI
 
 struct NewExerciseModalView: View {
     
-    @ObservedObject var viewModel: ExerciseViewModel
-    
     //State values for Custom Input Views
     @State private var newExerciseTitle: String = ""
     
@@ -359,5 +357,5 @@ struct NewExerciseModalView: View {
 }
 
 #Preview {
-    NewExerciseModalView(viewModel: ExerciseViewModel.sample())
+    NewExerciseModalView()
 }
