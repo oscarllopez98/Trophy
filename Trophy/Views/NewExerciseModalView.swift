@@ -27,17 +27,54 @@ struct NewExerciseModalView: View {
     let addSymbolForegroundStyleColor: Color = .green
     let minusSymbolForegroundStyleColor: Color = .red
     
+    let submitRowHeight = CGFloat(40)
+    
     var body: some View {
         
         GeometryReader { geometry in
             VStack {
-                TextField (
-                    "Enter New Exercise Title",
-                    text: $newExerciseTitle
-                )
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
-                
+                GeometryReader { row in
+                    HStack {
+                        TextField (
+                            "Enter Exercise Title",
+                            text: $newExerciseTitle
+                        )
+                        .frame(maxWidth: row.size.width * 0.7,
+                               maxHeight: .infinity)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .padding(.horizontal)
+                        
+                        Button(action: {
+                            //Log all the current values where isExpanded == true
+                            
+                            print("Submit!")
+                            
+                            //Print Distance
+                            //Print Time
+                            //Print Sets
+                            //Print Reps
+                            //Print Weight
+                            //Print Intensity
+                            //Print Level
+                            
+                        }) {
+                            RoundedRectangle(cornerRadius: 20)
+                                .overlay(
+                                    Text("Submit")
+                                        .foregroundStyle(Color.white)
+                                )
+                        }
+                        .frame(maxWidth: row.size.width * 0.3,
+                               maxHeight: .infinity)
+                        .padding(.horizontal)
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: row.size.height)
+
+                }
+                .frame(maxWidth: .infinity, maxHeight: submitRowHeight)
+
+
+
                 ScrollView {
                     VStack {
                         //MARK: Distance
