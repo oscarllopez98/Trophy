@@ -21,6 +21,9 @@ struct NewExerciseModalView: View {
     @State private var selectedMinutes: Int = 0
     @State private var selectedSeconds: Int = 0
     
+    @State var selectedSets: String = ""   //Sets value
+    @State var selectedReps: String = ""    //Reps value
+
     
     
     //State trackers for expanded animation
@@ -215,7 +218,7 @@ struct NewExerciseModalView: View {
                         //Time Input View
                         VStack {
                             if isExpandedSets {
-                                SetsInputView()
+                                SetsInputView(selectedSets: $selectedSets)
                             }
                         }
                         
@@ -258,7 +261,7 @@ struct NewExerciseModalView: View {
                         //Reps Input View
                         VStack {
                             if isExpandedReps {
-                                RepsInputView()
+                                RepsInputView(selectedReps: $selectedReps)
                             }
                         }
                         

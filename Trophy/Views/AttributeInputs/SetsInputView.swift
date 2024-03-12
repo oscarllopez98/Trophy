@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SetsInputView: View {
     //State variables for tracking:
-    @State private var selectedSets: String = ""    //Sets value
+    @Binding var selectedSets: String    //Sets value
         
     var body: some View {
         
@@ -25,5 +25,5 @@ struct SetsInputView: View {
 }
 
 #Preview {
-    SetsInputView()
+    SetsInputView(selectedSets: .constant(""))
 }
