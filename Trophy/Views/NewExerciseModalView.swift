@@ -22,20 +22,6 @@ struct NewExerciseModalView: View {
     @StateObject var intensityInputViewModel = IntensityInputViewModel()
     @StateObject var levelInputViewModel = LevelInputViewModel()
     
-    @State private var selectedHours: Int = 0
-    @State private var selectedMinutes: Int = 0
-    @State private var selectedSeconds: Int = 0
-    
-    @State var selectedSets: String = ""   //Sets value
-    @State var selectedReps: String = ""    //Reps value
-    @State var selectedWeight: String = ""    //Weight Value
-    @State var selectedWeightUnitIndex: Int = 0   //Weight Unit Value (by index)
-    
-    @State var selectedIntensity: String = ""    //Intensity Value
-    @State var selectedIntensityUnitIndex: Int = 0   //Intensity Value (by index)
-    
-    @State var selectedLevelUnitIndex: Int = 0   //Level Unit Value (by index)
-    
     //State trackers for expanded animation
     @State private var isExpandedDistance = false
     @State private var isExpandedTime = false
@@ -77,17 +63,17 @@ struct NewExerciseModalView: View {
                             //Print Distance
                             print("Distance: \(distanceInputViewModel.selectedDistance)")
                             //Print Time
-                            print("Time (HH:MM:SS): \(selectedHours):\(selectedMinutes):\(selectedSeconds)")
+                            print("Time (HH:MM:SS): \(timeInputViewModel.selectedHours):\(timeInputViewModel.selectedMinutes):\(timeInputViewModel.selectedSeconds)")
                             //Print Sets
-                            print("Sets: \(selectedSets)")
+                            print("Sets: \(setsInputViewModel.selectedSets)")
                             //Print Reps
-                            print("Reps: \(selectedReps)")
+                            print("Reps: \(repsInputViewModel.selectedReps)")
                             //Print Weight
-                            print("Weight: \(selectedWeight)")
+                            print("Weight: \(weightInputViewModel.selectedWeight)")
                             //Print Intensity
-                            print("Intensity: \(selectedIntensity)")
+                            print("Intensity: \(intensityInputViewModel.selectedIntensity)")
                             //Print Level
-                            print("Level Index: \(selectedLevelUnitIndex)")
+                            print("Level Index: \(levelInputViewModel.selectedLevelUnitIndex)")
                         }) {
                             RoundedRectangle(cornerRadius: 20)
                                 .overlay(
