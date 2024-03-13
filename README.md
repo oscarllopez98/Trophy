@@ -1,4 +1,4 @@
-#Version 0
+# Version 0
 
 ##Intro
 In this section, I focused on designing the fitness application before diving straight into any form of development.
