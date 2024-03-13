@@ -17,6 +17,7 @@ struct NewExerciseModalView: View {
     @StateObject var distanceInputViewModel = DistanceInputViewModel()
     @StateObject var timeInputViewModel = TimeInputViewModel()
     @StateObject var setsViewModel = SetsInputViewModel()
+    @StateObject var repsVuewModel = RepsInputViewModel()
     
     @State private var selectedHours: Int = 0
     @State private var selectedMinutes: Int = 0
@@ -272,7 +273,7 @@ struct NewExerciseModalView: View {
                         //Reps Input View
                         VStack {
                             if isExpandedReps {
-                                RepsInputView(selectedReps: $selectedReps)
+                                RepsInputView(viewModel: RepsInputViewModel())
                             }
                         }
                         
