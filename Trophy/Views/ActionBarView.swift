@@ -12,7 +12,6 @@ struct ActionBarView: View {
     @Binding var isModalVisible: Bool // Add binding property to track modal visibility
     
     let addSymbol: Image = Image(systemName: "plus.square")
-    let addSymbolForegroundStyleColor: Color = .green
 
     let controller: ActionBarViewController = ActionBarViewController()
     @State var viewModel: ActionBarViewModel = ActionBarViewModel()
@@ -27,9 +26,8 @@ struct ActionBarView: View {
                     addSymbol
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .foregroundStyle(addSymbolForegroundStyleColor)
+                        .foregroundStyle(Color("ExerciseSymbolColor"))
                 }
-                .foregroundStyle(addSymbolForegroundStyleColor)
                 .frame(width: geometry.size.height, height: geometry.size.height)
                 .padding()
                 .sheet(isPresented: $isModalVisible) {
@@ -46,5 +44,5 @@ struct ActionBarView: View {
 }
 
 #Preview {
-    ActionBarView(isModalVisible: .constant(true))
+    ActionBarView(isModalVisible: .constant(false))
 }
