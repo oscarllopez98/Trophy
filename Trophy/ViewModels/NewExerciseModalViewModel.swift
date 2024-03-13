@@ -48,6 +48,66 @@ class NewExerciseModalViewModel: ObservableObject {
         print("Intensity: \(intensityInputViewModel.selectedIntensity)")
         // Print Level
         print("Level Index: \(levelInputViewModel.selectedLevelUnitIndex)")
+        
+        //TODO: Do validations here
+        
+        var attributes: [Exercise.AttributeName: ExerciseAttribute] = [:]
+        
+        if isExpandedDistance {
+            if let distance = Double(distanceInputViewModel.selectedDistance) {
+                attributes[.distance] = DistanceAttribute(distance: distance,
+                                                          unit: DistanceUnit(distanceSymbol: DistanceUnit.Symbol.allCases[distanceInputViewModel.selectedDistanceUnitIndex]))
+            }
+        }
+        
+        if isExpandedTime {
+            let hours = Double(timeInputViewModel.selectedHours)
+            let minutes = Double(timeInputViewModel.selectedMinutes)
+            let seconds = Double(timeInputViewModel.selectedSeconds)
+            
+            let totalSeconds = hours * 3600 + minutes * 60 + seconds
+            let time = TimeInterval(totalSeconds)
+            
+            attributes[.time] = TimeAttribute(time: time)
+        }
+        
+        if isExpandedReps {
+            if let reps = Int(repsInputViewModel.selectedReps) {
+                attributes[.reps] = RepsAttribute(reps: reps)
+            }
+        }
+        
+        if isExpandedSets {
+            if let sets = Int(setsInputViewModel.selectedSets) {
+                attributes[.sets] = SetsAttribute(sets: sets)
+            }
+        }
+        
+        if isExpandedWeight {
+            if let weight = Double(weightInputViewModel.selectedWeight) {
+                attributes[.weight] = WeightAttribute(weight: weight,
+                                                      unit: WeightUnit(weightSymbol: WeightUnit.Symbol.allCases[weightInputViewModel.selectedWeightUnitIndex]))
+            }
+        }
+        
+        if isExpandedIntensity {
+            attributes[.intensity] = IntensityAttribute(value: IntensityAttribute.Intensity.allCases[intensityInputViewModel.selectedIntensityUnitIndex])
+        }
+        
+        if isExpandedLevel {
+            attributes[.level] = LevelAttribute(value: LevelAttribute.Level.allCases[levelInputViewModel.selectedLevelUnitIndex])
+        }
+        
+        let exercise = Exercise(id: UUID(),
+                                name: newExerciseTitle,
+                                type: .other,
+                                attributes: attributes,
+                                date: Date(),
+                                duration: nil,
+                                notes: nil)
+        print(exercise)
+        
+        MockExerciseDatabase.shared.putExercise(exercise)
     }
 }
 

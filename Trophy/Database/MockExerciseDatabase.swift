@@ -5,13 +5,15 @@
 //  Created by Oscar Lopez on 3/12/24.
 //
 
-import Foundation
+import SwiftUI
+import Combine
 
-class MockExerciseDatabase: ExerciseDatabase {
-    private var exercises: [Exercise] = []
+class MockExerciseDatabase {
     
-    func saveExercise(_ exercise: Exercise) {
+    static let shared = MockExerciseDatabase()
+    @Published var exercises: [Exercise] = []
+
+    func putExercise(_ exercise: Exercise) {
         exercises.append(exercise)
-        print("Saved New Exercise: \(exercise.name)")
     }
 }

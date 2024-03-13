@@ -36,24 +36,7 @@ struct NewExerciseModalView: View {
                         .padding(.horizontal)
                         
                         Button(action: {
-                            //Log all the current values where isExpanded == true
-                            print("Submit!")
-                            
-                            //Print Distance
-                            print("Distance: \(viewModel.distanceInputViewModel.selectedDistance)")
-                            //Print Time
-                            print("Time (HH:MM:SS): \(viewModel.timeInputViewModel.selectedHours):\(viewModel.timeInputViewModel.selectedMinutes):\(viewModel.timeInputViewModel.selectedSeconds)")
-                            //Print Sets
-                            print("Sets: \(viewModel.setsInputViewModel.selectedSets)")
-                            //Print Reps
-                            print("Reps: \(viewModel.repsInputViewModel.selectedReps)")
-                            //Print Weight
-                            print("Weight: \(viewModel.weightInputViewModel.selectedWeight)")
-                            //Print Intensity
-                            print("Intensity: \(viewModel.intensityInputViewModel.selectedIntensity)")
-                            //Print Level
-                            print("Level Index: \(viewModel.levelInputViewModel.selectedLevelUnitIndex)")
-                            
+                            viewModel.submit()
                         }) {
                             RoundedRectangle(cornerRadius: 20)
                                 .overlay(

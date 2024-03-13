@@ -27,6 +27,16 @@ class ExerciseViewModel: ObservableObject {
         self.notes = notes
     }
     
+    init(exercise: Exercise) {
+        self.id = exercise.id
+        self.name = exercise.name
+        self.type = exercise.type
+        self.attributes = exercise.attributes
+        self.date = exercise.date
+        self.duration = exercise.duration
+        self.notes = exercise.notes
+    }
+    
     //MARK: Getters - ID
     
     func getID() -> UUID {
