@@ -8,12 +8,11 @@
 import SwiftUI
 
 struct IntensityInputView: View {
-    //State variables for tracking:
-    @State private var selectedIntensity: String = ""    //Intensity Value
-    @State private var selectedIntensityUnitIndex: Int = 0   //Intensity Value (by index)
+
+    @ObservedObject var viewModel: IntensityInputViewModel
     
     var selectedIntensityUnit: IntensityAttribute.Intensity {
-        return IntensityAttribute.Intensity.allCases[selectedIntensityUnitIndex]
+        return IntensityAttribute.Intensity.allCases[viewModel.selectedIntensityUnitIndex]
     }
     
     let unitArray = IntensityAttribute.Intensity.allCases.map { $0.rawValue }
@@ -21,19 +20,18 @@ struct IntensityInputView: View {
     var body: some View {
         
         HStack {
-            Picker("Intensity", selection: $selectedIntensityUnitIndex) {
+            Picker("Intensity", selection: $viewModel.selectedIntensityUnitIndex) {
                 ForEach(0..<unitArray.count, id: \.self) { index in
                     Text(unitArray[index]).tag(index)
                 }
             }
             .pickerStyle(WheelPickerStyle())
         }
-        .border(Color.black)
         
-        Text("You Entered: \(selectedIntensity) \(selectedIntensityUnit.rawValue)")
+        Text("You Entered: \(viewModel.selectedIntensity) \(selectedIntensityUnit.rawValue)")
     }
 }
 
 #Preview {
-    IntensityInputView()
+    IntensityInputView(viewModel: IntensityInputViewModel())
 }

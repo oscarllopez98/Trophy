@@ -9,22 +9,21 @@ import SwiftUI
 
 struct RepsInputView: View {
     //State variables for tracking:
-    @State private var selectedReps: String = ""    //Reps value
+    @ObservedObject var viewModel: RepsInputViewModel
         
     var body: some View {
         
         HStack {
-            TextField("Enter Reps", text: $selectedReps)
+            TextField("Enter Reps", text: $viewModel.selectedReps)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .keyboardType(.numberPad)
                 .padding()
         }
-        .border(Color.black)
         
-        Text("You Entered: \(selectedReps)")
+        Text("You Entered: \(viewModel.selectedReps)")
     }
 }
 
 #Preview {
-    RepsInputView()
+    RepsInputView(viewModel: RepsInputViewModel())
 }

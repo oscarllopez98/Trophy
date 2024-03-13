@@ -8,23 +8,22 @@
 import SwiftUI
 
 struct SetsInputView: View {
-    //State variables for tracking:
-    @State private var selectedSets: String = ""    //Sets value
+
+    @ObservedObject var viewModel: SetsInputViewModel
         
     var body: some View {
         
         HStack {
-            TextField("Enter Sets", text: $selectedSets)
+            TextField("Enter Sets", text: $viewModel.selectedSets)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .keyboardType(.numberPad)
                 .padding()
         }
-        .border(Color.black)
         
-        Text("You Entered: \(selectedSets)")
+        Text("You Entered: \(viewModel.selectedSets)")
     }
 }
 
 #Preview {
-    SetsInputView()
+    SetsInputView(viewModel: SetsInputViewModel())
 }

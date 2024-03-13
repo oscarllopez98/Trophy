@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ActionBarView: View {
     
+    @Binding var isModalVisible: Bool // Add binding property to track modal visibility
+    
     let addSymbol: Image = Image(systemName: "plus.square")
     let addSymbolForegroundStyleColor: Color = .green
 
@@ -20,10 +22,7 @@ struct ActionBarView: View {
             HStack {
                 Button(action:  {
                     controller.configure(with: viewModel)
-                    controller.sayHi()
-                    let modalView = AnyView(NewExerciseModalView())
-                    let modalPresenter = ModalPresenter<NewExerciseModalView>(view: modalView)
-                    modalPresenter.present()
+                    isModalVisible = true
                 }) {
                     addSymbol
                         .resizable()
@@ -33,6 +32,10 @@ struct ActionBarView: View {
                 .foregroundStyle(addSymbolForegroundStyleColor)
                 .frame(width: geometry.size.height, height: geometry.size.height)
                 .padding()
+                .sheet(isPresented: $isModalVisible) {
+                    NewExerciseModalView(viewModel: NewExerciseModalViewModel(), isModalVisible: $isModalVisible)
+                }
+ 
             }
             .frame(width: geometry.size.width, 
                    height: geometry.size.height,
@@ -43,5 +46,5 @@ struct ActionBarView: View {
 }
 
 #Preview {
-    ActionBarView()
+    ActionBarView(isModalVisible: .constant(true))
 }
