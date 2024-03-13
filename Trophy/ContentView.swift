@@ -20,27 +20,43 @@ struct ContentView: View {
             VStack(spacing: 0) {
                 //MARK: Navbar
                 HStack {
-                    Text("1")
+                    Text("Navbar")
                 }
                 .frame(width: geometry.size.width,
                     height: geometry.size.height * 0.1)
-                .background(.red)
+                .background(Color("PrimaryColor"))
                 
                 
                 //MARK: Bodybar
                 HStack {
                     GeometryReader { scrollGeo in
                         ScrollView {
-                                                
                             //Display each ExerciseCardViews
                             ForEach(Array(exerciseListViewModel.exercises.enumerated()), id: \.element.id) { index, exercise in
                                 ExerciseCardView(viewModel: ExerciseViewModel(exercise: exercise))
                                     .padding(index == 0 ? [.horizontal, .top] : .horizontal)
                             }
-
+                            
+                            //If no exercises, inform user how to add exercises
+                            if exerciseListViewModel.exercises.isEmpty {
+                                VStack() {
+                                    Spacer()
+                                    Text("You don't have any Exercises tracked yet!")
+                                        .font(.headline)
+                                        .foregroundStyle(Color("EmptyListTextColor"))
+                                        .multilineTextAlignment(.center)
+                                    Text("Click the + icon below to get started.")
+                                        .font(.subheadline)
+                                        .foregroundStyle(Color("EmptyListTextColor"))
+                                        .multilineTextAlignment(.center)
+                                    Spacer()
+                                }
+                                .frame(height: geometry.size.height * 0.80)
+                            }
+                            
                         }
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .background(.yellow)
+                        .background(Color("SecondaryColor"))
                     }
                 }
                 .frame(width: geometry.size.width,
@@ -56,7 +72,7 @@ struct ContentView: View {
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
-                .background(.purple)
+                .background(Color("PrimaryColor"))
                 .frame(maxWidth: .infinity)
 
             }//VStack
