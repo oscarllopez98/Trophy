@@ -9,12 +9,10 @@ import SwiftUI
 
 struct WeightInputView: View {
     
-    //State variables for tracking:
-    @Binding var selectedWeight: String    //Weight Value
-    @Binding var selectedWeightUnitIndex: Int   //Weight Unit Value (by index)
+    @ObservedObject var viewModel: WeightInputViewModel
     
     var selectedWeightUnit: WeightUnit.Symbol {
-        return WeightUnit.Symbol.allCases[selectedWeightUnitIndex]
+        return WeightUnit.Symbol.allCases[viewModel.selectedWeightUnitIndex]
     }
     
     let unitArray = WeightUnit.Symbol.allCases.map { $0.rawValue }
@@ -22,12 +20,12 @@ struct WeightInputView: View {
     var body: some View {
         
         HStack {
-            TextField("Enter Weight", text: $selectedWeight)
+            TextField("Enter Weight", text: $viewModel.selectedWeight)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .keyboardType(.numberPad)
                 .padding()
             
-            Picker("Title", selection: $selectedWeightUnitIndex) {
+            Picker("Title", selection: $viewModel.selectedWeightUnitIndex) {
                 ForEach(0..<unitArray.count, id: \.self) { index in
                     Text(unitArray[index]).tag(index)
                 }
@@ -35,11 +33,11 @@ struct WeightInputView: View {
             .pickerStyle(WheelPickerStyle())
         }
         
-        Text("You Entered: \(selectedWeight) \(selectedWeightUnit.rawValue)")
+        Text("You Entered: \(viewModel.selectedWeight) \(selectedWeightUnit.rawValue)")
     }
     
 }
 
 #Preview {
-    WeightInputView(selectedWeight: .constant(""), selectedWeightUnitIndex: .constant(0))
+    WeightInputView(viewModel: WeightInputViewModel())
 }

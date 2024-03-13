@@ -16,8 +16,9 @@ struct NewExerciseModalView: View {
     //State variables for tracking:
     @StateObject var distanceInputViewModel = DistanceInputViewModel()
     @StateObject var timeInputViewModel = TimeInputViewModel()
-    @StateObject var setsViewModel = SetsInputViewModel()
-    @StateObject var repsVuewModel = RepsInputViewModel()
+    @StateObject var setsInputViewModel = SetsInputViewModel()
+    @StateObject var repsInputViewModel = RepsInputViewModel()
+    @StateObject var weightInputViewModel = WeightInputViewModel()
     
     @State private var selectedHours: Int = 0
     @State private var selectedMinutes: Int = 0
@@ -187,7 +188,7 @@ struct NewExerciseModalView: View {
                         //Time Input View
                         VStack {
                             if isExpandedTime {
-                                TimeInputView(viewModel: TimeInputViewModel())
+                                TimeInputView(viewModel: timeInputViewModel)
                             }
                         }
                         
@@ -230,7 +231,7 @@ struct NewExerciseModalView: View {
                         //Time Input View
                         VStack {
                             if isExpandedSets {
-                                SetsInputView(viewModel: setsViewModel)
+                                SetsInputView(viewModel: setsInputViewModel)
                             }
                         }
                         
@@ -273,7 +274,7 @@ struct NewExerciseModalView: View {
                         //Reps Input View
                         VStack {
                             if isExpandedReps {
-                                RepsInputView(viewModel: RepsInputViewModel())
+                                RepsInputView(viewModel: repsInputViewModel)
                             }
                         }
                         
@@ -317,7 +318,7 @@ struct NewExerciseModalView: View {
                         //Weight Input View
                         VStack {
                             if isExpandedWeight {
-                                WeightInputView(selectedWeight: $selectedWeight, selectedWeightUnitIndex: $selectedWeightUnitIndex)
+                                WeightInputView(viewModel: weightInputViewModel)
                             }
                         }
                         
