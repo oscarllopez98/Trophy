@@ -16,6 +16,7 @@ struct NewExerciseModalView: View {
     //State variables for tracking:
     @StateObject var distanceInputViewModel = DistanceInputViewModel()
     @StateObject var timeInputViewModel = TimeInputViewModel()
+    @StateObject var setsViewModel = SetsInputViewModel()
     
     @State private var selectedHours: Int = 0
     @State private var selectedMinutes: Int = 0
@@ -228,7 +229,7 @@ struct NewExerciseModalView: View {
                         //Time Input View
                         VStack {
                             if isExpandedSets {
-                                SetsInputView(selectedSets: $selectedSets)
+                                SetsInputView(viewModel: setsViewModel)
                             }
                         }
                         
