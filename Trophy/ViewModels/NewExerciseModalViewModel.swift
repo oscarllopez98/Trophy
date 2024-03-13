@@ -8,10 +8,10 @@
 import Foundation
 
 class NewExerciseModalViewModel: ObservableObject {
-    // State values for Custom Input Views
+    //State values for Custom Input Views
     @Published var newExerciseTitle: String = ""
     
-    // View models for input views
+    //View models for input views
     @Published var distanceInputViewModel = DistanceInputViewModel()
     @Published var timeInputViewModel = TimeInputViewModel()
     @Published var setsInputViewModel = SetsInputViewModel()
@@ -20,7 +20,7 @@ class NewExerciseModalViewModel: ObservableObject {
     @Published var intensityInputViewModel = IntensityInputViewModel()
     @Published var levelInputViewModel = LevelInputViewModel()
     
-    // State trackers for expanded animation
+    //State trackers for expanded animation
     @Published var isExpandedDistance = false
     @Published var isExpandedTime = false
     @Published var isExpandedSets = false
@@ -29,7 +29,7 @@ class NewExerciseModalViewModel: ObservableObject {
     @Published var isExpandedIntensity = false
     @Published var isExpandedLevel = false
     
-    // Submit function
+    //Submit Exercise function
     func submit() {
         // Log all the current values where isExpanded == true
         print("Submit!")
@@ -53,6 +53,7 @@ class NewExerciseModalViewModel: ObservableObject {
         
         var attributes: [Exercise.AttributeName: ExerciseAttribute] = [:]
         
+        //Add Distance to Attributes ifExpanded
         if isExpandedDistance {
             if let distance = Double(distanceInputViewModel.selectedDistance) {
                 attributes[.distance] = DistanceAttribute(distance: distance,
@@ -60,6 +61,7 @@ class NewExerciseModalViewModel: ObservableObject {
             }
         }
         
+        //Add Time to Attributes ifExpanded
         if isExpandedTime {
             let hours = Double(timeInputViewModel.selectedHours)
             let minutes = Double(timeInputViewModel.selectedMinutes)
@@ -71,18 +73,21 @@ class NewExerciseModalViewModel: ObservableObject {
             attributes[.time] = TimeAttribute(time: time)
         }
         
+        //Add Reps to Attributes ifExapanded
         if isExpandedReps {
             if let reps = Int(repsInputViewModel.selectedReps) {
                 attributes[.reps] = RepsAttribute(reps: reps)
             }
         }
         
+        //Add Sets to Attributes ifExpanded
         if isExpandedSets {
             if let sets = Int(setsInputViewModel.selectedSets) {
                 attributes[.sets] = SetsAttribute(sets: sets)
             }
         }
         
+        //Add Weight to Attributes ifExpanded
         if isExpandedWeight {
             if let weight = Double(weightInputViewModel.selectedWeight) {
                 attributes[.weight] = WeightAttribute(weight: weight,
@@ -90,14 +95,17 @@ class NewExerciseModalViewModel: ObservableObject {
             }
         }
         
+        //Add Intensity to Attributes ifExpanded
         if isExpandedIntensity {
             attributes[.intensity] = IntensityAttribute(value: IntensityAttribute.Intensity.allCases[intensityInputViewModel.selectedIntensityUnitIndex])
         }
         
+        //Add Level to Attributes ifExpanded
         if isExpandedLevel {
             attributes[.level] = LevelAttribute(value: LevelAttribute.Level.allCases[levelInputViewModel.selectedLevelUnitIndex])
         }
         
+        //Create Exercise that will be stored in the Database
         let exercise = Exercise(id: UUID(),
                                 name: newExerciseTitle,
                                 type: .other,
@@ -107,6 +115,7 @@ class NewExerciseModalViewModel: ObservableObject {
                                 notes: nil)
         print(exercise)
         
+        //Store Exercise in Database
         MockExerciseDatabase.shared.putExercise(exercise)
     }
 }
