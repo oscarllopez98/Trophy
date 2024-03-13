@@ -11,6 +11,7 @@ struct ContentView: View {
 
     //Tracks the Dynamic List of Exercises
     @StateObject var exerciseListViewModel = ExerciseListViewModel()
+    @State private var isModalVisible = false
     
     var body: some View {
         
@@ -50,7 +51,7 @@ struct ContentView: View {
                 //MARK: Actionbar
                 GeometryReader { actionBarGeo in
                     HStack {
-                        ActionBarView()
+                        ActionBarView(isModalVisible: $isModalVisible)
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)

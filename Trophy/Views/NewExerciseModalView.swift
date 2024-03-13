@@ -10,6 +10,7 @@ import SwiftUI
 struct NewExerciseModalView: View {
     
     @StateObject var viewModel: NewExerciseModalViewModel
+    @Binding var isModalVisible: Bool
         
     let addSymbol: Image = Image(systemName: "plus.circle")
     let minusSymbol: Image = Image(systemName: "minus.circle")
@@ -26,6 +27,8 @@ struct NewExerciseModalView: View {
             VStack {
                 GeometryReader { row in
                     HStack {
+                        
+                        //Enter Exercise Title TextField
                         TextField (
                             "Enter Exercise Title",
                             text: $viewModel.newExerciseTitle
@@ -35,8 +38,11 @@ struct NewExerciseModalView: View {
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding(.horizontal)
                         
+                        //Submit Button
                         Button(action: {
                             viewModel.submit()
+                            //TODO: Call ViewModel to do some checks
+                            isModalVisible = false
                         }) {
                             RoundedRectangle(cornerRadius: 20)
                                 .overlay(
@@ -371,5 +377,5 @@ struct NewExerciseModalView: View {
 }
 
 #Preview {
-    NewExerciseModalView(viewModel: NewExerciseModalViewModel())
+    NewExerciseModalView(viewModel: NewExerciseModalViewModel(), isModalVisible: .constant(true))
 }

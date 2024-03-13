@@ -10,6 +10,7 @@ import Foundation
 class NewExerciseModalViewModel: ObservableObject {
     //State values for Custom Input Views
     @Published var newExerciseTitle: String = ""
+    @Published var isModalVisible = false
     
     //View models for input views
     @Published var distanceInputViewModel = DistanceInputViewModel()
