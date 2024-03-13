@@ -8,14 +8,13 @@
 import SwiftUI
 
 struct TimeInputView: View {
-    
-    @Binding var selectedHours: Int
-    @Binding var selectedMinutes: Int
-    @Binding var selectedSeconds: Int
+
+    @ObservedObject var viewModel: TimeInputViewModel
     
     let hoursNumbers = Array((0...23).reversed())
     let minutesNumbers = Array((0...59).reversed())
     let secondsNumbers = Array((0...59).reversed())
+
     
     var body: some View {
         HStack {
@@ -24,7 +23,7 @@ struct TimeInputView: View {
             VStack {
                 Text("Hours")
                 //Picker for Hours
-                Picker("Hours", selection: $selectedHours) {
+                Picker("Hours", selection: $viewModel.selectedHours) {
                     ForEach(hoursNumbers, id: \.self) {
                         Text("\($0)")
                     }
@@ -36,7 +35,7 @@ struct TimeInputView: View {
             VStack {
                 Text("Minutes")
                 //Picker for Minutes
-                Picker("Minutes", selection: $selectedMinutes) {
+                Picker("Minutes", selection: $viewModel.selectedMinutes) {
                     ForEach(minutesNumbers, id: \.self) {
                         Text("\($0)")
                     }
@@ -48,7 +47,7 @@ struct TimeInputView: View {
             VStack {
                 Text("Seconds")
                 //Picker for Seconds
-                Picker("Seconds", selection: $selectedSeconds) {
+                Picker("Seconds", selection: $viewModel.selectedSeconds) {
                     ForEach(secondsNumbers, id: \.self) {
                         Text("\($0)")
                     }
@@ -57,10 +56,10 @@ struct TimeInputView: View {
             }
         }
         
-        Text("You Entered: HH(\(selectedHours)) MM(\(selectedMinutes)) SS(\(selectedSeconds))")
+        Text("You Entered: HH(\(viewModel.selectedHours)) MM(\(viewModel.selectedMinutes)) SS(\(viewModel.selectedSeconds))")
     }
 }
 
 #Preview {
-    TimeInputView(selectedHours: .constant(0), selectedMinutes: .constant(0), selectedSeconds: .constant(0))
+    TimeInputView(viewModel: TimeInputViewModel())
 }

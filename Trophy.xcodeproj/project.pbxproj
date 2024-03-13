@@ -42,6 +42,8 @@
 		9FAE6EDF2B9FF6EC0077E9AC /* ActionBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE6EDE2B9FF6EC0077E9AC /* ActionBarView.swift */; };
 		9FAE6EE12BA0D7DA0077E9AC /* ActionBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE6EE02BA0D7DA0077E9AC /* ActionBarViewController.swift */; };
 		9FAE6EE32BA0D8C60077E9AC /* ActionBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE6EE22BA0D8C60077E9AC /* ActionBarViewModel.swift */; };
+		9FAE6EE62BA122BC0077E9AC /* DistanceInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE6EE52BA122BC0077E9AC /* DistanceInputViewModel.swift */; };
+		9FAE6EE82BA124AA0077E9AC /* TimeInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE6EE72BA124AA0077E9AC /* TimeInputViewModel.swift */; };
 		9FB372622B9261D800FFE87C /* WorkoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB372612B9261D800FFE87C /* WorkoutViewModel.swift */; };
 		9FB372642B92761B00FFE87C /* WorkoutViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB372632B92761B00FFE87C /* WorkoutViewModelTests.swift */; };
 		9FB372662B93F1B900FFE87C /* ExerciseViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB372652B93F1B900FFE87C /* ExerciseViewModelTests.swift */; };
@@ -135,6 +137,8 @@
 		9FAE6EDE2B9FF6EC0077E9AC /* ActionBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionBarView.swift; sourceTree = "<group>"; };
 		9FAE6EE02BA0D7DA0077E9AC /* ActionBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionBarViewController.swift; sourceTree = "<group>"; };
 		9FAE6EE22BA0D8C60077E9AC /* ActionBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionBarViewModel.swift; sourceTree = "<group>"; };
+		9FAE6EE52BA122BC0077E9AC /* DistanceInputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceInputViewModel.swift; sourceTree = "<group>"; };
+		9FAE6EE72BA124AA0077E9AC /* TimeInputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeInputViewModel.swift; sourceTree = "<group>"; };
 		9FB372612B9261D800FFE87C /* WorkoutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutViewModel.swift; sourceTree = "<group>"; };
 		9FB372632B92761B00FFE87C /* WorkoutViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutViewModelTests.swift; sourceTree = "<group>"; };
 		9FB372652B93F1B900FFE87C /* ExerciseViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseViewModelTests.swift; sourceTree = "<group>"; };
@@ -351,6 +355,15 @@
 			path = Exercise;
 			sourceTree = "<group>";
 		};
+		9FAE6EE42BA122A80077E9AC /* AttributeInputs */ = {
+			isa = PBXGroup;
+			children = (
+				9FAE6EE52BA122BC0077E9AC /* DistanceInputViewModel.swift */,
+				9FAE6EE72BA124AA0077E9AC /* TimeInputViewModel.swift */,
+			);
+			path = AttributeInputs;
+			sourceTree = "<group>";
+		};
 		9FB3727A2B96C9CE00FFE87C /* ViewTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -524,6 +537,7 @@
 		9FF1D8522B148405002F6EAC /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				9FAE6EE42BA122A80077E9AC /* AttributeInputs */,
 				9F76C1FF2B90097C00EB276F /* Exercise */,
 				9F76C1FE2B90097000EB276F /* Workout */,
 				9F76C1D72B8EAED100EB276F /* ItemListViewModel.swift */,
@@ -688,6 +702,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FAE6EE62BA122BC0077E9AC /* DistanceInputViewModel.swift in Sources */,
 				9FB372842B97930300FFE87C /* DurationPickerView.swift in Sources */,
 				9F585FFC2B3B655C0061F1EB /* BenchPress.swift in Sources */,
 				9F76C2032B90273600EB276F /* ExerciseCardViewController.swift in Sources */,
@@ -725,6 +740,7 @@
 				9FF1D85C2B1484CC002F6EAC /* User.swift in Sources */,
 				9FF1D8702B14857D002F6EAC /* SetsAttribute.swift in Sources */,
 				9F585FF72B3A38AF0061F1EB /* Tag.swift in Sources */,
+				9FAE6EE82BA124AA0077E9AC /* TimeInputViewModel.swift in Sources */,
 				9FF1D86A2B148548002F6EAC /* UserDefinedAttribute.swift in Sources */,
 				9FB372772B951CA800FFE87C /* ModalPresenterView.swift in Sources */,
 				9FAE6EDF2B9FF6EC0077E9AC /* ActionBarView.swift in Sources */,

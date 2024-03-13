@@ -14,8 +14,8 @@ struct NewExerciseModalView: View {
     
     //State trackers for values
     //State variables for tracking:
-    @State private var selectedDistance: String = ""  //Distance Value
-    @State private var selectedDistanceUnitIndex: Int = 0  //Distance Unit Value (by index)
+    @StateObject var distanceInputViewModel = DistanceInputViewModel()
+    @StateObject var timeInputViewModel = TimeInputViewModel()
     
     @State private var selectedHours: Int = 0
     @State private var selectedMinutes: Int = 0
@@ -70,7 +70,7 @@ struct NewExerciseModalView: View {
                             print("Submit!")
                             
                             //Print Distance
-                            print("Distance: \(selectedDistance)")
+                            print("Distance: \(distanceInputViewModel.selectedDistance)")
                             //Print Time
                             print("Time (HH:MM:SS): \(selectedHours):\(selectedMinutes):\(selectedSeconds)")
                             //Print Sets
@@ -141,9 +141,7 @@ struct NewExerciseModalView: View {
                         //Distance Input View
                         VStack {
                             if isExpandedDistance {
-                                DistanceInputView(
-                                    selectedDistance: $selectedDistance,
-                                    selectedDistanceUnitIndex: $selectedDistanceUnitIndex)
+                                DistanceInputView(viewModel: distanceInputViewModel)
                             }
                         }
 
@@ -187,7 +185,7 @@ struct NewExerciseModalView: View {
                         //Time Input View
                         VStack {
                             if isExpandedTime {
-                                TimeInputView(selectedHours: $selectedHours, selectedMinutes: $selectedMinutes, selectedSeconds: $selectedSeconds)
+                                TimeInputView(viewModel: TimeInputViewModel())
                             }
                         }
                         
