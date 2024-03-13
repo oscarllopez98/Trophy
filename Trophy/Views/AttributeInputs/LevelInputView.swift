@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct LevelInputView: View {
-    //State variables for tracking:
-    @Binding var selectedLevelUnitIndex: Int   //Level Unit Value (by index)
+
+    @ObservedObject var viewModel: LevelInputViewModel
     
     var selectedLevelUnit: LevelAttribute.Level {
-        return LevelAttribute.Level.allCases[selectedLevelUnitIndex]
+        return LevelAttribute.Level.allCases[viewModel.selectedLevelUnitIndex]
     }
     
     let unitArray = LevelAttribute.Level.allCases.map { $0.rawValue }
@@ -20,7 +20,7 @@ struct LevelInputView: View {
     var body: some View {
         
         HStack {
-            Picker("Level", selection: $selectedLevelUnitIndex) {
+            Picker("Level", selection: $viewModel.selectedLevelUnitIndex) {
                 ForEach(0..<unitArray.count, id: \.self) { index in
                     Text(String(unitArray[index])).tag(index)
                 }
@@ -33,5 +33,5 @@ struct LevelInputView: View {
 }
 
 #Preview {
-    LevelInputView(selectedLevelUnitIndex: .constant(0))
+    LevelInputView(viewModel: LevelInputViewModel())
 }
