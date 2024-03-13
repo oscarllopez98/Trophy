@@ -21,7 +21,7 @@ struct ActionBarView: View {
                 Button(action:  {
                     controller.configure(with: viewModel)
                     controller.sayHi()
-                    let modalView = AnyView(NewExerciseModalView())
+                    let modalView = AnyView(NewExerciseModalView(viewModel: NewExerciseModalViewModel()))
                     let modalPresenter = ModalPresenter<NewExerciseModalView>(view: modalView)
                     modalPresenter.present()
                 }) {

@@ -9,27 +9,7 @@ import SwiftUI
 
 struct NewExerciseModalView: View {
     
-    //State values for Custom Input Views
-    @State private var newExerciseTitle: String = ""
-    
-    //State trackers for values
-    //State variables for tracking:
-    @StateObject var distanceInputViewModel = DistanceInputViewModel()
-    @StateObject var timeInputViewModel = TimeInputViewModel()
-    @StateObject var setsInputViewModel = SetsInputViewModel()
-    @StateObject var repsInputViewModel = RepsInputViewModel()
-    @StateObject var weightInputViewModel = WeightInputViewModel()
-    @StateObject var intensityInputViewModel = IntensityInputViewModel()
-    @StateObject var levelInputViewModel = LevelInputViewModel()
-    
-    //State trackers for expanded animation
-    @State private var isExpandedDistance = false
-    @State private var isExpandedTime = false
-    @State private var isExpandedSets = false
-    @State private var isExpandedReps = false
-    @State private var isExpandedWeight = false
-    @State private var isExpandedIntensity = false
-    @State private var isExpandedLevel = false
+    @StateObject var viewModel: NewExerciseModalViewModel
         
     let addSymbol: Image = Image(systemName: "plus.circle")
     let minusSymbol: Image = Image(systemName: "minus.circle")
@@ -48,7 +28,7 @@ struct NewExerciseModalView: View {
                     HStack {
                         TextField (
                             "Enter Exercise Title",
-                            text: $newExerciseTitle
+                            text: $viewModel.newExerciseTitle
                         )
                         .frame(maxWidth: row.size.width * 0.7,
                                maxHeight: .infinity)
@@ -57,23 +37,23 @@ struct NewExerciseModalView: View {
                         
                         Button(action: {
                             //Log all the current values where isExpanded == true
-                            
                             print("Submit!")
                             
                             //Print Distance
-                            print("Distance: \(distanceInputViewModel.selectedDistance)")
+                            print("Distance: \(viewModel.distanceInputViewModel.selectedDistance)")
                             //Print Time
-                            print("Time (HH:MM:SS): \(timeInputViewModel.selectedHours):\(timeInputViewModel.selectedMinutes):\(timeInputViewModel.selectedSeconds)")
+                            print("Time (HH:MM:SS): \(viewModel.timeInputViewModel.selectedHours):\(viewModel.timeInputViewModel.selectedMinutes):\(viewModel.timeInputViewModel.selectedSeconds)")
                             //Print Sets
-                            print("Sets: \(setsInputViewModel.selectedSets)")
+                            print("Sets: \(viewModel.setsInputViewModel.selectedSets)")
                             //Print Reps
-                            print("Reps: \(repsInputViewModel.selectedReps)")
+                            print("Reps: \(viewModel.repsInputViewModel.selectedReps)")
                             //Print Weight
-                            print("Weight: \(weightInputViewModel.selectedWeight)")
+                            print("Weight: \(viewModel.weightInputViewModel.selectedWeight)")
                             //Print Intensity
-                            print("Intensity: \(intensityInputViewModel.selectedIntensity)")
+                            print("Intensity: \(viewModel.intensityInputViewModel.selectedIntensity)")
                             //Print Level
-                            print("Level Index: \(levelInputViewModel.selectedLevelUnitIndex)")
+                            print("Level Index: \(viewModel.levelInputViewModel.selectedLevelUnitIndex)")
+                            
                         }) {
                             RoundedRectangle(cornerRadius: 20)
                                 .overlay(
@@ -98,10 +78,10 @@ struct NewExerciseModalView: View {
                         //MARK: Distance
                         Button(action : {
                             withAnimation {
-                                self.isExpandedDistance.toggle()
+                                viewModel.isExpandedDistance.toggle()
                             }
                         }) {
-                            if isExpandedDistance {
+                            if viewModel.isExpandedDistance {
                                 HStack {
                                     Text("Distance")
                                         .font(.title)
@@ -131,8 +111,8 @@ struct NewExerciseModalView: View {
 
                         //Distance Input View
                         VStack {
-                            if isExpandedDistance {
-                                DistanceInputView(viewModel: distanceInputViewModel)
+                            if viewModel.isExpandedDistance {
+                                DistanceInputView(viewModel: viewModel.distanceInputViewModel)
                             }
                         }
 
@@ -140,11 +120,11 @@ struct NewExerciseModalView: View {
                         //MARK: Time
                         Button(action : {
                             withAnimation {
-                                self.isExpandedTime.toggle()
+                                viewModel.isExpandedTime.toggle()
                             }
                         }) {
                             VStack {
-                                if isExpandedTime {
+                                if viewModel.isExpandedTime {
                                     HStack {
                                         Text("Time")
                                             .font(.title)
@@ -175,8 +155,8 @@ struct NewExerciseModalView: View {
 
                         //Time Input View
                         VStack {
-                            if isExpandedTime {
-                                TimeInputView(viewModel: timeInputViewModel)
+                            if viewModel.isExpandedTime {
+                                TimeInputView(viewModel: viewModel.timeInputViewModel)
                             }
                         }
                         
@@ -184,11 +164,11 @@ struct NewExerciseModalView: View {
                         //MARK: Sets
                         Button(action : {
                             withAnimation {
-                                self.isExpandedSets.toggle()
+                                viewModel.isExpandedSets.toggle()
                             }
                         }) {
                             VStack {
-                                if isExpandedSets {
+                                if viewModel.isExpandedSets {
                                     HStack {
                                         Text("Sets")
                                             .font(.title)
@@ -218,19 +198,19 @@ struct NewExerciseModalView: View {
 
                         //Time Input View
                         VStack {
-                            if isExpandedSets {
-                                SetsInputView(viewModel: setsInputViewModel)
+                            if viewModel.isExpandedSets {
+                                SetsInputView(viewModel: viewModel.setsInputViewModel)
                             }
                         }
                         
                         //MARK: Reps
                         Button(action : {
                             withAnimation {
-                                self.isExpandedReps.toggle()
+                                viewModel.isExpandedReps.toggle()
                             }
                         }) {
                             VStack {
-                                if isExpandedReps {
+                                if viewModel.isExpandedReps {
                                     HStack {
                                         Text("Reps")
                                             .font(.title)
@@ -261,8 +241,8 @@ struct NewExerciseModalView: View {
 
                         //Reps Input View
                         VStack {
-                            if isExpandedReps {
-                                RepsInputView(viewModel: repsInputViewModel)
+                            if viewModel.isExpandedReps {
+                                RepsInputView(viewModel: viewModel.repsInputViewModel)
                             }
                         }
                         
@@ -270,11 +250,11 @@ struct NewExerciseModalView: View {
                         //MARK: Weight
                         Button(action : {
                             withAnimation {
-                                self.isExpandedWeight.toggle()
+                                viewModel.isExpandedWeight.toggle()
                             }
                         }) {
                             VStack {
-                                if isExpandedWeight {
+                                if viewModel.isExpandedWeight {
                                     HStack {
                                         Text("Weight")
                                             .font(.title)
@@ -305,8 +285,8 @@ struct NewExerciseModalView: View {
 
                         //Weight Input View
                         VStack {
-                            if isExpandedWeight {
-                                WeightInputView(viewModel: weightInputViewModel)
+                            if viewModel.isExpandedWeight {
+                                WeightInputView(viewModel: viewModel.weightInputViewModel)
                             }
                         }
                         
@@ -314,11 +294,11 @@ struct NewExerciseModalView: View {
                         //MARK: Intensity
                         Button(action : {
                             withAnimation {
-                                self.isExpandedIntensity.toggle()
+                                viewModel.isExpandedIntensity.toggle()
                             }
                         }) {
                             VStack {
-                                if isExpandedIntensity {
+                                if viewModel.isExpandedIntensity {
                                     HStack {
                                         Text("Intensity")
                                             .font(.title)
@@ -349,19 +329,19 @@ struct NewExerciseModalView: View {
 
                         //Intensity Input View
                         VStack {
-                            if isExpandedIntensity {
-                                IntensityInputView(viewModel: intensityInputViewModel)
+                            if viewModel.isExpandedIntensity {
+                                IntensityInputView(viewModel: viewModel.intensityInputViewModel)
                             }
                         }
                         
                         //MARK: Level
                         Button(action : {
                             withAnimation {
-                                self.isExpandedLevel.toggle()
+                                viewModel.isExpandedLevel.toggle()
                             }
                         }) {
                             VStack {
-                                if isExpandedLevel {
+                                if viewModel.isExpandedLevel {
                                     HStack {
                                         Text("Level")
                                             .font(.title)
@@ -391,8 +371,8 @@ struct NewExerciseModalView: View {
                         .frame(width: geometry.size.width, alignment: .leading)
                         //Level Input View
                         VStack {
-                            if isExpandedLevel {
-                                LevelInputView(viewModel: levelInputViewModel)
+                            if viewModel.isExpandedLevel {
+                                LevelInputView(viewModel: viewModel.levelInputViewModel)
                             }
                         }
                     }//VStack
@@ -408,5 +388,5 @@ struct NewExerciseModalView: View {
 }
 
 #Preview {
-    NewExerciseModalView()
+    NewExerciseModalView(viewModel: NewExerciseModalViewModel())
 }
