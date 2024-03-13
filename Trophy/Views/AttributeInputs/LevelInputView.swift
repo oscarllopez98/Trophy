@@ -28,7 +28,7 @@ struct LevelInputView: View {
             .pickerStyle(WheelPickerStyle())
         }
         
-        Text("You Entered: \(selectedLevelUnit.rawValue)")
+//        Text("You Entered: \(selectedLevelUnit.rawValue)")
     }
 }
 

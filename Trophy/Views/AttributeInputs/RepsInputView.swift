@@ -20,7 +20,7 @@ struct RepsInputView: View {
                 .padding()
         }
         
-        Text("You Entered: \(viewModel.selectedReps)")
+//        Text("You Entered: \(viewModel.selectedReps)")
     }
 }
 

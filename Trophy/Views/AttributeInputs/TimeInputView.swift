@@ -56,7 +56,7 @@ struct TimeInputView: View {
             }
         }
         
-        Text("You Entered: HH(\(viewModel.selectedHours)) MM(\(viewModel.selectedMinutes)) SS(\(viewModel.selectedSeconds))")
+//        Text("You Entered: HH(\(viewModel.selectedHours)) MM(\(viewModel.selectedMinutes)) SS(\(viewModel.selectedSeconds))")
     }
 }
 

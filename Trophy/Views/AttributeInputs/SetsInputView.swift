@@ -20,7 +20,7 @@ struct SetsInputView: View {
                 .padding()
         }
         
-        Text("You Entered: \(viewModel.selectedSets)")
+//        Text("You Entered: \(viewModel.selectedSets)")
     }
 }
 
