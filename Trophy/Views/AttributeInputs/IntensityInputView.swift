@@ -28,7 +28,7 @@ struct IntensityInputView: View {
             .pickerStyle(WheelPickerStyle())
         }
         
-        Text("You Entered: \(viewModel.selectedIntensity) \(selectedIntensityUnit.rawValue)")
+//        Text("You Entered: \(viewModel.selectedIntensity) \(selectedIntensityUnit.rawValue)")
     }
 }
 

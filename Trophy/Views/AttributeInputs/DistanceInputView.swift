@@ -34,7 +34,7 @@ struct DistanceInputView: View {
             .pickerStyle(WheelPickerStyle())
         }
         
-        Text("You Entered: \(viewModel.selectedDistance) \(viewModel.selectedDistanceUnit.rawValue)")
+//        Text("You Entered: \(viewModel.selectedDistance) \(viewModel.selectedDistanceUnit.rawValue)")
     }
 }
 
