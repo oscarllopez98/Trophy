@@ -8,108 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
-    
-    //TODO: Replace hardcoded Exercises using Controller.DBConnector
-    
+
+    //Tracks the Dynamic List of Exercises
     @StateObject var exerciseListViewModel = ExerciseListViewModel()
-    
-//    let exercises: [Exercise] = [
-//        Exercise(id: UUID(),
-//                 name: "3 Mile Run",
-//                 type: ExerciseType.cardio,
-//                 attributes: [
-//                    .distance: DistanceAttribute(
-//                        distance: 3,
-//                        unit: DistanceUnit(distanceSymbol: .mi)),
-//                    .time: TimeAttribute(time: 20 * 60),
-//                    .intensity: IntensityAttribute(value: .med)
-//                 ],
-//                 date: Date(),
-//                 duration: TimeInterval(20 * 60),
-//                 notes: "This was a good run!"),
-//        Exercise(id: UUID(),
-//                 name: "Bench Max",
-//                 type: ExerciseType.strength,
-//                 attributes: [
-//                    .weight: WeightAttribute(
-//                        weight: 165,
-//                        unit: WeightUnit(weightSymbol: .lb)),
-//                    .sets: SetsAttribute(sets: 1),
-//                    .reps: RepsAttribute(reps: 3)
-//                 ],
-//                 date: Date(),
-//                 duration: nil,
-//                 notes: nil),
-//        Exercise(id: UUID(),
-//                 name: "Soccer Practice",
-//                 type: ExerciseType.sport,
-//                 attributes: [
-//                    .time: TimeAttribute(time: 1 * 60 * 60 + 22 * 60)
-//                 ],
-//                 date: Date(),
-//                 duration: TimeInterval(1 * 60 * 60 + 22 * 60 ),
-//                 notes: "Need new cleats"),
-//        Exercise(id: UUID(),
-//                 name: "5 Mile Run",
-//                 type: ExerciseType.cardio,
-//                 attributes: [
-//                    .distance: DistanceAttribute(
-//                        distance: 3,
-//                        unit: DistanceUnit(distanceSymbol: .mi)),
-//                    .time: TimeAttribute(time: 20 * 60),
-//                    .intensity: IntensityAttribute(value: .med)
-//                 ],
-//                 date: Date(),
-//                 duration: TimeInterval(20 * 60),
-//                 notes: "This was a good run!"),
-//        Exercise(id: UUID(),
-//                 name: "Squat Max",
-//                 type: ExerciseType.strength,
-//                 attributes: [
-//                    .weight: WeightAttribute(
-//                        weight: 165,
-//                        unit: WeightUnit(weightSymbol: .lb)),
-//                    .sets: SetsAttribute(sets: 1),
-//                    .reps: RepsAttribute(reps: 3)
-//                 ],
-//                 date: Date(),
-//                 duration: nil,
-//                 notes: nil),
-//        Exercise(id: UUID(),
-//                 name: "Rugby Practice",
-//                 type: ExerciseType.sport,
-//                 attributes: [
-//                    .time: TimeAttribute(time: 1 * 60 * 60 + 22 * 60)
-//                 ],
-//                 date: Date(),
-//                 duration: TimeInterval(1 * 60 * 60 + 22 * 60 ),
-//                 notes: "Need new cleats"),
-//    ]
-    
-    
-    //TODO: Replace hardcoded Workouts with Controller.DBConnector
-//    let workouts: [Workout] = [
-//        Workout(id: UUID(),
-//                name: "First Workout",
-//                exercises: [
-//                    Exercise(id: UUID(),
-//                             name: "First Workout Exercise",
-//                             type: ExerciseType.other,
-//                             attributes: [.level: LevelAttribute(value: .nine)],
-//                             date: Date(),
-//                             duration: nil,
-//                             notes: nil),
-//                    Exercise(id: UUID(),
-//                             name: "Second Workout Exercise",
-//                             type: ExerciseType.other,
-//                             attributes: [.level: LevelAttribute(value: .seven)],
-//                             date: Date(),
-//                             duration: nil,
-//                             notes: nil),
-//                ],
-//                date: Date())
-//    ]
-    
     
     var body: some View {
         
@@ -129,9 +30,7 @@ struct ContentView: View {
                 HStack {
                     GeometryReader { scrollGeo in
                         ScrollView {
-                                      
-                            //TODO: Sort Exercises and Workouts by Date
-                            
+                                                
                             //Display each ExerciseCardViews
                             ForEach(Array(exerciseListViewModel.exercises.enumerated()), id: \.element.id) { index, exercise in
                                 ExerciseCardView(viewModel: ExerciseViewModel(exercise: exercise))

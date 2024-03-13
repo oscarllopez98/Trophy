@@ -14,6 +14,6 @@ class MockExerciseDatabase {
     @Published var exercises: [Exercise] = []
 
     func putExercise(_ exercise: Exercise) {
-        exercises.append(exercise)
+        exercises.insert(exercise, at: 0)
     }
 }
