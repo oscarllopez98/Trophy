@@ -19,6 +19,7 @@ struct NewExerciseModalView: View {
     @StateObject var setsInputViewModel = SetsInputViewModel()
     @StateObject var repsInputViewModel = RepsInputViewModel()
     @StateObject var weightInputViewModel = WeightInputViewModel()
+    @StateObject var intensityInputViewModel = IntensityInputViewModel()
     
     @State private var selectedHours: Int = 0
     @State private var selectedMinutes: Int = 0
@@ -362,7 +363,7 @@ struct NewExerciseModalView: View {
                         //Intensity Input View
                         VStack {
                             if isExpandedIntensity {
-                                IntensityInputView(selectedIntensity: $selectedIntensity, selectedIntensityUnitIndex: $selectedIntensityUnitIndex)
+                                IntensityInputView(viewModel: intensityInputViewModel)
                             }
                         }
                         

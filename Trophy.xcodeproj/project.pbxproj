@@ -47,6 +47,7 @@
 		9FAE6EEA2BA127560077E9AC /* SetsInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE6EE92BA127560077E9AC /* SetsInputViewModel.swift */; };
 		9FAE6EEC2BA128830077E9AC /* RepsInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE6EEB2BA128830077E9AC /* RepsInputViewModel.swift */; };
 		9FAE6EEE2BA129AF0077E9AC /* WeightInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE6EED2BA129AF0077E9AC /* WeightInputViewModel.swift */; };
+		9FAE6EF02BA12B510077E9AC /* IntensityInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE6EEF2BA12B510077E9AC /* IntensityInputViewModel.swift */; };
 		9FB372622B9261D800FFE87C /* WorkoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB372612B9261D800FFE87C /* WorkoutViewModel.swift */; };
 		9FB372642B92761B00FFE87C /* WorkoutViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB372632B92761B00FFE87C /* WorkoutViewModelTests.swift */; };
 		9FB372662B93F1B900FFE87C /* ExerciseViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB372652B93F1B900FFE87C /* ExerciseViewModelTests.swift */; };
@@ -145,6 +146,7 @@
 		9FAE6EE92BA127560077E9AC /* SetsInputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetsInputViewModel.swift; sourceTree = "<group>"; };
 		9FAE6EEB2BA128830077E9AC /* RepsInputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepsInputViewModel.swift; sourceTree = "<group>"; };
 		9FAE6EED2BA129AF0077E9AC /* WeightInputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightInputViewModel.swift; sourceTree = "<group>"; };
+		9FAE6EEF2BA12B510077E9AC /* IntensityInputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntensityInputViewModel.swift; sourceTree = "<group>"; };
 		9FB372612B9261D800FFE87C /* WorkoutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutViewModel.swift; sourceTree = "<group>"; };
 		9FB372632B92761B00FFE87C /* WorkoutViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutViewModelTests.swift; sourceTree = "<group>"; };
 		9FB372652B93F1B900FFE87C /* ExerciseViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseViewModelTests.swift; sourceTree = "<group>"; };
@@ -369,6 +371,7 @@
 				9FAE6EE92BA127560077E9AC /* SetsInputViewModel.swift */,
 				9FAE6EEB2BA128830077E9AC /* RepsInputViewModel.swift */,
 				9FAE6EED2BA129AF0077E9AC /* WeightInputViewModel.swift */,
+				9FAE6EEF2BA12B510077E9AC /* IntensityInputViewModel.swift */,
 			);
 			path = AttributeInputs;
 			sourceTree = "<group>";
@@ -732,6 +735,7 @@
 				9FB372822B96CFA800FFE87C /* NewExerciseModalView.swift in Sources */,
 				9F585FFE2B3B691D0061F1EB /* Deadlift.swift in Sources */,
 				9FF1D8582B1484A8002F6EAC /* UserManager.swift in Sources */,
+				9FAE6EF02BA12B510077E9AC /* IntensityInputViewModel.swift in Sources */,
 				9F76C1D82B8EAED100EB276F /* ItemListViewModel.swift in Sources */,
 				9F76C1F42B8EC65000EB276F /* WorkoutFactory.swift in Sources */,
 				9FB62FAC2B9F7F7B00421424 /* SetsInputView.swift in Sources */,
