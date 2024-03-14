@@ -2,7 +2,7 @@
 
 ## **What is Trophy?**
 
-Trophy is an app that allows user to flexibly customize their unique exercises. This app reverses the idea other fitness tracking applications follow — requiring the user to follow data input guiderails, to instead the user providing any form of exercise data to the app.
+Trophy is an app that allows user to flexibly customize their unique exercises for the best insight possible to their fitness goals. This app reverses the idea other fitness tracking applications follow — requiring the user to follow data input guiderails, to instead the user providing any form of exercise data to the app.
 
 Example Use Cases:
 * Let's say you are a runner preparing for a competitive 5k. Other fitness tracking apps might track data like distance and time. However, you're curious to also track how much effort you put into each run, so that you can better understand how much effort it takes to run a certain time/distance. Trophy allows the standard tracking of distance and time, in addition to allowing you to choose an Intensity attribute, measured as either low, medium, or high. This combination gives you the ability to better understand how your runs truly vary for one another, ultimately giving you deeper insight to your fitness goals.
