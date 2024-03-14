@@ -7,7 +7,7 @@ Trophy is an app that allows user to flexibly customize their unique exercises f
 Example Use Cases:
 * Let's say you are a runner preparing for a competitive 5k. Other fitness tracking apps might track data like distance and time. However, you're curious to also track how much effort you put into each run, so that you can better understand how much effort it takes to run a certain time/distance. Trophy allows the standard tracking of distance and time, in addition to allowing you to choose an Intensity attribute, measured as either low, medium, or high. This combination gives you the ability to better understand how your runs truly vary for one another, ultimately giving you deeper insight to your fitness goals.
   
-* Take an example where you are learning to climb at your local bouldering gym, and you would like to check your progress for a certain climb/beta. Trophy allows you to create your named exercise and choose to track attributes such as Time and Level. This combination of exercise attributes allows you to better understand the progress of your specific climb over time.
+* Take an example where you are learning to climb at your local bouldering gym, and you would like to check your progress for a certain climb/beta. Trophy allows you to create your named exercise and choose to track attributes such as Time and Level (measured 0-10). This combination of exercise attributes allows you to better understand the progress of your specific climb over time.
 
 ## **Version 0** - _Backend Model + UI Design_
 
