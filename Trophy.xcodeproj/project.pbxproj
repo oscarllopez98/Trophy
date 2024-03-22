@@ -54,6 +54,16 @@
 		9FAE6EF72BA14C440077E9AC /* MockExerciseDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE6EF62BA14C440077E9AC /* MockExerciseDatabase.swift */; };
 		9FAE6EF92BA14CB30077E9AC /* NewExerciseModalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE6EF82BA14CB30077E9AC /* NewExerciseModalViewModel.swift */; };
 		9FAE6EFB2BA18A7F0077E9AC /* ExerciseListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE6EFA2BA18A7F0077E9AC /* ExerciseListViewModel.swift */; };
+		9FB1F6E12BADFB1A00A27BE0 /* Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB1F6DA2BADFB1A00A27BE0 /* Empty.swift */; };
+		9FB1F6E22BADFB1A00A27BE0 /* Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB1F6DA2BADFB1A00A27BE0 /* Empty.swift */; };
+		9FB1F6E32BADFB1A00A27BE0 /* TROPHYOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB1F6DB2BADFB1A00A27BE0 /* TROPHYOutput.swift */; };
+		9FB1F6E42BADFB1A00A27BE0 /* TROPHYOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB1F6DB2BADFB1A00A27BE0 /* TROPHYOutput.swift */; };
+		9FB1F6E52BADFB1A00A27BE0 /* TROPHYResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB1F6DD2BADFB1A00A27BE0 /* TROPHYResult.swift */; };
+		9FB1F6E62BADFB1A00A27BE0 /* TROPHYResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB1F6DD2BADFB1A00A27BE0 /* TROPHYResult.swift */; };
+		9FB1F6E72BADFB1A00A27BE0 /* TROPHYTrophyRESTAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB1F6DE2BADFB1A00A27BE0 /* TROPHYTrophyRESTAPIClient.swift */; };
+		9FB1F6E82BADFB1A00A27BE0 /* TROPHYTrophyRESTAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB1F6DE2BADFB1A00A27BE0 /* TROPHYTrophyRESTAPIClient.swift */; };
+		9FB1F6E92BADFB1A00A27BE0 /* TROPHYInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB1F6DF2BADFB1A00A27BE0 /* TROPHYInput.swift */; };
+		9FB1F6EA2BADFB1A00A27BE0 /* TROPHYInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB1F6DF2BADFB1A00A27BE0 /* TROPHYInput.swift */; };
 		9FB372622B9261D800FFE87C /* WorkoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB372612B9261D800FFE87C /* WorkoutViewModel.swift */; };
 		9FB372642B92761B00FFE87C /* WorkoutViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB372632B92761B00FFE87C /* WorkoutViewModelTests.swift */; };
 		9FB372662B93F1B900FFE87C /* ExerciseViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB372652B93F1B900FFE87C /* ExerciseViewModelTests.swift */; };
@@ -162,6 +172,13 @@
 		9FAE6EF62BA14C440077E9AC /* MockExerciseDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockExerciseDatabase.swift; sourceTree = "<group>"; };
 		9FAE6EF82BA14CB30077E9AC /* NewExerciseModalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewExerciseModalViewModel.swift; sourceTree = "<group>"; };
 		9FAE6EFA2BA18A7F0077E9AC /* ExerciseListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseListViewModel.swift; sourceTree = "<group>"; };
+		9FB1F6DA2BADFB1A00A27BE0 /* Empty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Empty.swift; sourceTree = "<group>"; };
+		9FB1F6DB2BADFB1A00A27BE0 /* TROPHYOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TROPHYOutput.swift; sourceTree = "<group>"; };
+		9FB1F6DC2BADFB1A00A27BE0 /* AWSApiGatewayBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSApiGatewayBridge.h; sourceTree = "<group>"; };
+		9FB1F6DD2BADFB1A00A27BE0 /* TROPHYResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TROPHYResult.swift; sourceTree = "<group>"; };
+		9FB1F6DE2BADFB1A00A27BE0 /* TROPHYTrophyRESTAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TROPHYTrophyRESTAPIClient.swift; sourceTree = "<group>"; };
+		9FB1F6DF2BADFB1A00A27BE0 /* TROPHYInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TROPHYInput.swift; sourceTree = "<group>"; };
+		9FB1F6E02BADFB1A00A27BE0 /* Bridging_Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bridging_Header.h; sourceTree = "<group>"; };
 		9FB372612B9261D800FFE87C /* WorkoutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutViewModel.swift; sourceTree = "<group>"; };
 		9FB372632B92761B00FFE87C /* WorkoutViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutViewModelTests.swift; sourceTree = "<group>"; };
 		9FB372652B93F1B900FFE87C /* ExerciseViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseViewModelTests.swift; sourceTree = "<group>"; };
@@ -252,9 +269,24 @@
 		9F2ACB682BADF4CE002A494B /* API */ = {
 			isa = PBXGroup;
 			children = (
+				9F2ACB6B2BADF8B9002A494B /* TrophyRestAPISDK */,
 				9F2ACB692BADF51A002A494B /* TrophyAPIManager.swift */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		9F2ACB6B2BADF8B9002A494B /* TrophyRestAPISDK */ = {
+			isa = PBXGroup;
+			children = (
+				9FB1F6DC2BADFB1A00A27BE0 /* AWSApiGatewayBridge.h */,
+				9FB1F6E02BADFB1A00A27BE0 /* Bridging_Header.h */,
+				9FB1F6DA2BADFB1A00A27BE0 /* Empty.swift */,
+				9FB1F6DF2BADFB1A00A27BE0 /* TROPHYInput.swift */,
+				9FB1F6DB2BADFB1A00A27BE0 /* TROPHYOutput.swift */,
+				9FB1F6DD2BADFB1A00A27BE0 /* TROPHYResult.swift */,
+				9FB1F6DE2BADFB1A00A27BE0 /* TROPHYTrophyRESTAPIClient.swift */,
+			);
+			path = TrophyRestAPISDK;
 			sourceTree = "<group>";
 		};
 		9F585FF12B3A38380061F1EB /* Tags */ = {
@@ -828,6 +860,7 @@
 				9F76C1F92B8EC91B00EB276F /* WorkoutValidationHelper.swift in Sources */,
 				9FB62FAE2B9F812D00421424 /* RepsInputView.swift in Sources */,
 				9F5860052B3B69C20061F1EB /* Sprints.swift in Sources */,
+				9FB1F6E52BADFB1A00A27BE0 /* TROPHYResult.swift in Sources */,
 				9FF1D8342B147F5E002F6EAC /* TrophyApp.swift in Sources */,
 				9F58600C2B3B6AD40061F1EB /* Pilates.swift in Sources */,
 				9F58601F2B44BA220061F1EB /* AttributeType.swift in Sources */,
@@ -844,10 +877,12 @@
 				9F76C1D82B8EAED100EB276F /* ItemListViewModel.swift in Sources */,
 				9F76C1F42B8EC65000EB276F /* WorkoutFactory.swift in Sources */,
 				9FB62FAC2B9F7F7B00421424 /* SetsInputView.swift in Sources */,
+				9FB1F6E72BADFB1A00A27BE0 /* TROPHYTrophyRESTAPIClient.swift in Sources */,
 				9F2ACB6A2BADF51A002A494B /* TrophyAPIManager.swift in Sources */,
 				9F585FF32B3A389E0061F1EB /* PredefinedTag.swift in Sources */,
 				9FB62FB02B9F81A000421424 /* WeightInputView.swift in Sources */,
 				9FB372732B95169500FFE87C /* ModalPresenter.swift in Sources */,
+				9FB1F6E92BADFB1A00A27BE0 /* TROPHYInput.swift in Sources */,
 				9F585FEC2B3A19FF0061F1EB /* IntensityAttribute.swift in Sources */,
 				9FB372702B9513B300FFE87C /* ExerciseCardView.swift in Sources */,
 				9FF1D8782B148C50002F6EAC /* Unit.swift in Sources */,
@@ -856,9 +891,11 @@
 				9FB62FB42B9F845400421424 /* LevelInputView.swift in Sources */,
 				9FF1D8662B148526002F6EAC /* DistanceUnit.swift in Sources */,
 				9F585FF52B3A38A70061F1EB /* UserTag.swift in Sources */,
+				9FB1F6E12BADFB1A00A27BE0 /* Empty.swift in Sources */,
 				9FF1D85C2B1484CC002F6EAC /* User.swift in Sources */,
 				9FF1D8702B14857D002F6EAC /* SetsAttribute.swift in Sources */,
 				9F585FF72B3A38AF0061F1EB /* Tag.swift in Sources */,
+				9FB1F6E32BADFB1A00A27BE0 /* TROPHYOutput.swift in Sources */,
 				9FAE6EE82BA124AA0077E9AC /* TimeInputViewModel.swift in Sources */,
 				9FF1D86A2B148548002F6EAC /* UserDefinedAttribute.swift in Sources */,
 				9FB372772B951CA800FFE87C /* ModalPresenterView.swift in Sources */,
@@ -900,13 +937,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				9FB372642B92761B00FFE87C /* WorkoutViewModelTests.swift in Sources */,
+				9FB1F6E82BADFB1A00A27BE0 /* TROPHYTrophyRESTAPIClient.swift in Sources */,
 				9F76C1EB2B8EBFF400EB276F /* ExerciseFactoryTests.swift in Sources */,
+				9FB1F6E22BADFB1A00A27BE0 /* Empty.swift in Sources */,
 				9FB3727E2B96CA0E00FFE87C /* ExerciseCardViewUnitTests.swift in Sources */,
+				9FB1F6E42BADFB1A00A27BE0 /* TROPHYOutput.swift in Sources */,
 				9FF1D88F2B37D31B002F6EAC /* TrophyModelsExercisesTests.swift in Sources */,
 				9FB372802B96CA1F00FFE87C /* ExerciseCardViewUITests.swift in Sources */,
 				9FF1D8892B378B67002F6EAC /* TrophyAttributeTests.swift in Sources */,
 				9FB372662B93F1B900FFE87C /* ExerciseViewModelTests.swift in Sources */,
+				9FB1F6EA2BADFB1A00A27BE0 /* TROPHYInput.swift in Sources */,
 				9F76C1F62B8EC86900EB276F /* WorkoutFactoryTests.swift in Sources */,
+				9FB1F6E62BADFB1A00A27BE0 /* TROPHYResult.swift in Sources */,
 				9F585FF92B3A6C110061F1EB /* TrophyModelsWorkoutsTests.swift in Sources */,
 				9FF1D88B2B37CBAC002F6EAC /* TrophyUnitsTests.swift in Sources */,
 				9FB372792B96C76800FFE87C /* ExerciseCardViewControllerTests.swift in Sources */,
@@ -1068,7 +1110,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Bridging_Header.h\"";
+				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Trophy/API/TrophyRestAPISDK/Bridging_Header.h\"";
 			};
 			name = Debug;
 		};
@@ -1099,7 +1141,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Bridging_Header.h\"";
+				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Trophy/API/TrophyRestAPISDK/Bridging_Header.h\"";
 			};
 			name = Release;
 		};

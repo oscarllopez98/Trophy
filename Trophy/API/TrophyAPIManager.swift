@@ -6,9 +6,9 @@
 //
 
 import Foundation
-import AWSCore
+import AWSAPIGateway
 
 class TrophyAPIManager {
-    
-    
+
+    let client = TROPHYTrophyRESTAPIClient.default()
 }
