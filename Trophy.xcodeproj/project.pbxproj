@@ -98,6 +98,7 @@
 		9FF1D8892B378B67002F6EAC /* TrophyAttributeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF1D8882B378B67002F6EAC /* TrophyAttributeTests.swift */; };
 		9FF1D88B2B37CBAC002F6EAC /* TrophyUnitsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF1D88A2B37CBAC002F6EAC /* TrophyUnitsTests.swift */; };
 		9FF1D88F2B37D31B002F6EAC /* TrophyModelsExercisesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF1D88E2B37D31B002F6EAC /* TrophyModelsExercisesTests.swift */; };
+		E2A439926848464735C30678 /* Pods_Trophy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEDBEB587DE15D6180EB5031 /* Pods_Trophy.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +112,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		67B0598E73321C5A91B8EE1D /* Pods-Trophy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trophy.release.xcconfig"; path = "Target Support Files/Pods-Trophy/Pods-Trophy.release.xcconfig"; sourceTree = "<group>"; };
+		9646CE3645D94A9E7659583E /* Pods-Trophy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trophy.debug.xcconfig"; path = "Target Support Files/Pods-Trophy/Pods-Trophy.debug.xcconfig"; sourceTree = "<group>"; };
 		9F585FEB2B3A19FF0061F1EB /* IntensityAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntensityAttribute.swift; sourceTree = "<group>"; };
 		9F585FEF2B3A1CFD0061F1EB /* LevelAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelAttribute.swift; sourceTree = "<group>"; };
 		9F585FF22B3A389E0061F1EB /* PredefinedTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredefinedTag.swift; sourceTree = "<group>"; };
@@ -205,6 +208,7 @@
 		9FF1D8882B378B67002F6EAC /* TrophyAttributeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrophyAttributeTests.swift; sourceTree = "<group>"; };
 		9FF1D88A2B37CBAC002F6EAC /* TrophyUnitsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrophyUnitsTests.swift; sourceTree = "<group>"; };
 		9FF1D88E2B37D31B002F6EAC /* TrophyModelsExercisesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrophyModelsExercisesTests.swift; sourceTree = "<group>"; };
+		AEDBEB587DE15D6180EB5031 /* Pods_Trophy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Trophy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +216,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2A439926848464735C30678 /* Pods_Trophy.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,6 +230,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		38DDA7D2B2F25606C66427CA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AEDBEB587DE15D6180EB5031 /* Pods_Trophy.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		76FB11A004FF9DB7D8C0A537 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9646CE3645D94A9E7659583E /* Pods-Trophy.debug.xcconfig */,
+				67B0598E73321C5A91B8EE1D /* Pods-Trophy.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		9F585FF12B3A38380061F1EB /* Tags */ = {
 			isa = PBXGroup;
 			children = (
@@ -457,6 +479,8 @@
 				9FF1D8322B147F5E002F6EAC /* Trophy */,
 				9FF1D87E2B37889E002F6EAC /* TrophyTests */,
 				9FF1D8312B147F5E002F6EAC /* Products */,
+				76FB11A004FF9DB7D8C0A537 /* Pods */,
+				38DDA7D2B2F25606C66427CA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -644,9 +668,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9FF1D83E2B147F5F002F6EAC /* Build configuration list for PBXNativeTarget "Trophy" */;
 			buildPhases = (
+				93A485E15E84DB8603E101BC /* [CP] Check Pods Manifest.lock */,
 				9FF1D82C2B147F5E002F6EAC /* Sources */,
 				9FF1D82D2B147F5E002F6EAC /* Frameworks */,
 				9FF1D82E2B147F5E002F6EAC /* Resources */,
+				FAEDAAC0E7054251B41FC970 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -731,6 +757,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		93A485E15E84DB8603E101BC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Trophy-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FAEDAAC0E7054251B41FC970 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Trophy/Pods-Trophy-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Trophy/Pods-Trophy-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Trophy/Pods-Trophy-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9FF1D82C2B147F5E002F6EAC /* Sources */ = {
@@ -963,6 +1031,7 @@
 		};
 		9FF1D83F2B147F5F002F6EAC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9646CE3645D94A9E7659583E /* Pods-Trophy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -987,11 +1056,13 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Bridging_Header.h\"";
 			};
 			name = Debug;
 		};
 		9FF1D8402B147F5F002F6EAC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 67B0598E73321C5A91B8EE1D /* Pods-Trophy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1016,6 +1087,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Bridging_Header.h\"";
 			};
 			name = Release;
 		};

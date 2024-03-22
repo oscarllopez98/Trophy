@@ -1,0 +1,4 @@
+module NIO {
+    header "/Users/oscarlopez/Developer/Trophy/.build/arm64-apple-macosx/debug/NIO.build/NIO-Swift.h"
+    requires objc
+}
