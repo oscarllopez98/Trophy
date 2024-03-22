@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "123F6B6ABD45D235475ACA5B27A8F047"
-               BuildableName = "Pods_Trophy.framework"
-               BlueprintName = "Pods-Trophy"
+               BlueprintIdentifier = "B465251EA84BC9FF69CFD615FE0E0FDB"
+               BuildableName = "Pods_TrophyGroup_Trophy.framework"
+               BlueprintName = "Pods-TrophyGroup-Trophy"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

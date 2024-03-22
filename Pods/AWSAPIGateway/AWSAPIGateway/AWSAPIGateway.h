@@ -39,4 +39,5 @@ FOUNDATION_EXPORT double AWSAPIGatewayVersionNumber DEPRECATED_MSG_ATTRIBUTE("Us
 FOUNDATION_EXPORT const unsigned char AWSAPIGatewayVersionString[] DEPRECATED_MSG_ATTRIBUTE("Use AWSAPIGatewaySDKVersion instead.");
 
 #import <AWSCore/AWSCore.h>
+//#import </Users/oscarlopez/Developer/Trophy/Pods/AWSCore/AWSCore/AWSCore.h>
 #import "AWSAPIGatewayClient.h"

@@ -34,6 +34,7 @@ final class TrophyRESTAPITests: XCTestCase {
     }
     
     func testTrophyRESTAPITestAPICall() {
+        print("Start")
         let trophyRestAPI = TrophyRESTAPI()
         trophyRestAPI.testAPICall()
     }

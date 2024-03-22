@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_TrophyVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_TrophyVersionString[];
+FOUNDATION_EXPORT double Pods_TrophyGroup_TrophyVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_TrophyGroup_TrophyVersionString[];
 

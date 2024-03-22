@@ -14,7 +14,12 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-Trophy.xcscheme</key>
+		<key>Pods-TrophyGroup-Trophy.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-TrophyGroup-TrophyTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>

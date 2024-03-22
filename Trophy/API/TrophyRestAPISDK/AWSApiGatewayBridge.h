@@ -16,6 +16,7 @@
 
 
 #import <AWSAPIGateway/AWSAPIGateway.h>
+//#import </Users/oscarlopez/Developer/Trophy/Pods/AWSAPIGateway/AWSAPIGateway/AWSAPIGateway.h>
 
 @interface AWSAPIGatewayClient ()
 	

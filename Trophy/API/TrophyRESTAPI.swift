@@ -13,6 +13,7 @@ class TrophyRESTAPI {
     let client = TROPHYTrophyRESTAPIClient.default()
     
     func testAPICall() {
+
         //Call the Get Exercises API
         client.exercisesGet().continueWith { (task) -> Any? in
             if let error = task.error {
