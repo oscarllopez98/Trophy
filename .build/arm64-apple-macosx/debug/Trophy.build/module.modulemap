@@ -1,0 +1,4 @@
+module Trophy {
+    header "/Users/oscarlopez/Developer/Trophy/.build/arm64-apple-macosx/debug/Trophy.build/Trophy-Swift.h"
+    requires objc
+}

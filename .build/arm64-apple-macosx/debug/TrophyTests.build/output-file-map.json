@@ -1,0 +1,11 @@
+{
+  "": {
+    "swift-dependencies": "/Users/oscarlopez/Developer/Trophy/.build/arm64-apple-macosx/debug/TrophyTests.build/master.swiftdeps"
+  },
+  "/Users/oscarlopez/Developer/Trophy/Tests/TrophyTests/TrophyTests.swift": {
+    "dependencies": "/Users/oscarlopez/Developer/Trophy/.build/arm64-apple-macosx/debug/TrophyTests.build/TrophyTests.d",
+    "object": "/Users/oscarlopez/Developer/Trophy/.build/arm64-apple-macosx/debug/TrophyTests.build/TrophyTests.swift.o",
+    "swiftmodule": "/Users/oscarlopez/Developer/Trophy/.build/arm64-apple-macosx/debug/TrophyTests.build/TrophyTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/oscarlopez/Developer/Trophy/.build/arm64-apple-macosx/debug/TrophyTests.build/TrophyTests.swiftdeps"
+  }
+}

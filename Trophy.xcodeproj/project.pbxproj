@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		81497F84B0E1C7A35E159B97 /* Pods_TrophyGroup_TrophyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 676CDAB98E9720EF1EAA2B24 /* Pods_TrophyGroup_TrophyTests.framework */; };
 		9F585FEC2B3A19FF0061F1EB /* IntensityAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F585FEB2B3A19FF0061F1EB /* IntensityAttribute.swift */; };
 		9F585FF02B3A1CFD0061F1EB /* LevelAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F585FEF2B3A1CFD0061F1EB /* LevelAttribute.swift */; };
 		9F585FF32B3A389E0061F1EB /* PredefinedTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F585FF22B3A389E0061F1EB /* PredefinedTag.swift */; };
@@ -53,6 +54,19 @@
 		9FAE6EF72BA14C440077E9AC /* MockExerciseDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE6EF62BA14C440077E9AC /* MockExerciseDatabase.swift */; };
 		9FAE6EF92BA14CB30077E9AC /* NewExerciseModalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE6EF82BA14CB30077E9AC /* NewExerciseModalViewModel.swift */; };
 		9FAE6EFB2BA18A7F0077E9AC /* ExerciseListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE6EFA2BA18A7F0077E9AC /* ExerciseListViewModel.swift */; };
+		9FB1F6E12BADFB1A00A27BE0 /* Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB1F6DA2BADFB1A00A27BE0 /* Empty.swift */; };
+		9FB1F6E22BADFB1A00A27BE0 /* Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB1F6DA2BADFB1A00A27BE0 /* Empty.swift */; };
+		9FB1F6E32BADFB1A00A27BE0 /* TROPHYOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB1F6DB2BADFB1A00A27BE0 /* TROPHYOutput.swift */; };
+		9FB1F6E42BADFB1A00A27BE0 /* TROPHYOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB1F6DB2BADFB1A00A27BE0 /* TROPHYOutput.swift */; };
+		9FB1F6E52BADFB1A00A27BE0 /* TROPHYResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB1F6DD2BADFB1A00A27BE0 /* TROPHYResult.swift */; };
+		9FB1F6E62BADFB1A00A27BE0 /* TROPHYResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB1F6DD2BADFB1A00A27BE0 /* TROPHYResult.swift */; };
+		9FB1F6E72BADFB1A00A27BE0 /* TROPHYTrophyRESTAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB1F6DE2BADFB1A00A27BE0 /* TROPHYTrophyRESTAPIClient.swift */; };
+		9FB1F6E82BADFB1A00A27BE0 /* TROPHYTrophyRESTAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB1F6DE2BADFB1A00A27BE0 /* TROPHYTrophyRESTAPIClient.swift */; };
+		9FB1F6E92BADFB1A00A27BE0 /* TROPHYInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB1F6DF2BADFB1A00A27BE0 /* TROPHYInput.swift */; };
+		9FB1F6EA2BADFB1A00A27BE0 /* TROPHYInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB1F6DF2BADFB1A00A27BE0 /* TROPHYInput.swift */; };
+		9FB1F6F42BAE035400A27BE0 /* TrophyRESTAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB1F6F32BAE035400A27BE0 /* TrophyRESTAPI.swift */; };
+		9FB1F6F52BAE035400A27BE0 /* TrophyRESTAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB1F6F32BAE035400A27BE0 /* TrophyRESTAPI.swift */; };
+		9FB1F6F72BAE038000A27BE0 /* TrophyRESTAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB1F6F62BAE038000A27BE0 /* TrophyRESTAPITests.swift */; };
 		9FB372622B9261D800FFE87C /* WorkoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB372612B9261D800FFE87C /* WorkoutViewModel.swift */; };
 		9FB372642B92761B00FFE87C /* WorkoutViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB372632B92761B00FFE87C /* WorkoutViewModelTests.swift */; };
 		9FB372662B93F1B900FFE87C /* ExerciseViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB372652B93F1B900FFE87C /* ExerciseViewModelTests.swift */; };
@@ -98,6 +112,7 @@
 		9FF1D8892B378B67002F6EAC /* TrophyAttributeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF1D8882B378B67002F6EAC /* TrophyAttributeTests.swift */; };
 		9FF1D88B2B37CBAC002F6EAC /* TrophyUnitsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF1D88A2B37CBAC002F6EAC /* TrophyUnitsTests.swift */; };
 		9FF1D88F2B37D31B002F6EAC /* TrophyModelsExercisesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF1D88E2B37D31B002F6EAC /* TrophyModelsExercisesTests.swift */; };
+		ADAEF030CAC7E0AF6868D696 /* Pods_TrophyGroup_Trophy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 290D6B304F816D8F44BE24F3 /* Pods_TrophyGroup_Trophy.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +126,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		290D6B304F816D8F44BE24F3 /* Pods_TrophyGroup_Trophy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TrophyGroup_Trophy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4853D064B681413C801D4280 /* Pods-TrophyGroup-TrophyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrophyGroup-TrophyTests.debug.xcconfig"; path = "Target Support Files/Pods-TrophyGroup-TrophyTests/Pods-TrophyGroup-TrophyTests.debug.xcconfig"; sourceTree = "<group>"; };
+		676CDAB98E9720EF1EAA2B24 /* Pods_TrophyGroup_TrophyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TrophyGroup_TrophyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		67B0598E73321C5A91B8EE1D /* Pods-Trophy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trophy.release.xcconfig"; path = "Target Support Files/Pods-Trophy/Pods-Trophy.release.xcconfig"; sourceTree = "<group>"; };
+		9646CE3645D94A9E7659583E /* Pods-Trophy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trophy.debug.xcconfig"; path = "Target Support Files/Pods-Trophy/Pods-Trophy.debug.xcconfig"; sourceTree = "<group>"; };
 		9F585FEB2B3A19FF0061F1EB /* IntensityAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntensityAttribute.swift; sourceTree = "<group>"; };
 		9F585FEF2B3A1CFD0061F1EB /* LevelAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelAttribute.swift; sourceTree = "<group>"; };
 		9F585FF22B3A389E0061F1EB /* PredefinedTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredefinedTag.swift; sourceTree = "<group>"; };
@@ -157,6 +177,15 @@
 		9FAE6EF62BA14C440077E9AC /* MockExerciseDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockExerciseDatabase.swift; sourceTree = "<group>"; };
 		9FAE6EF82BA14CB30077E9AC /* NewExerciseModalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewExerciseModalViewModel.swift; sourceTree = "<group>"; };
 		9FAE6EFA2BA18A7F0077E9AC /* ExerciseListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseListViewModel.swift; sourceTree = "<group>"; };
+		9FB1F6DA2BADFB1A00A27BE0 /* Empty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Empty.swift; sourceTree = "<group>"; };
+		9FB1F6DB2BADFB1A00A27BE0 /* TROPHYOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TROPHYOutput.swift; sourceTree = "<group>"; };
+		9FB1F6DC2BADFB1A00A27BE0 /* AWSApiGatewayBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSApiGatewayBridge.h; sourceTree = "<group>"; };
+		9FB1F6DD2BADFB1A00A27BE0 /* TROPHYResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TROPHYResult.swift; sourceTree = "<group>"; };
+		9FB1F6DE2BADFB1A00A27BE0 /* TROPHYTrophyRESTAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TROPHYTrophyRESTAPIClient.swift; sourceTree = "<group>"; };
+		9FB1F6DF2BADFB1A00A27BE0 /* TROPHYInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TROPHYInput.swift; sourceTree = "<group>"; };
+		9FB1F6E02BADFB1A00A27BE0 /* Bridging_Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bridging_Header.h; sourceTree = "<group>"; };
+		9FB1F6F32BAE035400A27BE0 /* TrophyRESTAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrophyRESTAPI.swift; sourceTree = "<group>"; };
+		9FB1F6F62BAE038000A27BE0 /* TrophyRESTAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrophyRESTAPITests.swift; sourceTree = "<group>"; };
 		9FB372612B9261D800FFE87C /* WorkoutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutViewModel.swift; sourceTree = "<group>"; };
 		9FB372632B92761B00FFE87C /* WorkoutViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutViewModelTests.swift; sourceTree = "<group>"; };
 		9FB372652B93F1B900FFE87C /* ExerciseViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseViewModelTests.swift; sourceTree = "<group>"; };
@@ -205,6 +234,9 @@
 		9FF1D8882B378B67002F6EAC /* TrophyAttributeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrophyAttributeTests.swift; sourceTree = "<group>"; };
 		9FF1D88A2B37CBAC002F6EAC /* TrophyUnitsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrophyUnitsTests.swift; sourceTree = "<group>"; };
 		9FF1D88E2B37D31B002F6EAC /* TrophyModelsExercisesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrophyModelsExercisesTests.swift; sourceTree = "<group>"; };
+		C72E22CC6FF2C0358DBE7E20 /* Pods-TrophyGroup-Trophy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrophyGroup-Trophy.debug.xcconfig"; path = "Target Support Files/Pods-TrophyGroup-Trophy/Pods-TrophyGroup-Trophy.debug.xcconfig"; sourceTree = "<group>"; };
+		DCACF03CA8489C50B2CF50CC /* Pods-TrophyGroup-TrophyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrophyGroup-TrophyTests.release.xcconfig"; path = "Target Support Files/Pods-TrophyGroup-TrophyTests/Pods-TrophyGroup-TrophyTests.release.xcconfig"; sourceTree = "<group>"; };
+		F3D9CC4E2D7965E2A88641C4 /* Pods-TrophyGroup-Trophy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrophyGroup-Trophy.release.xcconfig"; path = "Target Support Files/Pods-TrophyGroup-Trophy/Pods-TrophyGroup-Trophy.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +244,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADAEF030CAC7E0AF6868D696 /* Pods_TrophyGroup_Trophy.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,12 +252,58 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81497F84B0E1C7A35E159B97 /* Pods_TrophyGroup_TrophyTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		38DDA7D2B2F25606C66427CA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				290D6B304F816D8F44BE24F3 /* Pods_TrophyGroup_Trophy.framework */,
+				676CDAB98E9720EF1EAA2B24 /* Pods_TrophyGroup_TrophyTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		76FB11A004FF9DB7D8C0A537 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9646CE3645D94A9E7659583E /* Pods-Trophy.debug.xcconfig */,
+				67B0598E73321C5A91B8EE1D /* Pods-Trophy.release.xcconfig */,
+				C72E22CC6FF2C0358DBE7E20 /* Pods-TrophyGroup-Trophy.debug.xcconfig */,
+				F3D9CC4E2D7965E2A88641C4 /* Pods-TrophyGroup-Trophy.release.xcconfig */,
+				4853D064B681413C801D4280 /* Pods-TrophyGroup-TrophyTests.debug.xcconfig */,
+				DCACF03CA8489C50B2CF50CC /* Pods-TrophyGroup-TrophyTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		9F2ACB682BADF4CE002A494B /* API */ = {
+			isa = PBXGroup;
+			children = (
+				9F2ACB6B2BADF8B9002A494B /* TrophyRestAPISDK */,
+				9FB1F6F32BAE035400A27BE0 /* TrophyRESTAPI.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		9F2ACB6B2BADF8B9002A494B /* TrophyRestAPISDK */ = {
+			isa = PBXGroup;
+			children = (
+				9FB1F6DC2BADFB1A00A27BE0 /* AWSApiGatewayBridge.h */,
+				9FB1F6E02BADFB1A00A27BE0 /* Bridging_Header.h */,
+				9FB1F6DA2BADFB1A00A27BE0 /* Empty.swift */,
+				9FB1F6DF2BADFB1A00A27BE0 /* TROPHYInput.swift */,
+				9FB1F6DB2BADFB1A00A27BE0 /* TROPHYOutput.swift */,
+				9FB1F6DD2BADFB1A00A27BE0 /* TROPHYResult.swift */,
+				9FB1F6DE2BADFB1A00A27BE0 /* TROPHYTrophyRESTAPIClient.swift */,
+			);
+			path = TrophyRestAPISDK;
+			sourceTree = "<group>";
+		};
 		9F585FF12B3A38380061F1EB /* Tags */ = {
 			isa = PBXGroup;
 			children = (
@@ -396,6 +475,22 @@
 			path = Database;
 			sourceTree = "<group>";
 		};
+		9FB1F6EB2BAE013000A27BE0 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				9FB1F6ED2BAE014300A27BE0 /* Trophy */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		9FB1F6ED2BAE014300A27BE0 /* Trophy */ = {
+			isa = PBXGroup;
+			children = (
+				9FB1F6F62BAE038000A27BE0 /* TrophyRESTAPITests.swift */,
+			);
+			path = Trophy;
+			sourceTree = "<group>";
+		};
 		9FB3727A2B96C9CE00FFE87C /* ViewTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -457,6 +552,8 @@
 				9FF1D8322B147F5E002F6EAC /* Trophy */,
 				9FF1D87E2B37889E002F6EAC /* TrophyTests */,
 				9FF1D8312B147F5E002F6EAC /* Products */,
+				76FB11A004FF9DB7D8C0A537 /* Pods */,
+				38DDA7D2B2F25606C66427CA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -472,6 +569,7 @@
 		9FF1D8322B147F5E002F6EAC /* Trophy */ = {
 			isa = PBXGroup;
 			children = (
+				9F2ACB682BADF4CE002A494B /* API */,
 				9FAE6EF32BA14B790077E9AC /* Database */,
 				9FB62FA32B9F71D700421424 /* Preview Content */,
 				9FB372852B9A9C9900FFE87C /* Assets */,
@@ -624,6 +722,7 @@
 		9FF1D87E2B37889E002F6EAC /* TrophyTests */ = {
 			isa = PBXGroup;
 			children = (
+				9FB1F6EB2BAE013000A27BE0 /* API */,
 				9FB3727A2B96C9CE00FFE87C /* ViewTests */,
 				9F76C1E92B8EBFC200EB276F /* ControllerTests */,
 				9F76C1E82B8EBFBA00EB276F /* FactoryTests */,
@@ -644,9 +743,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9FF1D83E2B147F5F002F6EAC /* Build configuration list for PBXNativeTarget "Trophy" */;
 			buildPhases = (
+				93A485E15E84DB8603E101BC /* [CP] Check Pods Manifest.lock */,
 				9FF1D82C2B147F5E002F6EAC /* Sources */,
 				9FF1D82D2B147F5E002F6EAC /* Frameworks */,
 				9FF1D82E2B147F5E002F6EAC /* Resources */,
+				FAEDAAC0E7054251B41FC970 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -661,9 +762,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9FF1D8852B37889E002F6EAC /* Build configuration list for PBXNativeTarget "TrophyTests" */;
 			buildPhases = (
+				389B4FAEB96786EBF65B2FC4 /* [CP] Check Pods Manifest.lock */,
 				9FF1D8792B37889E002F6EAC /* Sources */,
 				9FF1D87A2B37889E002F6EAC /* Frameworks */,
 				9FF1D87B2B37889E002F6EAC /* Resources */,
+				0A1816D76D4FB3DFCF90A58E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -732,6 +835,87 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0A1816D76D4FB3DFCF90A58E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TrophyGroup-TrophyTests/Pods-TrophyGroup-TrophyTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TrophyGroup-TrophyTests/Pods-TrophyGroup-TrophyTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TrophyGroup-TrophyTests/Pods-TrophyGroup-TrophyTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		389B4FAEB96786EBF65B2FC4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TrophyGroup-TrophyTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		93A485E15E84DB8603E101BC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TrophyGroup-Trophy-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FAEDAAC0E7054251B41FC970 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TrophyGroup-Trophy/Pods-TrophyGroup-Trophy-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TrophyGroup-Trophy/Pods-TrophyGroup-Trophy-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TrophyGroup-Trophy/Pods-TrophyGroup-Trophy-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		9FF1D82C2B147F5E002F6EAC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -749,6 +933,7 @@
 				9F76C1F92B8EC91B00EB276F /* WorkoutValidationHelper.swift in Sources */,
 				9FB62FAE2B9F812D00421424 /* RepsInputView.swift in Sources */,
 				9F5860052B3B69C20061F1EB /* Sprints.swift in Sources */,
+				9FB1F6E52BADFB1A00A27BE0 /* TROPHYResult.swift in Sources */,
 				9FF1D8342B147F5E002F6EAC /* TrophyApp.swift in Sources */,
 				9F58600C2B3B6AD40061F1EB /* Pilates.swift in Sources */,
 				9F58601F2B44BA220061F1EB /* AttributeType.swift in Sources */,
@@ -765,9 +950,11 @@
 				9F76C1D82B8EAED100EB276F /* ItemListViewModel.swift in Sources */,
 				9F76C1F42B8EC65000EB276F /* WorkoutFactory.swift in Sources */,
 				9FB62FAC2B9F7F7B00421424 /* SetsInputView.swift in Sources */,
+				9FB1F6E72BADFB1A00A27BE0 /* TROPHYTrophyRESTAPIClient.swift in Sources */,
 				9F585FF32B3A389E0061F1EB /* PredefinedTag.swift in Sources */,
 				9FB62FB02B9F81A000421424 /* WeightInputView.swift in Sources */,
 				9FB372732B95169500FFE87C /* ModalPresenter.swift in Sources */,
+				9FB1F6E92BADFB1A00A27BE0 /* TROPHYInput.swift in Sources */,
 				9F585FEC2B3A19FF0061F1EB /* IntensityAttribute.swift in Sources */,
 				9FB372702B9513B300FFE87C /* ExerciseCardView.swift in Sources */,
 				9FF1D8782B148C50002F6EAC /* Unit.swift in Sources */,
@@ -776,9 +963,11 @@
 				9FB62FB42B9F845400421424 /* LevelInputView.swift in Sources */,
 				9FF1D8662B148526002F6EAC /* DistanceUnit.swift in Sources */,
 				9F585FF52B3A38A70061F1EB /* UserTag.swift in Sources */,
+				9FB1F6E12BADFB1A00A27BE0 /* Empty.swift in Sources */,
 				9FF1D85C2B1484CC002F6EAC /* User.swift in Sources */,
 				9FF1D8702B14857D002F6EAC /* SetsAttribute.swift in Sources */,
 				9F585FF72B3A38AF0061F1EB /* Tag.swift in Sources */,
+				9FB1F6E32BADFB1A00A27BE0 /* TROPHYOutput.swift in Sources */,
 				9FAE6EE82BA124AA0077E9AC /* TimeInputViewModel.swift in Sources */,
 				9FF1D86A2B148548002F6EAC /* UserDefinedAttribute.swift in Sources */,
 				9FB372772B951CA800FFE87C /* ModalPresenterView.swift in Sources */,
@@ -807,6 +996,7 @@
 				9FB62FAA2B9F7E7200421424 /* TimeInputView.swift in Sources */,
 				9F76C1F02B8EC10400EB276F /* ExerciseCreationErrorHelper.swift in Sources */,
 				9F5860032B3B69740061F1EB /* Running.swift in Sources */,
+				9FB1F6F42BAE035400A27BE0 /* TrophyRESTAPI.swift in Sources */,
 				9FF1D85E2B1484DB002F6EAC /* Workout.swift in Sources */,
 				9FF1D8742B14859B002F6EAC /* WeightAttribute.swift in Sources */,
 				9F5860002B3B693E0061F1EB /* Squat.swift in Sources */,
@@ -820,13 +1010,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				9FB372642B92761B00FFE87C /* WorkoutViewModelTests.swift in Sources */,
+				9FB1F6E82BADFB1A00A27BE0 /* TROPHYTrophyRESTAPIClient.swift in Sources */,
+				9FB1F6F52BAE035400A27BE0 /* TrophyRESTAPI.swift in Sources */,
 				9F76C1EB2B8EBFF400EB276F /* ExerciseFactoryTests.swift in Sources */,
+				9FB1F6E22BADFB1A00A27BE0 /* Empty.swift in Sources */,
 				9FB3727E2B96CA0E00FFE87C /* ExerciseCardViewUnitTests.swift in Sources */,
+				9FB1F6E42BADFB1A00A27BE0 /* TROPHYOutput.swift in Sources */,
+				9FB1F6F72BAE038000A27BE0 /* TrophyRESTAPITests.swift in Sources */,
 				9FF1D88F2B37D31B002F6EAC /* TrophyModelsExercisesTests.swift in Sources */,
 				9FB372802B96CA1F00FFE87C /* ExerciseCardViewUITests.swift in Sources */,
 				9FF1D8892B378B67002F6EAC /* TrophyAttributeTests.swift in Sources */,
 				9FB372662B93F1B900FFE87C /* ExerciseViewModelTests.swift in Sources */,
+				9FB1F6EA2BADFB1A00A27BE0 /* TROPHYInput.swift in Sources */,
 				9F76C1F62B8EC86900EB276F /* WorkoutFactoryTests.swift in Sources */,
+				9FB1F6E62BADFB1A00A27BE0 /* TROPHYResult.swift in Sources */,
 				9F585FF92B3A6C110061F1EB /* TrophyModelsWorkoutsTests.swift in Sources */,
 				9FF1D88B2B37CBAC002F6EAC /* TrophyUnitsTests.swift in Sources */,
 				9FB372792B96C76800FFE87C /* ExerciseCardViewControllerTests.swift in Sources */,
@@ -881,6 +1078,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -903,6 +1101,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_BRIDGING_HEADER = /Users/oscarlopez/Developer/Trophy/Trophy/API/TrophyRestAPISDK/Bridging_Header.h;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -941,6 +1140,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -956,6 +1156,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OBJC_BRIDGING_HEADER = /Users/oscarlopez/Developer/Trophy/Trophy/API/TrophyRestAPISDK/Bridging_Header.h;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -963,11 +1164,13 @@
 		};
 		9FF1D83F2B147F5F002F6EAC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C72E22CC6FF2C0358DBE7E20 /* Pods-TrophyGroup-Trophy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = NO;
 				DEVELOPMENT_ASSET_PATHS = "\"Trophy/Preview Content\"";
 				DEVELOPMENT_TEAM = Z2BHKKWGC2;
 				ENABLE_PREVIEWS = YES;
@@ -987,16 +1190,19 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Trophy/API/TrophyRestAPISDK/Bridging_Header.h\"";
 			};
 			name = Debug;
 		};
 		9FF1D8402B147F5F002F6EAC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F3D9CC4E2D7965E2A88641C4 /* Pods-TrophyGroup-Trophy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = NO;
 				DEVELOPMENT_ASSET_PATHS = "\"Trophy/Preview Content\"";
 				DEVELOPMENT_TEAM = Z2BHKKWGC2;
 				ENABLE_PREVIEWS = YES;
@@ -1016,15 +1222,18 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Trophy/API/TrophyRestAPISDK/Bridging_Header.h\"";
 			};
 			name = Release;
 		};
 		9FF1D8832B37889E002F6EAC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4853D064B681413C801D4280 /* Pods-TrophyGroup-TrophyTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = Z2BHKKWGC2;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
@@ -1039,10 +1248,12 @@
 		};
 		9FF1D8842B37889E002F6EAC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DCACF03CA8489C50B2CF50CC /* Pods-TrophyGroup-TrophyTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = Z2BHKKWGC2;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
