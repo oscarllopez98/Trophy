@@ -86,12 +86,15 @@ I approached this by breaking my goal into subgoals:
 
 **Step 2**
 * To implement best practices through hands-on experience, I followed an [official AWS tutorial](https://docs.aws.amazon.com/apigateway/latest/developerguide/simple-calc-lambda-api.html).
+![Image of API Gateway implementation](https://drive.google.com/file/d/1Sk8xj1JHm9TQW8R2LVZJm8AwTk7shGXX/view?usp=sharing)
 
 **Step 3**
 * During this step, I installed the iOS SDK using Cocoapods.
 * During my Integration Testing, I found that one of my targets (TrophyTests) was unable to access the Pods that were used by Trophy, which would have allowed for my application to make RESTful API calls to my API. This became a brick wall that temporarily halted my development, as I researched for solutions for the error: 'AWSAPIGateway/AWSAPIGateway.h' file not found".
+![Image of File Not Found error](https://drive.google.com/file/d/186y4VZBWNedWsfsEB1aCUONFrx16ZDeP/view?usp=sharing)
 * The odd part was that the application would build without any errors, so I narrowed it down to some form of access control issue.
 * If the 'file not found' error was my brick wall, Cocoapod's Abstract Targets were my sledgehammer. Implementing the abstract\_target standard practice allowed me to group my targets together, so they both had access to the same Pods that were needed. 
+![Image of a demo for how to implement Abstract Targets using Cocoapods](https://drive.google.com/file/d/1bEujhh_Fw61ELOhUiq9EHMuXMVzPEjUv/view?usp=sharing)
 
 **Step 4**
 * With the heavy lifting out of the way, all the was left to do was to ensure that my TrophyRESTAPI client would successfully be able to make a call to the TrophyRESTAPI test function without receiving any errors in return.
