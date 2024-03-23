@@ -98,7 +98,7 @@ I approached this by breaking my goal into subgoals:
 ![Image of a demo for how to implement Abstract Targets using Cocoapods](https://drive.google.com/uc?export=view&id=1bEujhh_Fw61ELOhUiq9EHMuXMVzPEjUv)
 
 **Step 4**
-* With the heavy lifting out of the way, all the was left to do was to ensure that my TrophyRESTAPI client would successfully be able to make a call to the TrophyRESTAPI test function without receiving any errors in return.
+* With the heavy lifting out of the way, all that was left to do was to ensure that my TrophyRESTAPI client would successfully be able to make a call to the TrophyRESTAPI test function without receiving any errors in return.
 * Fortunately, by mirroring the [iOS API Gateway Developer Guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-generate-sdk-ios-swift.html), I was able to successfully integrate my application with the TrophyRESTAPI.
 
 Skills Implemented in this Section Include:
