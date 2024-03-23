@@ -89,7 +89,7 @@ I approached this by breaking my goal into subgoals:
 ![Image of API Gateway implementation](https://drive.google.com/uc?export=view&id=1Sk8xj1JHm9TQW8R2LVZJm8AwTk7shGXX)
 
 **Step 3**
-* During this step, I installed the iOS SDK using Cocoapods.
+* During this step, I installed the iOS SDK using [Cocoapods](https://cocoapods.org/).
 * During my Integration Testing, I found that one of my targets (TrophyTests) was unable to access the Pods that were used by Trophy, which would have allowed for my application to make RESTful API calls to my API. This became a brick wall that temporarily halted my development, as I researched for solutions for the error: 'AWSApiGatewayBridge.h' file not found".
 ![Image of File Not Found error](https://drive.google.com/uc?export=view&id=186y4VZBWNedWsfsEB1aCUONFrx16ZDeP)
 
