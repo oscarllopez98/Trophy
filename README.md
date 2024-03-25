@@ -123,15 +123,16 @@ In this section, I focused on establishing and testing the Request-Response rela
 
 **Trophy ==> API Gateway**
 * Initiate a POST Request containing a payload for values _{a}_,_{b}_, and _{op}_ for API Gateway to route. 
-![Image of Trophy REST API call graph metrics.](https://drive.google.com/uc?export=view&id=1yepFE1995EuxuPmJiU6jVfONbZ2OTVy)
+![Image of Trophy REST API call graph metrics.](https://drive.google.com/uc?export=view&id=1yepFE1995EuxuPmJiU6jVfONbZ2OTVy-)
 
 **API Gateway ==> Lambda**
 * Transform the request based on the configured integration settings and forward it to AWS Lambda.
 
 **Lambda**
 * Perform computations based off of request payload
-![Lambda function overview](https://drive.google.com/uc?export=view&id=1Ma2unio3Vn5AArl9FYF4RtyLbJZGV9N0)
-![Lambda test-response content](https://drive.google.com/uc?export=view&id=12h-OpIxdzSks2cBlHn01JEEXQ48kXSWF)
+|Lambda Function Overview|Lambda Test Event Response|
+|--|--|
+| ![Lambda function overview](https://drive.google.com/uc?export=view&id=1Ma2unio3Vn5AArl9FYF4RtyLbJZGV9N0) | ![Lambda test-response content](https://drive.google.com/uc?export=view&id=12h-OpIxdzSks2cBlHn01JEEXQ48kXSWF)|
 
 **Lambda ==> API Gateway**
 * Generate and return a Response based on the outcome of the execution and forward it to API Gateway
