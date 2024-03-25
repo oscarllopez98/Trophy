@@ -130,6 +130,7 @@ In this section, I focused on establishing and testing the Request-Response rela
 
 **Lambda**
 * Perform computations based off of request payload
+
 |Lambda Function Overview|Lambda Test Event Response|
 |--|--|
 | ![Lambda function overview](https://drive.google.com/uc?export=view&id=1Ma2unio3Vn5AArl9FYF4RtyLbJZGV9N0) | ![Lambda test-response content](https://drive.google.com/uc?export=view&id=12h-OpIxdzSks2cBlHn01JEEXQ48kXSWF)|
