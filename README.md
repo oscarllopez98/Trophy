@@ -155,3 +155,7 @@ Skills Implemented in this Section:
 - Node.js
 - Postman
 
+
+## **Section 5** - _TrophyRESTAPI Gateway + Lambda Function Development_
+### Intro
+This section is in development. The goal for this section is to flesh out more functional API methods for Trophy to have access to, as well as create mock Lambda functions that the TrophyRESTAPI will be able to integrate with. This goal was set to best prepare myself for AWS RDS Integration in Section 6.
