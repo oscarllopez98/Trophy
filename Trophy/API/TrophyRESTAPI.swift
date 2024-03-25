@@ -42,7 +42,17 @@ class TrophyRESTAPI {
             print("Error: \(error)")
         } else if let result = task.result {
             if let input = result.input, let output = result.output {
+                
+                print()
+                print("POST Payload:")
+                print(result.input?.dictionaryValue)
+                
+                print("Lambda Return:")
+                print(result.output?.dictionaryValue)
+                print()
+                
                 print(String(format:"%@ %@ %@ = %@", input.a!, input.op!, input.b!, output.c!))
+                print()
             } else {
                 print("Input or output is nil")
             }

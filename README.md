@@ -10,7 +10,7 @@ Example Use Cases:
 * Take an example where you are learning to climb at your local bouldering gym, and you would like to check your progress for a certain climb/beta. Trophy allows you to create your named exercise and choose to track attributes such as Time and Level (measured 0-10). This combination of exercise attributes allows you to better understand the progress of your specific climb over time.
 
 
-## **Version 0** - _Backend Model + UI Design_
+## **Section 0** - _Backend Model + UI Design_
 
 ### Intro
 In this section, I focused on designing the fitness application before diving straight into any form of development.
@@ -24,7 +24,7 @@ I implemented key skills such as:
 - ViewModel Design 
 
 
-## **Version 1** - _MVVM Implementation + Unit Testing_
+## **Section 1** - _MVVM Implementation + Unit Testing_
 ### Intro
 In this section, I focused on the actual Backend implementation and testing of the MVVM architecture, allowing me to create complex and strong data structures, using Software Engineering best practices and skills.
 
@@ -44,14 +44,14 @@ Best practices and skills such as:
 - Git
 - Linux
 
-Below is a demo showing off the progress at Version 1
+Below is a demo showing off the progress at Section 1
 
 | Demo | Demo Content |
 | --- | --- |
 | ![Test Alt Text](Trophy/Assets/Videos/ExerciseModalDemo.v1.gif) | This demo shows off our main ContentView (i.e. Homepage), an Exercise Summary Modal, and how Exercises with different attributes will be displayed according to the attributes they possess (e.g. Distance)|
 
 
-## **Version 2** - _Dynamic Content + Improved UI_
+## **Section 2** - _Dynamic Content + Improved UI_
 ### Intro
 In this section, I focused on two topics. 
 Firstly, allowing the user the ability to dynamically add Exercises in a UI friendly way. This key feature being implemented allowed absolute flexibility in the Exercise the user would want to create.
@@ -72,7 +72,7 @@ Skills Implemented in this Section Include:
 | [Link to Video Demo](https://drive.google.com/file/d/1XLULtfyo_SGpCxH-LduXSWSue9_EKtpH/view?usp=sharing) | This demo not only continues to show off the progress in our ContentView and Exercise Summary Modal, but it demos the user's new ability to add custom Exercises via User Input. This is where the power of the application truly starts to shine|
 
 
-## **Version 3** - _AWS API Gateway Integration_
+## **Section 3** - _AWS API Gateway Integration_
 ### Intro
 In this section, I set out to accomplish one goal: Connecting my iOS application to my TrophyRESTAPI hosted in AWS API Gateway.
 I approached this by breaking my goal into subgoals:
@@ -114,7 +114,43 @@ Skills Implemented in this Section Include:
 - Dependency Management
 
 
-## **Version 4** - _AWS Lambda Integration_
+## **Section 4** - _AWS Lambda Integration_
 ### Intro
-_This section is in development and is dedicated to implementing the core API abilities that Trophy will rely on._
-_The end goal will be to have an API that successfully communicates with AWS Lambda for basic testing API functions, until we're ready to connect Lambda to AWS RDS._ 
+In this section, I focused on establishing and testing the Request-Response relationship between 3 components:
+1. Trophy iOS Application
+2. AWS API Gateway
+3. AWS Lambda
+
+**Trophy ==> API Gateway**
+* Initiate a POST Request containing a payload for values _{a}_,_{b}_, and _{op}_ for API Gateway to route. 
+![Image of Trophy REST API call graph metrics.](https://drive.google.com/uc?export=view&id=1yepFE1995EuxuPmJiU6jVfONbZ2OTVy)
+
+**API Gateway ==> Lambda**
+* Transform the request based on the configured integration settings and forward it to AWS Lambda.
+
+**Lambda**
+* Perform computations based off of request payload
+![Lambda function overview](https://drive.google.com/uc?export=view&id=1Ma2unio3Vn5AArl9FYF4RtyLbJZGV9N0)
+![Lambda test-response content](https://drive.google.com/uc?export=view&id=12h-OpIxdzSks2cBlHn01JEEXQ48kXSWF)
+
+**Lambda ==> API Gateway**
+* Generate and return a Response based on the outcome of the execution and forward it to API Gateway
+
+**API Gateway ==> Trophy**
+* Transform the resposne based on the configured integration settings and forward it to Trophy
+![Trophy REST API test logs](https://drive.google.com/uc?export=view&id=1Y_ctkznTN_NMcLDZlJlkcKGPGxowOHZV)
+
+Skills Implemented in this Section:
+- Serverless Architecture
+- Event-Driven Programming
+- RESTful APIs
+- API Design
+- API Gateway
+- API Integration Testing
+- API Deployment
+- AWS Lambda
+- AWS CloudWatch
+- Metrics/Monitoring
+- Node.js
+- Postman
+
