@@ -186,9 +186,9 @@ public class TROPHYTrophyRESTAPIClient: AWSAPIGatewayClient {
      
      @param body 
      
-     return type: Empty
+     return type: TROPHYResult
      */
-    public func rootPost(body: TROPHYInput) -> AWSTask<Empty> {
+    public func rootPost(body: TROPHYInput) -> AWSTask<TROPHYResult> {
 	    let headerParameters = [
                    "Content-Type": "application/json",
                    "Accept": "application/json",
@@ -199,7 +199,7 @@ public class TROPHYTrophyRESTAPIClient: AWSAPIGatewayClient {
 	    
 	    let pathParameters:[String:Any] = [:]
 	    
-	    return self.invokeHTTPRequest("POST", urlString: "/", pathParameters: pathParameters, queryParameters: queryParameters, headerParameters: headerParameters, body: body, responseClass: Empty.self) as! AWSTask<Empty>
+	    return self.invokeHTTPRequest("POST", urlString: "/", pathParameters: pathParameters, queryParameters: queryParameters, headerParameters: headerParameters, body: body, responseClass: TROPHYResult.self) as! AWSTask<TROPHYResult>
 	}
 
 	
