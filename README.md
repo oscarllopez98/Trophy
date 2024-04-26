@@ -156,20 +156,10 @@ Skills Implemented in this Section:
 - Node.js
 - Postman
 
-![Exercise JSON](https://drive.google.com/uc?export=view&id=1hae8PeeBNhCliIYORdCs4VKaSfN_JYv-)
-![New Exercise JSON](https://drive.google.com/uc?export=view&id=1ouy03EOt_5W8cSWNT3L4gROJ6VTE7TSY)
 
-![I don't know](https://drive.google.com/uc?export=view&id=1v9xCgPXL-AYgw515AY2lOoIhxF1lUiIU)
 
-![Logs Create Exercise](https://drive.google.com/uc?export=view&id=1MltI_Wwy1JWTvZdBs9hm6KK7-cMnIeYu)
-![Logs Retrieve Exercise](https://drive.google.com/uc?export=view&id=1lXN5uyCZ5LpAal7ciG5cGjsrgGJyYkX_)
-![Logs Update Exercise](https://drive.google.com/uc?export=view&id=1ti8I6K0QR3s6xY0IwU41D9esxFHFdU1z)
-![Logs Update Exercise 2](https://drive.google.com/uc?export=view&id=1xPp0zSIXJ0ZHDUxJc7wy1Bx08hkLlJKF)
-![Logs Update Exercise 3](https://drive.google.com/uc?export=view&id=1BOaZS70B8milbquQONw0OjszlOsoSk0k)
-![Logs Delete Exercise](https://drive.google.com/uc?export=view&id=1HNFKEKH0jNjNKzak3OhL42N_4LH-RTyF)
-![Logs Delete Exercise 2](https://drive.google.com/uc?export=view&id=1uMxkwQQ4VxZL9hAH-o69vbajzw4_CXna)
 
-![I dont know](https://drive.google.com/uc?export=view&id=153RoDi7gwjKlgBfPP4GSpgLqVFH-O5ag)
+
 
 
 ## **Section 5** - _TrophyRESTAPI Gateway + Lambda Function Development_
@@ -179,8 +169,8 @@ This section is dedicated to outline the development of the primary CRUD functio
 1. **API Gateway Model Design**
     * With Lambda already integrated at a basic level, I could now flesh out a more complex Lambda function to take the next step in my development, but first, I would need to establish how I wanted my Lambda functions to receive Exercise data.
     * I designed and implemented 2 API Gateway Models. One for restricting the API caller's Method Request to a specific format, and another for restricting Lambda functions to a specific format for the Method Response.
-    * This solved the dilemma for ensuring consistent data formatting. 
-    * The following are examples for the Models I developed
+    * This solved the dilemma for ensuring consistent data formatting.     
+
 2. **Lambda & Layer Design**
     * My next task was to design the code that would operate as a data-processing facilitator to my RDS database tables.
     * My biggest obstacle here was answering the following questions:
@@ -190,6 +180,7 @@ This section is dedicated to outline the development of the primary CRUD functio
     * My solution was Lambda Layers. Layers allowed me to write code once and upload it via the Lambda console, and easily import the code into a single Lambda function. Layers answered my question such that:
         * Each CRUD function could operate independently
         * Coding Layer code such as database connections, CRUD functions, and validation code could be coded once and simply added to my Lambda function. If I needed to update the Layer code, I would only have to do it in one location, and I would only need to ensure I am using the latest version of my Layer!
+![Lambda Layers](https://drive.google.com/uc?export=view&id=1pnQfM7zH_UeLBg7FaP0QnUHf8PhQ3MWU)
 
 3. **Lambda & Layer Development**
     * This section was fairly straightforward in the sense that I knew what my data looked like coming into Lambda, and I knew what my data needed to look like for storing the SQL tables.
@@ -222,6 +213,7 @@ This section is dedicated to outline the development of the primary CRUD functio
             * User creates an Exercise with no JSON properties filled
             * User creates an Exercise with no Exercise Attributes attached
             * User creates an Exercise with missing data required for database storage 
+![Logs Create Exercise](https://drive.google.com/uc?export=view&id=1MltI_Wwy1JWTvZdBs9hm6KK7-cMnIeYu)
     * Retrieve Exercise
         * Concerns: Ensuring that data entered into the SQL table would be retrieved as expected from the user.
         * Solutions: To ensure proper Retrieval, below are some scenarios tested
@@ -229,6 +221,7 @@ This section is dedicated to outline the development of the primary CRUD functio
             * User retrieves an Exercise with an invalid exercise\_id
             * User retrieves an Exercise with valid NULL field values
             * User retrieves an Exercise with no NULL field values
+![Logs Retrieve Exercise](https://drive.google.com/uc?export=view&id=1lXN5uyCZ5LpAal7ciG5cGjsrgGJyYkX_)
     * Update Exercise
         * Concerns: Ensuring that data entered by a user for an Exercise update would be handled as expected.
         * Solutions: To ensure proper Updating, below are some scenarios tested
@@ -237,12 +230,15 @@ This section is dedicated to outline the development of the primary CRUD functio
             * User updates an Exercise from no Exercise Attributes with Exercise Attributes
             * User updates an Exercise from Exercise Attributes with Exercise Attributes
             * User updates an Exercise with missing data required for database storage
+| ![Logs Update Exercise](https://drive.google.com/uc?export=view&id=1ti8I6K0QR3s6xY0IwU41D9esxFHFdU1z) | ![Logs Update Exercise 2](https://drive.google.com/uc?export=view&id=1xPp0zSIXJ0ZHDUxJc7wy1Bx08hkLlJKF) | ![Logs Update Exercise 3](https://drive.google.com/uc?export=view&id=1BOaZS70B8milbquQONw0OjszlOsoSk0k)
+ | 
     * Delete Exercise
         * Concerns: Ensuring that existing data deletes as expected
         * Solutions: To ensure proper Deletion, below are some scenarios tested
             * User deletes an Exercise with a valid exercise\_id
             * User deletes an Exercise with an invalid exercise_\id
             * User deletes an Exercise, all associated Exercise Attributes are Deleted
+| ![Logs Delete Exercise](https://drive.google.com/uc?export=view&id=1HNFKEKH0jNjNKzak3OhL42N_4LH-RTyF) | ![Logs Delete Exercise 2](https://drive.google.com/uc?export=view&id=1uMxkwQQ4VxZL9hAH-o69vbajzw4_CXna) |
 
 
 Skills Implemented in this Section:
