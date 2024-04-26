@@ -156,7 +156,108 @@ Skills Implemented in this Section:
 - Node.js
 - Postman
 
+![Exercise JSON](https://drive.google.com/uc?export=view&id=1hae8PeeBNhCliIYORdCs4VKaSfN_JYv-)
+![New Exercise JSON](https://drive.google.com/uc?export=view&id=1ouy03EOt_5W8cSWNT3L4gROJ6VTE7TSY)
+
+![I don't know](https://drive.google.com/uc?export=view&id=1v9xCgPXL-AYgw515AY2lOoIhxF1lUiIU)
+
+![Logs Create Exercise](https://drive.google.com/uc?export=view&id=1MltI_Wwy1JWTvZdBs9hm6KK7-cMnIeYu)
+![Logs Retrieve Exercise](https://drive.google.com/uc?export=view&id=1lXN5uyCZ5LpAal7ciG5cGjsrgGJyYkX_)
+![Logs Update Exercise](https://drive.google.com/uc?export=view&id=1ti8I6K0QR3s6xY0IwU41D9esxFHFdU1z)
+![Logs Update Exercise 2](https://drive.google.com/uc?export=view&id=1xPp0zSIXJ0ZHDUxJc7wy1Bx08hkLlJKF)
+![Logs Update Exercise 3](https://drive.google.com/uc?export=view&id=1BOaZS70B8milbquQONw0OjszlOsoSk0k)
+![Logs Delete Exercise](https://drive.google.com/uc?export=view&id=1HNFKEKH0jNjNKzak3OhL42N_4LH-RTyF)
+![Logs Delete Exercise 2](https://drive.google.com/uc?export=view&id=1uMxkwQQ4VxZL9hAH-o69vbajzw4_CXna)
+
+![I dont know](https://drive.google.com/uc?export=view&id=153RoDi7gwjKlgBfPP4GSpgLqVFH-O5ag)
+
 
 ## **Section 5** - _TrophyRESTAPI Gateway + Lambda Function Development_
 ### Intro
-This section is in development. The goal for this section is to flesh out more functional API methods for Trophy to have access to, as well as create mock Lambda functions that the TrophyRESTAPI will be able to integrate with. This goal was set to best prepare myself for AWS RDS Integration in Section 6.
+This section is dedicated to outline the development of the primary CRUD functions that will be needed to allow a user to create, retreive, update, and delete Exercises. I broke this goal into 4 tasks:
+
+1. **API Gateway Model Design**
+    * With Lambda already integrated at a basic level, I could now flesh out a more complex Lambda function to take the next step in my development, but first, I would need to establish how I wanted my Lambda functions to receive Exercise data.
+    * I designed and implemented 2 API Gateway Models. One for restricting the API caller's Method Request to a specific format, and another for restricting Lambda functions to a specific format for the Method Response.
+    * This solved the dilemma for ensuring consistent data formatting. 
+    * The following are examples for the Models I developed
+2. **Lambda & Layer Design**
+    * My next task was to design the code that would operate as a data-processing facilitator to my RDS database tables.
+    * My biggest obstacle here was answering the following questions:
+        a) How do I ensure my CRUD functions remain modular/independent of one another?
+        b) How can I avoid bloat in my code, such that I do as little duplication of code as reasonably possible?
+        c) How can I do both of the prior, if my CRUD functions all share a need for connecting with the database, but I don't want to want to create a single Lambda function that handles all the CRUD operations? 
+    * My solution was Lambda Layers. Layers allowed me to write code once and upload it via the Lambda console, and easily import the code into a single Lambda function. Layers answered my question such that:
+        * Each CRUD function could operate independently
+        * Coding Layer code such as database connections, CRUD functions, and validation code could be coded once and simply added to my Lambda function. If I needed to update the Layer code, I would only have to do it in one location, and I would only need to ensure I am using the latest version of my Layer!
+
+3. **Lambda & Layer Development**
+    * This section was fairly straightforward in the sense that I knew what my data looked like coming into Lambda, and I knew what my data needed to look like for storing the SQL tables.
+    * The biggest concerns included: Security, QA-minded Development, and Developing "Bottom-Up" 
+        * Security
+            * Concern: Up to this point, I had been using Lambda environment variables to store DB credentials. However, that would be bad security practice and not scalable for the long term.
+            * Solution: I integrated Secrets Manager, such that I retrieved my database credentials safely. This would also facilitate scalability, as future Lambda functions could simply reference that same Secret if needed.
+        * QA-minded Development
+            * Concern: As a former QA Engineer, I understand how much easier it can be when the code that you are testing:
+                a) Is well commented (e.g. function comments)
+                b) Error Handleds well (e.g. Custom error messages with detailed error response output)
+            * Solution: As I developed, I ensured an ease of future debugging through:
+                a) Function Comments
+                    * I leverage OpenAI's ChatGPT to outline many function comments for me, saving me time and ensuring my functions' purpose were able to be quickly understand, and the requirements/parameters were specifically outline
+                b) Error Handles
+                    * Creating an Error file containg constant variables that would describe the issue found at a high level (e.g. ERROR_INVALID_JSON_FORMAT = "Invalid JSON format"). This helped me quickly narrow down on what the overall cause of the issue was.
+                    * Creating several Validation functions that would output all Errors found during a JSON object's validation process. This cut down on filtering for reasons for why a function was not behaving as I intended.
+        * Developing Bottom-Up:
+            * Concern: In order to create an Exercise, a user would very likely use Exercise Attributes to describe features of their Exercise(e.g. Distance, Time, Weight). I wanted to develop in a manner such that if any bugs were found during development, they were easily managed
+            * Solution: I developed and unit tested starting from the smallest form of data and worked my way up. 
+                * I think of this structure as working in a binary tree, but starting from the bottom of the tree and working our way up breadth-wise.
+                * This development process ensured that components needed from a parent component would be available during the parent's component development
+
+4. **Test, Test, Test...**
+    * In this task, I needed to validate edge cases, improper inputs, and various scenarios that could occur during the life of the app relating to Exercise CRUD operations
+    * Create Exercise
+        * Concerns: Ensuring that data entered by a user for an Exercise creation would be handled as expected.
+        * Solutions: To ensure proper Creation, below are some scenarios tested
+            * User creates an Exercise with all JSON properties filled
+            * User creates an Exercise with no JSON properties filled
+            * User creates an Exercise with no Exercise Attributes attached
+            * User creates an Exercise with missing data required for database storage 
+    * Retrieve Exercise
+        * Concerns: Ensuring that data entered into the SQL table would be retrieved as expected from the user.
+        * Solutions: To ensure proper Retrieval, below are some scenarios tested
+            * User retrieves an Exercise with a valid exercise\_id
+            * User retrieves an Exercise with an invalid exercise\_id
+            * User retrieves an Exercise with valid NULL field values
+            * User retrieves an Exercise with no NULL field values
+    * Update Exercise
+        * Concerns: Ensuring that data entered by a user for an Exercise update would be handled as expected.
+        * Solutions: To ensure proper Updating, below are some scenarios tested
+            * User updates an Exercise with completely new data
+            * User updates an Exercise with the exact same data
+            * User updates an Exercise from no Exercise Attributes with Exercise Attributes
+            * User updates an Exercise from Exercise Attributes with Exercise Attributes
+            * User updates an Exercise with missing data required for database storage
+    * Delete Exercise
+        * Concerns: Ensuring that existing data deletes as expected
+        * Solutions: To ensure proper Deletion, below are some scenarios tested
+            * User deletes an Exercise with a valid exercise\_id
+            * User deletes an Exercise with an invalid exercise_\id
+            * User deletes an Exercise, all associated Exercise Attributes are Deleted
+
+
+Skills Implemented in this Section:
+- API Design
+- API Gateway
+- API Integration Testing
+- AWS Lambda/Lambda Layers
+- AWS CloudWatch
+- AWS Secrets Manager
+- Metrics/Monitoring
+- Networks
+- SQL/MySQL
+- JavaScript
+- Test-Driven Development/QA/Unit Testing
+- Component Design
+- Security Groups
+- EC2
+- VPC
