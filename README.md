@@ -156,12 +156,6 @@ Skills Implemented in this Section:
 - Node.js
 - Postman
 
-
-
-
-
-
-
 ## **Section 5** - _TrophyRESTAPI Gateway + Lambda Function Development_
 ### Intro
 This section is dedicated to outline the development of the primary CRUD functions that will be needed to allow a user to create, retreive, update, and delete Exercises. I broke this goal into 4 tasks:
@@ -257,3 +251,52 @@ Skills Implemented in this Section:
 - Security Groups
 - EC2
 - VPC
+
+## **Section 6** - _Financial Optimization within AWS_
+### Intro
+In this section, I will touch on my journey of financial optimization within AWS, starting from the revelation of unexpectedly high costs, followed by the identification of areas for reduction, and finishing in the implementation of targeted strategies to alleviate excessive expenditures and reshape my AWS cost structure.
+
+**High Costs Detected**
+* During my development, I found that my costs had exceeded what I was comfortable spending on a personal project per month.
+* Below is the bill I received from AWS that sparked my attention:
+
+![Image of Bill](https://drive.google.com/uc?export=view&id=1WECaRvzLDcg47rjidcRnvW99HRaKG3A1)
+
+**Areas for Reduction**
+* Through analyzing this bill, I found that my major concerns were with the following billed-areas:
+    1. RDS
+    2. VPC
+    3. EC2-Other
+    
+** Cost Reduction **
+* Relational Database Service (RDS)
+    * For this service, Amazon RDS Proxy was contributing to 59.8% of my RDS cost (~23.8% of my **total** costs)
+    * I initially used a Proxy for connection pooling and scalability. After determining that although those benefits are great for development and the longevity of my application, it was not a concern for my immediate or near-future development. So, this service was ultimately removed entirely.
+* Virtual Private Cloud (VPC)
+    * For this service, 82.3% of my VPC costs (~30.2% of my **total** costs)
+    * During analysis, I came to 2 conclusions:
+        1. I had created an extra VPC during my developing, and I had been using that instead of the default VPC available to me by AWS
+        2. I could opt for a public database that leverages safety principles AWS offers (e.g. Secrets Manager, Principle of Leaste Privilege, etc.)
+    * Ultimately, I decided to remove the extra VPC
+* Elasic Compute Cloud 
+    * For this service, the entire service was not needed and contributed 22.7% of my **total** costs
+    * The reason for such an expense was caused by a NATGateway that was completely unused, and was therefore removed entirely until it's needed for future development
+* Conclusion
+    * I was able to eliminate ~76.7% of my total costs through these analyses
+
+**New Cost Structure**
+* Below are the daily expenses graphs before and after cost restructure
+
+| Before Cost Reduction | After Cost Reduction |
+| -- | -- |
+| ![Image of Expenses Before Reduction](https://drive.google.com/uc?export=view&id=1ZA5p0vAzdnr8BWX1wZJwQ6VAEj-tlAYq) | ![Image of Expenses After Reduction](https://drive.google.com/uc?export=view&id=1ZYhHhPwi-w9ItZxbdpLUIXa2rs6jBxVt) |
+
+Skills Implemented in this Section
+* Cost Analysis and Optimization
+* AWS Service Management
+* Infrastructure as Code (IaC)
+* Problem-Solving and Decision Making
+* Documentation and Communication
+* Monitoring and Performance Analysis
+* Security Best Practices
+* Data Visualization
