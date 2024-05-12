@@ -42,12 +42,12 @@ final class TrophyRESTAPITests: XCTestCase {
         trophyRestAPI.testAPICall()
         
         //Fulfill the expectation after a delay
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) { // Adjust timeout as needed
+        DispatchQueue.main.asyncAfter(deadline: .now() + 8) { // Adjust timeout as needed
             expectation.fulfill()
         }
         
         //Wait for the expectation to be fulfilled within a timeout
-        wait(for: [expectation], timeout: 5) // Adjust timeout as needed
+        wait(for: [expectation], timeout: 8) // Adjust timeout as needed
     }
 
 }

@@ -141,7 +141,7 @@ public class TROPHYTrophyRESTAPIClient: AWSAPIGatewayClient {
 	    super.init()
 	
 	    self.configuration = configuration.copy() as! AWSServiceConfiguration
-	    var URLString: String = "https://nrtgseb4ad.execute-api.us-east-2.amazonaws.com/test"
+	    var URLString: String = "https://xhh2wpxj6f.execute-api.us-east-1.amazonaws.com/Prod"
 	    if URLString.hasSuffix("/") {
 	        URLString = URLString.substring(to: URLString.index(before: URLString.endIndex))
 	    }
@@ -157,83 +157,12 @@ public class TROPHYTrophyRESTAPIClient: AWSAPIGatewayClient {
     /*
      
      
-     @param op 
-     @param a 
-     @param b 
-     
-     return type: 
-     */
-    public func rootGet(op: String?, a: String?, b: String?) -> AWSTask<AnyObject> {
-	    let headerParameters = [
-                   "Content-Type": "application/json",
-                   "Accept": "application/json",
-                   
-	            ]
-	    
-	    var queryParameters:[String:Any] = [:]
-	    queryParameters["op"] = op
-	    queryParameters["a"] = a
-	    queryParameters["b"] = b
-	    
-	    let pathParameters:[String:Any] = [:]
-	    
-	    return self.invokeHTTPRequest("GET", urlString: "/", pathParameters: pathParameters, queryParameters: queryParameters, headerParameters: headerParameters, body: nil, responseClass: nil)
-	}
-
-	
-    /*
-     
-     
+     @param userId 
      @param body 
      
-     return type: TROPHYResult
+     return type: TROPHYPutExerciseOutput
      */
-    public func rootPost(body: TROPHYInput) -> AWSTask<TROPHYResult> {
-	    let headerParameters = [
-                   "Content-Type": "application/json",
-                   "Accept": "application/json",
-                   
-	            ]
-	    
-	    let queryParameters:[String:Any] = [:]
-	    
-	    let pathParameters:[String:Any] = [:]
-	    
-	    return self.invokeHTTPRequest("POST", urlString: "/", pathParameters: pathParameters, queryParameters: queryParameters, headerParameters: headerParameters, body: body, responseClass: TROPHYResult.self) as! AWSTask<TROPHYResult>
-	}
-
-	
-    /*
-     
-     
-     
-     return type: Empty
-     */
-    public func exercisesGet() -> AWSTask<Empty> {
-	    let headerParameters = [
-                   "Content-Type": "application/json",
-                   "Accept": "application/json",
-                   
-	            ]
-	    
-	    let queryParameters:[String:Any] = [:]
-	    
-	    let pathParameters:[String:Any] = [:]
-	    
-	    return self.invokeHTTPRequest("GET", urlString: "/exercises", pathParameters: pathParameters, queryParameters: queryParameters, headerParameters: headerParameters, body: nil, responseClass: Empty.self) as! AWSTask<Empty>
-	}
-
-	
-    /*
-     
-     
-     @param a 
-     @param b 
-     @param op 
-     
-     return type: TROPHYResult
-     */
-    public func aBOpGet(a: String, b: String, op: String) -> AWSTask<TROPHYResult> {
+    public func usersUserIdExercisesPut(userId: String, body: TROPHYInputExercise) -> AWSTask<TROPHYPutExerciseOutput> {
 	    let headerParameters = [
                    "Content-Type": "application/json",
                    "Accept": "application/json",
@@ -243,11 +172,85 @@ public class TROPHYTrophyRESTAPIClient: AWSAPIGatewayClient {
 	    let queryParameters:[String:Any] = [:]
 	    
 	    var pathParameters:[String:Any] = [:]
-	    pathParameters["a"] = a
-	    pathParameters["b"] = b
-	    pathParameters["op"] = op
+	    pathParameters["userId"] = userId
 	    
-	    return self.invokeHTTPRequest("GET", urlString: "/{a}/{b}/{op}", pathParameters: pathParameters, queryParameters: queryParameters, headerParameters: headerParameters, body: nil, responseClass: TROPHYResult.self) as! AWSTask<TROPHYResult>
+	    return self.invokeHTTPRequest("PUT", urlString: "/users/{userId}/exercises", pathParameters: pathParameters, queryParameters: queryParameters, headerParameters: headerParameters, body: body, responseClass: TROPHYPutExerciseOutput.self) as! AWSTask<TROPHYPutExerciseOutput>
+	}
+
+	
+    /*
+     
+     
+     @param userId 
+     @param exerciseId 
+     
+     return type: TROPHYOutputExercise
+     */
+    public func usersUserIdExercisesExerciseIdGet(userId: String, exerciseId: String) -> AWSTask<TROPHYOutputExercise> {
+	    let headerParameters = [
+                   "Content-Type": "application/json",
+                   "Accept": "application/json",
+                   
+	            ]
+	    
+	    let queryParameters:[String:Any] = [:]
+	    
+	    var pathParameters:[String:Any] = [:]
+	    pathParameters["userId"] = userId
+	    pathParameters["exerciseId"] = exerciseId
+	    
+	    return self.invokeHTTPRequest("GET", urlString: "/users/{userId}/exercises/{exerciseId}", pathParameters: pathParameters, queryParameters: queryParameters, headerParameters: headerParameters, body: nil, responseClass: TROPHYOutputExercise.self) as! AWSTask<TROPHYOutputExercise>
+	}
+
+	
+    /*
+     
+     
+     @param userId 
+     @param exerciseId 
+     @param body 
+     
+     return type: TROPHYPutExerciseOutput
+     */
+    public func usersUserIdExercisesExerciseIdPut(userId: String, exerciseId: String, body: TROPHYInputExercise) -> AWSTask<TROPHYPutExerciseOutput> {
+	    let headerParameters = [
+                   "Content-Type": "application/json",
+                   "Accept": "application/json",
+                   
+	            ]
+	    
+	    let queryParameters:[String:Any] = [:]
+	    
+	    var pathParameters:[String:Any] = [:]
+	    pathParameters["userId"] = userId
+	    pathParameters["exerciseId"] = exerciseId
+	    
+	    return self.invokeHTTPRequest("PUT", urlString: "/users/{userId}/exercises/{exerciseId}", pathParameters: pathParameters, queryParameters: queryParameters, headerParameters: headerParameters, body: body, responseClass: TROPHYPutExerciseOutput.self) as! AWSTask<TROPHYPutExerciseOutput>
+	}
+
+	
+    /*
+     
+     
+     @param userId 
+     @param exerciseId 
+     
+     return type: TROPHYDeleteExerciseOutput
+     */
+    public func usersUserIdExercisesExerciseIdDelete(userId: String, exerciseId: String) -> AWSTask<TROPHYDeleteExerciseOutput> {
+	    let headerParameters = [
+                   "Content-Type": "application/json",
+                   "Accept": "application/json",
+                   
+	            ]
+	    
+	    let queryParameters:[String:Any] = [:]
+	    
+	    var pathParameters:[String:Any] = [:]
+	    pathParameters["userId"] = userId
+	    pathParameters["exerciseId"] = exerciseId
+	    
+	    return self.invokeHTTPRequest("DELETE", urlString: "/users/{userId}/exercises/{exerciseId}", pathParameters: pathParameters, queryParameters: queryParameters, headerParameters: headerParameters, body: nil, responseClass: TROPHYDeleteExerciseOutput.self) as! AWSTask<TROPHYDeleteExerciseOutput>
 	}
 
 
