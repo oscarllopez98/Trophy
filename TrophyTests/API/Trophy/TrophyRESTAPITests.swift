@@ -33,13 +33,30 @@ final class TrophyRESTAPITests: XCTestCase {
         }
     }
     
-    func testTrophyRESTAPITestAPICall() {
+    func testTrophyRESTAPITestPUTAPICall() {
         let trophyRestAPI = TrophyRESTAPI()
         
         let expectation = XCTestExpectation(description: "API Call Completed")
         
         // Execute the async function
-        trophyRestAPI.testAPICall()
+        trophyRestAPI.testPUTAPICall()
+        
+        //Fulfill the expectation after a delay
+        DispatchQueue.main.asyncAfter(deadline: .now() + 8) { // Adjust timeout as needed
+            expectation.fulfill()
+        }
+        
+        //Wait for the expectation to be fulfilled within a timeout
+        wait(for: [expectation], timeout: 8) // Adjust timeout as needed
+    }
+    
+    func testGETUserExercise() {
+        let trophyRestAPI = TrophyRESTAPI()
+
+        let expectation = XCTestExpectation(description: "API Call - GET - Completed")
+        
+        // Execute the async funciton
+        trophyRestAPI.testGetUserExercise()
         
         //Fulfill the expectation after a delay
         DispatchQueue.main.asyncAfter(deadline: .now() + 8) { // Adjust timeout as needed
