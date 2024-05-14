@@ -19,17 +19,13 @@ import AWSCore
 
 
 @objcMembers
-public class TROPHYInput : AWSModel {
+public class TROPHYDeleteExerciseOutput_body : AWSModel {
     
-    var a: NSNumber?
-    var b: NSNumber?
-    var op: String?
+    var message: String!
     
    	public override static func jsonKeyPathsByPropertyKey() -> [AnyHashable : Any]!{
 		var params:[AnyHashable : Any] = [:]
-		params["a"] = "a"
-		params["b"] = "b"
-		params["op"] = "op"
+		params["message"] = "message"
 		
         return params
 	}
