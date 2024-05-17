@@ -48,9 +48,9 @@ final class IntensityAttributeConverterTests: XCTestCase {
         let attributeDict = converter.convertToAPIFormat(IntensityAttribute(value: .med))
         
         // Access the values in the returned dictionary
-        if let value = attributeDict["value"] as? AttributeValue {
-            print("Value: \(value.stringValue)")
-            XCTAssertEqual(IntensityAttribute(value: .med).value.stringValue, value.stringValue)
+        if let value = attributeDict["value"] as? String {
+            print("Value: \(value)")
+            XCTAssertEqual(IntensityAttribute(value: .med).value.stringValue, value)
         } else {
             XCTFail("value not found in converted dictionary.")
         }

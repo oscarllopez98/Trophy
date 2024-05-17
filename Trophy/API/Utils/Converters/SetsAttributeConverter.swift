@@ -10,7 +10,7 @@ import Foundation
 class SetsAttributeConverter {
     func convertToAPIFormat(_ setsAttribute: SetsAttribute) -> [String: Any] {
         var attributeDict: [String: Any] = [:]
-        attributeDict["value"] = setsAttribute.value
+        attributeDict["value"] = Int(setsAttribute.value.stringValue)
         return attributeDict
     }
 }

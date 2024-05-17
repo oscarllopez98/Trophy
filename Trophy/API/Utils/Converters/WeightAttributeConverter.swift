@@ -10,7 +10,7 @@ import Foundation
 class WeightAttributeConverter {
     func convertToAPIFormat(_ weightAttribute: WeightAttribute) -> [String: Any] {
         var attributeDict: [String: Any] = [:]
-        attributeDict["value"] = weightAttribute.value
+        attributeDict["value"] = Double(weightAttribute.value.stringValue)
         attributeDict["unit"] = weightAttribute.unit?.symbolAsString
         return attributeDict
     }

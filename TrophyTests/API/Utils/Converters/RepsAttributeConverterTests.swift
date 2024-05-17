@@ -50,9 +50,9 @@ final class RepsAttributeConverterTests: XCTestCase {
         let attributeDict = converter.convertToAPIFormat(RepsAttribute(reps: reps))
         
         // Access the values in the returned dictionary
-        if let value = attributeDict["value"] as? AttributeValue {
-            print("Value: \(value.stringValue)")
-            XCTAssertEqual(RepsAttribute(reps: reps).value.stringValue, value.stringValue)
+        if let value = attributeDict["value"] as? Int {
+            print("Value: \(value)")
+            XCTAssertEqual(reps, value)
         } else {
             XCTFail("value not found in converted dictionary.")
         }

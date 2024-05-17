@@ -115,6 +115,7 @@ final class TrophyRESTAPITests: XCTestCase {
         print("Result: \(result)")
         print("Expected Output: \(expectedOutput)")
         
+        
         // Compare the results
     }
     

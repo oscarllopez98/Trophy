@@ -10,7 +10,7 @@ import Foundation
 class TimeAttributeConverter {
     func convertToAPIFormat(_ timeAttribute: TimeAttribute) -> [String: Any] {
         var attributeDict: [String: Any] = [:]
-        attributeDict["value"] = timeAttribute.value
+        attributeDict["value"] = timeAttribute.value.stringValue
         return attributeDict
     }
 }

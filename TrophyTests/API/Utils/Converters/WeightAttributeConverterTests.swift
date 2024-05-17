@@ -46,15 +46,14 @@ final class WeightAttributeConverterTests: XCTestCase {
     
     func testWeightAttributeConverterInstantiatesEquals() throws {
         let converter = WeightAttributeConverter()
+        let weight = 100.0
         let attributeDict = converter.convertToAPIFormat(
-            WeightAttribute(weight: 100.0, unit: WeightUnit(weightSymbol: .kg)))
+            WeightAttribute(weight: weight, unit: WeightUnit(weightSymbol: .kg)))
         
         // Access the values in the returned dictionary
-        if let value = attributeDict["value"] as? AttributeValue {
-            print("Value: \(value.stringValue)")
-            XCTAssertEqual(
-                WeightAttribute(weight: 100.0, unit: WeightUnit(weightSymbol: .kg)).value.stringValue,
-                value.stringValue)
+        if let value = attributeDict["value"] as? Double {
+            print("Value: \(value)")
+            XCTAssertEqual(weight, value)
         } else {
             XCTFail("value not found in converted dictionary.")
         }

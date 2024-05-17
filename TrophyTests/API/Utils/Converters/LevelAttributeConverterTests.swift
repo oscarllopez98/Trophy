@@ -48,9 +48,9 @@ final class LevelAttributeConverterTests: XCTestCase {
         let attributeDict = converter.convertToAPIFormat(LevelAttribute(value: .nine))
         
         // Access the values in the returned dictionary
-        if let value = attributeDict["value"] as? AttributeValue {
-            print("Value: \(value.stringValue)")
-            XCTAssertEqual(LevelAttribute(value: .nine).value.stringValue, value.stringValue)
+        if let value = attributeDict["value"] as? String {
+            print("Value: \(value)")
+            XCTAssertEqual(LevelAttribute(value: .nine).value.stringValue, value)
         } else {
             XCTFail("value not found in converted dictionary.")
         }

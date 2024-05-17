@@ -10,7 +10,7 @@ import Foundation
 class RepsAttributeConverter {
     func convertToAPIFormat(_ repsAttribute: RepsAttribute) -> [String: Any] {
         var attributeDict: [String: Any] = [:]
-        attributeDict["value"] = repsAttribute.value
+        attributeDict["value"] = Int(repsAttribute.value.stringValue)
         return attributeDict
     }
 }

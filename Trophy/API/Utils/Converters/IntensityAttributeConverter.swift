@@ -10,7 +10,7 @@ import Foundation
 class IntensityAttributeConverter {
     func convertToAPIFormat(_ intensityAttribute: IntensityAttribute) -> [String: Any] {
         var attributeDict: [String: Any] = [:]
-        attributeDict["value"] = intensityAttribute.value
+        attributeDict["value"] = intensityAttribute.value.stringValue
         return attributeDict
     }
 }

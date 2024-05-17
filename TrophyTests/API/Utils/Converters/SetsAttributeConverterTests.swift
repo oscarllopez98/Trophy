@@ -50,9 +50,9 @@ final class SetsAttributeConverterTests: XCTestCase {
         let attributeDict = converter.convertToAPIFormat(SetsAttribute(sets: sets))
         
         // Access the values in the returned dictionary
-        if let value = attributeDict["value"] as? AttributeValue {
-            print("Value: \(value.stringValue)") 
-            XCTAssertEqual(SetsAttribute(sets: sets).value.stringValue, value.stringValue)
+        if let value = attributeDict["value"] as? Int {
+            print("Value: \(value)")
+            XCTAssertEqual(sets, value)
         } else {
             XCTFail("value not found in converted dictionary.")
         }

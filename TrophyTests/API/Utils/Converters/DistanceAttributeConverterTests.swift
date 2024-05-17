@@ -50,11 +50,10 @@ final class DistanceAttributeConverterTests: XCTestCase {
             DistanceAttribute(distance: 5.0, unit: DistanceUnit(distanceSymbol: .km)))
         
         // Access the values in the returned dictionary
-        if let value = attributeDict["value"] as? AttributeValue {
-            print("Value: \(value.stringValue)")
-            XCTAssertEqual(String(5.0), value.stringValue)
+        if let value = attributeDict["value"] as? Double {
+            XCTAssertEqual(5.0, value)
         } else {
-            XCTFail("value not found in converted dictionary.")
+            XCTFail("value not found in converted")
         }
         if let unit = attributeDict["unit"] as? String {
             print("Unit: \(unit)") // Output: Unit: km
