@@ -51,7 +51,7 @@ final class DistanceAttributeConverterTests: XCTestCase {
         
         // Access the values in the returned dictionary
         if let value = attributeDict["value"] as? AttributeValue {
-            print("Value: \(value.stringValue)") // Output: Value: 5.0
+            print("Value: \(value.stringValue)")
             XCTAssertEqual(String(5.0), value.stringValue)
         }
 

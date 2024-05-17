@@ -6,6 +6,7 @@
 //
 
 import XCTest
+@testable import Trophy
 
 final class TimeAttributeConverterTests: XCTestCase {
 
@@ -29,6 +30,29 @@ final class TimeAttributeConverterTests: XCTestCase {
         // This is an example of a performance test case.
         self.measure {
             // Put the code you want to measure the time of here.
+        }
+    }
+    
+    func testTimeAttributeConverterInstantiates() throws {
+        let converter = TimeAttributeConverter()
+        XCTAssertNotNil(converter)
+    }
+    
+    func testTimeAttributeConverterInstantiatesConverts() throws {
+        let converter = TimeAttributeConverter()
+        let time = TimeInterval()
+        let attributeDict = converter.convertToAPIFormat(TimeAttribute(time: time))
+    }
+    
+    func testTimeAttributeConverterInstantiatesEquals() throws {
+        let converter = TimeAttributeConverter()
+        let time = TimeInterval()
+        let attributeDict = converter.convertToAPIFormat(TimeAttribute(time: time))
+        
+        // Access the values in the returned dictionary
+        if let value = attributeDict["value"] as? AttributeValue {
+            print("Value: \(value.stringValue)")
+            XCTAssertEqual(TimeAttribute(time: time).value.stringValue, value.stringValue)
         }
     }
 

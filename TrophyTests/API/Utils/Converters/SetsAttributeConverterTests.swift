@@ -6,6 +6,7 @@
 //
 
 import XCTest
+@testable import Trophy
 
 final class SetsAttributeConverterTests: XCTestCase {
 
@@ -29,6 +30,29 @@ final class SetsAttributeConverterTests: XCTestCase {
         // This is an example of a performance test case.
         self.measure {
             // Put the code you want to measure the time of here.
+        }
+    }
+    
+    func testSetsAttributeConverterInstantiates() throws {
+        let converter = SetsAttributeConverter()
+        XCTAssertNotNil(converter)
+    }
+    
+    func testSetsAttributeConverterInstantiatesConverts() throws {
+        let converter = SetsAttributeConverter()
+        let sets = 10
+        let attributeDict = converter.convertToAPIFormat(SetsAttribute(sets: sets))
+    }
+    
+    func testSetsAttributeConverterInstantiatesEquals() throws {
+        let converter = SetsAttributeConverter()
+        let sets = 10
+        let attributeDict = converter.convertToAPIFormat(SetsAttribute(sets: sets))
+        
+        // Access the values in the returned dictionary
+        if let value = attributeDict["value"] as? AttributeValue {
+            print("Value: \(value.stringValue)") 
+            XCTAssertEqual(SetsAttribute(sets: sets).value.stringValue, value.stringValue)
         }
     }
 
