@@ -10,18 +10,38 @@ import AWSAPIGateway
 
 class TrophyRESTAPI {
     
-    func testPUTAPICall() {
+    func testPUTAPICall(completion: @escaping (String?) -> Void) {
         let request = preparePUTUserExerciseRequest()
         let jsonObject: [String: Any] = preparePUTUserExerciseJSON()
-        handlePUTUserExerciseResponse(inRequest: request, jsonObject: jsonObject)
+        handlePUTUserExerciseResponse(inRequest: request, jsonObject: jsonObject) { exerciseId in
+            if let id = exerciseId {
+                print("Received exercise ID: \(id)")
+                completion(id)
+            } else {
+                print("No exercise ID found.")
+                completion(nil)
+            }
+        }
     }
     
-    func PUTUserExercise(exercise: Exercise) -> Void {
-        let request = preparePUTUserExerciseRequest()
-        let jsonObject: [String: Any] = preparePUTUserExerciseJSON(name: exercise.name,
+    func PUTUserExercise(exercise: Exercise, completion: @escaping (String?) -> Void) {
+        let request = preparePUTUserExerciseRequest(userId: "4bf0e7ef-cd19-4b0c-b9a2-e946c58e01d1",
+                                                    exerciseId: exercise.id.uuidString)
+        let jsonObject: [String: Any] = preparePUTUserExerciseJSON(id: exercise.id,
+                                                                   name: exercise.name,
                                                                    type: exercise.type.asString,
                                                                    attributes: exercise.attributes,
                                                                    notes: exercise.notes!)
+
+        handlePUTUserExerciseResponse(inRequest: request, jsonObject: jsonObject) { exerciseId in
+            if let id = exerciseId {
+                print("Received exercise ID: \(id)")
+                completion(id)
+            } else {
+                print("No exercise ID found.")
+                completion(nil)
+            }
+        }
     }
     
     func testGetUserExercise() {
@@ -44,6 +64,17 @@ class TrophyRESTAPI {
         return request
     }
     
+    func preparePUTUserExerciseRequest(userId: String, exerciseId: String) -> URLRequest {
+        let path = "https://xhh2wpxj6f.execute-api.us-east-1.amazonaws.com/Prod/users/\(userId)/exercises/\(exerciseId)"
+        guard let url = URL(string: path) else {
+            fatalError("Invalid URL: \(path)")
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = "PUT"
+        request.addValue("eJft9CvQjC9WqubQzLaFS7rAPrjRWCKt99QuLHAm", forHTTPHeaderField: "x-api-key")
+        return request
+    }
+    
     func preparePUTUserExerciseRequest() -> URLRequest {
         // Create a URLRequest with the URL
         var request = URLRequest(url: getPUTUserExerciseEndpointPath())
@@ -58,46 +89,75 @@ class TrophyRESTAPI {
         return request
     }
     
-    func preparePUTUserExerciseJSON(name: String,
+    func preparePUTUserExerciseJSON(id: UUID? = nil,
+                                    name: String,
                                     type: String,
                                     attributes: [Exercise.AttributeName:ExerciseAttribute]? = nil,
                                     notes: String) -> [String: Any]{
         
-        let distanceDict: [String: Any] = DistanceAttributeConverter()
-            .convertToAPIFormat(attributes?[.distance] as! DistanceAttribute)
+        var distanceDict: [String: Any]? = nil
+        if let distanceAttribute = attributes?[.distance] as? DistanceAttribute {
+            distanceDict = DistanceAttributeConverter().convertToAPIFormat(distanceAttribute)
+        }
         
-        let timeDict: [String: Any] = TimeAttributeConverter()
-            .convertToAPIFormat(attributes?[.time] as! TimeAttribute)
-        let setsDict: [String: Any] = SetsAttributeConverter()
-            .convertToAPIFormat(attributes?[.sets] as! SetsAttribute)
-        let repsDict: [String: Any] = RepsAttributeConverter()
-            .convertToAPIFormat(attributes?[.reps] as! RepsAttribute)
-        let weightDict: [String: Any] = WeightAttributeConverter()
-            .convertToAPIFormat(attributes?[.weight] as! WeightAttribute)
-        let intensityDict: [String: Any] = IntensityAttributeConverter()
-            .convertToAPIFormat(attributes?[.intensity] as! IntensityAttribute)
-        let levelDict: [String: Any] = LevelAttributeConverter()
-            .convertToAPIFormat(attributes?[.level] as! LevelAttribute)
+        var timeDict: [String: Any]? = nil
+        if let timeAttribute = attributes?[.time] as? TimeAttribute {
+            timeDict = TimeAttributeConverter().convertToAPIFormat(timeAttribute)
+        }
         
-        let jsonObject: [String: Any] = [
+        var setsDict: [String: Any]? = nil
+        if let setsAttribute = attributes?[.sets] as? SetsAttribute {
+            setsDict = SetsAttributeConverter().convertToAPIFormat(setsAttribute)
+        }
+        
+        var repsDict: [String: Any]? = nil
+        if let repsAttribute = attributes?[.reps] as? RepsAttribute {
+            repsDict = RepsAttributeConverter().convertToAPIFormat(repsAttribute)
+        }
+        
+        var weightDict: [String: Any]? = nil
+        if let weightAttribute = attributes?[.weight] as? WeightAttribute {
+            weightDict = WeightAttributeConverter().convertToAPIFormat(weightAttribute)
+        }
+        
+        var intensityDict: [String: Any]? = nil
+        if let intensityAttribute = attributes?[.intensity] as? IntensityAttribute {
+            intensityDict = IntensityAttributeConverter().convertToAPIFormat(intensityAttribute)
+        }
+        
+        var levelDict: [String: Any]? = nil
+        if let levelAttribute = attributes?[.level] as? LevelAttribute {
+            levelDict = LevelAttributeConverter().convertToAPIFormat(levelAttribute)
+        }
+        
+        var jsonObject: [String: Any] = [
             "exercise": [
-                "name": "\(name)",
-                "type": "\(type)",
+                "name": name,
+                "type": type,
                 "attributes": [
-                    "distance": distanceDict,
-                    "time": timeDict,
-                    "sets": setsDict,
-                    "reps": repsDict,
-                    "weight": weightDict,
-                    "intensity": intensityDict,
-                    "level": levelDict
+                    "distance": distanceDict as Any,
+                    "time": timeDict as Any,
+                    "sets": setsDict as Any,
+                    "reps": repsDict as Any,
+                    "weight": weightDict as Any,
+                    "intensity": intensityDict as Any,
+                    "level": levelDict as Any
                 ],
-                "notes": "\(notes)"
+                "notes": notes
             ]
         ]
-        return jsonObject
         
+        // Conditionally add ID if it's not nil
+        if var exerciseDict = jsonObject["exercise"] as? [String: Any] {
+            if let id = id {
+                exerciseDict["id"] = id.uuidString
+            }
+            jsonObject["exercise"] = exerciseDict
+        }
+        
+        return jsonObject
     }
+
     
     func preparePUTUserExerciseJSON() -> [String: Any] {
         let jsonObject: [String: Any] = [
@@ -136,7 +196,7 @@ class TrophyRESTAPI {
         return url
     }
     
-    func handlePUTUserExerciseResponse(inRequest: URLRequest, jsonObject: [String: Any]) {
+    func handlePUTUserExerciseResponse(inRequest: URLRequest, jsonObject: [String: Any], completion: @escaping (String?) -> Void) {
         do {
             let outRequest = try preparePUTUserExerciseRequestData(inRequest: inRequest, jsonObject: jsonObject)
 
@@ -145,6 +205,7 @@ class TrophyRESTAPI {
                 // Handle the response or error here
                 if let error = error {
                     print("Error: \(error)")
+                    completion(nil)
                     return
                 }
 
@@ -154,6 +215,7 @@ class TrophyRESTAPI {
                     // Check if data is not nil
                     guard let responseData = data else {
                         print("No data received")
+                        completion(nil)
                         return
                     }
 
@@ -163,15 +225,21 @@ class TrophyRESTAPI {
                             // Access the desired property from the dictionary
                             if let exerciseId = jsonResponse["exerciseId"] as? String {
                                 print("Exercise ID: \(exerciseId)")
+                                completion(exerciseId)
                             } else {
                                 print("Exercise ID not found in response")
+                                completion(nil)
                             }
                         } else {
                             print("Failed to parse JSON response")
+                            completion(nil)
                         }
                     } catch {
                         print("Error parsing JSON: \(error)")
+                        completion(nil)
                     }
+                } else {
+                    completion(nil)
                 }
             }
 
@@ -179,8 +247,10 @@ class TrophyRESTAPI {
             task.resume()
         } catch {
             print("Error creating JSON: \(error)")
+            completion(nil)
         }
     }
+
     
     func getGETUserExerciseEndpointPath(userId: String, exerciseId: String) -> URL {
         // Create a URL for your API endpoint

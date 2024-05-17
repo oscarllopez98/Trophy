@@ -39,7 +39,14 @@ final class TrophyRESTAPITests: XCTestCase {
         let expectation = XCTestExpectation(description: "API Call Completed")
         
         // Execute the async function
-        trophyRestAPI.testPUTAPICall()
+        trophyRestAPI.testPUTAPICall() { exerciseId in
+            if let id = exerciseId {
+                print("Received exercise ID: \(id)")
+                XCTAssertNotNil(id)
+            } else {
+                XCTFail("No exercise ID found.")
+            }
+        }
         
         //Fulfill the expectation after a delay
         DispatchQueue.main.asyncAfter(deadline: .now() + 8) { // Adjust timeout as needed
@@ -55,8 +62,18 @@ final class TrophyRESTAPITests: XCTestCase {
         
         let expectation = XCTestExpectation(description: "API Call Completed")
         
+        let exercise = ExerciseFactory.shared.createTestExercise()
+        exercise.id = UUID(uuidString: "3a153e13-e098-4988-94cb-453a347c9dc3")!
+        
         // Execute the async function
-        trophyRestAPI.PUTUserExercise(exercise: ExerciseFactory.shared.createTestExercise())
+        trophyRestAPI.PUTUserExercise(exercise: exercise) { exerciseId in
+            if let id = exerciseId {
+                print("Received exercise ID: \(id)")
+                XCTAssertNotNil(id)
+            } else {
+                XCTFail("No exercise ID found.")
+            }
+        }
         
         //Fulfill the expectation after a delay
         DispatchQueue.main.asyncAfter(deadline: .now() + 8) { // Adjust timeout as needed
@@ -107,9 +124,13 @@ final class TrophyRESTAPITests: XCTestCase {
                 "notes": notes
             ]
         ]
-        
+
         let result: [String: Any] = TrophyRESTAPI()
-            .preparePUTUserExerciseJSON(name: name, type: type, attributes: attributes, notes: notes)
+            .preparePUTUserExerciseJSON(id: UUID(uuidString: "705da5bc-75ec-46d4-88e3-1f0ebfdafb65"),
+                                        name: name,
+                                        type: type,
+                                        attributes: attributes,
+                                        notes: notes)
         
         // Log the results
         print("Result: \(result)")

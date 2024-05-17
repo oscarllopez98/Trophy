@@ -10,7 +10,7 @@ import Foundation
 class LevelAttributeConverter {
     func convertToAPIFormat(_ levelAttribute: LevelAttribute) -> [String: Any] {
         var attributeDict: [String: Any] = [:]
-        attributeDict["value"] = levelAttribute.value.stringValue
+        attributeDict["value"] = Int(levelAttribute.value.stringValue)
         return attributeDict
     }
 }
