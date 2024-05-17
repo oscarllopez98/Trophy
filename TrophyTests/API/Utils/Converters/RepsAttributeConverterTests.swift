@@ -6,6 +6,7 @@
 //
 
 import XCTest
+@testable import Trophy
 
 final class RepsAttributeConverterTests: XCTestCase {
 
@@ -29,6 +30,31 @@ final class RepsAttributeConverterTests: XCTestCase {
         // This is an example of a performance test case.
         self.measure {
             // Put the code you want to measure the time of here.
+        }
+    }
+
+    func testRepsAttributeConverterInstantiates() throws {
+        let converter = RepsAttributeConverter()
+        XCTAssertNotNil(converter)
+    }
+    
+    func testRepsAttributeConverterInstantiatesConverts() throws {
+        let converter = RepsAttributeConverter()
+        let reps = 10
+        let attributeDict = converter.convertToAPIFormat(RepsAttribute(reps: reps))
+    }
+    
+    func testRepsAttributeConverterInstantiatesEquals() throws {
+        let converter = RepsAttributeConverter()
+        let reps = 10
+        let attributeDict = converter.convertToAPIFormat(RepsAttribute(reps: reps))
+        
+        // Access the values in the returned dictionary
+        if let value = attributeDict["value"] as? AttributeValue {
+            print("Value: \(value.stringValue)")
+            XCTAssertEqual(RepsAttribute(reps: reps).value.stringValue, value.stringValue)
+        } else {
+            XCTFail("value not found in converted dictionary.")
         }
     }
 

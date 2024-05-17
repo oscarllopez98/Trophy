@@ -6,6 +6,7 @@
 //
 
 import XCTest
+@testable import Trophy
 
 final class LevelAttributeConverterTests: XCTestCase {
 
@@ -29,6 +30,29 @@ final class LevelAttributeConverterTests: XCTestCase {
         // This is an example of a performance test case.
         self.measure {
             // Put the code you want to measure the time of here.
+        }
+    }
+    
+    func testLevelAttributeConverterInstantiates() throws {
+        let converter = LevelAttributeConverter()
+        XCTAssertNotNil(converter)
+    }
+    
+    func testLevelAttributeConverterInstantiatesConverts() throws {
+        let converter = LevelAttributeConverter()
+        let attributeDict = converter.convertToAPIFormat(LevelAttribute(value: .nine))
+    }
+    
+    func testLevelAttributeConverterInstantiatesEquals() throws {
+        let converter = LevelAttributeConverter()
+        let attributeDict = converter.convertToAPIFormat(LevelAttribute(value: .nine))
+        
+        // Access the values in the returned dictionary
+        if let value = attributeDict["value"] as? AttributeValue {
+            print("Value: \(value.stringValue)")
+            XCTAssertEqual(LevelAttribute(value: .nine).value.stringValue, value.stringValue)
+        } else {
+            XCTFail("value not found in converted dictionary.")
         }
     }
 

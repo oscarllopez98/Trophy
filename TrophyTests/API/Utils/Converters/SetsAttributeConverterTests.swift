@@ -53,6 +53,8 @@ final class SetsAttributeConverterTests: XCTestCase {
         if let value = attributeDict["value"] as? AttributeValue {
             print("Value: \(value.stringValue)") 
             XCTAssertEqual(SetsAttribute(sets: sets).value.stringValue, value.stringValue)
+        } else {
+            XCTFail("value not found in converted dictionary.")
         }
     }
 

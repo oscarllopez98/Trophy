@@ -53,6 +53,8 @@ final class TimeAttributeConverterTests: XCTestCase {
         if let value = attributeDict["value"] as? AttributeValue {
             print("Value: \(value.stringValue)")
             XCTAssertEqual(TimeAttribute(time: time).value.stringValue, value.stringValue)
+        } else {
+            XCTFail("value not found in converted dictionary.")
         }
     }
 

@@ -6,6 +6,7 @@
 //
 
 import XCTest
+@testable import Trophy
 
 final class UserDefinedAttributeConverterTests: XCTestCase {
 
@@ -29,6 +30,57 @@ final class UserDefinedAttributeConverterTests: XCTestCase {
         // This is an example of a performance test case.
         self.measure {
             // Put the code you want to measure the time of here.
+        }
+    }
+    
+    func testUserDefinedAttributeConverterInstantiates() throws {
+        let converter = UserDefinedAttributeConverter()
+        XCTAssertNotNil(converter)
+    }
+    
+    func testUserDefinedAttributeConverterInstantiatesConverts() throws {
+        let converter = UserDefinedAttributeConverter()
+        let name = "My name"
+        let value = "Some value"
+        let unit = DistanceUnit(distanceSymbol: .ft)
+        let attributeDict = converter.convertToAPIFormat(UserDefinedAttribute(name: name, value: value, unit: unit))
+    }
+    
+    func testWeightAttributeConverterInstantiatesEquals() throws {
+        let converter = UserDefinedAttributeConverter()
+        let name = "My name"
+        let value = LevelAttribute(value: .eight).value
+        let unit = DistanceUnit(distanceSymbol: .ft)
+        let attributeDict = converter.convertToAPIFormat(
+            UserDefinedAttribute(name: name, value: value.stringValue, unit: unit))
+        
+        // Access the values in the returned dictionary
+        if let name = attributeDict["name"] as? String {
+            print("Name: \(name)")
+            XCTAssertEqual(
+                UserDefinedAttribute(name: name, value: value.stringValue, unit: unit).name,
+                name)
+        } else {
+            XCTFail("name not found in converted dictionary.")
+        }
+        
+        if let value = attributeDict["value"] as? AttributeValue {
+            print("Value: \(value.stringValue)")
+            XCTAssertEqual(
+                UserDefinedAttribute(name: name, value: value.stringValue, unit: unit).value.stringValue,
+                value.stringValue)
+        } else {
+            XCTFail("value not found in converted dictionary.")
+        }
+        if let unit = attributeDict["unit"] as? String {
+            print("Unit: \(unit)") // Output: Unit: km
+            XCTAssertEqual(
+                UserDefinedAttribute(name: name,
+                                     value: value.stringValue,
+                                     unit: DistanceUnit(distanceSymbol: .ft))
+                .unit?.symbolAsString, String(unit))
+        } else {
+            XCTFail("unit not found in converted dictionary.")
         }
     }
 

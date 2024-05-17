@@ -53,11 +53,14 @@ final class DistanceAttributeConverterTests: XCTestCase {
         if let value = attributeDict["value"] as? AttributeValue {
             print("Value: \(value.stringValue)")
             XCTAssertEqual(String(5.0), value.stringValue)
+        } else {
+            XCTFail("value not found in converted dictionary.")
         }
-
         if let unit = attributeDict["unit"] as? String {
             print("Unit: \(unit)") // Output: Unit: km
             XCTAssertEqual(String(unit), unit)
+        } else {
+            XCTFail("unit not found in converted dictionary.")
         }
     }
     

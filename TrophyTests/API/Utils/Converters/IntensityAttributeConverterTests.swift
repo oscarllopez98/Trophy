@@ -6,6 +6,7 @@
 //
 
 import XCTest
+@testable import Trophy
 
 final class IntensityAttributeConverterTests: XCTestCase {
 
@@ -29,6 +30,29 @@ final class IntensityAttributeConverterTests: XCTestCase {
         // This is an example of a performance test case.
         self.measure {
             // Put the code you want to measure the time of here.
+        }
+    }
+    
+    func testIntensityAttributeConverterInstantiates() throws {
+        let converter = IntensityAttributeConverter()
+        XCTAssertNotNil(converter)
+    }
+    
+    func testIntensityAttributeConverterInstantiatesConverts() throws {
+        let converter = IntensityAttributeConverter()
+        let attributeDict = converter.convertToAPIFormat(IntensityAttribute(value: .med))
+    }
+    
+    func testIntensityAttributeConverterInstantiatesEquals() throws {
+        let converter = IntensityAttributeConverter()
+        let attributeDict = converter.convertToAPIFormat(IntensityAttribute(value: .med))
+        
+        // Access the values in the returned dictionary
+        if let value = attributeDict["value"] as? AttributeValue {
+            print("Value: \(value.stringValue)")
+            XCTAssertEqual(IntensityAttribute(value: .med).value.stringValue, value.stringValue)
+        } else {
+            XCTFail("value not found in converted dictionary.")
         }
     }
 

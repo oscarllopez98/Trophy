@@ -51,6 +51,7 @@ final class TrophyRESTAPITests: XCTestCase {
     }
     
     func testGETUserExercise() {
+        
         let trophyRestAPI = TrophyRESTAPI()
 
         let expectation = XCTestExpectation(description: "API Call - GET - Completed")

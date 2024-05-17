@@ -6,6 +6,7 @@
 //
 
 import XCTest
+@testable import Trophy
 
 final class WeightAttributeConverterTests: XCTestCase {
 
@@ -29,6 +30,41 @@ final class WeightAttributeConverterTests: XCTestCase {
         // This is an example of a performance test case.
         self.measure {
             // Put the code you want to measure the time of here.
+        }
+    }
+    
+    func testWeightAttributeConverterInstantiates() throws {
+        let converter = WeightAttributeConverter()
+        XCTAssertNotNil(converter)
+    }
+    
+    func testWeightAttributeConverterInstantiatesConverts() throws {
+        let converter = WeightAttributeConverter()
+        let attributeDict = converter.convertToAPIFormat(
+            WeightAttribute(weight: 100.0, unit: WeightUnit(weightSymbol: .kg)))
+    }
+    
+    func testWeightAttributeConverterInstantiatesEquals() throws {
+        let converter = WeightAttributeConverter()
+        let attributeDict = converter.convertToAPIFormat(
+            WeightAttribute(weight: 100.0, unit: WeightUnit(weightSymbol: .kg)))
+        
+        // Access the values in the returned dictionary
+        if let value = attributeDict["value"] as? AttributeValue {
+            print("Value: \(value.stringValue)")
+            XCTAssertEqual(
+                WeightAttribute(weight: 100.0, unit: WeightUnit(weightSymbol: .kg)).value.stringValue,
+                value.stringValue)
+        } else {
+            XCTFail("value not found in converted dictionary.")
+        }
+        if let unit = attributeDict["unit"] as? String {
+            print("Unit: \(unit)") // Output: Unit: km
+            XCTAssertEqual(
+                WeightAttribute(weight: 100.0, unit: WeightUnit(weightSymbol: .kg)).unit?.symbolAsString,
+                unit)
+        } else {
+            XCTFail("unit not found in converted dictionary.")
         }
     }
 
