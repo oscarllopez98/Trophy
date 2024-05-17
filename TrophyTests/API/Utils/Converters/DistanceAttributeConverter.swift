@@ -6,6 +6,7 @@
 //
 
 import XCTest
+@testable import Trophy
 
 final class DistanceAttributeConverter: XCTestCase {
 
@@ -31,5 +32,12 @@ final class DistanceAttributeConverter: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
-
+    
+    func testNoWay() throws {
+        self.measure {
+            let variable = DistanceAttributeConverter()
+        }
+        XCTAssert(true)
+    }
+    
 }
