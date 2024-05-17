@@ -10,14 +10,18 @@ import AWSAPIGateway
 
 class TrophyRESTAPI {
     
-
-//    func testAPICall() {
-//        testAPICall(a: 10, b: 20, op: "+")
-//    }
     func testPUTAPICall() {
         let request = preparePUTUserExerciseRequest()
         let jsonObject: [String: Any] = preparePUTUserExerciseJSON()
         handlePUTUserExerciseResponse(inRequest: request, jsonObject: jsonObject)
+    }
+    
+    func PUTUserExercise(exercise: Exercise) -> Void {
+        let request = preparePUTUserExerciseRequest()
+        let jsonObject: [String: Any] = preparePUTUserExerciseJSON(name: exercise.name,
+                                                                   type: exercise.type.asString,
+                                                                   attributes: exercise.attributes,
+                                                                   notes: exercise.notes!)
     }
     
     func testGetUserExercise() {
@@ -54,6 +58,47 @@ class TrophyRESTAPI {
         return request
     }
     
+    func preparePUTUserExerciseJSON(name: String,
+                                    type: String,
+                                    attributes: [Exercise.AttributeName:ExerciseAttribute]? = nil,
+                                    notes: String) -> [String: Any]{
+        
+        let distanceDict: [String: Any] = DistanceAttributeConverter()
+            .convertToAPIFormat(attributes?[.distance] as! DistanceAttribute)
+        
+        let timeDict: [String: Any] = TimeAttributeConverter()
+            .convertToAPIFormat(attributes?[.time] as! TimeAttribute)
+        let setsDict: [String: Any] = SetsAttributeConverter()
+            .convertToAPIFormat(attributes?[.sets] as! SetsAttribute)
+        let repsDict: [String: Any] = RepsAttributeConverter()
+            .convertToAPIFormat(attributes?[.reps] as! RepsAttribute)
+        let weightDict: [String: Any] = WeightAttributeConverter()
+            .convertToAPIFormat(attributes?[.weight] as! WeightAttribute)
+        let intensityDict: [String: Any] = IntensityAttributeConverter()
+            .convertToAPIFormat(attributes?[.intensity] as! IntensityAttribute)
+        let levelDict: [String: Any] = LevelAttributeConverter()
+            .convertToAPIFormat(attributes?[.level] as! LevelAttribute)
+        
+        let jsonObject: [String: Any] = [
+            "exercise": [
+                "name": "\(name)",
+                "type": "\(type)",
+                "attributes": [
+                    "distance": distanceDict,
+                    "time": timeDict,
+                    "sets": setsDict,
+                    "reps": repsDict,
+                    "weight": weightDict,
+                    "intensity": intensityDict,
+                    "level": levelDict
+                ],
+                "notes": "\(notes)"
+            ]
+        ]
+        return jsonObject
+        
+    }
+    
     func preparePUTUserExerciseJSON() -> [String: Any] {
         let jsonObject: [String: Any] = [
             "exercise": [
@@ -73,6 +118,7 @@ class TrophyRESTAPI {
         ]
         return jsonObject
     }
+
     
     func preparePUTUserExerciseRequestData(inRequest: URLRequest, jsonObject: [String: Any]) throws -> URLRequest {
         let jsonData = try JSONSerialization.data(withJSONObject: jsonObject, options: [])
