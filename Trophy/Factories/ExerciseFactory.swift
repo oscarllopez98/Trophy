@@ -24,6 +24,14 @@ class ExerciseFactory {
                         notes: "These are the notes of my Test Exercise :)")
     }
     
+    func createTestExerciseV2() -> Exercise {
+        return Exercise(name: "Test Exercise!",
+                        type: .other,
+                        attributes: [.level: LevelAttribute(value: .five)],
+                        date: Date(),
+                        notes: "These are the notes of my Test Exercise :)")
+    }
+    
     func createTestExerciseList(numExercises: Int) -> [Exercise] {
         var exerciseList: [Exercise] = []
         for num in 0...numExercises-1 {

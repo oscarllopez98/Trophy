@@ -15,19 +15,18 @@ class TrophyRESTAPI {
      
      - Parameters:
         - exercise: The exercise object to be updated.
-        - completion: A closure to be called upon completion of the API call, returning the exercise ID if successful, or nil otherwise.
      */
     func PUTUserExercise(exercise: Exercise) async -> String? {
-        let request = preparePUTUserExerciseRequest(userId: "4bf0e7ef-cd19-4b0c-b9a2-e946c58e01d1",
-                                                    exerciseId: exercise.id.uuidString)
-        let jsonObject: [String: Any] = preparePUTUserExerciseJSON(id: exercise.id,
-                                                                   name: exercise.name,
-                                                                   type: exercise.type.asString,
-                                                                   attributes: exercise.attributes,
-                                                                   notes: exercise.notes!)
-
-        // Prepare the request data with JSON payload
         do {
+            // Prepare request depending if we have an Exercise ID or not
+            let request = exercise.id != nil ? try preparePUTUserExerciseRequest(userId: "4bf0e7ef-cd19-4b0c-b9a2-e946c58e01d1", exerciseId: exercise.id!.uuidString)
+            : try preparePUTUserExerciseRequest(userId: "4bf0e7ef-cd19-4b0c-b9a2-e946c58e01d1")
+            
+            let jsonObject: [String: Any] = preparePUTUserExerciseJSON(name: exercise.name,
+                                                                       type: exercise.type.asString,
+                                                                       attributes: exercise.attributes,
+                                                                       notes: exercise.notes!)
+            // Prepare the request data with JSON payload
             let requestWithBody = try preparePUTUserExerciseRequestData(inRequest: request, jsonObject: jsonObject)
             // Use await to handle the response
             return await handlePUTUserExerciseResponse(inRequest: requestWithBody, jsonObject: jsonObject)
@@ -35,6 +34,8 @@ class TrophyRESTAPI {
             print("Error preparing request data: \(error)")
             return nil
         }
+
+     
     }
 
     /**
@@ -44,7 +45,10 @@ class TrophyRESTAPI {
         - userId: The user id for the object to be retrieved.
         - exerciseId: The exercise id for the object to be retrieved.
      */
-    func GETUserExercise(userId: String, exerciseId: String) async {
+    func GETUserExercise(userId: String, exerciseId: String) async throws {
+        if (userId.isEmpty) { throw APIError.emptyParameter(parameterName: "userId") }
+        if (exerciseId.isEmpty) { throw APIError.emptyParameter(parameterName: "exerciseId") }
+        
         let request = prepareGETUserExerciseRequest(userId: userId, exerciseId: exerciseId)
         await handleGETUserExerciseResponse(inRequest: request)
     }
@@ -77,7 +81,10 @@ class TrophyRESTAPI {
         - exerciseId: The ID of the exercise.
      - Returns: A URLRequest object for the PUT request.
      */
-    func preparePUTUserExerciseRequest(userId: String, exerciseId: String) -> URLRequest {
+    func preparePUTUserExerciseRequest(userId: String, exerciseId: String) throws -> URLRequest {
+        if (userId.isEmpty) { throw APIError.emptyParameter(parameterName: "userId") }
+        if (exerciseId.isEmpty) { throw APIError.emptyParameter(parameterName: "userId") }
+
         let path = "https://xhh2wpxj6f.execute-api.us-east-1.amazonaws.com/Prod/users/\(userId)/exercises/\(exerciseId)"
         guard let url = URL(string: path) else {
             fatalError("Invalid URL: \(path)")
@@ -92,6 +99,22 @@ class TrophyRESTAPI {
         return request
     }
     
+    func preparePUTUserExerciseRequest(userId: String) throws -> URLRequest {
+        if (userId.isEmpty) { throw APIError.emptyParameter(parameterName: "userId") }
+
+        let path = "https://xhh2wpxj6f.execute-api.us-east-1.amazonaws.com/Prod/users/\(userId)/exercises/"
+        guard let url = URL(string: path) else {
+            fatalError("Invalid URL: \(path)")
+        }
+        
+        // Create a URLRequest with the URL + Set the HTTP method to PUT
+        var request = URLRequest(url: url)
+        request.httpMethod = "PUT"
+        
+        // Set the API key in the request headers
+        request.addValue("eJft9CvQjC9WqubQzLaFS7rAPrjRWCKt99QuLHAm", forHTTPHeaderField: "x-api-key")
+        return request
+    }
     /**
      Prepares a URLRequest for a PUT user exercise API request.
      
@@ -119,8 +142,7 @@ class TrophyRESTAPI {
         - notes: Any notes associated with the exercise.
      - Returns: A dictionary representing the JSON payload.
      */
-    func preparePUTUserExerciseJSON(id: UUID? = nil,
-                                    name: String,
+    func preparePUTUserExerciseJSON(name: String,
                                     type: String,
                                     attributes: [Exercise.AttributeName:ExerciseAttribute]? = nil,
                                     notes: String) -> [String: Any]{
@@ -178,12 +200,12 @@ class TrophyRESTAPI {
         ]
         
         // Conditionally add ID if it's not nil
-        if var exerciseDict = jsonObject["exercise"] as? [String: Any] {
-            if let id = id {
-                exerciseDict["id"] = id.uuidString
-            }
-            jsonObject["exercise"] = exerciseDict
-        }
+//        if var exerciseDict = jsonObject["exercise"] as? [String: Any] {
+//            if let id = id {
+//                exerciseDict["id"] = id.uuidString
+//            }
+//            jsonObject["exercise"] = exerciseDict
+//        }
         
         return jsonObject
     }
@@ -262,6 +284,7 @@ class TrophyRESTAPI {
             if let jsonResponse = try? JSONSerialization.jsonObject(with: data) as? [String: Any] {
                 // Process the JSON response
                 print("GET User Exercise response: \(jsonResponse)")
+                
             }
         } catch {
             // Handle error appropriately

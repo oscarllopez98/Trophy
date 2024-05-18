@@ -87,7 +87,7 @@ struct ContentView: View {
 //This helps create ExerciseCardViews based on a given list of Exercises
 func mapExercisesToViewModels(exercises: [Exercise]) -> [ExerciseViewModel] {
     return exercises.map { exercise in
-        return ExerciseViewModel(id: exercise.id,
+        return ExerciseViewModel(id: exercise.id!,
                                  name: exercise.name,
                                  type: exercise.type,
                                  attributes: exercise.attributes,

@@ -92,6 +92,8 @@
 		9FD4E7552BF7DC8300C56E9B /* LevelAttributeConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD4E7542BF7DC8300C56E9B /* LevelAttributeConverterTests.swift */; };
 		9FD4E7572BF7DCFD00C56E9B /* UserDefinedAttributeConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD4E7562BF7DCFD00C56E9B /* UserDefinedAttributeConverter.swift */; };
 		9FD4E7592BF7DD3000C56E9B /* UserDefinedAttributeConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD4E7582BF7DD3000C56E9B /* UserDefinedAttributeConverterTests.swift */; };
+		9FD4E75C2BF9627200C56E9B /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD4E75B2BF9627200C56E9B /* APIError.swift */; };
+		9FD4E75E2BF96E3A00C56E9B /* ExerciseConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD4E75D2BF96E3A00C56E9B /* ExerciseConverter.swift */; };
 		9FF1D8342B147F5E002F6EAC /* TrophyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF1D8332B147F5E002F6EAC /* TrophyApp.swift */; };
 		9FF1D8362B147F5E002F6EAC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF1D8352B147F5E002F6EAC /* ContentView.swift */; };
 		9FF1D8382B147F5F002F6EAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FF1D8372B147F5F002F6EAC /* Assets.xcassets */; };
@@ -231,6 +233,8 @@
 		9FD4E7542BF7DC8300C56E9B /* LevelAttributeConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelAttributeConverterTests.swift; sourceTree = "<group>"; };
 		9FD4E7562BF7DCFD00C56E9B /* UserDefinedAttributeConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefinedAttributeConverter.swift; sourceTree = "<group>"; };
 		9FD4E7582BF7DD3000C56E9B /* UserDefinedAttributeConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefinedAttributeConverterTests.swift; sourceTree = "<group>"; };
+		9FD4E75B2BF9627200C56E9B /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		9FD4E75D2BF96E3A00C56E9B /* ExerciseConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseConverter.swift; sourceTree = "<group>"; };
 		9FF1D8302B147F5E002F6EAC /* Trophy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Trophy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FF1D8332B147F5E002F6EAC /* TrophyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrophyApp.swift; sourceTree = "<group>"; };
 		9FF1D8352B147F5E002F6EAC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -320,6 +324,7 @@
 		9F2ACB682BADF4CE002A494B /* API */ = {
 			isa = PBXGroup;
 			children = (
+				9FD4E75A2BF9625700C56E9B /* Errors */,
 				9FF313D72BF6D657000E2F53 /* Networking */,
 				9FF313D32BF6D643000E2F53 /* Utils */,
 				9FF313CF2BF6D634000E2F53 /* TrophyRestAPISDK */,
@@ -575,6 +580,14 @@
 			path = AttributeInputs;
 			sourceTree = "<group>";
 		};
+		9FD4E75A2BF9625700C56E9B /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				9FD4E75B2BF9627200C56E9B /* APIError.swift */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
 		9FF1D8272B147F5D002F6EAC = {
 			isa = PBXGroup;
 			children = (
@@ -800,6 +813,7 @@
 				9FD4E74E2BF7DB8E00C56E9B /* IntensityAttributeConverter.swift */,
 				9FD4E7522BF7DC6100C56E9B /* LevelAttributeConverter.swift */,
 				9FD4E7562BF7DCFD00C56E9B /* UserDefinedAttributeConverter.swift */,
+				9FD4E75D2BF96E3A00C56E9B /* ExerciseConverter.swift */,
 			);
 			path = Converters;
 			sourceTree = "<group>";
@@ -1052,12 +1066,14 @@
 			files = (
 				9FAE6EF22BA12C1C0077E9AC /* LevelInputViewModel.swift in Sources */,
 				9FAE6EE62BA122BC0077E9AC /* DistanceInputViewModel.swift in Sources */,
+				9FD4E75E2BF96E3A00C56E9B /* ExerciseConverter.swift in Sources */,
 				9FB372842B97930300FFE87C /* DurationPickerView.swift in Sources */,
 				9FAE6EF72BA14C440077E9AC /* MockExerciseDatabase.swift in Sources */,
 				9F585FFC2B3B655C0061F1EB /* BenchPress.swift in Sources */,
 				9F76C2032B90273600EB276F /* ExerciseCardViewController.swift in Sources */,
 				9FF1D8362B147F5E002F6EAC /* ContentView.swift in Sources */,
 				9F5860132B3B6B1C0061F1EB /* Tennis.swift in Sources */,
+				9FD4E75C2BF9627200C56E9B /* APIError.swift in Sources */,
 				9F585FF02B3A1CFD0061F1EB /* LevelAttribute.swift in Sources */,
 				9F76C1F92B8EC91B00EB276F /* WorkoutValidationHelper.swift in Sources */,
 				9FB62FAE2B9F812D00421424 /* RepsInputView.swift in Sources */,

@@ -91,8 +91,7 @@ final class TrophyRESTAPITests: XCTestCase {
         ]
 
         let result: [String: Any] = TrophyRESTAPI()
-            .preparePUTUserExerciseJSON(id: UUID(uuidString: "705da5bc-75ec-46d4-88e3-1f0ebfdafb65"),
-                                        name: name,
+            .preparePUTUserExerciseJSON(name: name,
                                         type: type,
                                         attributes: attributes,
                                         notes: notes)
@@ -106,9 +105,15 @@ final class TrophyRESTAPITests: XCTestCase {
         
         // Instantiate API client
         let trophyRestAPI = TrophyRESTAPI()
+        let userId = "4bf0e7ef-cd19-4b0c-b9a2-e946c58e01d1"
+        let exerciseId = "15132D4C-4C6B-462F-A162-F967291A1424"
         
         // Execute the async function
-        await trophyRestAPI.GETUserExercise(userId: "", exerciseId: "")
+        do {
+            try await trophyRestAPI.GETUserExercise(userId: userId, exerciseId: exerciseId)
+        } catch {
+            XCTFail("Could not GET User Exercise with userId \(userId) and exerciseId \(exerciseId)")
+        }
     }
     
     func testUpdateFlowForUserExercise() async {
@@ -116,11 +121,10 @@ final class TrophyRESTAPITests: XCTestCase {
         let client = TrophyRESTAPI()
 
         // Get a test exercise and update the ID for one we know exists in the DB
-        let exercise = ExerciseFactory.shared.createTestExercise()
+        let exercise = ExerciseFactory.shared.createTestExerciseV2()
         
         // Create a sample Exercise object
         let updatedExercise = Exercise(
-            id: UUID(),
             name: "Test Exercise",
             type: .other,
             attributes: [
@@ -133,7 +137,6 @@ final class TrophyRESTAPITests: XCTestCase {
                 .level: LevelAttribute(value: .five)
             ],
             date: Date(),
-            duration: 10,
             notes: "Ran for 30 minutes")
         
         //- - PUT Exercise - -
@@ -142,21 +145,30 @@ final class TrophyRESTAPITests: XCTestCase {
             print("PUT success with exercise ID: \(oldExerciseId)")
             
             //- - GET Exercise : With newly generated exerciseId - -
-            await client.GETUserExercise(userId: "4bf0e7ef-cd19-4b0c-b9a2-e946c58e01d1", exerciseId: oldExerciseId)
+            do {
+                try await client.GETUserExercise(userId: "4bf0e7ef-cd19-4b0c-b9a2-e946c58e01d1", exerciseId: oldExerciseId)
+            } catch {
+                XCTFail("Could not GET User Exercise with userId \("4bf0e7ef-cd19-4b0c-b9a2-e946c58e01d1") and exerciseId \(oldExerciseId)")
+            }
+            updatedExercise.id = UUID(uuidString: oldExerciseId)
             
             //- - UPDATE Exercise - -
             if let newExerciseId = await client.PUTUserExercise(exercise: updatedExercise) {
                 print("PUT success with exercise ID: \(newExerciseId)")
                 
-                //- - GET Updated Exercise : With existing generated exerciseId- -
-                await client.GETUserExercise(userId: "4bf0e7ef-cd19-4b0c-b9a2-e946c58e01d1", exerciseId: newExerciseId)
-                
-                XCTAssertEqual(oldExerciseId, newExerciseId)
+                //- - GET Updated Exercise : With existing generated exerciseId - -
+                do {
+                    try await client.GETUserExercise(userId: "4bf0e7ef-cd19-4b0c-b9a2-e946c58e01d1", exerciseId: newExerciseId)
+                } catch {
+                    XCTFail("Could not GET User Exercise with userId \("4bf0e7ef-cd19-4b0c-b9a2-e946c58e01d1") and exerciseId \(newExerciseId)")
+                }
+                XCTAssertEqual(oldExerciseId.lowercased(), newExerciseId.lowercased())
             } else {
                 XCTFail("Failed to PUT Updated Exercise.")
             }
             
         } else {
+            print("Using Exercise ID:", exercise.id!.uuidString)
             XCTFail("Failed to PUT Exercise.")
         }
 
