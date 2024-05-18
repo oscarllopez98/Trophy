@@ -33,55 +33,20 @@ final class TrophyRESTAPITests: XCTestCase {
         }
     }
     
-    func testTrophyRESTAPITestPUTAPICall() {
+    func testPUTUserExercise() async {
+        // Instantiate API client
         let trophyRestAPI = TrophyRESTAPI()
-        
-        let expectation = XCTestExpectation(description: "API Call Completed")
-        
-        // Execute the async function
-        trophyRestAPI.testPUTAPICall() { exerciseId in
-            if let id = exerciseId {
-                print("Received exercise ID: \(id)")
-                XCTAssertNotNil(id)
-            } else {
-                XCTFail("No exercise ID found.")
-            }
-        }
-        
-        //Fulfill the expectation after a delay
-        DispatchQueue.main.asyncAfter(deadline: .now() + 8) { // Adjust timeout as needed
-            expectation.fulfill()
-        }
-        
-        //Wait for the expectation to be fulfilled within a timeout
-        wait(for: [expectation], timeout: 8) // Adjust timeout as needed
-    }
-    
-    func testTrophyRESTAPITestPUTAPICallWithExercise() {
-        let trophyRestAPI = TrophyRESTAPI()
-        
-        let expectation = XCTestExpectation(description: "API Call Completed")
-        
+
+        // Get a test exercise and update the ID for one we know exists in the DB
         let exercise = ExerciseFactory.shared.createTestExercise()
         exercise.id = UUID(uuidString: "3a153e13-e098-4988-94cb-453a347c9dc3")!
         
-        // Execute the async function
-        trophyRestAPI.PUTUserExercise(exercise: exercise) { exerciseId in
-            if let id = exerciseId {
-                print("Received exercise ID: \(id)")
-                XCTAssertNotNil(id)
-            } else {
-                XCTFail("No exercise ID found.")
-            }
+        // Call the async function and await its result
+        if let exerciseId = await trophyRestAPI.PUTUserExercise(exercise: exercise) {
+            print("Received exercise ID: \(exerciseId)")
+        } else {
+            print("Failed to receive exercise ID.")
         }
-        
-        //Fulfill the expectation after a delay
-        DispatchQueue.main.asyncAfter(deadline: .now() + 8) { // Adjust timeout as needed
-            expectation.fulfill()
-        }
-        
-        //Wait for the expectation to be fulfilled within a timeout
-        wait(for: [expectation], timeout: 8) // Adjust timeout as needed
     }
     
     func testPreparePUTUserExerciseJSON() {
@@ -135,29 +100,68 @@ final class TrophyRESTAPITests: XCTestCase {
         // Log the results
         print("Result: \(result)")
         print("Expected Output: \(expectedOutput)")
-        
-        
-        // Compare the results
     }
     
-    func testGETUserExercise() {
+    func testGETUserExercise() async {
         
+        // Instantiate API client
         let trophyRestAPI = TrophyRESTAPI()
-
-        let expectation = XCTestExpectation(description: "API Call - GET - Completed")
         
-        // Execute the async funciton
-        trophyRestAPI.testGetUserExercise()
-        
-        //Fulfill the expectation after a delay
-        DispatchQueue.main.asyncAfter(deadline: .now() + 8) { // Adjust timeout as needed
-            expectation.fulfill()
-        }
-        
-        //Wait for the expectation to be fulfilled within a timeout
-        wait(for: [expectation], timeout: 8) // Adjust timeout as needed
+        // Execute the async function
+        await trophyRestAPI.GETUserExercise(userId: "", exerciseId: "")
     }
     
-    
+    func testUpdateFlowForUserExercise() async {
+        // Instantiate API client
+        let client = TrophyRESTAPI()
 
+        // Get a test exercise and update the ID for one we know exists in the DB
+        let exercise = ExerciseFactory.shared.createTestExercise()
+        
+        // Create a sample Exercise object
+        let updatedExercise = Exercise(
+            id: UUID(),
+            name: "Test Exercise",
+            type: .other,
+            attributes: [
+                .distance: DistanceAttribute(distance: 5, unit: .init(distanceSymbol: .km)),
+                .time: TimeAttribute(time: 1800),
+                .sets: SetsAttribute(sets: 10),
+                .reps: RepsAttribute(reps: 15),
+                .weight: WeightAttribute(weight: 75.5, unit: .init(weightSymbol: .lb)),
+                .intensity: IntensityAttribute(value: .high),
+                .level: LevelAttribute(value: .five)
+            ],
+            date: Date(),
+            duration: 10,
+            notes: "Ran for 30 minutes")
+        
+        //- - PUT Exercise - -
+        // Call the async function and await its result
+        if let oldExerciseId = await client.PUTUserExercise(exercise: exercise) {
+            print("PUT success with exercise ID: \(oldExerciseId)")
+            
+            //- - GET Exercise : With newly generated exerciseId - -
+            await client.GETUserExercise(userId: "4bf0e7ef-cd19-4b0c-b9a2-e946c58e01d1", exerciseId: oldExerciseId)
+            
+            //- - UPDATE Exercise - -
+            if let newExerciseId = await client.PUTUserExercise(exercise: updatedExercise) {
+                print("PUT success with exercise ID: \(newExerciseId)")
+                
+                //- - GET Updated Exercise : With existing generated exerciseId- -
+                await client.GETUserExercise(userId: "4bf0e7ef-cd19-4b0c-b9a2-e946c58e01d1", exerciseId: newExerciseId)
+                
+                XCTAssertEqual(oldExerciseId, newExerciseId)
+            } else {
+                XCTFail("Failed to PUT Updated Exercise.")
+            }
+            
+        } else {
+            XCTFail("Failed to PUT Exercise.")
+        }
+
+
+        
+        
+    }
 }

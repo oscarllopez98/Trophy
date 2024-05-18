@@ -46,13 +46,13 @@ final class TimeAttributeConverterTests: XCTestCase {
     
     func testTimeAttributeConverterInstantiatesEquals() throws {
         let converter = TimeAttributeConverter()
-        let time = TimeInterval()
+        let time = TimeInterval(100)
         let attributeDict = converter.convertToAPIFormat(TimeAttribute(time: time))
         
         // Access the values in the returned dictionary
-        if let value = attributeDict["value"] as? AttributeValue {
-            print("Value: \(value.stringValue)")
-            XCTAssertEqual(TimeAttribute(time: time).value.stringValue, value.stringValue)
+        if let value = attributeDict["value"] as? Int {
+            print("Value: \(value)")
+            XCTAssertEqual(Int(time), value)
         } else {
             XCTFail("value not found in converted dictionary.")
         }

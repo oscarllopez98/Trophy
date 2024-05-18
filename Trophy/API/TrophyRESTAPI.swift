@@ -10,21 +10,14 @@ import AWSAPIGateway
 
 class TrophyRESTAPI {
     
-    func testPUTAPICall(completion: @escaping (String?) -> Void) {
-        let request = preparePUTUserExerciseRequest()
-        let jsonObject: [String: Any] = preparePUTUserExerciseJSON()
-        handlePUTUserExerciseResponse(inRequest: request, jsonObject: jsonObject) { exerciseId in
-            if let id = exerciseId {
-                print("Received exercise ID: \(id)")
-                completion(id)
-            } else {
-                print("No exercise ID found.")
-                completion(nil)
-            }
-        }
-    }
-    
-    func PUTUserExercise(exercise: Exercise, completion: @escaping (String?) -> Void) {
+    /**
+     Sends a PUT request to update a user exercise.
+     
+     - Parameters:
+        - exercise: The exercise object to be updated.
+        - completion: A closure to be called upon completion of the API call, returning the exercise ID if successful, or nil otherwise.
+     */
+    func PUTUserExercise(exercise: Exercise) async -> String? {
         let request = preparePUTUserExerciseRequest(userId: "4bf0e7ef-cd19-4b0c-b9a2-e946c58e01d1",
                                                     exerciseId: exercise.id.uuidString)
         let jsonObject: [String: Any] = preparePUTUserExerciseJSON(id: exercise.id,
@@ -33,26 +26,38 @@ class TrophyRESTAPI {
                                                                    attributes: exercise.attributes,
                                                                    notes: exercise.notes!)
 
-        handlePUTUserExerciseResponse(inRequest: request, jsonObject: jsonObject) { exerciseId in
-            if let id = exerciseId {
-                print("Received exercise ID: \(id)")
-                completion(id)
-            } else {
-                print("No exercise ID found.")
-                completion(nil)
-            }
+        // Prepare the request data with JSON payload
+        do {
+            let requestWithBody = try preparePUTUserExerciseRequestData(inRequest: request, jsonObject: jsonObject)
+            // Use await to handle the response
+            return await handlePUTUserExerciseResponse(inRequest: requestWithBody, jsonObject: jsonObject)
+        } catch {
+            print("Error preparing request data: \(error)")
+            return nil
         }
     }
-    
-    func testGetUserExercise() {
-        let userId = "4bf0e7ef-cd19-4b0c-b9a2-e946c58e01d1"
-        let exerciseId = "ec4f64f9-d0a6-4a50-bdec-146f83438bcd"
-        
+
+    /**
+     Sends a GET request to retrieve a user exercise.
+     
+     - Parameters:
+        - userId: The user id for the object to be retrieved.
+        - exerciseId: The exercise id for the object to be retrieved.
+     */
+    func GETUserExercise(userId: String, exerciseId: String) async {
         let request = prepareGETUserExerciseRequest(userId: userId, exerciseId: exerciseId)
-        
-        handleGETUserExerciseResponse(inRequest: request)
+        await handleGETUserExerciseResponse(inRequest: request)
     }
+
     
+    /**
+     Prepares a URLRequest for a PUT user exercise API request.
+     
+     - Parameters:
+        - userId: The ID of the user.
+        - exerciseId: The ID of the exercise.
+     - Returns: A URLRequest object for the PUT request.
+     */
     func prepareGETUserExerciseRequest(userId: String, exerciseId: String) -> URLRequest {
         let path = "https://xhh2wpxj6f.execute-api.us-east-1.amazonaws.com/Prod/users/\(userId)/exercises/\(exerciseId)"
         guard let url = URL(string: path) else {
@@ -64,23 +69,37 @@ class TrophyRESTAPI {
         return request
     }
     
+    /**
+     Prepares a URLRequest for a PUT user exercise API request.
+     
+     - Parameters:
+        - userId: The ID of the user.
+        - exerciseId: The ID of the exercise.
+     - Returns: A URLRequest object for the PUT request.
+     */
     func preparePUTUserExerciseRequest(userId: String, exerciseId: String) -> URLRequest {
         let path = "https://xhh2wpxj6f.execute-api.us-east-1.amazonaws.com/Prod/users/\(userId)/exercises/\(exerciseId)"
         guard let url = URL(string: path) else {
             fatalError("Invalid URL: \(path)")
         }
+        
+        // Create a URLRequest with the URL + Set the HTTP method to PUT
         var request = URLRequest(url: url)
         request.httpMethod = "PUT"
+        
+        // Set the API key in the request headers
         request.addValue("eJft9CvQjC9WqubQzLaFS7rAPrjRWCKt99QuLHAm", forHTTPHeaderField: "x-api-key")
         return request
     }
     
+    /**
+     Prepares a URLRequest for a PUT user exercise API request.
+     
+     - Returns: A URLRequest object for the PUT request.
+     */
     func preparePUTUserExerciseRequest() -> URLRequest {
-        // Create a URLRequest with the URL
+        // Create a URLRequest with the URL + Set the HTTP method to PUT
         var request = URLRequest(url: getPUTUserExerciseEndpointPath())
-
-        
-        // Set the HTTP method to POST (or PUT, DELETE, etc. depending on your API)
         request.httpMethod = "PUT"
 
         // Set the API key in the request headers
@@ -89,6 +108,17 @@ class TrophyRESTAPI {
         return request
     }
     
+    /**
+     Prepares the JSON payload for a PUT user exercise API request.
+     
+     - Parameters:
+        - id: The ID of the exercise.
+        - name: The name of the exercise.
+        - type: The type of the exercise.
+        - attributes: The attributes of the exercise.
+        - notes: Any notes associated with the exercise.
+     - Returns: A dictionary representing the JSON payload.
+     */
     func preparePUTUserExerciseJSON(id: UUID? = nil,
                                     name: String,
                                     type: String,
@@ -158,37 +188,30 @@ class TrophyRESTAPI {
         return jsonObject
     }
 
-    
-    func preparePUTUserExerciseJSON() -> [String: Any] {
-        let jsonObject: [String: Any] = [
-            "exercise": [
-                "name": "iOS Test Exercise",
-                "type": "cardio",
-                "attributes": [
-                    "distance": ["value": 5, "unit": "mi"],
-                    "time": ["value": 9000],
-                    "sets": ["value": 5],
-                    "reps": ["value": 10],
-                    "weight": ["value": 100, "unit": "kg"],
-                    "intensity": ["value": "med"],
-                    "level": ["value": 8]
-                ],
-                "notes": "This is from my iOS App!"
-            ]
-        ]
-        return jsonObject
-    }
-
-    
+    /**
+     Prepares the URLRequest data for a PUT user exercise API request.
+     
+     - Parameters:
+        - inRequest: The input URLRequest.
+        - jsonObject: The JSON object to be included in the request body.
+     - Returns: A URLRequest object with the JSON data set as the HTTP body.
+     - Throws: An error if there is an issue creating the JSON data.
+     */
     func preparePUTUserExerciseRequestData(inRequest: URLRequest, jsonObject: [String: Any]) throws -> URLRequest {
         let jsonData = try JSONSerialization.data(withJSONObject: jsonObject, options: [])
-
         // Set the request body with the JSON data
         var outRequest = inRequest
         outRequest.httpBody = jsonData
+        outRequest.addValue("application/json", forHTTPHeaderField: "Content-Type") // Ensure content type is set
         return outRequest
     }
+
     
+    /**
+     Constructs the URL for the PUT user exercise API endpoint.
+     
+     - Returns: The URL for the API endpoint.
+     */
     func getPUTUserExerciseEndpointPath() -> URL {
         // Create a URL for your API endpoint
         let endpointPath = "/users/4bf0e7ef-cd19-4b0c-b9a2-e946c58e01d1/exercises"
@@ -196,69 +219,61 @@ class TrophyRESTAPI {
         return url
     }
     
-    func handlePUTUserExerciseResponse(inRequest: URLRequest, jsonObject: [String: Any], completion: @escaping (String?) -> Void) {
+    /**
+     Handles the response from a PUT user exercise API request.
+     
+     - Parameters:
+        - inRequest: The input URLRequest.
+        - jsonObject: The JSON object returned in the response.
+        - completion: A closure to be called upon completion of the API call, returning the exercise ID if successful, or nil otherwise.
+     */
+    func handlePUTUserExerciseResponse(inRequest: URLRequest, jsonObject: [String: Any]) async -> String? {
+        // Perform the async network operation, e.g., using URLSession
         do {
-            let outRequest = try preparePUTUserExerciseRequestData(inRequest: inRequest, jsonObject: jsonObject)
-
-            // Create a URLSessionDataTask to make the request
-            let task = URLSession.shared.dataTask(with: outRequest) { data, response, error in
-                // Handle the response or error here
-                if let error = error {
-                    print("Error: \(error)")
-                    completion(nil)
-                    return
-                }
-
-                if let httpResponse = response as? HTTPURLResponse {
-                    print("Status code: \(httpResponse.statusCode)")
-                    
-                    // Check if data is not nil
-                    guard let responseData = data else {
-                        print("No data received")
-                        completion(nil)
-                        return
-                    }
-
-                    do {
-                        // Parse the response data into a dictionary
-                        if let jsonResponse = try JSONSerialization.jsonObject(with: responseData, options: []) as? [String: Any] {
-                            // Access the desired property from the dictionary
-                            if let exerciseId = jsonResponse["exerciseId"] as? String {
-                                print("Exercise ID: \(exerciseId)")
-                                completion(exerciseId)
-                            } else {
-                                print("Exercise ID not found in response")
-                                completion(nil)
-                            }
-                        } else {
-                            print("Failed to parse JSON response")
-                            completion(nil)
-                        }
-                    } catch {
-                        print("Error parsing JSON: \(error)")
-                        completion(nil)
-                    }
-                } else {
-                    completion(nil)
-                }
+            let (data, _) = try await URLSession.shared.data(for: inRequest)
+            // Parse the data to extract the exercise ID
+            if let jsonResponse = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
+               let exerciseId = jsonResponse["exerciseId"] as? String {
+                return exerciseId
+            } else {
+                return nil
             }
-
-            // Start the data task
-            task.resume()
         } catch {
-            print("Error creating JSON: \(error)")
-            completion(nil)
+            // Handle error appropriately
+            print("Error handling PUT user exercise response: \(error)")
+            return nil
         }
     }
 
-    
-    func getGETUserExerciseEndpointPath(userId: String, exerciseId: String) -> URL {
-        // Create a URL for your API endpoint
-        let endpointPath = "/users/\(userId)/exercises/\(exerciseId)"
-        let url = URL(string: "https://xhh2wpxj6f.execute-api.us-east-1.amazonaws.com/Prod" + endpointPath)!
-        return url
+
+    /**
+     Constructs the URL for the GET user exercise API endpoint.
+     
+     - Parameters:
+        - userId: The ID of the user.
+        - exerciseId: The ID of the exercise.
+     - Returns: The URL for the API endpoint.
+     */
+    func handleGETUserExerciseResponse(inRequest: URLRequest) async {
+        // Perform the async network operation, e.g., using URLSession
+        do {
+            let (data, _) = try await URLSession.shared.data(for: inRequest)
+            // Handle the data appropriately
+            if let jsonResponse = try? JSONSerialization.jsonObject(with: data) as? [String: Any] {
+                // Process the JSON response
+                print("GET User Exercise response: \(jsonResponse)")
+            }
+        } catch {
+            // Handle error appropriately
+            print("Error handling GET user exercise response: \(error)")
+        }
     }
     
+    /**
+     Handles the response from a GET user exercise API request.
+     
+     - Parameter inRequest: The input URLRequest.
+     */
     func handleGETUserExerciseResponse(inRequest: URLRequest) {
         // Create a URLSessionDataTask to make the request
         let task = URLSession.shared.dataTask(with: inRequest) { data, response, error in
@@ -356,50 +371,4 @@ class TrophyRESTAPI {
         // Start the data task
         task.resume()
     }
-
-    
-//    func testAPICall(a: NSNumber, b: NSNumber, op: String) {
-//        let client = TROPHYTrophyRESTAPIClient.default()
-//                
-//        // Create a TROPHYInput object
-//        var body = TROPHYInput()
-//        
-//        // Check if body is not nil before proceeding
-//        if let body = body {
-//            body.a = a
-//            body.b = b
-//            body.op = op
-//            
-//            // Call the API method with the unwrapped body
-//            client.rootPost(body: body).continueWith { (task: AWSTask<TROPHYResult>) -> AWSTask<TROPHYResult>? in
-//                self.showResult(task: task)
-//                return nil
-//            }
-//        } else {
-//            print("Failed to create Input body")
-//        }
-//    }
-    
-
-//    func showResult(task: AWSTask<TROPHYResult>) {
-//        if let error = task.error {
-//            print("Error: \(error)")
-//        } else if let result = task.result {
-//            if let input = result.input, let output = result.output {
-//                
-//                print()
-//                print("POST Payload:")
-//                print(result.input?.dictionaryValue)
-//                
-//                print("Lambda Return:")
-//                print(result.output?.dictionaryValue)
-//                print()
-//                
-//                print(String(format:"%@ %@ %@ = %@", input.a!, input.op!, input.b!, output.c!))
-//                print()
-//            } else {
-//                print("Input or output is nil")
-//            }
-//        }
-//    }
 }
