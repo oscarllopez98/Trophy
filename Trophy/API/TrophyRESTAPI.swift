@@ -45,15 +45,20 @@ class TrophyRESTAPI {
         - userId: The user id for the object to be retrieved.
         - exerciseId: The exercise id for the object to be retrieved.
      */
-    func GETUserExercise(userId: String, exerciseId: String) async throws {
+    func GETUserExercise(userId: String, exerciseId: String) async throws -> Exercise {
         if (userId.isEmpty) { throw APIError.emptyParameter(parameterName: "userId") }
         if (exerciseId.isEmpty) { throw APIError.emptyParameter(parameterName: "exerciseId") }
         
         let request = prepareGETUserExerciseRequest(userId: userId, exerciseId: exerciseId)
-        await handleGETUserExerciseResponse(inRequest: request)
+        do {
+            // Try to get the User Exercise
+            return try await handleGETUserExerciseResponse(inRequest: request)
+        } catch {
+            // Throw an Error if the GET request failed
+            throw APIError.GETUserExerciseFailed(userId: userId, exerciseId: exerciseId)
+        }
     }
 
-    
     /**
      Prepares a URLRequest for a PUT user exercise API request.
      
@@ -276,7 +281,7 @@ class TrophyRESTAPI {
         - exerciseId: The ID of the exercise.
      - Returns: The URL for the API endpoint.
      */
-    func handleGETUserExerciseResponse(inRequest: URLRequest) async {
+    func handleGETUserExerciseResponse(inRequest: URLRequest) async throws -> Exercise {
         // Perform the async network operation, e.g., using URLSession
         do {
             let (data, _) = try await URLSession.shared.data(for: inRequest)
@@ -284,11 +289,12 @@ class TrophyRESTAPI {
             if let jsonResponse = try? JSONSerialization.jsonObject(with: data) as? [String: Any] {
                 // Process the JSON response
                 print("GET User Exercise response: \(jsonResponse)")
-                
+                return try ExerciseConverter().convertExerciseJSONResponseToExercise(jsonResponse)
             }
         } catch {
             // Handle error appropriately
             print("Error handling GET user exercise response: \(error)")
+            throw APIError.GETUserExerciseFailedResponse
         }
     }
     
@@ -297,101 +303,101 @@ class TrophyRESTAPI {
      
      - Parameter inRequest: The input URLRequest.
      */
-    func handleGETUserExerciseResponse(inRequest: URLRequest) {
-        // Create a URLSessionDataTask to make the request
-        let task = URLSession.shared.dataTask(with: inRequest) { data, response, error in
-            // Handle the response or error here
-            if let error = error {
-                print("Error: \(error)")
-                return
-            }
-
-            if let httpResponse = response as? HTTPURLResponse {
-                print("Status code: \(httpResponse.statusCode)")
-                
-                // Check if data is not nil
-                guard let responseData = data else {
-                    print("No data received")
-                    return
-                }
-
-                do {
-                    // Parse the response data into a dictionary
-                    if let jsonResponse = try JSONSerialization.jsonObject(with: responseData, options: []) as? [String: Any] {
-                        // Access the desired property from the dictionary
-                        if let exercise = jsonResponse["exercise"] as? [String: Any] {
-                            // Access nested values
-                            let id = exercise["id"] as? String ?? "Default Value"
-                            print("Exercise ID: \(id)")
-
-                            let name = exercise["name"] as? String ?? "Default Value"
-                            print("Exercise Name: \(name)")
-
-                            let exerciseType = exercise["exerciseType"] as? String ?? "Default Value"
-                            print("Exercise Type: \(exerciseType)")
-
-                            if let attributes = exercise["attributes"] as? [String: Any] {
-                                // Distance Attribute
-                                if let distance = attributes["distance"] as? [String: Any],
-                                   let distanceValue = distance["value"] as? Double,
-                                   let distanceUnit = distance["unit"] as? String {
-                                    print("Weight: \(distanceValue) \(distanceUnit)")
-                                }
-                                // Time Attribute
-                                if let time = attributes["time"] as? [String: Any],
-                                   let timeValue = time["value"] as? Double {
-                                    print("Time: \(timeValue)")
-                                }
-                                // Sets Attribute
-                                if let sets = attributes["sets"] as? [String: Any],
-                                   let setsValue = sets["value"] as? Int {
-                                    print("Sets: \(setsValue)")
-                                }
-                                // Reps Attribute
-                                if let reps = attributes["reps"] as? [String: Any],
-                                   let repsValue = reps["value"] as? Int {
-                                    print("Reps: \(repsValue)")
-                                }
-                                // Weight Attribute
-                                if let weight = attributes["weight"] as? [String: Any],
-                                   let weightValue = weight["value"] as? Double,
-                                   let weightUnit = weight["unit"] as? String {
-                                    print("Weight: \(weightValue) \(weightUnit)")
-                                }
-                                // Level Attribute
-                                if let level = attributes["level"] as? [String: Any],
-                                   let levelValue = level["value"] as? Int {
-                                    print("Level: \(levelValue)")
-                                }
-                                // Intensity Attribute
-                                if let intensity = attributes["intensity"] as? [String: Any],
-                                   let intensityValue = intensity["value"] as? String {
-                                    print("Intensity: \(intensityValue)")
-                                }
-                                // Date Attribute
-                                if let date = attributes["date"] as? [String: Any],
-                                   let dateValue = date["value"] as? String {
-                                    print("Date: \(dateValue)")
-                                }
-                                // Notes Attribute
-                                if let notes = attributes["notes"] as? [String: Any],
-                                   let notesValue = notes["value"] as? String {
-                                    print("Notes: \(notesValue)")
-                                }
-                            }
-                        } else {
-                            print("Exercise not found in response")
-                        }
-                    } else {
-                        print("Failed to parse JSON response")
-                    }
-                } catch {
-                    print("Error parsing JSON: \(error)")
-                }
-            }
-        }
-
-        // Start the data task
-        task.resume()
-    }
+//    func handleGETUserExerciseResponse(inRequest: URLRequest) async throws {
+//        // Create a URLSessionDataTask to make the request
+//        let task = URLSession.shared.dataTask(with: inRequest) { data, response, error in
+//            // Handle the response or error here
+//            if let error = error {
+//                print("Error: \(error)")
+//                return
+//            }
+//
+//            if let httpResponse = response as? HTTPURLResponse {
+//                print("Status code: \(httpResponse.statusCode)")
+//                
+//                // Check if data is not nil
+//                guard let responseData = data else {
+//                    print("No data received")
+//                    return
+//                }
+//
+//                do {
+//                    // Parse the response data into a dictionary
+//                    if let jsonResponse = try JSONSerialization.jsonObject(with: responseData, options: []) as? [String: Any] {
+//                        // Access the desired property from the dictionary
+//                        if let exercise = jsonResponse["exercise"] as? [String: Any] {
+//                            // Access nested values
+//                            let id = exercise["id"] as? String ?? "Default Value"
+//                            print("Exercise ID: \(id)")
+//
+//                            let name = exercise["name"] as? String ?? "Default Value"
+//                            print("Exercise Name: \(name)")
+//
+//                            let exerciseType = exercise["exerciseType"] as? String ?? "Default Value"
+//                            print("Exercise Type: \(exerciseType)")
+//
+//                            if let attributes = exercise["attributes"] as? [String: Any] {
+//                                // Distance Attribute
+//                                if let distance = attributes["distance"] as? [String: Any],
+//                                   let distanceValue = distance["value"] as? Double,
+//                                   let distanceUnit = distance["unit"] as? String {
+//                                    print("Weight: \(distanceValue) \(distanceUnit)")
+//                                }
+//                                // Time Attribute
+//                                if let time = attributes["time"] as? [String: Any],
+//                                   let timeValue = time["value"] as? Double {
+//                                    print("Time: \(timeValue)")
+//                                }
+//                                // Sets Attribute
+//                                if let sets = attributes["sets"] as? [String: Any],
+//                                   let setsValue = sets["value"] as? Int {
+//                                    print("Sets: \(setsValue)")
+//                                }
+//                                // Reps Attribute
+//                                if let reps = attributes["reps"] as? [String: Any],
+//                                   let repsValue = reps["value"] as? Int {
+//                                    print("Reps: \(repsValue)")
+//                                }
+//                                // Weight Attribute
+//                                if let weight = attributes["weight"] as? [String: Any],
+//                                   let weightValue = weight["value"] as? Double,
+//                                   let weightUnit = weight["unit"] as? String {
+//                                    print("Weight: \(weightValue) \(weightUnit)")
+//                                }
+//                                // Level Attribute
+//                                if let level = attributes["level"] as? [String: Any],
+//                                   let levelValue = level["value"] as? Int {
+//                                    print("Level: \(levelValue)")
+//                                }
+//                                // Intensity Attribute
+//                                if let intensity = attributes["intensity"] as? [String: Any],
+//                                   let intensityValue = intensity["value"] as? String {
+//                                    print("Intensity: \(intensityValue)")
+//                                }
+//                                // Date Attribute
+//                                if let date = attributes["date"] as? [String: Any],
+//                                   let dateValue = date["value"] as? String {
+//                                    print("Date: \(dateValue)")
+//                                }
+//                                // Notes Attribute
+//                                if let notes = attributes["notes"] as? [String: Any],
+//                                   let notesValue = notes["value"] as? String {
+//                                    print("Notes: \(notesValue)")
+//                                }
+//                            }
+//                        } else {
+//                            print("Exercise not found in response")
+//                        }
+//                    } else {
+//                        print("Failed to parse JSON response")
+//                    }
+//                } catch {
+//                    print("Error parsing JSON: \(error)")
+//                }
+//            }
+//        }
+//
+//        // Start the data task
+//        task.resume()
+//    }
 }

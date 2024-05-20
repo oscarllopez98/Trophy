@@ -110,7 +110,7 @@ final class TrophyRESTAPITests: XCTestCase {
         
         // Execute the async function
         do {
-            try await trophyRestAPI.GETUserExercise(userId: userId, exerciseId: exerciseId)
+            let exercise: Exercise = try await trophyRestAPI.GETUserExercise(userId: userId, exerciseId: exerciseId)
         } catch {
             XCTFail("Could not GET User Exercise with userId \(userId) and exerciseId \(exerciseId)")
         }

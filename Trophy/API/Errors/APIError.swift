@@ -10,4 +10,9 @@ import Foundation
 enum APIError: Error {
     case nilParameter(parameterName: String)
     case emptyParameter(parameterName: String)
+    
+    // GET
+    case GETUserExerciseFailed(userId: String, exerciseId: String)
+    case GETUserExerciseFailedResponse
+    case GETUserExerciseFailedConversion
 }

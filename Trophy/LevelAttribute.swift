@@ -29,4 +29,12 @@ class LevelAttribute: ExerciseAttribute {
         self.level = value
         super.init(name: "Level", value: .integer(value.rawValue), unit: nil)
     }
+    
+    convenience init?(levelInt: Int) {
+        if let levelValue = Level(rawValue: levelInt) {
+            self.init(value: levelValue)
+        } else {
+            return nil // Return nil if the integer does not match any Level case
+        }
+    }
 }

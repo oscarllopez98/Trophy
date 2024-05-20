@@ -443,6 +443,7 @@
 		9F76C1EC2B8EC09200EB276F /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				9FD4E75F2BFC158300C56E9B /* Loggers */,
 				9F76C1EE2B8EC0AF00EB276F /* DataValidation */,
 				9F76C1ED2B8EC0A300EB276F /* ErrorHandling */,
 			);
@@ -586,6 +587,13 @@
 				9FD4E75B2BF9627200C56E9B /* APIError.swift */,
 			);
 			path = Errors;
+			sourceTree = "<group>";
+		};
+		9FD4E75F2BFC158300C56E9B /* Loggers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Loggers;
 			sourceTree = "<group>";
 		};
 		9FF1D8272B147F5D002F6EAC = {

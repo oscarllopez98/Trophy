@@ -23,4 +23,12 @@ class WeightUnit: Unit {
         self.init(symbol: .custom(weightSymbol.rawValue))
     }
     
+    convenience init?(weightString: String) {
+        if let weightSymbol = Symbol(rawValue: weightString) {
+            self.init(weightSymbol: weightSymbol)
+        } else {
+            return nil // Return nil if the string does not match any Symbol case
+        }
+    }
+    
 }
