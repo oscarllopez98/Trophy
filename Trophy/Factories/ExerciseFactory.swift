@@ -24,6 +24,26 @@ class ExerciseFactory {
                         notes: "These are the notes of my Test Exercise :)")
     }
     
+    func createTestExerciseV2() -> Exercise {
+        return Exercise(name: "Test Exercise V2",
+                        type: .other,
+                        attributes: [.level: LevelAttribute(value: .five)],
+                        date: Date(),
+                        notes: "These are the notes of my Test Exercise :)")
+    }
+    
+    func createTestExerciseV3() -> Exercise {
+        return Exercise(name: "Test Exercise V3",
+                        type: .cardio,
+                        attributes: [
+                            .distance : DistanceAttribute(distance: 100.50, unit: DistanceUnit(distanceSymbol: .km)),
+                            .sets: RepsAttribute(reps: 10),
+                            .time: TimeAttribute(time: 8000),
+                            .weight: WeightAttribute(weight: 315, unit: WeightUnit(weightSymbol: .lb))
+                        ],
+                        date: .now)
+    }
+    
     func createTestExerciseList(numExercises: Int) -> [Exercise] {
         var exerciseList: [Exercise] = []
         for num in 0...numExercises-1 {

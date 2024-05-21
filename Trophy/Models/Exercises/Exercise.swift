@@ -23,7 +23,7 @@ class Exercise: Equatable {
     }
     
     //Members
-    var id: UUID
+    var id: UUID?
     var name: String
     var type: ExerciseType
     var attributes: [AttributeName: ExerciseAttribute]
@@ -31,7 +31,7 @@ class Exercise: Equatable {
     var duration: TimeInterval?
     var notes: String?
     
-    init(id: UUID, name: String, type: ExerciseType, attributes: [AttributeName: ExerciseAttribute], date: Date, duration: TimeInterval? = nil, notes: String? = nil) {
+    init(id: UUID? = nil, name: String, type: ExerciseType, attributes: [AttributeName: ExerciseAttribute], date: Date, duration: TimeInterval? = nil, notes: String? = nil) {
         self.id = id
         self.name = name
         self.type = type
@@ -70,6 +70,25 @@ extension ExerciseType {
         case .other: return "other"
         case .cardio: return "cardio"
         case .sport: return "sport"
+        }
+    }
+    
+    init?(from string: String) {
+        switch string.lowercased() {
+        case "running":
+            self = .running
+        case "strength":
+            self = .strength
+        case "flexibility":
+            self = .flexibility
+        case "other":
+            self = .other
+        case "cardio":
+            self = .cardio
+        case "sport":
+            self = .sport
+        default:
+            return nil
         }
     }
 }

@@ -19,16 +19,12 @@ import AWSCore
 
 
 @objcMembers
-public class TROPHYPutExerciseOutput_body : AWSModel {
+public class TROPHYInputExercise_exercise_attributes : AWSModel {
     
-    var exerciseId: String!
-    var message: String!
     
-   	public override static func jsonKeyPathsByPropertyKey() -> [AnyHashable : Any]!{
-		var params:[AnyHashable : Any] = [:]
-		params["exerciseId"] = "exerciseId"
-		params["message"] = "message"
-		
+       public override static func jsonKeyPathsByPropertyKey() -> [AnyHashable : Any]!{
+        var params:[AnyHashable : Any] = [:]
+        
         return params
-	}
+    }
 }

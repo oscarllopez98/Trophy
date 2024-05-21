@@ -24,10 +24,10 @@ class WorkoutValidationHelper {
         //Invalid if list contains 1+ references to the same Exercise
         var exerciseIDSet: Set<UUID> = []
         for exercise in exercises {
-            if (exerciseIDSet.contains(exercise.id)) {
+            if (exerciseIDSet.contains(exercise.id!)) {
                 return false
             } else {
-                exerciseIDSet.insert(exercise.id)
+                exerciseIDSet.insert(exercise.id!)
             }
         }
         

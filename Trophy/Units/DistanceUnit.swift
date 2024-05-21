@@ -26,4 +26,16 @@ class DistanceUnit: Unit {
         self.init(symbol: .custom(distanceSymbol.rawValue))
     }
     
+    init(symbol: Symbol) {
+        super.init(symbol: .custom(symbol.rawValue))
+    }
+    
+    convenience init?(distanceSymbol: String) {
+        if let symbol = Symbol(rawValue: distanceSymbol) {
+            self.init(symbol: symbol)
+        } else {
+            return nil // Return nil if the symbol is not valid
+        }
+    }
+    
 }

@@ -21,4 +21,12 @@ class IntensityAttribute: ExerciseAttribute {
         self.intensity = value
         super.init(name: "Intensity", value: .string(value.rawValue), unit: nil)
     }
+    
+    convenience init?(intensityString: String) {
+        if let intensityValue = Intensity(rawValue: intensityString) {
+            self.init(value: intensityValue)
+        } else {
+            return nil // Return nil if the string does not match any Intensity case
+        }
+    }
 }

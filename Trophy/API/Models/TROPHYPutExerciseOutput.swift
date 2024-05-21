@@ -19,16 +19,19 @@ import AWSCore
 
 
 @objcMembers
-public class TROPHYOutputExercise_body : AWSModel {
+public class TROPHYPutExerciseOutput : AWSModel {
     
-    var exerciseId: String!
-    var message: String!
+    var statusCode: NSNumber!
+    var body: TROPHYPutExerciseOutput_body!
     
-   	public override static func jsonKeyPathsByPropertyKey() -> [AnyHashable : Any]!{
-		var params:[AnyHashable : Any] = [:]
-		params["exerciseId"] = "exerciseId"
-		params["message"] = "message"
-		
+       public override static func jsonKeyPathsByPropertyKey() -> [AnyHashable : Any]!{
+        var params:[AnyHashable : Any] = [:]
+        params["statusCode"] = "statusCode"
+        params["body"] = "body"
+        
         return params
-	}
+    }
+    class func bodyJSONTransformer() -> ValueTransformer{
+        return ValueTransformer.awsmtl_JSONDictionaryTransformer(withModelClass: TROPHYPutExerciseOutput_body.self);
+    }
 }

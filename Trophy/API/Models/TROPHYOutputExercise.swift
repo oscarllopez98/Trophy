@@ -24,14 +24,14 @@ public class TROPHYOutputExercise : AWSModel {
     var statusCode: NSNumber!
     var body: TROPHYOutputExercise_body!
     
-   	public override static func jsonKeyPathsByPropertyKey() -> [AnyHashable : Any]!{
-		var params:[AnyHashable : Any] = [:]
-		params["statusCode"] = "statusCode"
-		params["body"] = "body"
-		
+       public override static func jsonKeyPathsByPropertyKey() -> [AnyHashable : Any]!{
+        var params:[AnyHashable : Any] = [:]
+        params["statusCode"] = "statusCode"
+        params["body"] = "body"
+        
         return params
-	}
-	class func bodyJSONTransformer() -> ValueTransformer{
-	    return ValueTransformer.awsmtl_JSONDictionaryTransformer(withModelClass: TROPHYOutputExercise_body.self);
-	}
+    }
+    class func bodyJSONTransformer() -> ValueTransformer{
+        return ValueTransformer.awsmtl_JSONDictionaryTransformer(withModelClass: TROPHYOutputExercise_body.self);
+    }
 }

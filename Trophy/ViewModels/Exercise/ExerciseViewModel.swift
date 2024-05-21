@@ -28,7 +28,7 @@ class ExerciseViewModel: ObservableObject {
     }
     
     init(exercise: Exercise) {
-        self.id = exercise.id
+        self.id = exercise.id!
         self.name = exercise.name
         self.type = exercise.type
         self.attributes = exercise.attributes
