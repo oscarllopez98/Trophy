@@ -15,4 +15,7 @@ enum APIError: Error {
     case GETUserExerciseFailed(userId: String, exerciseId: String)
     case GETUserExerciseFailedResponse
     case GETUserExerciseFailedConversion
+    
+    // Formatting Errors
+    case UUIDFailedFormatting(uuid: String)
 }

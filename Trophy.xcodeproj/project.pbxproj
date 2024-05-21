@@ -94,6 +94,8 @@
 		9FD4E7592BF7DD3000C56E9B /* UserDefinedAttributeConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD4E7582BF7DD3000C56E9B /* UserDefinedAttributeConverterTests.swift */; };
 		9FD4E75C2BF9627200C56E9B /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD4E75B2BF9627200C56E9B /* APIError.swift */; };
 		9FD4E75E2BF96E3A00C56E9B /* ExerciseConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD4E75D2BF96E3A00C56E9B /* ExerciseConverter.swift */; };
+		9FD4E76B2BFC195700C56E9B /* ExerciseLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD4E76A2BFC195700C56E9B /* ExerciseLogger.swift */; };
+		9FD4E76F2BFC1BA800C56E9B /* UUIDFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD4E76E2BFC1BA800C56E9B /* UUIDFormatter.swift */; };
 		9FF1D8342B147F5E002F6EAC /* TrophyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF1D8332B147F5E002F6EAC /* TrophyApp.swift */; };
 		9FF1D8362B147F5E002F6EAC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF1D8352B147F5E002F6EAC /* ContentView.swift */; };
 		9FF1D8382B147F5F002F6EAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FF1D8372B147F5F002F6EAC /* Assets.xcassets */; };
@@ -235,6 +237,8 @@
 		9FD4E7582BF7DD3000C56E9B /* UserDefinedAttributeConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefinedAttributeConverterTests.swift; sourceTree = "<group>"; };
 		9FD4E75B2BF9627200C56E9B /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		9FD4E75D2BF96E3A00C56E9B /* ExerciseConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseConverter.swift; sourceTree = "<group>"; };
+		9FD4E76A2BFC195700C56E9B /* ExerciseLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseLogger.swift; sourceTree = "<group>"; };
+		9FD4E76E2BFC1BA800C56E9B /* UUIDFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UUIDFormatter.swift; sourceTree = "<group>"; };
 		9FF1D8302B147F5E002F6EAC /* Trophy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Trophy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FF1D8332B147F5E002F6EAC /* TrophyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrophyApp.swift; sourceTree = "<group>"; };
 		9FF1D8352B147F5E002F6EAC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -592,8 +596,17 @@
 		9FD4E75F2BFC158300C56E9B /* Loggers */ = {
 			isa = PBXGroup;
 			children = (
+				9FD4E76A2BFC195700C56E9B /* ExerciseLogger.swift */,
 			);
 			path = Loggers;
+			sourceTree = "<group>";
+		};
+		9FD4E76D2BFC1B8F00C56E9B /* UUID */ = {
+			isa = PBXGroup;
+			children = (
+				9FD4E76E2BFC1BA800C56E9B /* UUIDFormatter.swift */,
+			);
+			path = UUID;
 			sourceTree = "<group>";
 		};
 		9FF1D8272B147F5D002F6EAC = {
@@ -829,6 +842,7 @@
 		9FF313D32BF6D643000E2F53 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				9FD4E76D2BFC1B8F00C56E9B /* UUID */,
 				9FF313D22BF6D643000E2F53 /* Converters */,
 			);
 			path = Utils;
@@ -1095,6 +1109,7 @@
 				9FD4E73F2BF7D65000C56E9B /* TimeAttributeConverter.swift in Sources */,
 				9FB372752B9518A700FFE87C /* WorkoutCardView.swift in Sources */,
 				9FD4E7532BF7DC6100C56E9B /* LevelAttributeConverter.swift in Sources */,
+				9FD4E76F2BFC1BA800C56E9B /* UUIDFormatter.swift in Sources */,
 				9FAE6EE12BA0D7DA0077E9AC /* ActionBarViewController.swift in Sources */,
 				9FF1D86C2B14855E002F6EAC /* DistanceAttribute.swift in Sources */,
 				9FF1D86E2B148574002F6EAC /* TimeAttribute.swift in Sources */,
@@ -1117,6 +1132,7 @@
 				9FB372622B9261D800FFE87C /* WorkoutViewModel.swift in Sources */,
 				9FF1D8682B14853D002F6EAC /* ExerciseAttribute.swift in Sources */,
 				9FB62FB42B9F845400421424 /* LevelInputView.swift in Sources */,
+				9FD4E76B2BFC195700C56E9B /* ExerciseLogger.swift in Sources */,
 				9FF313CA2BF6D61F000E2F53 /* TROPHYOutputExercise_body.swift in Sources */,
 				9FF1D8662B148526002F6EAC /* DistanceUnit.swift in Sources */,
 				9FD4E74B2BF7D9EA00C56E9B /* WeightAttributeConverter.swift in Sources */,

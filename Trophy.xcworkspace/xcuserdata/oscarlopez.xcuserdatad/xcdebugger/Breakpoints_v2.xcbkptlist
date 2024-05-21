@@ -110,8 +110,8 @@
             filePath = "TrophyTests/API/Trophy/TrophyRESTAPITests.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "144"
-            endingLineNumber = "144"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
             landmarkName = "testUpdateFlowForUserExercise()"
             landmarkType = "7">
          </BreakpointContent>
@@ -222,8 +222,8 @@
             filePath = "TrophyTests/API/Trophy/TrophyRESTAPITests.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "153"
-            endingLineNumber = "153"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
             landmarkName = "testUpdateFlowForUserExercise()"
             landmarkType = "7">
          </BreakpointContent>

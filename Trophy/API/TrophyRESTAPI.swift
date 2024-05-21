@@ -294,8 +294,8 @@ class TrophyRESTAPI {
         } catch {
             // Handle error appropriately
             print("Error handling GET user exercise response: \(error)")
-            throw APIError.GETUserExerciseFailedResponse
         }
+        throw APIError.GETUserExerciseFailedResponse
     }
     
     /**

@@ -13,7 +13,7 @@ class ExerciseConverter {
         // Access the main dictionary
         if let exercise = exerciseJSONResponse["exercise"] as? [String: Any] {
             
-            var exerciseId: String? = nil
+            var exerciseId: UUID? = nil
             var exerciseName: String = ""
             var exerciseType: ExerciseType = .other
             var exerciseDate: Date = .now
@@ -25,7 +25,13 @@ class ExerciseConverter {
             // Access the 'id'
             if let id = exercise["id"] as? String {
                 print("Exercise ID: \(id)")
-                exerciseId = id
+                if let formattedUUID = UUIDFormatter().addDashesToUUID(id) {
+                    print("Exercise ID Formatted: \(formattedUUID)")
+                    exerciseId = UUID(uuidString: formattedUUID)
+                } else {
+                    print("Invalid UUID string")
+                    throw APIError.UUIDFailedFormatting(uuid: id)
+                }
             }
             
             // Access the 'name'
@@ -133,7 +139,7 @@ class ExerciseConverter {
                 }
             }
             
-            return Exercise(id: UUID(uuidString: exerciseId!),
+            return Exercise(id: exerciseId,
                      name: exerciseName,
                      type: exerciseType,
                      attributes: exerciseAttributes,
