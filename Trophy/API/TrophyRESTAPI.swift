@@ -290,7 +290,7 @@ class TrophyRESTAPI {
             // Handle the data appropriately
             if let jsonResponse = try? JSONSerialization.jsonObject(with: data) as? [String: Any] {
                 // Process the JSON response
-                print("GET User Exercise response: \(jsonResponse)")
+//                print("GET User Exercise response: \(jsonResponse)")
                 return try ExerciseConverter().convertExerciseJSONResponseToExercise(jsonResponse)
             }
         } catch {

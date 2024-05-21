@@ -13,20 +13,20 @@ class ExerciseConverter {
         // Access the main dictionary
         if let exercise = exerciseJSONResponse["exercise"] as? [String: Any] {
             
+            print("'exercise' property found in response JSON")
+            
             var exerciseId: UUID? = nil
             var exerciseName: String = ""
             var exerciseType: ExerciseType = .other
             var exerciseDate: Date = .now
             var exerciseAttributes: [Exercise.AttributeName : ExerciseAttribute] = [:]
             var exerciseNotes: String? = nil
-            
-            print("'exercise' property found in response, converting to JSON")
-            
+                        
             // Access the 'id'
             if let id = exercise["id"] as? String {
-                print("Exercise ID: \(id)")
+//                print("Exercise ID: \(id)")
                 if let formattedUUID = UUIDFormatter().addDashesToUUID(id) {
-                    print("Exercise ID Formatted: \(formattedUUID)")
+//                    print("Exercise ID Formatted: \(formattedUUID)")
                     exerciseId = UUID(uuidString: formattedUUID)
                 } else {
                     print("Invalid UUID string")
@@ -36,15 +36,15 @@ class ExerciseConverter {
             
             // Access the 'name'
             if let name = exercise["name"] as? String {
-                print("Exercise Name: \(name)")
+//                print("Exercise Name: \(name)")
                 exerciseName = name
             }
             
             // Access the 'exerciseType'
             if let type = exercise["exerciseType"] as? String {
-                print("Exercise Type: \(type)")
+//                print("Exercise Type: \(type)")
                 exerciseType = ExerciseType(from: type)!
-                print("Exercise Type Converted: \(exerciseType.asString)")
+//                print("Exercise Type Converted: \(exerciseType.asString)")
             }
             
             // Access the 'date'
@@ -57,16 +57,16 @@ class ExerciseConverter {
                 dateFormatter.locale = Locale(identifier: "en_US_POSIX") // Ensure locale is set to en_US_POSIX
                 dateFormatter.timeZone = TimeZone(secondsFromGMT: 0) // Ensure time zone is set to GMT
                 
-                print("Date: \(date)")
+//                print("Date: \(date)")
                 if let dateConverted = dateFormatter.date(from: dateString) {
-                    print("Date Converted: \(dateConverted)")
+//                    print("Date Converted: \(dateConverted)")
                     exerciseDate = dateConverted
                 }
             }
             
             // Access the 'notes'
             if let notes = exercise["notes"] as? String {
-                print("Notes: \(notes)")
+//                print("Notes: \(notes)")
                 exerciseNotes = notes
             }
             
@@ -78,35 +78,35 @@ class ExerciseConverter {
                 if let distance = attributes["distance"] as? [String: Any] {
                     if let distanceValue = distance["value"] as? Double,
                        let distanceUnit = distance["unit"] as? String {
-                        print("Distance: \(distanceValue) \(distanceUnit)")
+//                        print("Distance: \(distanceValue) \(distanceUnit)")
                         exerciseAttributes[.distance] = DistanceAttribute(
                             distance: distanceValue, unit: DistanceUnit(distanceSymbol: distanceUnit))
-                        print("Distance Converted: \(exerciseAttributes[.distance]!.value) \(exerciseAttributes[.distance]!.unit!.symbolAsString)")
+//                        print("Distance Converted: \(exerciseAttributes[.distance]!.value) \(exerciseAttributes[.distance]!.unit!.symbolAsString)")
                     }
                 }
                 
                 // If we have an intensity attribute, append a new IntensityAttribute object to exerciseAttributes
                 if let intensity = attributes["intensity"] as? [String: Any] {
                     if let intensityValue = intensity["value"] as? String {
-                        print("Intensity: \(intensityValue)")
+//                        print("Intensity: \(intensityValue)")
                         exerciseAttributes[.intensity] = IntensityAttribute(intensityString: intensityValue)
-                        print("Intensity Converted: \(exerciseAttributes[.intensity]!.value)")
+//                        print("Intensity Converted: \(exerciseAttributes[.intensity]!.value)")
                     }
                 }
                 
                 // If we have a level attribute, append a new LevelAttribute object to exerciseAttributes
                 if let level = attributes["level"] as? [String: Any] {
                     if let levelValue = level["value"] as? Int {
-                        print("Level: \(levelValue)")
+//                        print("Level: \(levelValue)")
                         exerciseAttributes[.level] = LevelAttribute(levelInt: levelValue)
-                        print("Level Converted: \(exerciseAttributes[.level]!.value)")
+//                        print("Level Converted: \(exerciseAttributes[.level]!.value)")
                     }
                 }
                 
                 // If we have a reps attribute, append a new RepsAttribute object to exerciseAttributes
                 if let reps = attributes["reps"] as? [String: Any] {
                     if let repsValue = reps["value"] as? Int {
-                        print("Reps: \(repsValue)")
+//                        print("Reps: \(repsValue)")
                         exerciseAttributes[.reps] = RepsAttribute(reps: repsValue)
                     }
                 }
@@ -114,7 +114,7 @@ class ExerciseConverter {
                 // If we have a sets attribute, append a new SetsAttribute object to exerciseAttributes
                 if let sets = attributes["sets"] as? [String: Any] {
                     if let setsValue = sets["value"] as? Int {
-                        print("Sets: \(setsValue)")
+//                        print("Sets: \(setsValue)")
                         exerciseAttributes[.sets] = SetsAttribute(sets: setsValue)
                     }
                 }
@@ -122,7 +122,7 @@ class ExerciseConverter {
                 // If we have a time attribute, append a new TimeAttribute object to exerciseAttributes
                 if let time = attributes["time"] as? [String: Any] {
                     if let timeValue = time["value"] as? TimeInterval {
-                        print("Time: \(timeValue)")
+//                        print("Time: \(timeValue)")
                         exerciseAttributes[.time] = TimeAttribute(time: timeValue)
                     }
                 }
@@ -131,10 +131,10 @@ class ExerciseConverter {
                 if let weight = attributes["weight"] as? [String: Any] {
                     if let weightValue = weight["value"] as? Double,
                        let weightUnit = weight["unit"] as? String {
-                        print("Weight: \(weightValue) \(weightUnit)")
+//                        print("Weight: \(weightValue) \(weightUnit)")
                         exerciseAttributes[.weight] = WeightAttribute(
                             weight: weightValue, unit: WeightUnit(weightString: weightUnit)!)
-                        print("Weight Converted: \(exerciseAttributes[.weight]!.value) \(exerciseAttributes[.weight]!.unit!.symbolAsString)")
+//                        print("Weight Converted: \(exerciseAttributes[.weight]!.value) \(exerciseAttributes[.weight]!.unit!.symbolAsString)")
                     }
                 }
             }
