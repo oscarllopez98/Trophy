@@ -13,8 +13,8 @@ class TrophyRESTAPI {
     /**
      Sends a PUT request to update a user exercise.
      
-     - Parameters:
-        - exercise: The exercise object to be updated.
+     - Parameter exercise: The exercise object to be updated.
+     - Returns: The ID of the updated exercise if successful, or nil otherwise.
      */
     func PUTUserExercise(exercise: Exercise) async -> String? {
         do {
@@ -42,8 +42,10 @@ class TrophyRESTAPI {
      Sends a GET request to retrieve a user exercise.
      
      - Parameters:
-        - userId: The user id for the object to be retrieved.
-        - exerciseId: The exercise id for the object to be retrieved.
+        - userId: The user ID for the object to be retrieved.
+        - exerciseId: The exercise ID for the object to be retrieved.
+     - Returns: An Exercise object if successful.
+     - Throws: An APIError if the request fails.
      */
     func GETUserExercise(userId: String, exerciseId: String) async throws -> Exercise {
         if (userId.isEmpty) { throw APIError.emptyParameter(parameterName: "userId") }
@@ -60,12 +62,12 @@ class TrophyRESTAPI {
     }
 
     /**
-     Prepares a URLRequest for a PUT user exercise API request.
+     Prepares a URLRequest for a GET user exercise API request.
      
      - Parameters:
         - userId: The ID of the user.
         - exerciseId: The ID of the exercise.
-     - Returns: A URLRequest object for the PUT request.
+     - Returns: A URLRequest object for the GET request.
      */
     func prepareGETUserExerciseRequest(userId: String, exerciseId: String) -> URLRequest {
         let path = "https://xhh2wpxj6f.execute-api.us-east-1.amazonaws.com/Prod/users/\(userId)/exercises/\(exerciseId)"
@@ -85,6 +87,7 @@ class TrophyRESTAPI {
         - userId: The ID of the user.
         - exerciseId: The ID of the exercise.
      - Returns: A URLRequest object for the PUT request.
+     - Throws: An APIError if the parameters are invalid.
      */
     func preparePUTUserExerciseRequest(userId: String, exerciseId: String) throws -> URLRequest {
         if (userId.isEmpty) { throw APIError.emptyParameter(parameterName: "userId") }
@@ -104,6 +107,13 @@ class TrophyRESTAPI {
         return request
     }
     
+    /**
+     Prepares a URLRequest for a PUT user exercise API request without an exercise ID.
+     
+     - Parameter userId: The ID of the user.
+     - Returns: A URLRequest object for the PUT request.
+     - Throws: An APIError if the user ID is invalid.
+     */
     func preparePUTUserExerciseRequest(userId: String) throws -> URLRequest {
         if (userId.isEmpty) { throw APIError.emptyParameter(parameterName: "userId") }
 
@@ -120,8 +130,9 @@ class TrophyRESTAPI {
         request.addValue("eJft9CvQjC9WqubQzLaFS7rAPrjRWCKt99QuLHAm", forHTTPHeaderField: "x-api-key")
         return request
     }
+    
     /**
-     Prepares a URLRequest for a PUT user exercise API request.
+     Prepares a URLRequest for a PUT user exercise API request without user and exercise IDs.
      
      - Returns: A URLRequest object for the PUT request.
      */
@@ -140,7 +151,6 @@ class TrophyRESTAPI {
      Prepares the JSON payload for a PUT user exercise API request.
      
      - Parameters:
-        - id: The ID of the exercise.
         - name: The name of the exercise.
         - type: The type of the exercise.
         - attributes: The attributes of the exercise.
@@ -187,7 +197,7 @@ class TrophyRESTAPI {
             levelDict = LevelAttributeConverter().convertToAPIFormat(levelAttribute)
         }
         
-        var jsonObject: [String: Any] = [
+        let jsonObject: [String: Any] = [
             "exercise": [
                 "name": name,
                 "type": type,
@@ -203,14 +213,6 @@ class TrophyRESTAPI {
                 "notes": notes
             ]
         ]
-        
-        // Conditionally add ID if it's not nil
-//        if var exerciseDict = jsonObject["exercise"] as? [String: Any] {
-//            if let id = id {
-//                exerciseDict["id"] = id.uuidString
-//            }
-//            jsonObject["exercise"] = exerciseDict
-//        }
         
         return jsonObject
     }
@@ -298,106 +300,4 @@ class TrophyRESTAPI {
         throw APIError.GETUserExerciseFailedResponse
     }
     
-    /**
-     Handles the response from a GET user exercise API request.
-     
-     - Parameter inRequest: The input URLRequest.
-     */
-//    func handleGETUserExerciseResponse(inRequest: URLRequest) async throws {
-//        // Create a URLSessionDataTask to make the request
-//        let task = URLSession.shared.dataTask(with: inRequest) { data, response, error in
-//            // Handle the response or error here
-//            if let error = error {
-//                print("Error: \(error)")
-//                return
-//            }
-//
-//            if let httpResponse = response as? HTTPURLResponse {
-//                print("Status code: \(httpResponse.statusCode)")
-//                
-//                // Check if data is not nil
-//                guard let responseData = data else {
-//                    print("No data received")
-//                    return
-//                }
-//
-//                do {
-//                    // Parse the response data into a dictionary
-//                    if let jsonResponse = try JSONSerialization.jsonObject(with: responseData, options: []) as? [String: Any] {
-//                        // Access the desired property from the dictionary
-//                        if let exercise = jsonResponse["exercise"] as? [String: Any] {
-//                            // Access nested values
-//                            let id = exercise["id"] as? String ?? "Default Value"
-//                            print("Exercise ID: \(id)")
-//
-//                            let name = exercise["name"] as? String ?? "Default Value"
-//                            print("Exercise Name: \(name)")
-//
-//                            let exerciseType = exercise["exerciseType"] as? String ?? "Default Value"
-//                            print("Exercise Type: \(exerciseType)")
-//
-//                            if let attributes = exercise["attributes"] as? [String: Any] {
-//                                // Distance Attribute
-//                                if let distance = attributes["distance"] as? [String: Any],
-//                                   let distanceValue = distance["value"] as? Double,
-//                                   let distanceUnit = distance["unit"] as? String {
-//                                    print("Weight: \(distanceValue) \(distanceUnit)")
-//                                }
-//                                // Time Attribute
-//                                if let time = attributes["time"] as? [String: Any],
-//                                   let timeValue = time["value"] as? Double {
-//                                    print("Time: \(timeValue)")
-//                                }
-//                                // Sets Attribute
-//                                if let sets = attributes["sets"] as? [String: Any],
-//                                   let setsValue = sets["value"] as? Int {
-//                                    print("Sets: \(setsValue)")
-//                                }
-//                                // Reps Attribute
-//                                if let reps = attributes["reps"] as? [String: Any],
-//                                   let repsValue = reps["value"] as? Int {
-//                                    print("Reps: \(repsValue)")
-//                                }
-//                                // Weight Attribute
-//                                if let weight = attributes["weight"] as? [String: Any],
-//                                   let weightValue = weight["value"] as? Double,
-//                                   let weightUnit = weight["unit"] as? String {
-//                                    print("Weight: \(weightValue) \(weightUnit)")
-//                                }
-//                                // Level Attribute
-//                                if let level = attributes["level"] as? [String: Any],
-//                                   let levelValue = level["value"] as? Int {
-//                                    print("Level: \(levelValue)")
-//                                }
-//                                // Intensity Attribute
-//                                if let intensity = attributes["intensity"] as? [String: Any],
-//                                   let intensityValue = intensity["value"] as? String {
-//                                    print("Intensity: \(intensityValue)")
-//                                }
-//                                // Date Attribute
-//                                if let date = attributes["date"] as? [String: Any],
-//                                   let dateValue = date["value"] as? String {
-//                                    print("Date: \(dateValue)")
-//                                }
-//                                // Notes Attribute
-//                                if let notes = attributes["notes"] as? [String: Any],
-//                                   let notesValue = notes["value"] as? String {
-//                                    print("Notes: \(notesValue)")
-//                                }
-//                            }
-//                        } else {
-//                            print("Exercise not found in response")
-//                        }
-//                    } else {
-//                        print("Failed to parse JSON response")
-//                    }
-//                } catch {
-//                    print("Error parsing JSON: \(error)")
-//                }
-//            }
-//        }
-//
-//        // Start the data task
-//        task.resume()
-//    }
 }
