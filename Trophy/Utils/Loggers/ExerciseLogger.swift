@@ -11,12 +11,12 @@ class ExerciseLogger {
     
     func logExercise(_ exercise: Exercise) {
         print("- - - - - Exercise Log - - - - -")
-        print("Exercise ID: \(exercise.id?.uuidString ?? "No Exercise ID Detected")")
+        print("Exercise ID: \(exercise.id?.uuidString ?? "!{no_exercise_id_set}!")")
         print("Exercise Name: \(exercise.name)")
         print("Exercise Type: \(exercise.type.asString)")
         logExerciseAttributes(exercise)
         print("Exercise Date: \(exercise.date)")
-        print("Exercise Notes: \(exercise.notes ?? "No Notes Detected")")
+        print("Exercise Notes: \(exercise.notes ?? "!{notes_not_set}!")")
         print("- - - - - - - - - - - - - - - - ")
     }
     
@@ -26,7 +26,7 @@ class ExerciseLogger {
     
     func logExerciseAttributes(_ exerciseAttributes: [Exercise.AttributeName: ExerciseAttribute]) {
         for att in exerciseAttributes {
-            print("Attribute name'\(att.value.name)' with value '\(att.value.value)' and unit '\(att.value.unit?.symbolAsString ?? "No Unit Detected")'")
+            print("Attribute '\(att.value.name)' with value '\(att.value.value)' and unit '\(att.value.unit?.symbolAsString ?? "NONE")'")
         }
     }
     

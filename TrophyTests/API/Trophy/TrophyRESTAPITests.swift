@@ -125,20 +125,7 @@ final class TrophyRESTAPITests: XCTestCase {
         let exercise = ExerciseFactory.shared.createTestExerciseV2()
         
         // Create a sample Exercise object
-        let updatedExercise = Exercise(
-            name: "Test Exercise",
-            type: .other,
-            attributes: [
-                .distance: DistanceAttribute(distance: 5, unit: .init(distanceSymbol: .km)),
-                .time: TimeAttribute(time: 1800),
-                .sets: SetsAttribute(sets: 10),
-                .reps: RepsAttribute(reps: 15),
-                .weight: WeightAttribute(weight: 75.5, unit: .init(weightSymbol: .lb)),
-                .intensity: IntensityAttribute(value: .high),
-                .level: LevelAttribute(value: .five)
-            ],
-            date: Date(),
-            notes: "Ran for 30 minutes")
+        let updatedExercise = ExerciseFactory.shared.createTestExerciseV3()
         
         //- - PUT Exercise - -
         // Call the async function and await its result
@@ -147,34 +134,33 @@ final class TrophyRESTAPITests: XCTestCase {
             
             //- - GET Exercise : With newly generated exerciseId - -
             do {
-                try await client.GETUserExercise(userId: "4bf0e7ef-cd19-4b0c-b9a2-e946c58e01d1", exerciseId: oldExerciseId)
+                let oldExercise = try await client.GETUserExercise(userId: "4bf0e7ef-cd19-4b0c-b9a2-e946c58e01d1", exerciseId: oldExerciseId)
+                ExerciseLogger().logExercise(oldExercise)
+                // Ensure that these test exercises have the same ID so we can update properly
+                updatedExercise.id = oldExercise.id
+                
+                //- - UPDATE Exercise - -
+                if let newExerciseId = await client.PUTUserExercise(exercise: updatedExercise) {
+                    print("PUT success with exercise ID: \(newExerciseId)")
+                    
+                    //- - GET Updated Exercise : With existing generated exerciseId - -
+                    do {
+                        let updatedExercise = try await client.GETUserExercise(userId: "4bf0e7ef-cd19-4b0c-b9a2-e946c58e01d1", exerciseId: newExerciseId)
+                        ExerciseLogger().logExercise(updatedExercise)
+                        
+                        XCTAssertEqual(oldExercise.id?.uuidString, updatedExercise.id?.uuidString)
+                    } catch {
+                        XCTFail("Could not GET User Exercise with userId \("4bf0e7ef-cd19-4b0c-b9a2-e946c58e01d1") and exerciseId \(newExerciseId)")
+                    }
+                } else {
+                    XCTFail("Failed to PUT Updated Exercise.")
+                }
             } catch {
                 XCTFail("Could not GET User Exercise with userId \("4bf0e7ef-cd19-4b0c-b9a2-e946c58e01d1") and exerciseId \(oldExerciseId)")
             }
-            updatedExercise.id = UUID(uuidString: oldExerciseId)
-            
-            //- - UPDATE Exercise - -
-            if let newExerciseId = await client.PUTUserExercise(exercise: updatedExercise) {
-                print("PUT success with exercise ID: \(newExerciseId)")
-                
-                //- - GET Updated Exercise : With existing generated exerciseId - -
-                do {
-                    try await client.GETUserExercise(userId: "4bf0e7ef-cd19-4b0c-b9a2-e946c58e01d1", exerciseId: newExerciseId)
-                } catch {
-                    XCTFail("Could not GET User Exercise with userId \("4bf0e7ef-cd19-4b0c-b9a2-e946c58e01d1") and exerciseId \(newExerciseId)")
-                }
-                XCTAssertEqual(oldExerciseId.lowercased(), newExerciseId.lowercased())
-            } else {
-                XCTFail("Failed to PUT Updated Exercise.")
-            }
-            
         } else {
             print("Using Exercise ID:", exercise.id!.uuidString)
             XCTFail("Failed to PUT Exercise.")
         }
-
-
-        
-        
     }
 }

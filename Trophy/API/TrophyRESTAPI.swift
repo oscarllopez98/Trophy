@@ -25,7 +25,7 @@ class TrophyRESTAPI {
             let jsonObject: [String: Any] = preparePUTUserExerciseJSON(name: exercise.name,
                                                                        type: exercise.type.asString,
                                                                        attributes: exercise.attributes,
-                                                                       notes: exercise.notes!)
+                                                                       notes: exercise.notes ?? "")
             // Prepare the request data with JSON payload
             let requestWithBody = try preparePUTUserExerciseRequestData(inRequest: request, jsonObject: jsonObject)
             // Use await to handle the response
