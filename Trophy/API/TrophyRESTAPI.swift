@@ -60,7 +60,31 @@ class TrophyRESTAPI {
             throw APIError.GETUserExerciseFailed(userId: userId, exerciseId: exerciseId)
         }
     }
+    
+    func GETLimitedUserExercises(userId: String) async throws -> [Exercise] {
+        if (userId.isEmpty) { throw APIError.emptyParameter(parameterName: "userId") }
+        
+        let request = prepareGETLimitedUserExercisesRequest(userId: userId)
+        do {
+            // Try to get the User Exercise
+            return try await handleGETLimitedUserExercisesResponse(inRequest: request)
+        } catch {
+            // Throw an Error if the GET request failed
+            throw APIError.GETLimitedUserExercisesFailed(userId: userId)
+        }
+    }
 
+    func prepareGETLimitedUserExercisesRequest(userId: String) -> URLRequest {
+        let path = "https://xhh2wpxj6f.execute-api.us-east-1.amazonaws.com/Development/users/\(userId)/exercises"
+        guard let url = URL(string: path) else {
+            fatalError("Invalid URL: \(path)")
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.addValue("eJft9CvQjC9WqubQzLaFS7rAPrjRWCKt99QuLHAm", forHTTPHeaderField: "x-api-key")
+        return request
+    }
+    
     /**
      Prepares a URLRequest for a GET user exercise API request.
      
@@ -274,6 +298,31 @@ class TrophyRESTAPI {
         }
     }
 
+    func handleGETLimitedUserExercisesResponse(inRequest: URLRequest) async throws -> [Exercise] {
+        // Perform the async network operation, e.g., using URLSession
+        do {
+            let (data, _) = try await URLSession.shared.data(for: inRequest)
+            // Handle the data appropriately
+            if let jsonResponse = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
+               let exercises = jsonResponse["exercises"] as? [[String: Any]] {
+                // Process the JSON response
+                print("GET Limited User Exercises response: \(exercises.count)")
+
+                // Convert each Exercise JSON into an Exercise object to create a list of Exercise objects
+                let convertedExercises: [Exercise] = try exercises.map { exercise in
+                    let exerciseBody: [String: Any] = ["exercise" : exercise]
+                    let convertedExercise: Exercise = try ExerciseConverter().convertExerciseJSONResponseToExercise(exerciseBody)
+                    return convertedExercise
+                }
+                // Return the list of Exercise objects
+                return convertedExercises
+            }
+        } catch {
+            // Handle error appropriately
+            print("Error handling GET user exercise response: \(error)")
+        }
+        throw APIError.GETUserExerciseFailedResponse
+    }
 
     /**
      Constructs the URL for the GET user exercise API endpoint.
@@ -300,4 +349,5 @@ class TrophyRESTAPI {
         throw APIError.GETUserExerciseFailedResponse
     }
     
+
 }

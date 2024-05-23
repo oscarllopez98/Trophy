@@ -12,9 +12,7 @@ class ExerciseConverter {
     func convertExerciseJSONResponseToExercise(_ exerciseJSONResponse: [String: Any]) throws -> Exercise {
         // Access the main dictionary
         if let exercise = exerciseJSONResponse["exercise"] as? [String: Any] {
-            
-            print("'exercise' property found in response JSON")
-            
+                        
             var exerciseId: UUID? = nil
             var exerciseName: String = ""
             var exerciseType: ExerciseType = .other

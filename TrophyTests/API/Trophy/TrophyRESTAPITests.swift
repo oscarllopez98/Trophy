@@ -117,6 +117,18 @@ final class TrophyRESTAPITests: XCTestCase {
         }
     }
     
+    func testGETLimitedUserExercises() async {
+        let trophyRESTAPI = TrophyRESTAPI()
+        let userId = "4bf0e7ef-cd19-4b0c-b9a2-e946c58e01d1"
+        
+        do {
+            let exercises: [Exercise] = try await trophyRESTAPI.GETLimitedUserExercises(userId: userId)
+            XCTAssertNotNil(exercises)
+        } catch {
+            XCTFail("Could not GET Limited User Exercises with userId \(userId)")
+        }
+    }
+    
     func testUpdateFlowForUserExercise() async {
         // Instantiate API client
         let client = TrophyRESTAPI()
