@@ -48,58 +48,6 @@ final class TrophyRESTAPITests: XCTestCase {
         }
     }
     
-    func testPreparePUTUserExerciseJSON() {
-        // Define mock attributes
-        let mockDistanceAttribute = DistanceAttribute(distance: 5.0, unit: DistanceUnit(distanceSymbol: .km))
-        let mockTimeAttribute = TimeAttribute(time: 30)
-        let mockSetsAttribute = SetsAttribute(sets: 3)
-        let mockRepsAttribute = RepsAttribute(reps: 10)
-        let mockWeightAttribute = WeightAttribute(weight: 50.0, unit: WeightUnit(weightSymbol: .lb))
-        let mockIntensityAttribute = IntensityAttribute(value: .high)
-        let mockLevelAttribute = LevelAttribute(value: .five)
-        
-        let attributes: [Exercise.AttributeName: ExerciseAttribute] = [
-            .distance: mockDistanceAttribute,
-            .time: mockTimeAttribute,
-            .sets: mockSetsAttribute,
-            .reps: mockRepsAttribute,
-            .weight: mockWeightAttribute,
-            .intensity: mockIntensityAttribute,
-            .level: mockLevelAttribute
-        ]
-        
-        let name: String = "Test Exercise"
-        let type = ExerciseType.cardio.asString
-        let notes = "Test Notes"
-        
-        let expectedOutput: [String: Any] = [
-            "exercise": [
-                "name": name,
-                "type": type,
-                "attributes": [
-                    "distance": DistanceAttributeConverter().convertToAPIFormat(mockDistanceAttribute),
-                    "time": TimeAttributeConverter().convertToAPIFormat(mockTimeAttribute),
-                    "sets": SetsAttributeConverter().convertToAPIFormat(mockSetsAttribute),
-                    "reps": RepsAttributeConverter().convertToAPIFormat(mockRepsAttribute),
-                    "weight": WeightAttributeConverter().convertToAPIFormat(mockWeightAttribute),
-                    "intensity": IntensityAttributeConverter().convertToAPIFormat(mockIntensityAttribute),
-                    "level": LevelAttributeConverter().convertToAPIFormat(mockLevelAttribute)
-                ],
-                "notes": notes
-            ]
-        ]
-
-        let result: [String: Any] = TrophyRESTAPI()
-            .preparePUTUserExerciseJSON(name: name,
-                                        type: type,
-                                        attributes: attributes,
-                                        notes: notes)
-        
-        // Log the results
-        print("Result: \(result)")
-        print("Expected Output: \(expectedOutput)")
-    }
-    
     func testGETUserExercise() async {
         
         // Instantiate API client
