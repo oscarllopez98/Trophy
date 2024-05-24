@@ -37,9 +37,8 @@ final class TrophyRESTAPITests: XCTestCase {
         // Instantiate API client
         let trophyRestAPI = TrophyRESTAPI()
 
-        // Get a test exercise and update the ID for one we know exists in the DB
-        let exercise = ExerciseFactory.shared.createTestExercise()
-        exercise.id = UUID(uuidString: "3a153e13-e098-4988-94cb-453a347c9dc3")!
+        // Get a test exercise and
+        let exercise = ExerciseFactory.shared.createTestExerciseV3()
         
         // Call the async function and await its result
         if let exerciseId = await trophyRestAPI.PUTUserExercise(exercise: exercise) {
@@ -47,58 +46,6 @@ final class TrophyRESTAPITests: XCTestCase {
         } else {
             print("Failed to receive exercise ID.")
         }
-    }
-    
-    func testPreparePUTUserExerciseJSON() {
-        // Define mock attributes
-        let mockDistanceAttribute = DistanceAttribute(distance: 5.0, unit: DistanceUnit(distanceSymbol: .km))
-        let mockTimeAttribute = TimeAttribute(time: 30)
-        let mockSetsAttribute = SetsAttribute(sets: 3)
-        let mockRepsAttribute = RepsAttribute(reps: 10)
-        let mockWeightAttribute = WeightAttribute(weight: 50.0, unit: WeightUnit(weightSymbol: .lb))
-        let mockIntensityAttribute = IntensityAttribute(value: .high)
-        let mockLevelAttribute = LevelAttribute(value: .five)
-        
-        let attributes: [Exercise.AttributeName: ExerciseAttribute] = [
-            .distance: mockDistanceAttribute,
-            .time: mockTimeAttribute,
-            .sets: mockSetsAttribute,
-            .reps: mockRepsAttribute,
-            .weight: mockWeightAttribute,
-            .intensity: mockIntensityAttribute,
-            .level: mockLevelAttribute
-        ]
-        
-        let name: String = "Test Exercise"
-        let type = ExerciseType.cardio.asString
-        let notes = "Test Notes"
-        
-        let expectedOutput: [String: Any] = [
-            "exercise": [
-                "name": name,
-                "type": type,
-                "attributes": [
-                    "distance": DistanceAttributeConverter().convertToAPIFormat(mockDistanceAttribute),
-                    "time": TimeAttributeConverter().convertToAPIFormat(mockTimeAttribute),
-                    "sets": SetsAttributeConverter().convertToAPIFormat(mockSetsAttribute),
-                    "reps": RepsAttributeConverter().convertToAPIFormat(mockRepsAttribute),
-                    "weight": WeightAttributeConverter().convertToAPIFormat(mockWeightAttribute),
-                    "intensity": IntensityAttributeConverter().convertToAPIFormat(mockIntensityAttribute),
-                    "level": LevelAttributeConverter().convertToAPIFormat(mockLevelAttribute)
-                ],
-                "notes": notes
-            ]
-        ]
-
-        let result: [String: Any] = TrophyRESTAPI()
-            .preparePUTUserExerciseJSON(name: name,
-                                        type: type,
-                                        attributes: attributes,
-                                        notes: notes)
-        
-        // Log the results
-        print("Result: \(result)")
-        print("Expected Output: \(expectedOutput)")
     }
     
     func testGETUserExercise() async {
@@ -114,6 +61,18 @@ final class TrophyRESTAPITests: XCTestCase {
             ExerciseLogger().logExercise(exercise)
         } catch {
             XCTFail("Could not GET User Exercise with userId \(userId) and exerciseId \(exerciseId)")
+        }
+    }
+    
+    func testGETLimitedUserExercises() async {
+        let trophyRESTAPI = TrophyRESTAPI()
+        let userId = "4bf0e7ef-cd19-4b0c-b9a2-e946c58e01d1"
+        
+        do {
+            let exercises: [Exercise] = try await trophyRESTAPI.GETLimitedUserExercises(userId: userId)
+            XCTAssertNotNil(exercises)
+        } catch {
+            XCTFail("Could not GET Limited User Exercises with userId \(userId)")
         }
     }
     

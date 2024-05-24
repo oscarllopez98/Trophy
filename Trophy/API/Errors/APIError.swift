@@ -13,6 +13,7 @@ enum APIError: Error {
     
     // GET
     case GETUserExerciseFailed(userId: String, exerciseId: String)
+    case GETLimitedUserExercisesFailed(userId: String)
     case GETUserExerciseFailedResponse
     case GETUserExerciseFailedConversion
     
