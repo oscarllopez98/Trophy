@@ -11,6 +11,9 @@ enum APIError: Error {
     case nilParameter(parameterName: String)
     case emptyParameter(parameterName: String)
     
+    // PUT
+    case PUTUserExerciseFailed(userId: String, exercise: Exercise)
+    
     // GET
     case GETUserExerciseFailed(userId: String, exerciseId: String)
     case GETLimitedUserExercisesFailed(userId: String)

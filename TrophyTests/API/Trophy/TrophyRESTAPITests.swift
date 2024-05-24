@@ -53,7 +53,7 @@ final class TrophyRESTAPITests: XCTestCase {
         // Instantiate API client
         let trophyRestAPI = TrophyRESTAPI()
         let userId = "4bf0e7ef-cd19-4b0c-b9a2-e946c58e01d1"
-        let exerciseId = "15132D4C-4C6B-462F-A162-F967291A1424"
+        let exerciseId = "5EB2DD78-8927-4A6D-98CF-213C5F475015"
         
         // Execute the async function
         do {

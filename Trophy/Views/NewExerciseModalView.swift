@@ -40,7 +40,9 @@ struct NewExerciseModalView: View {
                         
                         //Submit Button
                         Button(action: {
-                            viewModel.submit()
+                            Task {
+                                await viewModel.submit()
+                            }                            
                             //TODO: Call ViewModel to do some checks
                             isModalVisible = false
                         }) {
@@ -377,5 +379,7 @@ struct NewExerciseModalView: View {
 }
 
 #Preview {
-    NewExerciseModalView(viewModel: NewExerciseModalViewModel(), isModalVisible: .constant(true))
+    let exerciseListViewModel = ExerciseListViewModel(userId: "4bf0e7ef-cd19-4b0c-b9a2-e946c58e01d1") // Provide a dummy user ID for preview purposes
+    let newExerciseModalViewModel = NewExerciseModalViewModel(exerciseListViewModel: exerciseListViewModel)
+    return NewExerciseModalView(viewModel: newExerciseModalViewModel, isModalVisible: .constant(true))
 }
