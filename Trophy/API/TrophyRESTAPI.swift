@@ -306,7 +306,7 @@ class TrophyRESTAPI {
             if let jsonResponse = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
                let exercises = jsonResponse["exercises"] as? [[String: Any]] {
                 // Process the JSON response
-                print("GET Limited User Exercises response: \(exercises.count)")
+                print("GET Limited User Exercises: \(exercises.count) exercises found")
 
                 // Convert each Exercise JSON into an Exercise object to create a list of Exercise objects
                 let convertedExercises: [Exercise] = try exercises.map { exercise in

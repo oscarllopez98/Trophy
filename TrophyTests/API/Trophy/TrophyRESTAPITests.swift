@@ -37,9 +37,8 @@ final class TrophyRESTAPITests: XCTestCase {
         // Instantiate API client
         let trophyRestAPI = TrophyRESTAPI()
 
-        // Get a test exercise and update the ID for one we know exists in the DB
-        let exercise = ExerciseFactory.shared.createTestExercise()
-        exercise.id = UUID(uuidString: "3a153e13-e098-4988-94cb-453a347c9dc3")!
+        // Get a test exercise and
+        let exercise = ExerciseFactory.shared.createTestExerciseV3()
         
         // Call the async function and await its result
         if let exerciseId = await trophyRestAPI.PUTUserExercise(exercise: exercise) {
