@@ -15,7 +15,8 @@ struct ActionBarView: View {
 
     let controller: ActionBarViewController = ActionBarViewController()
     @State var viewModel: ActionBarViewModel = ActionBarViewModel()
-    
+    @StateObject var exerciseListViewModel: ExerciseListViewModel // Add this property
+
     var body: some View {
         GeometryReader { geometry in
             HStack {
@@ -31,18 +32,17 @@ struct ActionBarView: View {
                 .frame(width: geometry.size.height, height: geometry.size.height)
                 .padding()
                 .sheet(isPresented: $isModalVisible) {
-                    NewExerciseModalView(viewModel: NewExerciseModalViewModel(), isModalVisible: $isModalVisible)
+                    NewExerciseModalView(viewModel: NewExerciseModalViewModel(exerciseListViewModel: exerciseListViewModel), isModalVisible: $isModalVisible)
                 }
- 
             }
-            .frame(width: geometry.size.width, 
+            .frame(width: geometry.size.width,
                    height: geometry.size.height,
                    alignment: .center)
         }
     }
-
 }
 
 #Preview {
-    ActionBarView(isModalVisible: .constant(false))
+    let exerciseListViewModel = ExerciseListViewModel(userId: "dummyUserId") // Provide a dummy user ID for preview purposes
+    return ActionBarView(isModalVisible: .constant(false), exerciseListViewModel: exerciseListViewModel)
 }
