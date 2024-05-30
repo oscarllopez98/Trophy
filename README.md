@@ -319,3 +319,11 @@ Skills Implemented in this Section
 * Monitoring and Performance Analysis
 * Security Best Practices
 * Data Visualization
+* 
+
+## **Section 7** - _Generative AI Integration_
+### Intro
+This section is currently in development. Implementing a generative AI solution will allow user's to quickly create Exercises through text/voice-to-text input. For example, the user uses voice-to-text to input "I just ran 5 kilometers for 25 minutes and 30 seconds. Name the exercise 'My 5k'". Trophy will leverage generative AI to extract key data and create a JSON structured Exercise via my existing RESTful API like in Section 5, Step 4. Steps in this section include the following:
+1) Analyze generative AI solutions to determine which is suitable for generating templated JSON data via text input (e.g. GPT-4o)
+2) Implement new Lambda function(s) to manage connection between Trophy API - AI Model - Data Processing Lambda Functions
+3) Implement new REST methods to allow Trophy to call the implemented new Lambda function(s)
