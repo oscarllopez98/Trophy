@@ -11,7 +11,17 @@ Example Use Cases:
 | -------------------- | ----- |
 | ![Image for High Level Architecture](https://drive.google.com/uc?export=view&id=1mVap_tXQXA1vTI_9CwIqAa8z30zjqU--)| ![Image for Sequence Diagram](https://drive.google.com/uc?export=view&id=1YRo3cjR1yNt1vLn6Si3GCrTjxWdMHA7K) |
 
-
+# Table of Contents
+- [**Trophy**](#trophy)
+  - [**What is Trophy?**](#what-is-trophy)
+  - [**Section 0** - _Backend Model + UI Design_](#section-0---backend-model--ui-design)
+  - [**Section 1** - _MVVM Implementation + Unit Testing_](#section-1---mvvm-implementation--unit-testing)
+  - [**Section 2** - _Dynamic Content + Improved UI_](#section-2---dynamic-content--improved-ui)
+  - [**Section 3** - _AWS API Gateway Integration_](#section-3---aws-api-gateway-integration)
+  - [**Section 4** - _AWS Lambda Integration_](#section-4---aws-lambda-integration)
+  - [**Section 5** - _TrophyRESTAPI Gateway + Lambda Function Development_](#section-5---trophyrestapi-gateway--lambda-function-development)
+  - [**Section 6** - _Financial Optimization within AWS_](#section-6---financial-optimization-within-aws)
+  - [**Section 7** - _Generative AI Integration_](#section-7---generative-ai-integration)
 
 ## **Section 0** - _Backend Model + UI Design_
 
