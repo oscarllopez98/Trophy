@@ -20,12 +20,6 @@ struct ContentView: View {
                 HStack {
                     GeometryReader { scrollGeo in
                         ScrollView {
-                            // Display each ExerciseCardView
-                            ForEach(Array(exerciseListViewModel.exercises.enumerated()), id: \.element.id) { index, exercise in
-                                ExerciseCardView(viewModel: ExerciseViewModel(exercise: exercise))
-                                    .padding(index == 0 ? [.horizontal, .top] : .horizontal)
-                            }
-                            
                             // If no exercises, inform user how to add exercises
                             if exerciseListViewModel.exercises.isEmpty {
                                 VStack {
@@ -41,6 +35,12 @@ struct ContentView: View {
                                     Spacer()
                                 }
                                 .frame(height: geometry.size.height * 0.80)
+                            } else {
+                                // Display each ExerciseCardView
+                                ForEach(Array(exerciseListViewModel.exercises.enumerated()), id: \.element.id) { index, exercise in
+                                    ExerciseCardView(viewModel: ExerciseViewModel(exercise: exercise))
+                                        .padding(index == 0 ? [.horizontal, .top] : .horizontal)
+                                }
                             }
                         }
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
