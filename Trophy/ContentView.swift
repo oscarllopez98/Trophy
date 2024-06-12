@@ -20,8 +20,20 @@ struct ContentView: View {
                 HStack {
                     GeometryReader { scrollGeo in
                         ScrollView {
+                            // Show loading indicator while loading
+                            if exerciseListViewModel.isLoading {
+                                VStack {
+                                    Spacer()
+                                    Text("Loading exercises...")
+                                        .font(.headline)
+                                        .foregroundStyle(Color("EmptyListTextColor"))
+                                        .multilineTextAlignment(.center)
+                                    Spacer()
+                                }
+                                .frame(height: geometry.size.height * 0.80)
+                            }
                             // If no exercises, inform user how to add exercises
-                            if exerciseListViewModel.exercises.isEmpty {
+                            else if exerciseListViewModel.exercises.isEmpty {
                                 VStack {
                                     Spacer()
                                     Text("You don't have any Exercises tracked yet!")
