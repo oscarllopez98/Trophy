@@ -20,14 +20,20 @@ struct ContentView: View {
                 HStack {
                     GeometryReader { scrollGeo in
                         ScrollView {
-                            // Display each ExerciseCardView
-                            ForEach(Array(exerciseListViewModel.exercises.enumerated()), id: \.element.id) { index, exercise in
-                                ExerciseCardView(viewModel: ExerciseViewModel(exercise: exercise))
-                                    .padding(index == 0 ? [.horizontal, .top] : .horizontal)
+                            // Show loading indicator while loading
+                            if exerciseListViewModel.isLoading {
+                                VStack {
+                                    Spacer()
+                                    Text("Loading exercises...")
+                                        .font(.headline)
+                                        .foregroundStyle(Color("EmptyListTextColor"))
+                                        .multilineTextAlignment(.center)
+                                    Spacer()
+                                }
+                                .frame(height: geometry.size.height * 0.80)
                             }
-                            
                             // If no exercises, inform user how to add exercises
-                            if exerciseListViewModel.exercises.isEmpty {
+                            else if exerciseListViewModel.exercises.isEmpty {
                                 VStack {
                                     Spacer()
                                     Text("You don't have any Exercises tracked yet!")
@@ -41,6 +47,12 @@ struct ContentView: View {
                                     Spacer()
                                 }
                                 .frame(height: geometry.size.height * 0.80)
+                            } else {
+                                // Display each ExerciseCardView
+                                ForEach(Array(exerciseListViewModel.exercises.enumerated()), id: \.element.id) { index, exercise in
+                                    ExerciseCardView(viewModel: ExerciseViewModel(exercise: exercise))
+                                        .padding(index == 0 ? [.horizontal, .top] : .horizontal)
+                                }
                             }
                         }
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
