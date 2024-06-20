@@ -8,6 +8,9 @@ class NewExerciseModalViewModel: ObservableObject {
     @Published var newExerciseTitle: String = ""
     @Published var isModalVisible = false
     
+    // New state variable for additional text input
+    @Published var additionalText: String = ""
+    
     // View models for input views
     @Published var distanceInputViewModel = DistanceInputViewModel()
     @Published var timeInputViewModel = TimeInputViewModel()
@@ -131,6 +134,21 @@ class NewExerciseModalViewModel: ObservableObject {
         } catch {
             print("Error storing exercise: \(error)")
             self.errorMessage = IdentifiableError(message: error.localizedDescription)
+        }
+    }
+    
+    func submitGPT() async {
+        // Store Exercise in Database using PUTUserExercise
+        do {
+            if let response = await TrophyRESTAPI().PUTUserExerciseWithGPT(userInput: additionalText) {
+                print("Exercise stored successfully: \(response)")
+                // Notify the ExerciseListViewModel to refresh its data
+                await exerciseListViewModel.fetchExercises(userId: "4bf0e7ef-cd19-4b0c-b9a2-e946c58e01d1")
+            }
+        } catch {
+            print("Error storing exercise: \(error)")
+            self.errorMessage = IdentifiableError(message: error.localizedDescription)
+            await exerciseListViewModel.fetchExercises(userId: "4bf0e7ef-cd19-4b0c-b9a2-e946c58e01d1")
         }
     }
 }

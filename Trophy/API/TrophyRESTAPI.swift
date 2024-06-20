@@ -73,6 +73,57 @@ class TrophyRESTAPI {
             throw APIError.GETLimitedUserExercisesFailed(userId: userId)
         }
     }
+    
+    /**
+     Sends a PUT request to process a user exercise with GPT.
+     
+     - Parameter userInput: The user input to be processed.
+     - Returns: The ID of the processed exercise if successful, or nil otherwise.
+     */
+    func PUTUserExerciseWithGPT(userInput: String) async -> String? {
+        let userId = "4bf0e7ef-cd19-4b0c-b9a2-e946c58e01d1" // Replace with your actual user ID
+        
+        do {
+            var request = try preparePUTUserExerciseWithGPTRequest(userId: userId)
+            
+            let requestBody: [String: Any] = [
+                "userInput": userInput
+            ]
+            
+            request.httpBody = try JSONSerialization.data(withJSONObject: requestBody)
+            
+            return try await handlePUTUserExerciseWithGPTResponse(inRequest: request)
+        } catch {
+            print("Error in PUTUserExerciseWithGPT: \(error)")
+            return nil
+        }
+    }
+
+
+    /**
+     Prepares a URLRequest for a PUT user exercise with GPT API request.
+     
+     - Parameter userId: The ID of the user.
+     - Returns: A URLRequest object for the PUT request.
+     - Throws: An APIError if the user ID is invalid.
+     */
+    private func preparePUTUserExerciseWithGPTRequest(userId: String) throws -> URLRequest {
+        if userId.isEmpty {
+            throw APIError.emptyParameter(parameterName: "userId")
+        }
+        
+        let path = "https://xhh2wpxj6f.execute-api.us-east-1.amazonaws.com/Development/users/\(userId)/exercises/processing/gpt"
+        guard let url = URL(string: path) else {
+            fatalError("Invalid URL: \(path)")
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "PUT"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("eJft9CvQjC9WqubQzLaFS7rAPrjRWCKt99QuLHAm", forHTTPHeaderField: "x-api-key")
+        
+        return request
+    }
 
     private func prepareGETLimitedUserExercisesRequest(userId: String) -> URLRequest {
         let path = "https://xhh2wpxj6f.execute-api.us-east-1.amazonaws.com/Development/users/\(userId)/exercises"
@@ -348,6 +399,33 @@ class TrophyRESTAPI {
         }
         throw APIError.GETUserExerciseFailedResponse
     }
+
+    /**
+     Handles the response from a PUT user exercise with GPT API request.
+     
+     - Parameters:
+        - inRequest: The input URLRequest.
+     - Returns: The exercise ID if successful, or nil otherwise.
+     */
+    private func handlePUTUserExerciseWithGPTResponse(inRequest: URLRequest) async -> String? {
+        do {
+            let (data, _) = try await URLSession.shared.data(for: inRequest)
+                        
+            // Parse the data to extract the exercise ID
+            if let jsonResponse = try JSONSerialization.jsonObject(with: data) as? [String: Any],
+               let exerciseId = jsonResponse["exerciseId"] as? String {
+                // print("JSON Response", jsonResponse)
+                return exerciseId
+            } else {
+                return nil
+            }
+        } catch {
+            // Handle error appropriately
+            print("Error handling PUT user exercise with GPT response: \(error)")
+            return nil
+        }
+    }
+    
     
 
 }

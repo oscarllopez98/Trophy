@@ -18,8 +18,8 @@ class ExerciseListViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     
     // Timer object to schedule periodic polling for new exercises
-    private var timer: Timer?    
-    private let pollingInterval: TimeInterval = 30.0
+    private var timer: Timer?
+    private let pollingInterval: TimeInterval = 10.0
     
     // Variable to keep track of the count of exercises from the last fetch
     private var lastExerciseCount: Int = 0

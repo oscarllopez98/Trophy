@@ -122,4 +122,19 @@ final class TrophyRESTAPITests: XCTestCase {
             XCTFail("Failed to PUT Exercise.")
         }
     }
+    
+    func testPUTUserExerciseWithGPT() async {
+        // Instantiate API client
+        let trophyRestAPI = TrophyRESTAPI()
+        
+        // Define the user input string
+        let userInput = "I swam for 20 kilometers"
+        
+        // Call the async function and await its result
+        if let exerciseId = await trophyRestAPI.PUTUserExerciseWithGPT(userInput: userInput) {
+            print("Received GPT processed exercise ID: \(exerciseId)")
+        } else {
+            XCTFail("Failed to receive GPT processed exercise ID.")
+        }
+    }
 }
