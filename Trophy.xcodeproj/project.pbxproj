@@ -330,6 +330,7 @@
 		9F2ACB682BADF4CE002A494B /* API */ = {
 			isa = PBXGroup;
 			children = (
+				9FB2E89B2C27714D009F4E65 /* Extensions */,
 				9FD4E75A2BF9625700C56E9B /* Errors */,
 				9FF313D72BF6D657000E2F53 /* Networking */,
 				9FF313D32BF6D643000E2F53 /* Utils */,
@@ -531,6 +532,29 @@
 				9FB1F6F62BAE038000A27BE0 /* TrophyRESTAPITests.swift */,
 			);
 			path = Trophy;
+			sourceTree = "<group>";
+		};
+		9FB2E89B2C27714D009F4E65 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9FB2E89D2C277170009F4E65 /* Handlers */,
+				9FB2E89C2C277165009F4E65 /* Preparers */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		9FB2E89C2C277165009F4E65 /* Preparers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Preparers;
+			sourceTree = "<group>";
+		};
+		9FB2E89D2C277170009F4E65 /* Handlers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Handlers;
 			sourceTree = "<group>";
 		};
 		9FB3727A2B96C9CE00FFE87C /* ViewTests */ = {
