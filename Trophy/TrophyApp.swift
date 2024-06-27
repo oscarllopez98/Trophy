@@ -26,7 +26,7 @@ struct TrophyApp: App {
 
     var body: some Scene {
         WindowGroup {
-            Authenticator { state in
+            Authenticator(totpOptions: .init(issuer: "Trophy")) { state in
                 VStack {
                     Text("Hello, \(state.user.username)")
                     Button("Sign out") {
@@ -36,7 +36,7 @@ struct TrophyApp: App {
                     }
                     // Replace "user-id-placeholder" with the actual ID of the user.
                     ContentView(
-                        exerciseListViewModel: ExerciseListViewModel(userId: "4bf0e7ef-cd19-4b0c-b9a2-e946c58e01d1")
+                        exerciseListViewModel: ExerciseListViewModel(userId: state.user.userId)
                     )
                 }
             }
