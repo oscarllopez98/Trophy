@@ -1,0 +1,21 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-trophy-dev-d3e24-authRole",
+      "UnauthRoleArn": "arn:aws:iam::395564754259:role/amplify-trophy-dev-d3e24-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::395564754259:role/amplify-trophy-dev-d3e24-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-trophy-dev-d3e24-deployment",
+      "UnauthRoleName": "amplify-trophy-dev-d3e24-unauthRole",
+      "StackName": "amplify-trophy-dev-d3e24",
+      "StackId": "arn:aws:cloudformation:us-east-1:395564754259:stack/amplify-trophy-dev-d3e24/66cc11b0-342c-11ef-a71c-0ec9635c0aa1",
+      "AmplifyAppId": "d3gejj9p2aiayj"
+    },
+    "categories": {
+      "auth": {
+        "trophyfc1cf172": {},
+        "trophy773993fc": {}
+      }
+    }
+  }
+}
