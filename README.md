@@ -334,6 +334,9 @@ Skills Implemented in this Section
 ## **Section 7** - _Generative AI Integration_
 ### Intro
 This section is currently in development. Implementing a generative AI solution will allow user's to quickly create Exercises through text/voice-to-text input. For example, the user uses voice-to-text to input "I just ran 5 kilometers for 25 minutes and 30 seconds. Name the exercise 'My 5k'". Trophy will leverage generative AI to extract key data and create a JSON structured Exercise via my existing RESTful API like in Section 5, Step 4. Steps in this section include the following:
-1) Analyze generative AI solutions to determine which is suitable for generating templated JSON data via text input (e.g. GPT-4o)
-2) Implement new Lambda function(s) to manage connection between Trophy API - AI Model - Data Processing Lambda Functions
-3) Implement new REST methods to allow Trophy to call the implemented new Lambda function(s)
+
+| Task | GPT Demo |
+|------|------|
+| 1) Analyze generative AI solutions to determine which is suitable for generating templated JSON data via text input (e.g., GPT-4o) <br> - I decided to go with the GPT Model "gpt-3.5-turbo" (points to "gpt-3.5-turbo-0125" as of June 26 2024") since it's described to have higher accuracy at responding in requested formats (JSON in my case) for an affordable price. | ![Video demo of GPT creating an Exercise entry](https://drive.google.com/uc?export=view&id=1VkhtXxa0-mbxSsaCb9OgESIvvM_Yk-K8) |
+| 2) Implement new Lambda function(s) to manage connection between Trophy API - AI Model - Data Processing Lambda Functions <br> - I implemented a new Lambda function + layer for having the GPT model process the user input then pass it along to my putUserExerciseHandler lambda function for final processing | ![Video demo of GPT creating an Exercise entry](https://drive.google.com/uc?export=view&id=1VkhtXxa0-mbxSsaCb9OgESIvvM_Yk-K8) |
+| 3) Implement new REST methods to allow Trophy to call the implemented new Lambda function(s) <br> - Using my API Gateway API, I added a resource path to allow the invocation using a new GPT invoke path | ![Video demo of GPT creating an Exercise entry](https://drive.google.com/uc?export=view&id=1VkhtXxa0-mbxSsaCb9OgESIvvM_Yk-K8) |
