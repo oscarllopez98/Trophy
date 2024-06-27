@@ -1,125 +1,228 @@
-//
-//  TrophyRESTAPITests.swift
-//  TrophyTests
-//
-//  Created by Oscar Lopez on 3/22/24.
-//
-
 import XCTest
 @testable import Trophy
 
 final class TrophyRESTAPITests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    var trophyAPI: TrophyRESTAPI!
+    var testUserId: String!
+
+    override func setUp() {
+        super.setUp()
+        trophyAPI = TrophyRESTAPI()
+        testUserId = "4bf0e7ef-cd19-4b0c-b9a2-e946c58e01d1"
+        //URLProtocol.registerClass(URLProtocolStub.self)
     }
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    override func tearDown() {
+        trophyAPI = nil
+        testUserId = nil
+        URLProtocol.unregisterClass(URLProtocolStub.self)
+        super.tearDown()
     }
 
     func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+        self.measure {}
     }
-    
-    func testPUTUserExercise() async {
-        // Instantiate API client
-        let trophyRestAPI = TrophyRESTAPI()
 
-        // Get a test exercise and
+    func testPUTUserExercise() async {
+        let trophyRestAPI = TrophyRESTAPI()
         let exercise = ExerciseFactory.shared.createTestExerciseV3()
         
-        // Call the async function and await its result
         if let exerciseId = await trophyRestAPI.PUTUserExercise(exercise: exercise) {
             print("Received exercise ID: \(exerciseId)")
         } else {
             print("Failed to receive exercise ID.")
         }
     }
-    
+
     func testGETUserExercise() async {
-        
-        // Instantiate API client
         let trophyRestAPI = TrophyRESTAPI()
-        let userId = "4bf0e7ef-cd19-4b0c-b9a2-e946c58e01d1"
-        let exerciseId = "5EB2DD78-8927-4A6D-98CF-213C5F475015"
+        let exerciseId = "3e42fc6b-2670-42aa-9850-47cf4742e406"
         
-        // Execute the async function
         do {
-            let exercise: Exercise = try await trophyRestAPI.GETUserExercise(userId: userId, exerciseId: exerciseId)
+            let exercise: Exercise = try await trophyRestAPI.GETUserExercise(userId: testUserId, exerciseId: exerciseId)
             ExerciseLogger().logExercise(exercise)
         } catch {
-            XCTFail("Could not GET User Exercise with userId \(userId) and exerciseId \(exerciseId)")
+            XCTFail("Could not GET User Exercise with userId \(testUserId!) and exerciseId \(exerciseId)")
         }
     }
-    
+
     func testGETLimitedUserExercises() async {
         let trophyRESTAPI = TrophyRESTAPI()
-        let userId = "4bf0e7ef-cd19-4b0c-b9a2-e946c58e01d1"
         
         do {
-            let exercises: [Exercise] = try await trophyRESTAPI.GETLimitedUserExercises(userId: userId)
+            let exercises: [Exercise] = try await trophyRESTAPI.GETLimitedUserExercises(userId: testUserId)
             XCTAssertNotNil(exercises)
         } catch {
-            XCTFail("Could not GET Limited User Exercises with userId \(userId)")
+            XCTFail("Could not GET Limited User Exercises with userId \(testUserId!)")
         }
     }
-    
-    func testUpdateFlowForUserExercise() async {
-        // Instantiate API client
-        let client = TrophyRESTAPI()
 
-        // Get a test exercise and update the ID for one we know exists in the DB
+    func testUpdateFlowForUserExercise() async {
+        let client = TrophyRESTAPI()
         let exercise = ExerciseFactory.shared.createTestExerciseV2()
-        
-        // Create a sample Exercise object
         let updatedExercise = ExerciseFactory.shared.createTestExerciseV3()
-        
-        //- - PUT Exercise - -
-        // Call the async function and await its result
+
         if let oldExerciseId = await client.PUTUserExercise(exercise: exercise) {
             print("PUT success with exercise ID: \(oldExerciseId)")
-            
-            //- - GET Exercise : With newly generated exerciseId - -
+
             do {
-                let oldExercise = try await client.GETUserExercise(userId: "4bf0e7ef-cd19-4b0c-b9a2-e946c58e01d1", exerciseId: oldExerciseId)
+                let oldExercise = try await client.GETUserExercise(userId: testUserId, exerciseId: oldExerciseId)
                 ExerciseLogger().logExercise(oldExercise)
-                // Ensure that these test exercises have the same ID so we can update properly
                 updatedExercise.id = oldExercise.id
-                
-                //- - UPDATE Exercise - -
+
                 if let newExerciseId = await client.PUTUserExercise(exercise: updatedExercise) {
                     print("PUT success with exercise ID: \(newExerciseId)")
-                    
-                    //- - GET Updated Exercise : With existing generated exerciseId - -
+
                     do {
-                        let updatedExercise = try await client.GETUserExercise(userId: "4bf0e7ef-cd19-4b0c-b9a2-e946c58e01d1", exerciseId: newExerciseId)
+                        let updatedExercise = try await client.GETUserExercise(userId: testUserId, exerciseId: newExerciseId)
                         ExerciseLogger().logExercise(updatedExercise)
-                        
+
                         XCTAssertEqual(oldExercise.id?.uuidString, updatedExercise.id?.uuidString)
                     } catch {
-                        XCTFail("Could not GET User Exercise with userId \("4bf0e7ef-cd19-4b0c-b9a2-e946c58e01d1") and exerciseId \(newExerciseId)")
+                        XCTFail("Could not GET User Exercise with userId \(testUserId!) and exerciseId \(newExerciseId)")
                     }
                 } else {
                     XCTFail("Failed to PUT Updated Exercise.")
                 }
             } catch {
-                XCTFail("Could not GET User Exercise with userId \("4bf0e7ef-cd19-4b0c-b9a2-e946c58e01d1") and exerciseId \(oldExerciseId)")
+                XCTFail("Could not GET User Exercise with userId \(testUserId!) and exerciseId \(oldExerciseId)")
             }
         } else {
             print("Using Exercise ID:", exercise.id!.uuidString)
             XCTFail("Failed to PUT Exercise.")
         }
     }
+
+    func testPUTUserExerciseWithGPT() async {
+        let trophyRestAPI = TrophyRESTAPI()
+        let userInput = "I just did 10 pullups."
+
+        if let exerciseId = await trophyRestAPI.PUTUserExerciseWithGPT(userInput: userInput) {
+            print("Received GPT processed exercise ID: \(exerciseId)")
+        } else {
+            XCTFail("Failed to receive GPT processed exercise ID.")
+        }
+    }
+
+    func testHandleGETLimitedUserExercisesResponse_validResponse() async {
+        let validResponseData = """
+        {
+            "exercises": [
+                {
+                    "id": "1",
+                    "name": "Running",
+                    "type": "Cardio",
+                    "attributes": {},
+                    "notes": "Morning run"
+                }
+            ]
+        }
+        """.data(using: .utf8)!
+        let request = URLRequest(url: URL(string: "https://example.com")!)
+
+        URLProtocolStub.stub(data: validResponseData, response: nil, error: nil)
+
+        do {
+            let exercises = try await trophyAPI.handleGETLimitedUserExercisesResponse(inRequest: request)
+            XCTAssertEqual(exercises.count, 1)
+            XCTAssertEqual(exercises.first?.name, "Running")
+        } catch {
+            XCTFail("Expected valid response, but got error: \(error)")
+        }
+    }
+
+    func testHandleGETLimitedUserExercisesResponse_emptyResponse() {
+        let emptyResponseData = "{}".data(using: .utf8)!
+        let request = URLRequest(url: URL(string: "https://example.com")!)
+
+        URLProtocolStub.stub(data: emptyResponseData, response: nil, error: nil)
+
+        let expectation = XCTestExpectation(description: "GETLimitedUserExercisesResponse_emptyResponse")
+
+        Task {
+            do {
+                let _ = try await trophyAPI.handleGETLimitedUserExercisesResponse(inRequest: request)
+                XCTFail("Expected error of type APIError.GETUserExerciseFailedResponse")
+            } catch {
+                XCTAssertEqual(error as? APIError, APIError.GETUserExerciseFailedResponse)
+            }
+            expectation.fulfill()
+        }
+
+        wait(for: [expectation], timeout: 20)
+    }
+
+    func testHandleGETLimitedUserExercisesResponse_malformedJSON() async {
+        let malformedJSONData = """
+        {
+            "invalid_key": "invalid_value"
+        }
+        """.data(using: .utf8)!
+        let request = URLRequest(url: URL(string: "https://example.com")!)
+
+        URLProtocolStub.stub(data: malformedJSONData, response: nil, error: nil)
+
+        XCTAssertThrowsError(Task{try await trophyAPI.handleGETLimitedUserExercisesResponse(inRequest: request)}) { error in
+            XCTAssertEqual(error as? APIError, APIError.GETUserExerciseFailedResponse)
+        }
+    }
+
+    func testHandleGETLimitedUserExercisesResponse_networkError() async {
+        let request = URLRequest(url: URL(string: "https://example.com")!)
+        let networkError = NSError(domain: "network", code: -1, userInfo: nil)
+
+        URLProtocolStub.stub(data: nil, response: nil, error: networkError)
+
+        XCTAssertThrowsError(Task{try await trophyAPI.handleGETLimitedUserExercisesResponse(inRequest: request)}) { error in
+            XCTAssertEqual(error as? NSError, networkError)
+        }
+    }
+
+    func testExerciseListViewModel() {
+        let viewModel = ExerciseListViewModel(userId: testUserId)
+        let expectation = XCTestExpectation(description: "Fetch exercises")
+        print("Dispatch")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            XCTAssertEqual(viewModel.exercises.count, 10)
+            expectation.fulfill()
+        }
+        print("Wait!")
+        wait(for: [expectation], timeout: 10)
+    }
+}
+
+class URLProtocolStub: URLProtocol {
+    static var stubData: Data?
+    static var stubResponse: URLResponse?
+    static var stubError: Error?
+
+    static func stub(data: Data?, response: URLResponse?, error: Error?) {
+        stubData = data
+        stubResponse = response
+        stubError = error
+    }
+
+    override class func canInit(with request: URLRequest) -> Bool {
+        return true
+    }
+
+    override class func canonicalRequest(for request: URLRequest) -> URLRequest {
+        return request
+    }
+
+    override func startLoading() {
+        if let stubData = URLProtocolStub.stubData {
+            client?.urlProtocol(self, didLoad: stubData)
+        }
+        if let stubResponse = URLProtocolStub.stubResponse {
+            client?.urlProtocol(self, didReceive: stubResponse, cacheStoragePolicy: .notAllowed)
+        }
+        if let stubError = URLProtocolStub.stubError {
+            client?.urlProtocol(self, didFailWithError: stubError)
+        }
+        client?.urlProtocolDidFinishLoading(self)
+    }
+
+    override func stopLoading() {}
 }

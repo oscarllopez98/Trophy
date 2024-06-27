@@ -1,10 +1,3 @@
-//
-//  NewExerciseModalView.swift
-//  Trophy
-//
-//  Created by Oscar Lopez on 3/4/24.
-//
-
 import SwiftUI
 
 struct NewExerciseModalView: View {
@@ -42,7 +35,7 @@ struct NewExerciseModalView: View {
                         Button(action: {
                             Task {
                                 await viewModel.submit()
-                            }                            
+                            }
                             //TODO: Call ViewModel to do some checks
                             isModalVisible = false
                         }) {
@@ -61,8 +54,6 @@ struct NewExerciseModalView: View {
 
                 }
                 .frame(maxWidth: .infinity, maxHeight: submitRowHeight)
-
-
 
                 ScrollView {
                     VStack {
@@ -183,11 +174,12 @@ struct NewExerciseModalView: View {
                                             .foregroundStyle(addSymbolForegroundStyleColor)
                                             .padding()
                                     }
-                                }                        }
+                                }
+                            }
                         }
                         .frame(width: geometry.size.width, alignment: .leading)
 
-                        //Time Input View
+                        //Sets Input View
                         VStack {
                             if viewModel.isExpandedSets {
                                 SetsInputView(viewModel: viewModel.setsInputViewModel)
@@ -366,18 +358,44 @@ struct NewExerciseModalView: View {
                                 LevelInputView(viewModel: viewModel.levelInputViewModel)
                             }
                         }
+
+                        // MARK: Additional Text
+                        VStack {
+                            TextField("Enter additional text", text: $viewModel.additionalText)
+                                .textFieldStyle(RoundedBorderTextFieldStyle())
+                                .padding()
+
+                            Button(action: {
+                                print("Additional Text Submitted: \(viewModel.additionalText)")
+                                Task {
+                                    await viewModel.submitGPT()
+                                }
+                                //TODO: Call ViewModel to do some checks
+                                isModalVisible = false
+                            }) {
+                                RoundedRectangle(cornerRadius: 20)
+                                    .overlay(
+                                        Text("Submit Additional Text")
+                                            .foregroundStyle(Color.white)
+                                    )
+                                    .frame(height: 40)
+                                    .padding(.horizontal)
+                            }
+                        }
+                        .frame(width: geometry.size.width, alignment: .leading)
+                        
                     }//VStack
                     .frame(width: geometry.size.width)
                 }//ScrollView
                 .frame(width: geometry.size.width)
             }
-
             
             
         }//GeometryReader
     }
 }
 
+// #Preview block remains the same
 #Preview {
     let exerciseListViewModel = ExerciseListViewModel(userId: "4bf0e7ef-cd19-4b0c-b9a2-e946c58e01d1") // Provide a dummy user ID for preview purposes
     let newExerciseModalViewModel = NewExerciseModalViewModel(exerciseListViewModel: exerciseListViewModel)

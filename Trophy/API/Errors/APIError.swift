@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum APIError: Error {
+enum APIError: Error, Equatable {
     case nilParameter(parameterName: String)
     case emptyParameter(parameterName: String)
     

@@ -73,12 +73,64 @@ class TrophyRESTAPI {
             throw APIError.GETLimitedUserExercisesFailed(userId: userId)
         }
     }
+    
+    /**
+     Sends a PUT request to process a user exercise with GPT.
+     
+     - Parameter userInput: The user input to be processed.
+     - Returns: The ID of the processed exercise if successful, or nil otherwise.
+     */
+    func PUTUserExerciseWithGPT(userInput: String) async -> String? {
+        let userId = "4bf0e7ef-cd19-4b0c-b9a2-e946c58e01d1" // Replace with your actual user ID
+        
+        do {
+            var request = try preparePUTUserExerciseWithGPTRequest(userId: userId)
+            
+            let requestBody: [String: Any] = [
+                "userInput": userInput
+            ]
+            
+            request.httpBody = try JSONSerialization.data(withJSONObject: requestBody)
+            
+            return try await handlePUTUserExerciseWithGPTResponse(inRequest: request)
+        } catch {
+            print("Error in PUTUserExerciseWithGPT: \(error)")
+            return nil
+        }
+    }
 
-    private func prepareGETLimitedUserExercisesRequest(userId: String) -> URLRequest {
+
+    /**
+     Prepares a URLRequest for a PUT user exercise with GPT API request.
+     
+     - Parameter userId: The ID of the user.
+     - Returns: A URLRequest object for the PUT request.
+     - Throws: An APIError if the user ID is invalid.
+     */
+    func preparePUTUserExerciseWithGPTRequest(userId: String) throws -> URLRequest {
+        if userId.isEmpty {
+            throw APIError.emptyParameter(parameterName: "userId")
+        }
+        
+        let path = "https://xhh2wpxj6f.execute-api.us-east-1.amazonaws.com/Development/users/\(userId)/exercises/processing/gpt"
+        guard let url = URL(string: path) else {
+            fatalError("Invalid URL: \(path)")
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "PUT"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("eJft9CvQjC9WqubQzLaFS7rAPrjRWCKt99QuLHAm", forHTTPHeaderField: "x-api-key")
+        
+        return request
+    }
+
+    func prepareGETLimitedUserExercisesRequest(userId: String) -> URLRequest {
         let path = "https://xhh2wpxj6f.execute-api.us-east-1.amazonaws.com/Development/users/\(userId)/exercises"
         guard let url = URL(string: path) else {
             fatalError("Invalid URL: \(path)")
         }
+        print("Still good")
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.addValue("eJft9CvQjC9WqubQzLaFS7rAPrjRWCKt99QuLHAm", forHTTPHeaderField: "x-api-key")
@@ -93,7 +145,7 @@ class TrophyRESTAPI {
         - exerciseId: The ID of the exercise.
      - Returns: A URLRequest object for the GET request.
      */
-    private func prepareGETUserExerciseRequest(userId: String, exerciseId: String) -> URLRequest {
+    func prepareGETUserExerciseRequest(userId: String, exerciseId: String) -> URLRequest {
         let path = "https://xhh2wpxj6f.execute-api.us-east-1.amazonaws.com/Prod/users/\(userId)/exercises/\(exerciseId)"
         guard let url = URL(string: path) else {
             fatalError("Invalid URL: \(path)")
@@ -113,7 +165,7 @@ class TrophyRESTAPI {
      - Returns: A URLRequest object for the PUT request.
      - Throws: An APIError if the parameters are invalid.
      */
-    private func preparePUTUserExerciseRequest(userId: String, exerciseId: String) throws -> URLRequest {
+    func preparePUTUserExerciseRequest(userId: String, exerciseId: String) throws -> URLRequest {
         if (userId.isEmpty) { throw APIError.emptyParameter(parameterName: "userId") }
         if (exerciseId.isEmpty) { throw APIError.emptyParameter(parameterName: "userId") }
 
@@ -138,7 +190,7 @@ class TrophyRESTAPI {
      - Returns: A URLRequest object for the PUT request.
      - Throws: An APIError if the user ID is invalid.
      */
-    private func preparePUTUserExerciseRequest(userId: String) throws -> URLRequest {
+    func preparePUTUserExerciseRequest(userId: String) throws -> URLRequest {
         if (userId.isEmpty) { throw APIError.emptyParameter(parameterName: "userId") }
 
         let path = "https://xhh2wpxj6f.execute-api.us-east-1.amazonaws.com/Prod/users/\(userId)/exercises/"
@@ -160,7 +212,7 @@ class TrophyRESTAPI {
      
      - Returns: A URLRequest object for the PUT request.
      */
-    private func preparePUTUserExerciseRequest() -> URLRequest {
+    func preparePUTUserExerciseRequest() -> URLRequest {
         // Create a URLRequest with the URL + Set the HTTP method to PUT
         var request = URLRequest(url: getPUTUserExerciseEndpointPath())
         request.httpMethod = "PUT"
@@ -181,7 +233,7 @@ class TrophyRESTAPI {
         - notes: Any notes associated with the exercise.
      - Returns: A dictionary representing the JSON payload.
      */
-    private func preparePUTUserExerciseJSON(name: String,
+    func preparePUTUserExerciseJSON(name: String,
                                     type: String,
                                     attributes: [Exercise.AttributeName:ExerciseAttribute]? = nil,
                                     notes: String) -> [String: Any]{
@@ -250,7 +302,7 @@ class TrophyRESTAPI {
      - Returns: A URLRequest object with the JSON data set as the HTTP body.
      - Throws: An error if there is an issue creating the JSON data.
      */
-    private func preparePUTUserExerciseRequestData(inRequest: URLRequest, jsonObject: [String: Any]) throws -> URLRequest {
+    func preparePUTUserExerciseRequestData(inRequest: URLRequest, jsonObject: [String: Any]) throws -> URLRequest {
         let jsonData = try JSONSerialization.data(withJSONObject: jsonObject, options: [])
         // Set the request body with the JSON data
         var outRequest = inRequest
@@ -280,7 +332,7 @@ class TrophyRESTAPI {
         - jsonObject: The JSON object returned in the response.
         - completion: A closure to be called upon completion of the API call, returning the exercise ID if successful, or nil otherwise.
      */
-    private func handlePUTUserExerciseResponse(inRequest: URLRequest, jsonObject: [String: Any]) async -> String? {
+    func handlePUTUserExerciseResponse(inRequest: URLRequest, jsonObject: [String: Any]) async -> String? {
         // Perform the async network operation, e.g., using URLSession
         do {
             let (data, _) = try await URLSession.shared.data(for: inRequest)
@@ -298,31 +350,40 @@ class TrophyRESTAPI {
         }
     }
 
-    private func handleGETLimitedUserExercisesResponse(inRequest: URLRequest) async throws -> [Exercise] {
-        // Perform the async network operation, e.g., using URLSession
+    func handleGETLimitedUserExercisesResponse(inRequest: URLRequest) async throws -> [Exercise] {
         do {
             let (data, _) = try await URLSession.shared.data(for: inRequest)
-            // Handle the data appropriately
-            if let jsonResponse = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
-               let exercises = jsonResponse["exercises"] as? [[String: Any]] {
-                // Process the JSON response
-                print("GET Limited User Exercises: \(exercises.count) exercises found")
-
-                // Convert each Exercise JSON into an Exercise object to create a list of Exercise objects
-                let convertedExercises: [Exercise] = try exercises.map { exercise in
-                    let exerciseBody: [String: Any] = ["exercise" : exercise]
+            
+            // Parse JSON response
+            let jsonResponse = try JSONSerialization.jsonObject(with: data) as? [String: Any] ?? [:]
+            print("JSON Response:")
+            print(jsonResponse)
+            
+            // Print JSON response details (optional)
+            if let exercisesJSON = jsonResponse["exercises"] as? [[String: Any]] {
+                print("GET Limited User Exercises: \(exercisesJSON.count) exercises found")
+                
+                // Convert JSON exercises to Exercise objects
+                let convertedExercises: [Exercise] = try exercisesJSON.map { exerciseJSON in
+                    let exerciseBody: [String: Any] = ["exercise": exerciseJSON]
                     let convertedExercise: Exercise = try ExerciseConverter().convertExerciseJSONResponseToExercise(exerciseBody)
                     return convertedExercise
                 }
+                
                 // Return the list of Exercise objects
                 return convertedExercises
             }
+            
+            // If exercises JSON is not found, throw an error
+            throw APIError.GETUserExerciseFailedResponse
         } catch {
-            // Handle error appropriately
+            // Handle network or JSON parsing errors
             print("Error handling GET user exercise response: \(error)")
+            throw error
         }
-        throw APIError.GETUserExerciseFailedResponse
     }
+
+
 
     /**
      Constructs the URL for the GET user exercise API endpoint.
@@ -332,14 +393,14 @@ class TrophyRESTAPI {
         - exerciseId: The ID of the exercise.
      - Returns: The URL for the API endpoint.
      */
-    private func handleGETUserExerciseResponse(inRequest: URLRequest) async throws -> Exercise {
+    func handleGETUserExerciseResponse(inRequest: URLRequest) async throws -> Exercise {
         // Perform the async network operation, e.g., using URLSession
         do {
             let (data, _) = try await URLSession.shared.data(for: inRequest)
             // Handle the data appropriately
             if let jsonResponse = try? JSONSerialization.jsonObject(with: data) as? [String: Any] {
                 // Process the JSON response
-//                print("GET User Exercise response: \(jsonResponse)")
+                print("GET User Exercise response: \(jsonResponse)")
                 return try ExerciseConverter().convertExerciseJSONResponseToExercise(jsonResponse)
             }
         } catch {
@@ -348,6 +409,33 @@ class TrophyRESTAPI {
         }
         throw APIError.GETUserExerciseFailedResponse
     }
+
+    /**
+     Handles the response from a PUT user exercise with GPT API request.
+     
+     - Parameters:
+        - inRequest: The input URLRequest.
+     - Returns: The exercise ID if successful, or nil otherwise.
+     */
+    func handlePUTUserExerciseWithGPTResponse(inRequest: URLRequest) async -> String? {
+        do {
+            let (data, _) = try await URLSession.shared.data(for: inRequest)
+                        
+            // Parse the data to extract the exercise ID
+            if let jsonResponse = try JSONSerialization.jsonObject(with: data) as? [String: Any],
+               let exerciseId = jsonResponse["exerciseId"] as? String {
+                // print("JSON Response", jsonResponse)
+                return exerciseId
+            } else {
+                return nil
+            }
+        } catch {
+            // Handle error appropriately
+            print("Error handling PUT user exercise with GPT response: \(error)")
+            return nil
+        }
+    }
+    
     
 
 }
