@@ -28,7 +28,7 @@ final class TrophyRESTAPITests: XCTestCase {
         let trophyRestAPI = TrophyRESTAPI()
         let exercise = ExerciseFactory.shared.createTestExerciseV3()
         
-        if let exerciseId = await trophyRestAPI.PUTUserExercise(exercise: exercise) {
+        if let exerciseId = await trophyRestAPI.PUTUserExercise(exercise: exercise, userId: testUserId) {
             print("Received exercise ID: \(exerciseId)")
         } else {
             print("Failed to receive exercise ID.")
@@ -63,7 +63,7 @@ final class TrophyRESTAPITests: XCTestCase {
         let exercise = ExerciseFactory.shared.createTestExerciseV2()
         let updatedExercise = ExerciseFactory.shared.createTestExerciseV3()
 
-        if let oldExerciseId = await client.PUTUserExercise(exercise: exercise) {
+        if let oldExerciseId = await client.PUTUserExercise(exercise: exercise, userId: testUserId) {
             print("PUT success with exercise ID: \(oldExerciseId)")
 
             do {
@@ -71,7 +71,7 @@ final class TrophyRESTAPITests: XCTestCase {
                 ExerciseLogger().logExercise(oldExercise)
                 updatedExercise.id = oldExercise.id
 
-                if let newExerciseId = await client.PUTUserExercise(exercise: updatedExercise) {
+                if let newExerciseId = await client.PUTUserExercise(exercise: updatedExercise, userId: testUserId) {
                     print("PUT success with exercise ID: \(newExerciseId)")
 
                     do {
@@ -98,7 +98,7 @@ final class TrophyRESTAPITests: XCTestCase {
         let trophyRestAPI = TrophyRESTAPI()
         let userInput = "I just did 10 pullups."
 
-        if let exerciseId = await trophyRestAPI.PUTUserExerciseWithGPT(userInput: userInput) {
+        if let exerciseId = await trophyRestAPI.PUTUserExerciseWithGPT(userInput: userInput, userId: testUserId) {
             print("Received GPT processed exercise ID: \(exerciseId)")
         } else {
             XCTFail("Failed to receive GPT processed exercise ID.")
