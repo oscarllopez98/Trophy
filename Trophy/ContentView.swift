@@ -4,6 +4,8 @@ struct ContentView: View {
     // Tracks the Dynamic List of Exercises
     @StateObject var exerciseListViewModel: ExerciseListViewModel
     @State private var isModalVisible = false
+    var userId: String
+    var username: String
 
     var body: some View {
         // Our Main Container
@@ -65,7 +67,7 @@ struct ContentView: View {
                 // MARK: Actionbar
                 GeometryReader { actionBarGeo in
                     HStack {
-                        ActionBarView(isModalVisible: $isModalVisible, exerciseListViewModel: exerciseListViewModel)
+                        ActionBarView(isModalVisible: $isModalVisible, exerciseListViewModel: exerciseListViewModel, userId: userId)
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                             .onTapGesture {
                                 // Show modal for adding a new exercise
@@ -84,13 +86,18 @@ struct ContentView: View {
             Alert(title: Text("Error"), message: Text(error.message), dismissButton: .default(Text("OK")))
         }
         .sheet(isPresented: $isModalVisible) {
-            NewExerciseModalView(viewModel: NewExerciseModalViewModel(exerciseListViewModel: exerciseListViewModel), isModalVisible: $isModalVisible)
+            NewExerciseModalView(viewModel: NewExerciseModalViewModel(exerciseListViewModel: exerciseListViewModel, userId: userId), isModalVisible: $isModalVisible)
         }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(exerciseListViewModel: ExerciseListViewModel(userId: "4bf0e7ef-cd19-4b0c-b9a2-e946c58e01d1"))
+        var sampleID: String = "4bf0e7ef-cd19-4b0c-b9a2-e946c58e01d1"
+        var sampleUsername: String = "Test User"
+        ContentView(exerciseListViewModel: ExerciseListViewModel(userId: sampleID),
+                    userId: sampleID,
+                    username: sampleUsername
+                    )
     }
 }

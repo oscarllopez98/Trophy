@@ -3,6 +3,7 @@ import Foundation
 class NewExerciseModalViewModel: ObservableObject {
     // Reference to the list view model to notify about updates
     private var exerciseListViewModel: ExerciseListViewModel
+    private var userId: String
 
     // State values for Custom Input Views
     @Published var newExerciseTitle: String = ""
@@ -33,8 +34,9 @@ class NewExerciseModalViewModel: ObservableObject {
     @Published var errorMessage: IdentifiableError? = nil
 
     // Initializer
-    init(exerciseListViewModel: ExerciseListViewModel) {
+    init(exerciseListViewModel: ExerciseListViewModel, userId: String) {
         self.exerciseListViewModel = exerciseListViewModel
+        self.userId = userId
     }
 
     // Submit Exercise function
@@ -124,12 +126,12 @@ class NewExerciseModalViewModel: ObservableObject {
         
         // Store Exercise in Database using PUTUserExercise
         do {
-            if let response = await TrophyRESTAPI().PUTUserExercise(exercise: exercise) {
+            if let response = await TrophyRESTAPI().PUTUserExercise(exercise: exercise, userId: userId) {
                 print("Exercise stored successfully: \(response)")
                 // Notify the ExerciseListViewModel to refresh its data
-                await exerciseListViewModel.fetchExercises(userId: "4bf0e7ef-cd19-4b0c-b9a2-e946c58e01d1")
+                await exerciseListViewModel.fetchExercises(userId: userId)
             } else {
-                throw APIError.PUTUserExerciseFailed(userId: "4bf0e7ef-cd19-4b0c-b9a2-e946c58e01d1", exercise: exercise)
+                throw APIError.PUTUserExerciseFailed(userId: userId, exercise: exercise)
             }
         } catch {
             print("Error storing exercise: \(error)")
@@ -140,15 +142,15 @@ class NewExerciseModalViewModel: ObservableObject {
     func submitGPT() async {
         // Store Exercise in Database using PUTUserExercise
         do {
-            if let response = await TrophyRESTAPI().PUTUserExerciseWithGPT(userInput: additionalText) {
+            if let response = await TrophyRESTAPI().PUTUserExerciseWithGPT(userInput: additionalText, userId: userId) {
                 print("Exercise stored successfully: \(response)")
                 // Notify the ExerciseListViewModel to refresh its data
-                await exerciseListViewModel.fetchExercises(userId: "4bf0e7ef-cd19-4b0c-b9a2-e946c58e01d1")
+                await exerciseListViewModel.fetchExercises(userId: userId)
             }
         } catch {
             print("Error storing exercise: \(error)")
             self.errorMessage = IdentifiableError(message: error.localizedDescription)
-            await exerciseListViewModel.fetchExercises(userId: "4bf0e7ef-cd19-4b0c-b9a2-e946c58e01d1")
+            await exerciseListViewModel.fetchExercises(userId: userId)
         }
     }
 }
