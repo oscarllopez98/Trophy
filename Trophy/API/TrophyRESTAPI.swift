@@ -16,11 +16,11 @@ class TrophyRESTAPI {
      - Parameter exercise: The exercise object to be updated.
      - Returns: The ID of the updated exercise if successful, or nil otherwise.
      */
-    func PUTUserExercise(exercise: Exercise) async -> String? {
+    func PUTUserExercise(exercise: Exercise, userId: String) async -> String? {
         do {
             // Prepare request depending if we have an Exercise ID or not
-            let request = exercise.id != nil ? try preparePUTUserExerciseRequest(userId: "4bf0e7ef-cd19-4b0c-b9a2-e946c58e01d1", exerciseId: exercise.id!.uuidString)
-            : try preparePUTUserExerciseRequest(userId: "4bf0e7ef-cd19-4b0c-b9a2-e946c58e01d1")
+            let request = exercise.id != nil ? try preparePUTUserExerciseRequest(userId: userId, exerciseId: exercise.id!.uuidString)
+            : try preparePUTUserExerciseRequest(userId: userId)
             
             let jsonObject: [String: Any] = preparePUTUserExerciseJSON(name: exercise.name,
                                                                        type: exercise.type.asString,
@@ -80,8 +80,8 @@ class TrophyRESTAPI {
      - Parameter userInput: The user input to be processed.
      - Returns: The ID of the processed exercise if successful, or nil otherwise.
      */
-    func PUTUserExerciseWithGPT(userInput: String) async -> String? {
-        let userId = "4bf0e7ef-cd19-4b0c-b9a2-e946c58e01d1" // Replace with your actual user ID
+    func PUTUserExerciseWithGPT(userInput: String, userId: String) async -> String? {
+        let userId = userId // Replace with your actual user ID
         
         do {
             var request = try preparePUTUserExerciseWithGPTRequest(userId: userId)

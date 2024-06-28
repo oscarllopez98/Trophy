@@ -34,9 +34,11 @@ struct TrophyApp: App {
                             await state.signOut()
                         }
                     }
-                    // Replace "user-id-placeholder" with the actual ID of the user.
+                    // Instantiate the main Content View
                     ContentView(
-                        exerciseListViewModel: ExerciseListViewModel(userId: state.user.userId)
+                        exerciseListViewModel: ExerciseListViewModel(userId: state.user.userId),
+                        userId: state.user.userId,
+                        username: state.user.username
                     )
                 }
             }
