@@ -37,7 +37,7 @@ final class TrophyRESTAPITests: XCTestCase {
 
     func testGETUserExercise() async {
         let trophyRestAPI = TrophyRESTAPI()
-        let exerciseId = "3e42fc6b-2670-42aa-9850-47cf4742e406"
+        let exerciseId = "4f996000-6bf5-4efc-9ba4-da0a43653020"
         
         do {
             let exercise: Exercise = try await trophyRestAPI.GETUserExercise(userId: testUserId, exerciseId: exerciseId)
