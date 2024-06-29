@@ -7,6 +7,12 @@
 
 import Foundation
 
-func getEnvironmentVariable(_ key: String) -> String? {
-    return ProcessInfo.processInfo.environment[key]
+/**
+ Retrieves the value of an environment variable.
+ 
+ - Parameter name: The name of the environment variable.
+ - Returns: The value of the environment variable, or nil if not found.
+ */
+func getEnvironmentVariable(_ name: String) -> String? {
+    return ProcessInfo.processInfo.environment[name]
 }

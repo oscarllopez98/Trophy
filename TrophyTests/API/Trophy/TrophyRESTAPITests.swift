@@ -94,7 +94,7 @@ final class TrophyRESTAPITests: XCTestCase {
 
     func testPUTUserExerciseWithGPT() async {
         let trophyRestAPI = TrophyRESTAPI()
-        let userInput = "I just did 10 pullups."
+        let userInput = "I just did 100 push ups"
 
         if let exerciseId = await trophyRestAPI.PUTUserExerciseWithGPT(userInput: userInput, userId: testUserId) {
             print("Received GPT processed exercise ID: \(exerciseId)")

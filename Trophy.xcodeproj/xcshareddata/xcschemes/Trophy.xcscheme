@@ -71,38 +71,38 @@
             isEnabled = "YES">
          </EnvironmentVariable>
          <EnvironmentVariable
-            key = "TROPHY_INVOKE_PATH_PUT_USER_EXERCISE_GPT_DEV"
-            value = "&quot;https://xhh2wpxj6f.execute-api.us-east-1.amazonaws.com/Development/users/\(userId)/exercises/processing/gpt&quot;"
+            key = "TROPHY_INVOKE_PATH_PUT_USER_EXERCISE_GPT_PROD"
+            value = "https://xhh2wpxj6f.execute-api.us-east-1.amazonaws.com/Prod/users/{userId}/exercises/processing/gpt"
             isEnabled = "YES">
          </EnvironmentVariable>
          <EnvironmentVariable
-            key = "TROPHY_INVOKE_PATH_GET_USER_EXERCISES_DEV"
-            value = "&quot;https://xhh2wpxj6f.execute-api.us-east-1.amazonaws.com/Development/users/\(userId)/exercises&quot;"
+            key = "TROPHY_INVOKE_PATH_GET_USER_EXERCISES_PROD"
+            value = "https://xhh2wpxj6f.execute-api.us-east-1.amazonaws.com/Prod/users/{userId}/exercises"
             isEnabled = "YES">
          </EnvironmentVariable>
          <EnvironmentVariable
-            key = "TROPHY_INVOKE_PATH_GET_USER_EXERCISE_DEV"
-            value = "&quot;https://xhh2wpxj6f.execute-api.us-east-1.amazonaws.com/Prod/users/\(userId)/exercises/\(exerciseId)&quot;"
+            key = "TROPHY_INVOKE_PATH_GET_USER_EXERCISE_PROD"
+            value = "https://xhh2wpxj6f.execute-api.us-east-1.amazonaws.com/Prod/users/{userId}/exercises/{exerciseId}"
             isEnabled = "YES">
          </EnvironmentVariable>
          <EnvironmentVariable
-            key = "TROPHY_INVOKE_PATH_PUT_USER_EXERCISE_WITH_EXERCISE_ID_DEV"
-            value = "&quot;https://xhh2wpxj6f.execute-api.us-east-1.amazonaws.com/Prod/users/\(userId)/exercises/\(exerciseId)&quot;"
+            key = "TROPHY_INVOKE_PATH_PUT_USER_EXERCISE_WITH_EXERCISE_ID_PROD"
+            value = "https://xhh2wpxj6f.execute-api.us-east-1.amazonaws.com/Prod/users/{userId}/exercises/{exerciseId}"
             isEnabled = "YES">
          </EnvironmentVariable>
          <EnvironmentVariable
-            key = "TROPHY_INVOKE_PATH_PUT_USER_EXERCISE_DEV"
-            value = "&quot;https://xhh2wpxj6f.execute-api.us-east-1.amazonaws.com/Prod/users/\(userId)/exercises/&quot;"
+            key = "TROPHY_INVOKE_PATH_PUT_USER_EXERCISE_PROD"
+            value = "https://xhh2wpxj6f.execute-api.us-east-1.amazonaws.com/Prod/users/{userId}/exercises"
             isEnabled = "YES">
          </EnvironmentVariable>
          <EnvironmentVariable
-            key = "TROPHY_API_KEY"
+            key = "TROPHY_API_KEY_PROD"
             value = "eJft9CvQjC9WqubQzLaFS7rAPrjRWCKt99QuLHAm"
             isEnabled = "YES">
          </EnvironmentVariable>
          <EnvironmentVariable
             key = "TEST_USER_ID"
-            value = "&quot;4bf0e7ef-cd19-4b0c-b9a2-e946c58e01d1&quot;"
+            value = "4bf0e7ef-cd19-4b0c-b9a2-e946c58e01d1"
             isEnabled = "YES">
          </EnvironmentVariable>
          <EnvironmentVariable
