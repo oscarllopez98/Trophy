@@ -95,6 +95,21 @@
             value = "&quot;https://xhh2wpxj6f.execute-api.us-east-1.amazonaws.com/Prod/users/\(userId)/exercises/&quot;"
             isEnabled = "YES">
          </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "TROPHY_API_KEY"
+            value = "eJft9CvQjC9WqubQzLaFS7rAPrjRWCKt99QuLHAm"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "TEST_USER_ID"
+            value = "&quot;4bf0e7ef-cd19-4b0c-b9a2-e946c58e01d1&quot;"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "TEST_EXERCISE_ID"
+            value = "a18eb51a-7104-4688-9659-8930752334d5"
+            isEnabled = "YES">
+         </EnvironmentVariable>
       </EnvironmentVariables>
       <LocationScenarioReference
          identifier = "com.apple.dt.IDEFoundation.CurrentLocationScenarioIdentifier"
