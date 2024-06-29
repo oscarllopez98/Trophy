@@ -41,11 +41,51 @@ final class EnvironmentVariableManagerTests: XCTestCase {
         print(getEnvironmentVariable("TROPHY_INVOKE_PATH_PUT_USER_EXERCISE_GPT_DEV")!)
     }
     
+    func testFormatGetEnvironmentVariableInvokePathGETUserExercise() {
+        let userId = "1234567890"
+        let exerciseId = "9876543210"
+        let pathTemplate = getEnvironmentVariable("TROPHY_INVOKE_PATH_GET_USER_EXERCISE_DEV")!
+        var path = pathTemplate.replacingOccurrences(of: "\\(userId)", with: userId)
+        path = path.replacingOccurrences(of: "\\(exerciseId)", with: exerciseId)
+        print(path)
+        XCTAssert(path.contains(userId))
+        XCTAssert(path.contains(exerciseId))
+    }
+    
+    func testFormatGetEnvironmentVariableInvokePathGETUserExercises() {
+        let userId = "1234567890"
+        let pathTemplate = getEnvironmentVariable("TROPHY_INVOKE_PATH_GET_USER_EXERCISES_DEV")!
+        let path = pathTemplate.replacingOccurrences(of: "\\(userId)", with: userId)
+        print(path)
+        XCTAssert(path.contains(userId))
+    }
+    
+    func testFormatGetEnvironmentVariableInvokePathPUTUserExercise() {
+        let userId = "1234567890"
+        let pathTemplate = getEnvironmentVariable("TROPHY_INVOKE_PATH_PUT_USER_EXERCISE_DEV")!
+        let path = pathTemplate.replacingOccurrences(of: "\\(userId)", with: userId)
+        print(path)
+        XCTAssert(path.contains(userId))
+    }
+    
+    func testFormatGetEnvironmentVariableInvokePathPUTUserExerciseWithExerciseId() {
+        let userId = "1234567890"
+        let exerciseId = "9876543210"
+        let pathTemplate = getEnvironmentVariable("TROPHY_INVOKE_PATH_PUT_USER_EXERCISE_WITH_EXERCISE_ID_DEV")!
+        var path = pathTemplate.replacingOccurrences(of: "\\(userId)", with: userId)
+        path = path.replacingOccurrences(of: "\\(exerciseId)", with: exerciseId)
+        print(path)
+        XCTAssert(path.contains(userId))
+        XCTAssert(path.contains(exerciseId))
+    }
+    
     func testFormatGetEnvironmentVariableInvokePathPUTUserExercise_GPT() {
         let userId = "1234567890"
         let pathTemplate = getEnvironmentVariable("TROPHY_INVOKE_PATH_PUT_USER_EXERCISE_GPT_DEV")!
         let path = pathTemplate.replacingOccurrences(of: "\\(userId)", with: userId)
         print(path)
+        XCTAssert(path.contains(userId))
     }
+    
 
 }
