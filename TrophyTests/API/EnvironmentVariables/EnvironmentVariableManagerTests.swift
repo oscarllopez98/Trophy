@@ -40,5 +40,12 @@ final class EnvironmentVariableManagerTests: XCTestCase {
     func testGetEnvironmentVariableInvokePathPUTUserExercise_GPT() {
         print(getEnvironmentVariable("TROPHY_INVOKE_PATH_PUT_USER_EXERCISE_GPT_DEV")!)
     }
+    
+    func testFormatGetEnvironmentVariableInvokePathPUTUserExercise_GPT() {
+        let userId = "1234567890"
+        let pathTemplate = getEnvironmentVariable("TROPHY_INVOKE_PATH_PUT_USER_EXERCISE_GPT_DEV")!
+        let path = pathTemplate.replacingOccurrences(of: "\\(userId)", with: userId)
+        print(path)
+    }
 
 }
