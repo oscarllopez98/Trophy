@@ -70,6 +70,11 @@
             value = "SUCCESS"
             isEnabled = "YES">
          </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "TROPHY_INVOKE_PATH_PUT_USER_EXERCISE_GPT_DEV"
+            value = "&quot;https://xhh2wpxj6f.execute-api.us-east-1.amazonaws.com/Development/users/\(userId)/exercises/processing/gpt&quot;"
+            isEnabled = "YES">
+         </EnvironmentVariable>
       </EnvironmentVariables>
       <LocationScenarioReference
          identifier = "com.apple.dt.IDEFoundation.CurrentLocationScenarioIdentifier"

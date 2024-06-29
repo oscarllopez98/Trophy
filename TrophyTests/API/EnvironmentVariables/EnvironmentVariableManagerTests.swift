@@ -36,5 +36,9 @@ final class EnvironmentVariableManagerTests: XCTestCase {
     func testGetEnvironmentVariable() {
         print(getEnvironmentVariable("TEST")!)
     }
+    
+    func testGetEnvironmentVariableInvokePathPUTUserExercise_GPT() {
+        print(getEnvironmentVariable("TROPHY_INVOKE_PATH_PUT_USER_EXERCISE_GPT_DEV")!)
+    }
 
 }
