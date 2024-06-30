@@ -108,6 +108,7 @@
 		9FE172BB2C2FB7E7005663FF /* EnvironmentVariableManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE172BA2C2FB7E7005663FF /* EnvironmentVariableManagerTests.swift */; };
 		9FE172BC2C2FB80E005663FF /* EnvironmentVariableManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE172B72C2FB78E005663FF /* EnvironmentVariableManager.swift */; };
 		9FE172BF2C30F629005663FF /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE172BE2C30F629005663FF /* NavigationBar.swift */; };
+		9FE172C12C31F2FC005663FF /* UserProfileInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE172C02C31F2FC005663FF /* UserProfileInfoView.swift */; };
 		9FF1D8342B147F5E002F6EAC /* TrophyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF1D8332B147F5E002F6EAC /* TrophyApp.swift */; };
 		9FF1D8362B147F5E002F6EAC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF1D8352B147F5E002F6EAC /* ContentView.swift */; };
 		9FF1D8382B147F5F002F6EAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FF1D8372B147F5F002F6EAC /* Assets.xcassets */; };
@@ -257,6 +258,7 @@
 		9FE172B72C2FB78E005663FF /* EnvironmentVariableManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentVariableManager.swift; sourceTree = "<group>"; };
 		9FE172BA2C2FB7E7005663FF /* EnvironmentVariableManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentVariableManagerTests.swift; sourceTree = "<group>"; };
 		9FE172BE2C30F629005663FF /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
+		9FE172C02C31F2FC005663FF /* UserProfileInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileInfoView.swift; sourceTree = "<group>"; };
 		9FF1D8302B147F5E002F6EAC /* Trophy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Trophy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FF1D8332B147F5E002F6EAC /* TrophyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrophyApp.swift; sourceTree = "<group>"; };
 		9FF1D8352B147F5E002F6EAC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -695,6 +697,7 @@
 			isa = PBXGroup;
 			children = (
 				9FE172BE2C30F629005663FF /* NavigationBar.swift */,
+				9FE172C02C31F2FC005663FF /* UserProfileInfoView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1257,6 +1260,7 @@
 				9FF313CB2BF6D61F000E2F53 /* TROPHYOutputExercise.swift in Sources */,
 				9F585FF52B3A38A70061F1EB /* UserTag.swift in Sources */,
 				9FF1D85C2B1484CC002F6EAC /* User.swift in Sources */,
+				9FE172C12C31F2FC005663FF /* UserProfileInfoView.swift in Sources */,
 				9FF1D8702B14857D002F6EAC /* SetsAttribute.swift in Sources */,
 				9FD4E74F2BF7DB8F00C56E9B /* IntensityAttributeConverter.swift in Sources */,
 				9FF313C72BF6D61F000E2F53 /* TROPHYInputExercise_exercise_attributes.swift in Sources */,
