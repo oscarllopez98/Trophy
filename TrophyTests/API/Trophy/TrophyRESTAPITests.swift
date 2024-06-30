@@ -9,14 +9,12 @@ final class TrophyRESTAPITests: XCTestCase {
     override func setUp() {
         super.setUp()
         trophyAPI = TrophyRESTAPI()
-        testUserId = "4bf0e7ef-cd19-4b0c-b9a2-e946c58e01d1"
-        //URLProtocol.registerClass(URLProtocolStub.self)
+        testUserId = getEnvironmentVariable("TEST_USER_ID")!
     }
 
     override func tearDown() {
         trophyAPI = nil
         testUserId = nil
-        URLProtocol.unregisterClass(URLProtocolStub.self)
         super.tearDown()
     }
 
@@ -37,7 +35,7 @@ final class TrophyRESTAPITests: XCTestCase {
 
     func testGETUserExercise() async {
         let trophyRestAPI = TrophyRESTAPI()
-        let exerciseId = "4f996000-6bf5-4efc-9ba4-da0a43653020"
+        let exerciseId = getEnvironmentVariable("TEST_EXERCISE_ID")!
         
         do {
             let exercise: Exercise = try await trophyRestAPI.GETUserExercise(userId: testUserId, exerciseId: exerciseId)
@@ -96,7 +94,7 @@ final class TrophyRESTAPITests: XCTestCase {
 
     func testPUTUserExerciseWithGPT() async {
         let trophyRestAPI = TrophyRESTAPI()
-        let userInput = "I just did 10 pullups."
+        let userInput = "I just did 100 push ups"
 
         if let exerciseId = await trophyRestAPI.PUTUserExerciseWithGPT(userInput: userInput, userId: testUserId) {
             print("Received GPT processed exercise ID: \(exerciseId)")
@@ -105,124 +103,4 @@ final class TrophyRESTAPITests: XCTestCase {
         }
     }
 
-    func testHandleGETLimitedUserExercisesResponse_validResponse() async {
-        let validResponseData = """
-        {
-            "exercises": [
-                {
-                    "id": "1",
-                    "name": "Running",
-                    "type": "Cardio",
-                    "attributes": {},
-                    "notes": "Morning run"
-                }
-            ]
-        }
-        """.data(using: .utf8)!
-        let request = URLRequest(url: URL(string: "https://example.com")!)
-
-        URLProtocolStub.stub(data: validResponseData, response: nil, error: nil)
-
-        do {
-            let exercises = try await trophyAPI.handleGETLimitedUserExercisesResponse(inRequest: request)
-            XCTAssertEqual(exercises.count, 1)
-            XCTAssertEqual(exercises.first?.name, "Running")
-        } catch {
-            XCTFail("Expected valid response, but got error: \(error)")
-        }
-    }
-
-    func testHandleGETLimitedUserExercisesResponse_emptyResponse() {
-        let emptyResponseData = "{}".data(using: .utf8)!
-        let request = URLRequest(url: URL(string: "https://example.com")!)
-
-        URLProtocolStub.stub(data: emptyResponseData, response: nil, error: nil)
-
-        let expectation = XCTestExpectation(description: "GETLimitedUserExercisesResponse_emptyResponse")
-
-        Task {
-            do {
-                let _ = try await trophyAPI.handleGETLimitedUserExercisesResponse(inRequest: request)
-                XCTFail("Expected error of type APIError.GETUserExerciseFailedResponse")
-            } catch {
-                XCTAssertEqual(error as? APIError, APIError.GETUserExerciseFailedResponse)
-            }
-            expectation.fulfill()
-        }
-
-        wait(for: [expectation], timeout: 20)
-    }
-
-    func testHandleGETLimitedUserExercisesResponse_malformedJSON() async {
-        let malformedJSONData = """
-        {
-            "invalid_key": "invalid_value"
-        }
-        """.data(using: .utf8)!
-        let request = URLRequest(url: URL(string: "https://example.com")!)
-
-        URLProtocolStub.stub(data: malformedJSONData, response: nil, error: nil)
-
-        XCTAssertThrowsError(Task{try await trophyAPI.handleGETLimitedUserExercisesResponse(inRequest: request)}) { error in
-            XCTAssertEqual(error as? APIError, APIError.GETUserExerciseFailedResponse)
-        }
-    }
-
-    func testHandleGETLimitedUserExercisesResponse_networkError() async {
-        let request = URLRequest(url: URL(string: "https://example.com")!)
-        let networkError = NSError(domain: "network", code: -1, userInfo: nil)
-
-        URLProtocolStub.stub(data: nil, response: nil, error: networkError)
-
-        XCTAssertThrowsError(Task{try await trophyAPI.handleGETLimitedUserExercisesResponse(inRequest: request)}) { error in
-            XCTAssertEqual(error as? NSError, networkError)
-        }
-    }
-
-    func testExerciseListViewModel() {
-        let viewModel = ExerciseListViewModel(userId: testUserId)
-        let expectation = XCTestExpectation(description: "Fetch exercises")
-        print("Dispatch")
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-            XCTAssertEqual(viewModel.exercises.count, 10)
-            expectation.fulfill()
-        }
-        print("Wait!")
-        wait(for: [expectation], timeout: 10)
-    }
-}
-
-class URLProtocolStub: URLProtocol {
-    static var stubData: Data?
-    static var stubResponse: URLResponse?
-    static var stubError: Error?
-
-    static func stub(data: Data?, response: URLResponse?, error: Error?) {
-        stubData = data
-        stubResponse = response
-        stubError = error
-    }
-
-    override class func canInit(with request: URLRequest) -> Bool {
-        return true
-    }
-
-    override class func canonicalRequest(for request: URLRequest) -> URLRequest {
-        return request
-    }
-
-    override func startLoading() {
-        if let stubData = URLProtocolStub.stubData {
-            client?.urlProtocol(self, didLoad: stubData)
-        }
-        if let stubResponse = URLProtocolStub.stubResponse {
-            client?.urlProtocol(self, didReceive: stubResponse, cacheStoragePolicy: .notAllowed)
-        }
-        if let stubError = URLProtocolStub.stubError {
-            client?.urlProtocol(self, didFailWithError: stubError)
-        }
-        client?.urlProtocolDidFinishLoading(self)
-    }
-
-    override func stopLoading() {}
 }

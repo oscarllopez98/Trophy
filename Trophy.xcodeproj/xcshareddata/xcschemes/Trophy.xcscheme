@@ -64,6 +64,53 @@
             ReferencedContainer = "container:Trophy.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "TEST"
+            value = "SUCCESS"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "TROPHY_INVOKE_PATH_PUT_USER_EXERCISE_GPT_PROD"
+            value = "https://xhh2wpxj6f.execute-api.us-east-1.amazonaws.com/Prod/users/{userId}/exercises/processing/gpt"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "TROPHY_INVOKE_PATH_GET_USER_EXERCISES_PROD"
+            value = "https://xhh2wpxj6f.execute-api.us-east-1.amazonaws.com/Prod/users/{userId}/exercises"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "TROPHY_INVOKE_PATH_GET_USER_EXERCISE_PROD"
+            value = "https://xhh2wpxj6f.execute-api.us-east-1.amazonaws.com/Prod/users/{userId}/exercises/{exerciseId}"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "TROPHY_INVOKE_PATH_PUT_USER_EXERCISE_WITH_EXERCISE_ID_PROD"
+            value = "https://xhh2wpxj6f.execute-api.us-east-1.amazonaws.com/Prod/users/{userId}/exercises/{exerciseId}"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "TROPHY_INVOKE_PATH_PUT_USER_EXERCISE_PROD"
+            value = "https://xhh2wpxj6f.execute-api.us-east-1.amazonaws.com/Prod/users/{userId}/exercises"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "TROPHY_API_KEY_PROD"
+            value = "eJft9CvQjC9WqubQzLaFS7rAPrjRWCKt99QuLHAm"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "TEST_USER_ID"
+            value = "4bf0e7ef-cd19-4b0c-b9a2-e946c58e01d1"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "TEST_EXERCISE_ID"
+            value = "a18eb51a-7104-4688-9659-8930752334d5"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
       <LocationScenarioReference
          identifier = "com.apple.dt.IDEFoundation.CurrentLocationScenarioIdentifier"
          referenceType = "1">

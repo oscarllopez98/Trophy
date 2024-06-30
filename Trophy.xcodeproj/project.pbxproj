@@ -104,6 +104,9 @@
 		9FD4E76B2BFC195700C56E9B /* ExerciseLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD4E76A2BFC195700C56E9B /* ExerciseLogger.swift */; };
 		9FD4E76F2BFC1BA800C56E9B /* UUIDFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD4E76E2BFC1BA800C56E9B /* UUIDFormatter.swift */; };
 		9FD4E7722C00D1DA00C56E9B /* IdentifiableError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD4E7712C00D1DA00C56E9B /* IdentifiableError.swift */; };
+		9FE172B82C2FB78E005663FF /* EnvironmentVariableManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE172B72C2FB78E005663FF /* EnvironmentVariableManager.swift */; };
+		9FE172BB2C2FB7E7005663FF /* EnvironmentVariableManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE172BA2C2FB7E7005663FF /* EnvironmentVariableManagerTests.swift */; };
+		9FE172BC2C2FB80E005663FF /* EnvironmentVariableManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE172B72C2FB78E005663FF /* EnvironmentVariableManager.swift */; };
 		9FF1D8342B147F5E002F6EAC /* TrophyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF1D8332B147F5E002F6EAC /* TrophyApp.swift */; };
 		9FF1D8362B147F5E002F6EAC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF1D8352B147F5E002F6EAC /* ContentView.swift */; };
 		9FF1D8382B147F5F002F6EAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FF1D8372B147F5F002F6EAC /* Assets.xcassets */; };
@@ -250,6 +253,8 @@
 		9FD4E76A2BFC195700C56E9B /* ExerciseLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseLogger.swift; sourceTree = "<group>"; };
 		9FD4E76E2BFC1BA800C56E9B /* UUIDFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UUIDFormatter.swift; sourceTree = "<group>"; };
 		9FD4E7712C00D1DA00C56E9B /* IdentifiableError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifiableError.swift; sourceTree = "<group>"; };
+		9FE172B72C2FB78E005663FF /* EnvironmentVariableManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentVariableManager.swift; sourceTree = "<group>"; };
+		9FE172BA2C2FB7E7005663FF /* EnvironmentVariableManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentVariableManagerTests.swift; sourceTree = "<group>"; };
 		9FF1D8302B147F5E002F6EAC /* Trophy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Trophy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FF1D8332B147F5E002F6EAC /* TrophyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrophyApp.swift; sourceTree = "<group>"; };
 		9FF1D8352B147F5E002F6EAC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -360,6 +365,7 @@
 		9F2ACB682BADF4CE002A494B /* API */ = {
 			isa = PBXGroup;
 			children = (
+				9FE172B62C2FB77C005663FF /* EnvironmentVariables */,
 				9FB2E89B2C27714D009F4E65 /* Extensions */,
 				9FD4E75A2BF9625700C56E9B /* Errors */,
 				9FF313D72BF6D657000E2F53 /* Networking */,
@@ -547,6 +553,7 @@
 		9FB1F6EB2BAE013000A27BE0 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				9FE172B92C2FB7CA005663FF /* EnvironmentVariables */,
 				9FF313D82BF6D973000E2F53 /* Utils */,
 				9FFA0A662BF40AC100D932C0 /* Services */,
 				9FFA0A652BF40AB400D932C0 /* Networking */,
@@ -664,6 +671,22 @@
 				9FD4E76E2BFC1BA800C56E9B /* UUIDFormatter.swift */,
 			);
 			path = UUID;
+			sourceTree = "<group>";
+		};
+		9FE172B62C2FB77C005663FF /* EnvironmentVariables */ = {
+			isa = PBXGroup;
+			children = (
+				9FE172B72C2FB78E005663FF /* EnvironmentVariableManager.swift */,
+			);
+			path = EnvironmentVariables;
+			sourceTree = "<group>";
+		};
+		9FE172B92C2FB7CA005663FF /* EnvironmentVariables */ = {
+			isa = PBXGroup;
+			children = (
+				9FE172BA2C2FB7E7005663FF /* EnvironmentVariableManagerTests.swift */,
+			);
+			path = EnvironmentVariables;
 			sourceTree = "<group>";
 		};
 		9FF1D8272B147F5D002F6EAC = {
@@ -1213,6 +1236,7 @@
 				9FB372622B9261D800FFE87C /* WorkoutViewModel.swift in Sources */,
 				9FF1D8682B14853D002F6EAC /* ExerciseAttribute.swift in Sources */,
 				9FB62FB42B9F845400421424 /* LevelInputView.swift in Sources */,
+				9FE172B82C2FB78E005663FF /* EnvironmentVariableManager.swift in Sources */,
 				9FD4E76B2BFC195700C56E9B /* ExerciseLogger.swift in Sources */,
 				9FF313CA2BF6D61F000E2F53 /* TROPHYOutputExercise_body.swift in Sources */,
 				9FF1D8662B148526002F6EAC /* DistanceUnit.swift in Sources */,
@@ -1273,6 +1297,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FE172BC2C2FB80E005663FF /* EnvironmentVariableManager.swift in Sources */,
 				9FB372642B92761B00FFE87C /* WorkoutViewModelTests.swift in Sources */,
 				9F76C1EB2B8EBFF400EB276F /* ExerciseFactoryTests.swift in Sources */,
 				9FB3727E2B96CA0E00FFE87C /* ExerciseCardViewUnitTests.swift in Sources */,
@@ -1282,6 +1307,7 @@
 				9FD4E74D2BF7DA2400C56E9B /* WeightAttributeConverterTests.swift in Sources */,
 				9FF1D8892B378B67002F6EAC /* TrophyAttributeTests.swift in Sources */,
 				9FD4E7512BF7DBB800C56E9B /* IntensityAttributeConverterTests.swift in Sources */,
+				9FE172BB2C2FB7E7005663FF /* EnvironmentVariableManagerTests.swift in Sources */,
 				9FB372662B93F1B900FFE87C /* ExerciseViewModelTests.swift in Sources */,
 				9FD4E7552BF7DC8300C56E9B /* LevelAttributeConverterTests.swift in Sources */,
 				9F76C1F62B8EC86900EB276F /* WorkoutFactoryTests.swift in Sources */,
