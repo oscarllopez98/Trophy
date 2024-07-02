@@ -8,70 +8,57 @@
 import SwiftUI
 
 struct ExerciseCardView: View {
+    @ObservedObject var viewModel: ExerciseCardViewModel
     
-    let symbolContainerWidth = CGFloat(30)
-    let symbolContainerHeight = CGFloat(30)
-    let cardHeight = CGFloat(80)
-    
-    let buttonAccessibilityIdentifier = "AID_ExerciseCardView_Button"
-    
-    let controller = ExerciseCardViewController()
-    @StateObject var viewModel: ExerciseViewModel
-    
-    //TODO: Add
-    let workoutSymbol = "E"
+    // Dimensions and other constants
+    let exerciseCardViewOpacity: Double = 0.1
+    let exerciseCardViewCornerSize: CGFloat = 10
     
     var body: some View {
         HStack {
-            Button(action: {
-                controller.configure(with: viewModel)
-                controller.printTestExerciseName()
-                let modalView = AnyView(ExerciseModalView(viewModel: viewModel))
-                let modalPresenter = ModalPresenter<ExerciseCardView>(view: modalView)
-                modalPresenter.present()
-            }) {
-                ZStack(alignment: .center) {
-                    //Shape of Card
-                    GeometryReader { geometry in
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(.black, lineWidth: 1)
-                            .frame(height: cardHeight)
-                            .foregroundColor(.white)
-                            .background(.white)
-                    }
-                    
-                    //ExerciseCardView Content
-                    HStack(alignment: .center, spacing: 0) {
-                        
-                        //Symbol for Workout
-                        VStack(alignment: .center) {
-                            Text(workoutSymbol)
-                                .font(.title)
-                                .foregroundStyle(.black)
+            VStack {
+                // Top Row
+                HStack {
+                    Text(viewModel.exercise.name)
+                    Spacer()
+                    Text(viewModel.exercise.date, style: .date)
+                }
+                Spacer()
+                // Bottom Row
+                HStack {
+                    ForEach(viewModel.displayedAttributes) { attribute in
+                        HStack {
+                            Image(systemName: attribute.name) // Assume attribute.name maps to a valid SF Symbol
+                            Text(attribute.value.description) // Assuming attribute.value conforms to CustomStringConvertible
                         }
-                        .frame(width: symbolContainerWidth,
-                               height: symbolContainerHeight)
-                        .background(.pink)
-                        .padding(.horizontal)
-                        
-                        //Name + Date
-                        VStack {
-                            Text(viewModel.getName())
-                                .foregroundStyle(.black)
-                            Text(viewModel.getDateFormatted())
-                                .foregroundStyle(.black)
-                        }
-                        .frame(maxWidth: .infinity, maxHeight: cardHeight)
+                        Spacer()
                     }
-                }            
+                    // Fill remaining space with empty Spacers
+                    ForEach(viewModel.displayedAttributes.count..<3) { _ in
+                        Spacer()
+                    }
+                }
             }
-            .frame(width: .infinity, height: cardHeight)
-            .accessibilityIdentifier(buttonAccessibilityIdentifier)
+            .padding()
+            .background(Color.gray.opacity(exerciseCardViewOpacity))
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .border(Color.black)
+        .clipShape(RoundedRectangle(
+            cornerSize: CGSize(
+                width: exerciseCardViewCornerSize,
+                height: exerciseCardViewCornerSize)))
+        .padding()
     }
 }
 
 #Preview {
-    ExerciseCardView(viewModel: ExerciseViewModel.sample())
+    ExerciseCardView(viewModel: ExerciseCardViewModel.sample())
+        .previewLayout(.sizeThatFits)
+}
+
+
+
+#Preview {
+    ExerciseCardView(viewModel: ExerciseCardViewModel.sample())
+        .previewLayout(.sizeThatFits)
 }
