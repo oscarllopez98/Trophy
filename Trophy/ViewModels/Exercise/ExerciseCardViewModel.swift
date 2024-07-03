@@ -11,9 +11,10 @@ import SwiftUI
 class ExerciseCardViewModel: ObservableObject {
     @Published var exercise: Exercise
     
-    // Computed properties for UI
-    var displayedAttributes: [ExerciseAttribute] {
-        return Array(exercise.attributes.values.prefix(3))
+    // Computed property for UI
+    var displayedAttributes: [Exercise.AttributeName: ExerciseAttribute] {
+        let prefixAttributes = Array(exercise.attributes.prefix(3))
+        return Dictionary(uniqueKeysWithValues: prefixAttributes)
     }
     
     init(exercise: Exercise) {

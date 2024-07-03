@@ -26,10 +26,10 @@ struct ExerciseCardView: View {
                 Spacer()
                 // Bottom Row
                 HStack {
-                    ForEach(viewModel.displayedAttributes) { attribute in
+                    ForEach(viewModel.displayedAttributes.sorted(by: { $0.key.rawValue < $1.key.rawValue }), id: \.key.rawValue) { key, attribute in
                         HStack {
-                            Image(systemName: attribute.name) // Assume attribute.name maps to a valid SF Symbol
-                            Text(attribute.value.description) // Assuming attribute.value conforms to CustomStringConvertible
+                            Image(systemName: key.rawValue) // Assuming key.rawValue maps to a valid SF Symbol
+                            Text(attribute.value.stringValue) // Assuming attribute.value conforms to CustomStringConvertible
                         }
                         Spacer()
                     }

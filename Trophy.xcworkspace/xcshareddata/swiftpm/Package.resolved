@@ -24,8 +24,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/aws-amplify/amplify-ui-swift-authenticator",
       "state" : {
-        "revision" : "9f21487c3a6298b238070fdf63b5dfdcf990c594",
-        "version" : "1.1.4"
+        "revision" : "6561a42866883bd446f33ddb447215d0357d0e43",
+        "version" : "1.1.5"
       }
     },
     {

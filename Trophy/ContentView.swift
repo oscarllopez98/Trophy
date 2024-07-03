@@ -51,9 +51,12 @@ struct ContentView: View {
                                 .frame(height: geometry.size.height * 0.80)
                             } else {
                                 // Display each ExerciseCardView
-                                ForEach(Array(exerciseListViewModel.exercises.enumerated()), id: \.element.id) { index, exercise in
-                                    ExerciseCardView(viewModel: ExerciseViewModel(exercise: exercise))
-                                        .padding(index == 0 ? [.horizontal, .top] : .horizontal)
+                                ForEach(exerciseListViewModel.exercises, id: \.id) { exercise in
+                                    let exerciseViewModel = ExerciseViewModel(exercise: exercise)
+                                    let exerciseCardViewModel = ExerciseCardViewModel(exercise: exercise)
+                                    
+                                    ExerciseCardView(viewModel: exerciseCardViewModel)
+                                        .padding(.horizontal)
                                 }
                             }
                         }
