@@ -14,4 +14,8 @@ class DistanceAttribute: ExerciseAttribute {
         self.distance = distance
         super.init(name: "Distance", value: .double(distance), unit: unit)
     }
+    
+    override var systemName: String {
+        return "ruler"
+    }
 }

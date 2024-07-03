@@ -37,4 +37,8 @@ class LevelAttribute: ExerciseAttribute {
             return nil // Return nil if the integer does not match any Level case
         }
     }
+    
+    override var systemName: String {
+        return "chart.bar.xaxis"
+    }
 }

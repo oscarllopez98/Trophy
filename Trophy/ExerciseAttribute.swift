@@ -24,6 +24,10 @@ class ExerciseAttribute: Identifiable, Equatable {
     var name: String
     var value: AttributeValue
     var unit: Unit?
+    
+    var systemName: String {
+        return "" // Default system name, can be overridden by subclasses
+    }
 
     init(id: UUID? = nil, name: String, value: AttributeValue, unit: Unit? = nil) {
         self.id = id

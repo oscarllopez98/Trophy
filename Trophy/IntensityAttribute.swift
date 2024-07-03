@@ -29,4 +29,8 @@ class IntensityAttribute: ExerciseAttribute {
             return nil // Return nil if the string does not match any Intensity case
         }
     }
+    
+    override var systemName: String {
+        return "flame"
+    }
 }

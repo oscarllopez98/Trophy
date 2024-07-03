@@ -534,6 +534,13 @@
 			path = Exercise;
 			sourceTree = "<group>";
 		};
+		9FAC4A982C35E59F00420E6A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		9FAE6EE42BA122A80077E9AC /* AttributeInputs */ = {
 			isa = PBXGroup;
 			children = (
@@ -785,6 +792,7 @@
 		9FF1D84B2B148327002F6EAC /* Attributes */ = {
 			isa = PBXGroup;
 			children = (
+				9FAC4A982C35E59F00420E6A /* Extensions */,
 				9FF1D8672B14853D002F6EAC /* ExerciseAttribute.swift */,
 				9F58601E2B44BA220061F1EB /* AttributeType.swift */,
 				9FF1D8692B148548002F6EAC /* UserDefinedAttribute.swift */,

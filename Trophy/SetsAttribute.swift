@@ -14,4 +14,8 @@ class SetsAttribute: ExerciseAttribute {
         self.sets = sets
         super.init(name: "Sets", value: .integer(sets), unit: nil)
     }
+    
+    override var systemName: String {
+        return "chart.bar.xaxis"
+    }
 }

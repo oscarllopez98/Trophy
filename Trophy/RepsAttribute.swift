@@ -14,4 +14,8 @@ class RepsAttribute: ExerciseAttribute {
         self.reps = reps
         super.init(name: "Reps", value: .integer(reps), unit: nil)
     }
+    
+    override var systemName: String {
+        return "chart.bar.xaxis"
+    }
 }

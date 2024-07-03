@@ -26,10 +26,22 @@ struct ExerciseCardView: View {
                 Spacer()
                 // Bottom Row
                 HStack {
+                    // AttributeType : ExerciseAttribute
                     ForEach(viewModel.displayedAttributes.sorted(by: { $0.key.rawValue < $1.key.rawValue }), id: \.key.rawValue) { key, attribute in
                         HStack {
-                            Image(systemName: key.rawValue) // Assuming key.rawValue maps to a valid SF Symbol
-                            Text(attribute.value.stringValue) // Assuming attribute.value conforms to CustomStringConvertible
+                            Image(systemName: attribute.systemName)
+                            let attributeNameLowercased = attribute.name.lowercased()
+                            let attributeName: String =
+                                attributeNameLowercased == Exercise.AttributeName.time.rawValue ||
+                                attributeNameLowercased == Exercise.AttributeName.intensity.rawValue
+                            ? "" : attribute.name
+                            let attributeValue: String = attribute.value.stringValue
+                            let attributeUnit: String? = attribute.unit?.symbolAsString
+                            
+                            let attributeText = (attributeUnit != nil) ? "\(attributeValue) \(attributeUnit!)" : "\(attributeValue) \(attributeName)"
+                            
+                            Text(attributeText)
+                                .font(.footnote)
                         }
                         Spacer()
                     }
