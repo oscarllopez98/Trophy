@@ -33,10 +33,10 @@ struct ExerciseCardView: View {
                         }
                         Spacer()
                     }
-                    // Fill remaining space with empty Spacers
-                    ForEach(viewModel.displayedAttributes.count..<3) { _ in
-                        Spacer()
-                    }
+//                    // Fill remaining space with empty Spacers
+//                    ForEach(viewModel.displayedAttributes.count..<3) { _ in
+//                        Spacer()
+//                    }
                 }
             }
             .padding()
@@ -50,13 +50,6 @@ struct ExerciseCardView: View {
         .padding()
     }
 }
-
-#Preview {
-    ExerciseCardView(viewModel: ExerciseCardViewModel.sample())
-        .previewLayout(.sizeThatFits)
-}
-
-
 
 #Preview {
     ExerciseCardView(viewModel: ExerciseCardViewModel.sample())

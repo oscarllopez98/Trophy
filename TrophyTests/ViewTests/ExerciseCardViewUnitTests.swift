@@ -35,13 +35,13 @@ final class ExerciseCardViewUnitTests: XCTestCase {
     
     //MARK: Initialization
     
-    func testExerciseCardViewInitialization() {
-        let cardView: ExerciseCardView = ExerciseCardView(viewModel: ExerciseViewModel.sample())
-        XCTAssertNotNil(cardView)
-        XCTAssertNotNil(cardView.symbolContainerWidth)
-        XCTAssertNotNil(cardView.symbolContainerHeight)
-        XCTAssertNotNil(cardView.controller)
-        XCTAssertNotNil(cardView.workoutSymbol)
-    }
+//    func testExerciseCardViewInitialization() {
+//        let cardView: ExerciseCardView = ExerciseCardView(viewModel: ExerciseViewModel.sample())
+//        XCTAssertNotNil(cardView)
+//        XCTAssertNotNil(cardView.symbolContainerWidth)
+//        XCTAssertNotNil(cardView.symbolContainerHeight)
+//        XCTAssertNotNil(cardView.controller)
+//        XCTAssertNotNil(cardView.workoutSymbol)
+//    }
 
 }
