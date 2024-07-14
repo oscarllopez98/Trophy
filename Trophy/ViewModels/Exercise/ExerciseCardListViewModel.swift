@@ -1,8 +1,15 @@
+//
+//  ExerciseCardListViewModel.swift
+//  Trophy
+//
+//  Created by Oscar Lopez on 7/13/24.
+//
+
 import Combine
 import Foundation
 
 @MainActor
-class ExerciseListViewModel: ObservableObject {
+class ExerciseCardListViewModel: ObservableObject {
     @Published var exercises: [Exercise] = []
     @Published var isLoading: Bool = false
     @Published var errorMessage: IdentifiableError? = nil
@@ -36,5 +43,10 @@ class ExerciseListViewModel: ObservableObject {
             self.errorMessage = IdentifiableError(message: error.localizedDescription)
             self.isLoading = false
         }
+    }
+    
+    static func sample() -> ExerciseCardListViewModel {
+        let userId: String = getEnvironmentVariable("TEST_USER_ID")!
+        return ExerciseCardListViewModel(userId: userId)
     }
 }

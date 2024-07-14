@@ -9,7 +9,6 @@ import SwiftUI
 import Amplify
 import Authenticator
 import AWSCognitoAuthPlugin
-import SwiftUI
 
 @main
 struct TrophyApp: App {
@@ -34,9 +33,7 @@ struct TrophyApp: App {
                             await state.signOut()
                         }
                     }
-                    // Instantiate the main Content View
                     ContentView(
-                        exerciseListViewModel: ExerciseListViewModel(userId: state.user.userId),
                         userId: state.user.userId,
                         username: state.user.username
                     )

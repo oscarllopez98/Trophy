@@ -46,7 +46,6 @@ struct UserProfileInfoView: View {
                 Text(userLocation)
             }
         }
-        .border(Color.black)
     }
 }
 

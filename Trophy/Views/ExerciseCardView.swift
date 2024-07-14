@@ -9,9 +9,10 @@ import SwiftUI
 
 struct ExerciseCardView: View {
     @ObservedObject var viewModel: ExerciseCardViewModel
+    @State private var isSheetPresented = false
     
     // Dimensions and other constants
-    let exerciseCardViewOpacity: Double = 0.1
+    let exerciseCardViewOpacity: Double = 0.07
     let exerciseCardViewCornerSize: CGFloat = 10
     
     var body: some View {
@@ -24,44 +25,65 @@ struct ExerciseCardView: View {
                     Text(viewModel.exercise.date, style: .date)
                 }
                 Spacer()
+                Spacer()
                 // Bottom Row
-                HStack {
-                    // AttributeType : ExerciseAttribute
+                // AttributeType : ExerciseAttribute
+                HStack(spacing: 0) {
                     ForEach(viewModel.displayedAttributes.sorted(by: { $0.key.rawValue < $1.key.rawValue }), id: \.key.rawValue) { key, attribute in
+                        
+                        // Lowercase the name
+                        let attributeNameLowercased = attribute.name.lowercased()
+                        
+                        // Check some edge cases for naming conventions
+                        let attributeName: String =
+                            attributeNameLowercased == Exercise.AttributeName.time.rawValue ||
+                            attributeNameLowercased == Exercise.AttributeName.intensity.rawValue
+                            ? "" : attribute.name
+                        
+                        // Get Attribute Value
+                        let attributeValue: String = attribute.value.stringValue
+                        
+                        // If appropriate, get Attribute Unit
+                        let attributeUnit: String? = attribute.unit?.symbolAsString
+                        
+                        // Format text to display
+                        let attributeText = (attributeUnit != nil) ? "\(attributeValue) \(attributeUnit!)" : "\(attributeValue) \(attributeName)"
+                        
+                        // Display View
                         HStack {
                             Image(systemName: attribute.systemName)
-                            let attributeNameLowercased = attribute.name.lowercased()
-                            let attributeName: String =
-                                attributeNameLowercased == Exercise.AttributeName.time.rawValue ||
-                                attributeNameLowercased == Exercise.AttributeName.intensity.rawValue
-                            ? "" : attribute.name
-                            let attributeValue: String = attribute.value.stringValue
-                            let attributeUnit: String? = attribute.unit?.symbolAsString
-                            
-                            let attributeText = (attributeUnit != nil) ? "\(attributeValue) \(attributeUnit!)" : "\(attributeValue) \(attributeName)"
                             
                             Text(attributeText)
                                 .font(.footnote)
                         }
-                        Spacer()
+                        .frame(maxWidth: .infinity)
                     }
-//                    // Fill remaining space with empty Spacers
-//                    ForEach(viewModel.displayedAttributes.count..<3) { _ in
-//                        Spacer()
-//                    }
+                    
+                    // Fill remaining space with empty VStacks
+                    ForEach(viewModel.displayedAttributes.count..<3) { _ in
+                        VStack(alignment: .leading) {
+                            Spacer()
+                        }
+                        .frame(maxWidth: .infinity)
+                    }
                 }
             }
             .padding()
             .background(Color.gray.opacity(exerciseCardViewOpacity))
         }
-        .border(Color.black)
         .clipShape(RoundedRectangle(
             cornerSize: CGSize(
                 width: exerciseCardViewCornerSize,
                 height: exerciseCardViewCornerSize)))
-        .padding()
+        .onTapGesture {
+            isSheetPresented = true
+        }
+        .sheet(isPresented: $isSheetPresented) {
+            ExerciseDetailView(viewModel: viewModel)
+        }
     }
 }
+
 
 #Preview {
     ExerciseCardView(viewModel: ExerciseCardViewModel.sample())

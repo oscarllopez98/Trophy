@@ -165,7 +165,7 @@ class TrophyRESTAPI {
         guard let url = URL(string: path) else {
             fatalError("Invalid URL: \(path)")
         }
-        print("Still good")
+
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.addValue(getEnvironmentVariable(API_KEY_PROD)!, forHTTPHeaderField: "x-api-key")
@@ -387,6 +387,9 @@ class TrophyRESTAPI {
             let jsonResponse = try JSONSerialization.jsonObject(with: data) as? [String: Any] ?? [:]
             print("JSON Response:")
             print(jsonResponse)
+            if let error = jsonResponse["error"] as? String {
+                print("Error: \(error)")
+            }
             
             // Print JSON response details (optional)
             if let exercisesJSON = jsonResponse["exercises"] as? [[String: Any]] {

@@ -10,6 +10,9 @@
 		587151AB34E8AC2044A6739A /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = D77FEB0D2D5D1765677D80C8 /* amplifyconfiguration.json */; };
 		81497F84B0E1C7A35E159B97 /* Pods_TrophyGroup_TrophyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 676CDAB98E9720EF1EAA2B24 /* Pods_TrophyGroup_TrophyTests.framework */; };
 		90D90D228564E192E9DED861 /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 48B27F9CD68FFF6833B12632 /* awsconfiguration.json */; };
+		9F3D7BA32C437E3F000589D6 /* ExerciseCardListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D7BA22C437E3F000589D6 /* ExerciseCardListView.swift */; };
+		9F3D7BA52C437F56000589D6 /* ExerciseCardListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D7BA42C437F56000589D6 /* ExerciseCardListViewModel.swift */; };
+		9F3D7BA82C4492B2000589D6 /* ExerciseDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D7BA72C4492B2000589D6 /* ExerciseDetailView.swift */; };
 		9F585FEC2B3A19FF0061F1EB /* IntensityAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F585FEB2B3A19FF0061F1EB /* IntensityAttribute.swift */; };
 		9F585FF02B3A1CFD0061F1EB /* LevelAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F585FEF2B3A1CFD0061F1EB /* LevelAttribute.swift */; };
 		9F585FF32B3A389E0061F1EB /* PredefinedTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F585FF22B3A389E0061F1EB /* PredefinedTag.swift */; };
@@ -165,6 +168,9 @@
 		676CDAB98E9720EF1EAA2B24 /* Pods_TrophyGroup_TrophyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TrophyGroup_TrophyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		67B0598E73321C5A91B8EE1D /* Pods-Trophy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trophy.release.xcconfig"; path = "Target Support Files/Pods-Trophy/Pods-Trophy.release.xcconfig"; sourceTree = "<group>"; };
 		9646CE3645D94A9E7659583E /* Pods-Trophy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trophy.debug.xcconfig"; path = "Target Support Files/Pods-Trophy/Pods-Trophy.debug.xcconfig"; sourceTree = "<group>"; };
+		9F3D7BA22C437E3F000589D6 /* ExerciseCardListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCardListView.swift; sourceTree = "<group>"; };
+		9F3D7BA42C437F56000589D6 /* ExerciseCardListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCardListViewModel.swift; sourceTree = "<group>"; };
+		9F3D7BA72C4492B2000589D6 /* ExerciseDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailView.swift; sourceTree = "<group>"; };
 		9F585FEB2B3A19FF0061F1EB /* IntensityAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntensityAttribute.swift; sourceTree = "<group>"; };
 		9F585FEF2B3A1CFD0061F1EB /* LevelAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelAttribute.swift; sourceTree = "<group>"; };
 		9F585FF22B3A389E0061F1EB /* PredefinedTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredefinedTag.swift; sourceTree = "<group>"; };
@@ -530,6 +536,7 @@
 			children = (
 				9F76C1E32B8EB51900EB276F /* ExerciseViewModel.swift */,
 				9FE172C22C34C286005663FF /* ExerciseCardViewModel.swift */,
+				9F3D7BA42C437F56000589D6 /* ExerciseCardListViewModel.swift */,
 			);
 			path = Exercise;
 			sourceTree = "<group>";
@@ -708,6 +715,8 @@
 			children = (
 				9FE172BE2C30F629005663FF /* NavigationBar.swift */,
 				9FE172C02C31F2FC005663FF /* UserProfileInfoView.swift */,
+				9F3D7BA22C437E3F000589D6 /* ExerciseCardListView.swift */,
+				9F3D7BA72C4492B2000589D6 /* ExerciseDetailView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1238,6 +1247,7 @@
 				9F58600F2B3B6AF20061F1EB /* Soccer.swift in Sources */,
 				9FD4E73F2BF7D65000C56E9B /* TimeAttributeConverter.swift in Sources */,
 				9FB372752B9518A700FFE87C /* WorkoutCardView.swift in Sources */,
+				9F3D7BA52C437F56000589D6 /* ExerciseCardListViewModel.swift in Sources */,
 				9FD4E7532BF7DC6100C56E9B /* LevelAttributeConverter.swift in Sources */,
 				9FD4E76F2BFC1BA800C56E9B /* UUIDFormatter.swift in Sources */,
 				9FAE6EE12BA0D7DA0077E9AC /* ActionBarViewController.swift in Sources */,
@@ -1250,9 +1260,11 @@
 				9FAE6EF02BA12B510077E9AC /* IntensityInputViewModel.swift in Sources */,
 				9F76C1D82B8EAED100EB276F /* ItemListViewModel.swift in Sources */,
 				9F76C1F42B8EC65000EB276F /* WorkoutFactory.swift in Sources */,
+				9F3D7BA82C4492B2000589D6 /* ExerciseDetailView.swift in Sources */,
 				9FB62FAC2B9F7F7B00421424 /* SetsInputView.swift in Sources */,
 				9F585FF32B3A389E0061F1EB /* PredefinedTag.swift in Sources */,
 				9FF313C52BF6D61F000E2F53 /* TROPHYDeleteExerciseOutput_body.swift in Sources */,
+				9F3D7BA32C437E3F000589D6 /* ExerciseCardListView.swift in Sources */,
 				9FD4E7472BF7D94700C56E9B /* RepsAttributeConverter.swift in Sources */,
 				9FD4E7722C00D1DA00C56E9B /* IdentifiableError.swift in Sources */,
 				9FB62FB02B9F81A000421424 /* WeightInputView.swift in Sources */,
