@@ -14,6 +14,8 @@ struct ExerciseCardView: View {
     // Dimensions and other constants
     let exerciseCardViewOpacity: Double = 0.07
     let exerciseCardViewCornerSize: CGFloat = 10
+    let cardHeight: CGFloat = 150  // Set the height of the card
+    let cardDateOpacity: Double = 0.85
     
     var body: some View {
         HStack {
@@ -21,10 +23,11 @@ struct ExerciseCardView: View {
                 // Top Row
                 HStack {
                     Text(viewModel.exercise.name)
+                        .fontWeight(.bold)
                     Spacer()
                     Text(viewModel.exercise.date, style: .date)
+                        .foregroundStyle(.gray).opacity(cardDateOpacity)
                 }
-                Spacer()
                 Spacer()
                 // Bottom Row
                 // AttributeType : ExerciseAttribute
@@ -55,6 +58,7 @@ struct ExerciseCardView: View {
                             
                             Text(attributeText)
                                 .font(.footnote)
+                                .fontWeight(.bold)
                         }
                         .frame(maxWidth: .infinity)
                     }
@@ -69,6 +73,7 @@ struct ExerciseCardView: View {
                 }
             }
             .padding()
+            .frame(height: cardHeight)  // Set the height of the VStack
             .background(Color.gray.opacity(exerciseCardViewOpacity))
         }
         .clipShape(RoundedRectangle(
@@ -83,7 +88,6 @@ struct ExerciseCardView: View {
         }
     }
 }
-
 
 #Preview {
     ExerciseCardView(viewModel: ExerciseCardViewModel.sample())

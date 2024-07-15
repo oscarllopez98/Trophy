@@ -16,6 +16,8 @@
 		9F3D7BAA2C4498A9000589D6 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D7BA92C4498A9000589D6 /* HomeView.swift */; };
 		9F3D7BAC2C4498E1000589D6 /* AddEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D7BAB2C4498E1000589D6 /* AddEntryView.swift */; };
 		9F3D7BAE2C44ABA5000589D6 /* AddEntryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D7BAD2C44ABA5000589D6 /* AddEntryViewModel.swift */; };
+		9F3D7BB02C44D659000589D6 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D7BAF2C44D658000589D6 /* ProfileView.swift */; };
+		9F3D7BB32C45CB9F000589D6 /* TextFieldStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D7BB22C45CB9F000589D6 /* TextFieldStyles.swift */; };
 		9F585FEC2B3A19FF0061F1EB /* IntensityAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F585FEB2B3A19FF0061F1EB /* IntensityAttribute.swift */; };
 		9F585FF02B3A1CFD0061F1EB /* LevelAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F585FEF2B3A1CFD0061F1EB /* LevelAttribute.swift */; };
 		9F585FF32B3A389E0061F1EB /* PredefinedTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F585FF22B3A389E0061F1EB /* PredefinedTag.swift */; };
@@ -177,6 +179,8 @@
 		9F3D7BA92C4498A9000589D6 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		9F3D7BAB2C4498E1000589D6 /* AddEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEntryView.swift; sourceTree = "<group>"; };
 		9F3D7BAD2C44ABA5000589D6 /* AddEntryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEntryViewModel.swift; sourceTree = "<group>"; };
+		9F3D7BAF2C44D658000589D6 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		9F3D7BB22C45CB9F000589D6 /* TextFieldStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldStyles.swift; sourceTree = "<group>"; };
 		9F585FEB2B3A19FF0061F1EB /* IntensityAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntensityAttribute.swift; sourceTree = "<group>"; };
 		9F585FEF2B3A1CFD0061F1EB /* LevelAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelAttribute.swift; sourceTree = "<group>"; };
 		9F585FF22B3A389E0061F1EB /* PredefinedTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredefinedTag.swift; sourceTree = "<group>"; };
@@ -393,6 +397,14 @@
 				9FB1F6F32BAE035400A27BE0 /* TrophyRESTAPI.swift */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		9F3D7BB12C45CB7C000589D6 /* InputStyles */ = {
+			isa = PBXGroup;
+			children = (
+				9F3D7BB22C45CB9F000589D6 /* TextFieldStyles.swift */,
+			);
+			path = InputStyles;
 			sourceTree = "<group>";
 		};
 		9F585FF12B3A38380061F1EB /* Tags */ = {
@@ -839,6 +851,7 @@
 		9FF1D8512B148401002F6EAC /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9F3D7BB12C45CB7C000589D6 /* InputStyles */,
 				9FE172BD2C30F60E005663FF /* Components */,
 				9FB62FA42B9F720400421424 /* AttributeInputs */,
 				9FB3726D2B95136600FFE87C /* ExerciseModalView.swift */,
@@ -849,6 +862,7 @@
 				9FAE6EDE2B9FF6EC0077E9AC /* ActionBarView.swift */,
 				9F3D7BA92C4498A9000589D6 /* HomeView.swift */,
 				9F3D7BAB2C4498E1000589D6 /* AddEntryView.swift */,
+				9F3D7BAF2C44D658000589D6 /* ProfileView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1275,6 +1289,7 @@
 				9F585FF32B3A389E0061F1EB /* PredefinedTag.swift in Sources */,
 				9FF313C52BF6D61F000E2F53 /* TROPHYDeleteExerciseOutput_body.swift in Sources */,
 				9F3D7BA32C437E3F000589D6 /* ExerciseCardListView.swift in Sources */,
+				9F3D7BB02C44D659000589D6 /* ProfileView.swift in Sources */,
 				9FD4E7472BF7D94700C56E9B /* RepsAttributeConverter.swift in Sources */,
 				9FD4E7722C00D1DA00C56E9B /* IdentifiableError.swift in Sources */,
 				9FB62FB02B9F81A000421424 /* WeightInputView.swift in Sources */,
@@ -1308,6 +1323,7 @@
 				9FF313D02BF6D634000E2F53 /* TROPHYTrophyRESTAPIClient.swift in Sources */,
 				9FB372682B94019B00FFE87C /* ExerciseModalViewController.swift in Sources */,
 				9FF1D8622B14850F002F6EAC /* ExerciseUnit.swift in Sources */,
+				9F3D7BB32C45CB9F000589D6 /* TextFieldStyles.swift in Sources */,
 				9FF1D8722B14858E002F6EAC /* RepsAttribute.swift in Sources */,
 				9F76C1E72B8EBD6900EB276F /* ExerciseFactory.swift in Sources */,
 				9FAE6EF92BA14CB30077E9AC /* NewExerciseModalViewModel.swift in Sources */,

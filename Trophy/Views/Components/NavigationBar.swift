@@ -21,15 +21,14 @@ struct NavigationBar: View {
     var userId: String
     var username: String
     let borderOpacity: Double
-
-    // Enum to represent the current active page
-    enum Page {
+    
+    enum Page: Hashable {
         case home, addEntry, profile
     }
 
-    @Binding var activePage: Page  // Bind the active page from a parent view
+    @Binding var activePage: Page?
 
-    init(userId: String, username: String, borderOpacity: Double = 1.0, activePage: Binding<Page>) {
+    init(userId: String, username: String, borderOpacity: Double = 1.0, activePage: Binding<Page?>) {
         self.userId = userId
         self.username = username
         self.borderOpacity = borderOpacity
@@ -40,11 +39,11 @@ struct NavigationBar: View {
     }
 
     var body: some View {
-        VStack(spacing: 0) {  // Use VStack to add the border at the top
+        VStack(spacing: 0) {
             Rectangle()
-                .frame(height: 1)  // Height of the border
-                .opacity(borderOpacity)  // Adjust transparency here
-                .foregroundColor(.black)  // Color of the border
+                .frame(height: 1)
+                .opacity(borderOpacity)
+                .foregroundColor(.black)
 
             HStack {
                 Spacer()
@@ -55,7 +54,7 @@ struct NavigationBar: View {
                         Image(systemName: homeImageSystemName)
                             .resizable()
                             .frame(width: homeImageWidth, height: homeImageHeight)
-                            .foregroundColor(activePage == .home ? .blue : .gray)  // Change color based on active page
+                            .foregroundColor(activePage == .home ? .blue : .gray)
                         Text("Home")
                     }
                 }
@@ -69,7 +68,7 @@ struct NavigationBar: View {
                         Image(systemName: addEntryImageSystemName)
                             .resizable()
                             .frame(width: addEntryImageWidth, height: addEntryImageHeight)
-                            .foregroundColor(activePage == .addEntry ? .blue : .gray)  // Change color based on active page
+                            .foregroundColor(activePage == .addEntry ? .blue : .gray)
                         Text("Add Entry")
                     }
                 }
@@ -83,7 +82,7 @@ struct NavigationBar: View {
                         Image(systemName: profileImageSystemName)
                             .resizable()
                             .frame(width: profileImageWidth, height: profileImageHeight)
-                            .foregroundColor(activePage == .profile ? .blue : .gray)  // Change color based on active page
+                            .foregroundColor(activePage == .profile ? .blue : .gray)
                         Text("Profile")
                     }
                 }

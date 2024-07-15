@@ -14,7 +14,7 @@ import AWSCognitoAuthPlugin
 struct TrophyApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
-    @State private var activePage: NavigationBar.Page = .home  // Initialize activePage
+    @State private var activePage: NavigationBar.Page? = .home
 
     init() {
         do {
@@ -28,17 +28,11 @@ struct TrophyApp: App {
     var body: some Scene {
         WindowGroup {
             Authenticator(totpOptions: .init(issuer: "Trophy")) { state in
-                VStack {
-                    Text("Hello, \(state.user.username)")
-                    Button("Sign out") {
-                        Task {
-                            await state.signOut()
-                        }
-                    }
+                NavigationStack {
                     HomeView(
+                        activePage: $activePage,
                         userId: state.user.userId,
-                        username: state.user.username,
-                        activePage: $activePage  // Pass activePage as a binding
+                        username: state.user.username
                     )
                 }
             }
