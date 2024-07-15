@@ -13,6 +13,8 @@
 		9F3D7BA32C437E3F000589D6 /* ExerciseCardListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D7BA22C437E3F000589D6 /* ExerciseCardListView.swift */; };
 		9F3D7BA52C437F56000589D6 /* ExerciseCardListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D7BA42C437F56000589D6 /* ExerciseCardListViewModel.swift */; };
 		9F3D7BA82C4492B2000589D6 /* ExerciseDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D7BA72C4492B2000589D6 /* ExerciseDetailView.swift */; };
+		9F3D7BAA2C4498A9000589D6 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D7BA92C4498A9000589D6 /* HomeView.swift */; };
+		9F3D7BAC2C4498E1000589D6 /* AddEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D7BAB2C4498E1000589D6 /* AddEntryView.swift */; };
 		9F585FEC2B3A19FF0061F1EB /* IntensityAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F585FEB2B3A19FF0061F1EB /* IntensityAttribute.swift */; };
 		9F585FF02B3A1CFD0061F1EB /* LevelAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F585FEF2B3A1CFD0061F1EB /* LevelAttribute.swift */; };
 		9F585FF32B3A389E0061F1EB /* PredefinedTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F585FF22B3A389E0061F1EB /* PredefinedTag.swift */; };
@@ -171,6 +173,8 @@
 		9F3D7BA22C437E3F000589D6 /* ExerciseCardListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCardListView.swift; sourceTree = "<group>"; };
 		9F3D7BA42C437F56000589D6 /* ExerciseCardListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCardListViewModel.swift; sourceTree = "<group>"; };
 		9F3D7BA72C4492B2000589D6 /* ExerciseDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailView.swift; sourceTree = "<group>"; };
+		9F3D7BA92C4498A9000589D6 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		9F3D7BAB2C4498E1000589D6 /* AddEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEntryView.swift; sourceTree = "<group>"; };
 		9F585FEB2B3A19FF0061F1EB /* IntensityAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntensityAttribute.swift; sourceTree = "<group>"; };
 		9F585FEF2B3A1CFD0061F1EB /* LevelAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelAttribute.swift; sourceTree = "<group>"; };
 		9F585FF22B3A389E0061F1EB /* PredefinedTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredefinedTag.swift; sourceTree = "<group>"; };
@@ -841,6 +845,8 @@
 				9FB372762B951CA800FFE87C /* ModalPresenterView.swift */,
 				9FB372812B96CFA800FFE87C /* NewExerciseModalView.swift */,
 				9FAE6EDE2B9FF6EC0077E9AC /* ActionBarView.swift */,
+				9F3D7BA92C4498A9000589D6 /* HomeView.swift */,
+				9F3D7BAB2C4498E1000589D6 /* AddEntryView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1304,9 +1310,11 @@
 				9FB62FA62B9F725500421424 /* DistanceInputView.swift in Sources */,
 				9FF1D8552B14847A002F6EAC /* DatabaseManager.swift in Sources */,
 				9F76C2012B90222B00EB276F /* WorkoutCardViewController.swift in Sources */,
+				9F3D7BAA2C4498A9000589D6 /* HomeView.swift in Sources */,
 				9FB3726E2B95136600FFE87C /* ExerciseModalView.swift in Sources */,
 				9FB62FB22B9F82BF00421424 /* IntensityInputView.swift in Sources */,
 				9FAE6EEE2BA129AF0077E9AC /* WeightInputViewModel.swift in Sources */,
+				9F3D7BAC2C4498E1000589D6 /* AddEntryView.swift in Sources */,
 				9FAE6EF52BA14BE60077E9AC /* ExerciseDatabase.swift in Sources */,
 				9F76C1F22B8EC23800EB276F /* ExerciseValidationHelper.swift in Sources */,
 				9FAE6EE32BA0D8C60077E9AC /* ActionBarViewModel.swift in Sources */,

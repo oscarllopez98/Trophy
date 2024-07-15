@@ -33,7 +33,7 @@ struct TrophyApp: App {
                             await state.signOut()
                         }
                     }
-                    ContentView(
+                    HomeView(
                         userId: state.user.userId,
                         username: state.user.username
                     )
