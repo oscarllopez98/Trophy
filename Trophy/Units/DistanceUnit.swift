@@ -38,4 +38,12 @@ class DistanceUnit: Unit {
         }
     }
     
+    // Convenience initializer from String
+    convenience init?(stringValue: String) {
+        if let symbol = Symbol(rawValue: stringValue) {
+            self.init(symbol: symbol)
+        } else {
+            return nil // Return nil if the symbol is not valid
+        }
+    }
 }

@@ -29,7 +29,7 @@ struct NavigationBar: View {
 
     @Binding var activePage: Page  // Bind the active page from a parent view
 
-    init(userId: String, username: String, borderOpacity: Double = 1.0, activePage: Binding<Page>) {  // Default opacity to 1.0
+    init(userId: String, username: String, borderOpacity: Double = 1.0, activePage: Binding<Page>) {
         self.userId = userId
         self.username = username
         self.borderOpacity = borderOpacity
@@ -48,47 +48,47 @@ struct NavigationBar: View {
 
             HStack {
                 Spacer()
-                NavigationLink(destination: HomeView(userId: userId, username: username)) {  // Pass userId and username
+                Button(action: {
+                    activePage = .home
+                }) {
                     VStack {
                         Image(systemName: homeImageSystemName)
                             .resizable()
                             .frame(width: homeImageWidth, height: homeImageHeight)
-                            .foregroundStyle(activePage == .home ? .black : .gray)  // Change color based on active page
+                            .foregroundColor(activePage == .home ? .blue : .gray)  // Change color based on active page
                         Text("Home")
                     }
                 }
-                .isDetailLink(false)
-                .onTapGesture {
-                    activePage = .home
-                }
+                .buttonStyle(PlainButtonStyle())
+                .padding()
                 Spacer()
-                NavigationLink(destination: Text("Add Entry View")) {  // Replace with actual destination view
+                Button(action: {
+                    activePage = .addEntry
+                }) {
                     VStack {
                         Image(systemName: addEntryImageSystemName)
                             .resizable()
                             .frame(width: addEntryImageWidth, height: addEntryImageHeight)
-                            .foregroundStyle(activePage == .addEntry ? .black : .gray)  // Change color based on active page
+                            .foregroundColor(activePage == .addEntry ? .blue : .gray)  // Change color based on active page
                         Text("Add Entry")
                     }
                 }
-                .isDetailLink(false)
-                .onTapGesture {
-                    activePage = .addEntry
-                }
+                .buttonStyle(PlainButtonStyle())
+                .padding()
                 Spacer()
-                NavigationLink(destination: Text("Profile View")) {  // Replace with actual destination view
+                Button(action: {
+                    activePage = .profile
+                }) {
                     VStack {
                         Image(systemName: profileImageSystemName)
                             .resizable()
                             .frame(width: profileImageWidth, height: profileImageHeight)
-                            .foregroundStyle(activePage == .profile ? .black : .gray)  // Change color based on active page
+                            .foregroundColor(activePage == .profile ? .blue : .gray)  // Change color based on active page
                         Text("Profile")
                     }
                 }
-                .isDetailLink(false)
-                .onTapGesture {
-                    activePage = .profile
-                }
+                .buttonStyle(PlainButtonStyle())
+                .padding()
                 Spacer()
             }
             .padding(.vertical)

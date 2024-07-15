@@ -14,6 +14,8 @@ import AWSCognitoAuthPlugin
 struct TrophyApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
+    @State private var activePage: NavigationBar.Page = .home  // Initialize activePage
+
     init() {
         do {
             try Amplify.add(plugin: AWSCognitoAuthPlugin())
@@ -35,7 +37,8 @@ struct TrophyApp: App {
                     }
                     HomeView(
                         userId: state.user.userId,
-                        username: state.user.username
+                        username: state.user.username,
+                        activePage: $activePage  // Pass activePage as a binding
                     )
                 }
             }

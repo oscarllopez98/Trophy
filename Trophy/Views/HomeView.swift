@@ -11,11 +11,13 @@ struct HomeView: View {
     @StateObject var exerciseCardListViewModel: ExerciseCardListViewModel
     var userId: String
     var username: String
+    @Binding var activePage: NavigationBar.Page  // Binding for active page
 
-    init(userId: String, username: String) {
+    init(userId: String, username: String, activePage: Binding<NavigationBar.Page>) {
         _exerciseCardListViewModel = StateObject(wrappedValue: ExerciseCardListViewModel(userId: userId))
         self.userId = userId
         self.username = username
+        self._activePage = activePage
     }
 
     var body: some View {
@@ -33,7 +35,7 @@ struct HomeView: View {
                 
                 GeometryReader { actionBarGeo in
                     HStack {
-                        NavigationBar(userId: userId, username: username, activePage: .constant(.home))  // Pass the userId and username
+                        NavigationBar(userId: userId, username: username, activePage: $activePage)  // Pass the binding to activePage
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
@@ -48,5 +50,5 @@ struct HomeView: View {
 }
 
 #Preview {
-    HomeView(userId: "sampleUserId", username: "sampleUsername")
+    HomeView(userId: "sampleUserId", username: "sampleUsername", activePage: .constant(.home))
 }

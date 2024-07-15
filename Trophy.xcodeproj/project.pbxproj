@@ -15,6 +15,7 @@
 		9F3D7BA82C4492B2000589D6 /* ExerciseDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D7BA72C4492B2000589D6 /* ExerciseDetailView.swift */; };
 		9F3D7BAA2C4498A9000589D6 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D7BA92C4498A9000589D6 /* HomeView.swift */; };
 		9F3D7BAC2C4498E1000589D6 /* AddEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D7BAB2C4498E1000589D6 /* AddEntryView.swift */; };
+		9F3D7BAE2C44ABA5000589D6 /* AddEntryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D7BAD2C44ABA5000589D6 /* AddEntryViewModel.swift */; };
 		9F585FEC2B3A19FF0061F1EB /* IntensityAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F585FEB2B3A19FF0061F1EB /* IntensityAttribute.swift */; };
 		9F585FF02B3A1CFD0061F1EB /* LevelAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F585FEF2B3A1CFD0061F1EB /* LevelAttribute.swift */; };
 		9F585FF32B3A389E0061F1EB /* PredefinedTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F585FF22B3A389E0061F1EB /* PredefinedTag.swift */; };
@@ -175,6 +176,7 @@
 		9F3D7BA72C4492B2000589D6 /* ExerciseDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailView.swift; sourceTree = "<group>"; };
 		9F3D7BA92C4498A9000589D6 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		9F3D7BAB2C4498E1000589D6 /* AddEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEntryView.swift; sourceTree = "<group>"; };
+		9F3D7BAD2C44ABA5000589D6 /* AddEntryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEntryViewModel.swift; sourceTree = "<group>"; };
 		9F585FEB2B3A19FF0061F1EB /* IntensityAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntensityAttribute.swift; sourceTree = "<group>"; };
 		9F585FEF2B3A1CFD0061F1EB /* LevelAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelAttribute.swift; sourceTree = "<group>"; };
 		9F585FF22B3A389E0061F1EB /* PredefinedTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredefinedTag.swift; sourceTree = "<group>"; };
@@ -861,6 +863,7 @@
 				9FAE6EE22BA0D8C60077E9AC /* ActionBarViewModel.swift */,
 				9FAE6EF82BA14CB30077E9AC /* NewExerciseModalViewModel.swift */,
 				9FAE6EFA2BA18A7F0077E9AC /* ExerciseListViewModel.swift */,
+				9F3D7BAD2C44ABA5000589D6 /* AddEntryViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -1232,6 +1235,7 @@
 				9FAE6EF22BA12C1C0077E9AC /* LevelInputViewModel.swift in Sources */,
 				9FAE6EE62BA122BC0077E9AC /* DistanceInputViewModel.swift in Sources */,
 				9FD4E75E2BF96E3A00C56E9B /* ExerciseConverter.swift in Sources */,
+				9F3D7BAE2C44ABA5000589D6 /* AddEntryViewModel.swift in Sources */,
 				9FB372842B97930300FFE87C /* DurationPickerView.swift in Sources */,
 				9FAE6EF72BA14C440077E9AC /* MockExerciseDatabase.swift in Sources */,
 				9F585FFC2B3B655C0061F1EB /* BenchPress.swift in Sources */,
