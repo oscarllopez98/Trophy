@@ -18,7 +18,7 @@ struct NavigationBar: View {
     let borderOpacity: Double
     
     enum Page: Hashable {
-        case home, addEntry, profile
+        case home, addEntry, profile, summary
     }
 
     @Binding var activePage: Page?

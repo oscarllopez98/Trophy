@@ -8,9 +8,17 @@
 import Foundation
 
 class IntensityInputViewModel: ObservableObject {
-    //State variables for tracking:
-    @Published var selectedIntensity: String    //Intensity Value
-    @Published var selectedIntensityUnitIndex: Int   //Intensity Value (by index)
+    @Published var selectedIntensity: String {
+        didSet {
+            isEdited = true
+        }
+    }
+    @Published var selectedIntensityUnitIndex: Int {
+        didSet {
+            isEdited = true
+        }
+    }
+    var isEdited: Bool = false
     
     init(selectedIntensity: String = "", selectedIntensityUnitIndex: Int = 0) {
         self.selectedIntensity = selectedIntensity

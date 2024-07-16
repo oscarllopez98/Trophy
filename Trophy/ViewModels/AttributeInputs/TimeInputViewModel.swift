@@ -8,11 +8,23 @@
 import Foundation
 
 class TimeInputViewModel: ObservableObject {
-    //Properties to hold the State
-    @Published var selectedHours: Int
-    @Published var selectedMinutes: Int
-    @Published var selectedSeconds: Int
-    
+    @Published var selectedHours: Int {
+        didSet {
+            isEdited = true
+        }
+    }
+    @Published var selectedMinutes: Int {
+        didSet {
+            isEdited = true
+        }
+    }
+    @Published var selectedSeconds: Int {
+        didSet {
+            isEdited = true
+        }
+    }
+    var isEdited: Bool = false
+
     let hoursNumbers = Array((0...23).reversed())
     let minutesNumbers = Array((0...59).reversed())
     let secondsNumbers = Array((0...59).reversed())
@@ -23,19 +35,15 @@ class TimeInputViewModel: ObservableObject {
         self.selectedSeconds = selectedSeconds
     }
     
-    //Function to update the selected Hours
     func updateHours(_ hours: Int) {
         selectedHours = hours
     }
     
-    //Function to update the selected Minutes
     func updateMinutes(_ minutes: Int) {
         selectedMinutes = minutes
     }
     
-    //Function to update the selected Seconds
     func updateSeconds(_ seconds: Int) {
         selectedSeconds = seconds
     }
-    
 }

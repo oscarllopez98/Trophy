@@ -10,51 +10,60 @@ import SwiftUI
 struct AddEntryView: View {
     @State private var exerciseName: String = getDefaultTitle()
     @State private var isEdited: Bool = false // Track if the text field has been edited
+    @State private var showAlert: Bool = false
+    @State private var alertMessage: String = ""
     @ObservedObject var viewModel: AddEntryViewModel
+    @ObservedObject var summaryViewModel: SummaryViewModel
     @Binding var activePage: NavigationBar.Page?
+    let userId: String
     
     // Symbol displayed in the Default Title
     let writingSymbolSystemName: String = "pencil.line"
 
     var body: some View {
-        Spacer()
-        TextFieldWithImage(
-            text: $exerciseName,
-            placeholder: "Enter Exercise Name",
-            systemImageName: writingSymbolSystemName,
-            isEdited: $isEdited
-        )
-        .padding()
-        .onChange(of: exerciseName) { newValue in
-            if !isEdited && newValue != getDefaultTitle() {
-                isEdited = true
-            }
-        }
-        ScrollView {
-            VStack {
-                
-                DistanceInputView(viewModel: viewModel.distanceViewModel)
-                
-                TimeInputView(viewModel: viewModel.timeViewModel)
-                
-                SetsInputView(viewModel: viewModel.setsViewModel)
-                
-                RepsInputView(viewModel: viewModel.repsViewModel)
-                
-                WeightInputView(viewModel: viewModel.weightViewModel)
-                
-                IntensityInputView(viewModel: viewModel.intensityViewModel)
-                
-                LevelInputView(viewModel: viewModel.levelViewModel)
-                
+        VStack {
+            HStack {
+                Spacer()
+                TextFieldWithImage(
+                    text: $exerciseName,
+                    placeholder: "Enter Exercise Name",
+                    systemImageName: writingSymbolSystemName,
+                    isEdited: $isEdited
+                )
+                .padding()
+                .onChange(of: exerciseName) { newValue in
+                    if !isEdited && newValue != getDefaultTitle() {
+                        isEdited = true
+                    }
+                }
                 Button("Save") {
-                    viewModel.saveExercise()
-                    activePage = .home
+                    let validationResult = viewModel.validateInputs(exerciseName: exerciseName)
+                    if validationResult.isValid {
+                        viewModel.exerciseName = exerciseName
+                        summaryViewModel.prepareSummary(from: viewModel)
+                        activePage = .summary
+                    } else {
+                        alertMessage = validationResult.message
+                        showAlert = true
+                    }
                 }
                 .buttonStyle(.bordered)
                 .padding()
+                Spacer()
             }
-            .padding()
+
+            ScrollView {
+                VStack {
+                    DistanceInputView(viewModel: viewModel.distanceViewModel)
+                    TimeInputView(viewModel: viewModel.timeViewModel)
+                    SetsInputView(viewModel: viewModel.setsViewModel)
+                    RepsInputView(viewModel: viewModel.repsViewModel)
+                    WeightInputView(viewModel: viewModel.weightViewModel)
+                    IntensityInputView(viewModel: viewModel.intensityViewModel)
+                    LevelInputView(viewModel: viewModel.levelViewModel)
+                }
+                .padding()
+            }
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {
@@ -64,6 +73,9 @@ struct AddEntryView: View {
                     }
                 }
             }
+        }
+        .alert(isPresented: $showAlert) {
+            Alert(title: Text("Validation Error"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
         }
     }
 }
@@ -101,5 +113,5 @@ private func getDefaultTitle() -> String {
 }
 
 #Preview {
-    AddEntryView(viewModel: AddEntryViewModel(), activePage: .constant(.addEntry))
+    AddEntryView(viewModel: AddEntryViewModel(), summaryViewModel: SummaryViewModel(userId: "sampleId"), activePage: .constant(.addEntry), userId: "sampleUserId")
 }

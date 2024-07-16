@@ -18,6 +18,8 @@
 		9F3D7BAE2C44ABA5000589D6 /* AddEntryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D7BAD2C44ABA5000589D6 /* AddEntryViewModel.swift */; };
 		9F3D7BB02C44D659000589D6 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D7BAF2C44D658000589D6 /* ProfileView.swift */; };
 		9F3D7BB32C45CB9F000589D6 /* TextFieldStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D7BB22C45CB9F000589D6 /* TextFieldStyles.swift */; };
+		9F3D7BB52C463FA1000589D6 /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D7BB42C463FA1000589D6 /* SummaryView.swift */; };
+		9F3D7BB72C463FC1000589D6 /* SummaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D7BB62C463FC1000589D6 /* SummaryViewModel.swift */; };
 		9F585FEC2B3A19FF0061F1EB /* IntensityAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F585FEB2B3A19FF0061F1EB /* IntensityAttribute.swift */; };
 		9F585FF02B3A1CFD0061F1EB /* LevelAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F585FEF2B3A1CFD0061F1EB /* LevelAttribute.swift */; };
 		9F585FF32B3A389E0061F1EB /* PredefinedTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F585FF22B3A389E0061F1EB /* PredefinedTag.swift */; };
@@ -181,6 +183,8 @@
 		9F3D7BAD2C44ABA5000589D6 /* AddEntryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEntryViewModel.swift; sourceTree = "<group>"; };
 		9F3D7BAF2C44D658000589D6 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		9F3D7BB22C45CB9F000589D6 /* TextFieldStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldStyles.swift; sourceTree = "<group>"; };
+		9F3D7BB42C463FA1000589D6 /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
+		9F3D7BB62C463FC1000589D6 /* SummaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryViewModel.swift; sourceTree = "<group>"; };
 		9F585FEB2B3A19FF0061F1EB /* IntensityAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntensityAttribute.swift; sourceTree = "<group>"; };
 		9F585FEF2B3A1CFD0061F1EB /* LevelAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelAttribute.swift; sourceTree = "<group>"; };
 		9F585FF22B3A389E0061F1EB /* PredefinedTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredefinedTag.swift; sourceTree = "<group>"; };
@@ -863,6 +867,7 @@
 				9F3D7BA92C4498A9000589D6 /* HomeView.swift */,
 				9F3D7BAB2C4498E1000589D6 /* AddEntryView.swift */,
 				9F3D7BAF2C44D658000589D6 /* ProfileView.swift */,
+				9F3D7BB42C463FA1000589D6 /* SummaryView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -878,6 +883,7 @@
 				9FAE6EF82BA14CB30077E9AC /* NewExerciseModalViewModel.swift */,
 				9FAE6EFA2BA18A7F0077E9AC /* ExerciseListViewModel.swift */,
 				9F3D7BAD2C44ABA5000589D6 /* AddEntryViewModel.swift */,
+				9F3D7BB62C463FC1000589D6 /* SummaryViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -1304,6 +1310,7 @@
 				9FD4E76B2BFC195700C56E9B /* ExerciseLogger.swift in Sources */,
 				9FF313CA2BF6D61F000E2F53 /* TROPHYOutputExercise_body.swift in Sources */,
 				9FF1D8662B148526002F6EAC /* DistanceUnit.swift in Sources */,
+				9F3D7BB52C463FA1000589D6 /* SummaryView.swift in Sources */,
 				9FD4E74B2BF7D9EA00C56E9B /* WeightAttributeConverter.swift in Sources */,
 				9FD4E7572BF7DCFD00C56E9B /* UserDefinedAttributeConverter.swift in Sources */,
 				9FF313CB2BF6D61F000E2F53 /* TROPHYOutputExercise.swift in Sources */,
@@ -1316,6 +1323,7 @@
 				9F585FF72B3A38AF0061F1EB /* Tag.swift in Sources */,
 				9FAE6EE82BA124AA0077E9AC /* TimeInputViewModel.swift in Sources */,
 				9FD4E7432BF7D7FC00C56E9B /* SetsAttributeConverter.swift in Sources */,
+				9F3D7BB72C463FC1000589D6 /* SummaryViewModel.swift in Sources */,
 				9FF1D86A2B148548002F6EAC /* UserDefinedAttribute.swift in Sources */,
 				9FB372772B951CA800FFE87C /* ModalPresenterView.swift in Sources */,
 				9FF313C92BF6D61F000E2F53 /* TROPHYInputExercise.swift in Sources */,

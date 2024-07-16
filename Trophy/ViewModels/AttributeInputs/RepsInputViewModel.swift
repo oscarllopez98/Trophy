@@ -8,8 +8,12 @@
 import Foundation
 
 class RepsInputViewModel: ObservableObject {
-    //State variables for tracking:
-    @Published var selectedReps: String    //Reps value
+    @Published var selectedReps: String {
+        didSet {
+            isEdited = true
+        }
+    }
+    var isEdited: Bool = false
     
     init(selectedReps: String = "") {
         self.selectedReps = selectedReps

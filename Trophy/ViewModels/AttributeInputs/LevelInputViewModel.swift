@@ -8,8 +8,12 @@
 import Foundation
 
 class LevelInputViewModel: ObservableObject {
-    //State variables for tracking:
-    @Published var selectedLevelUnitIndex: Int   //Level Unit Value (by index)
+    @Published var selectedLevelUnitIndex: Int {
+        didSet {
+            isEdited = true
+        }
+    }
+    var isEdited: Bool = false
     
     init(selectedLevelUnitIndex: Int = 0) {
         self.selectedLevelUnitIndex = selectedLevelUnitIndex
