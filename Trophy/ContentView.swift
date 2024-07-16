@@ -1,47 +1,35 @@
-//import SwiftUI
+//
+//  ContentView.swift
+//  Trophy
+//
+//  Created by Oscar Lopez on 7/14/24.
+//
 
-//struct ContentView: View {
-//    @StateObject var exerciseCardListViewModel: ExerciseCardListViewModel
-//    @State private var isModalVisible = false
-//    var userId: String
-//    var username: String
-//
-//    init(userId: String, username: String) {
-//        _exerciseCardListViewModel = StateObject(wrappedValue: ExerciseCardListViewModel(userId: userId))
-//        self.userId = userId
-//        self.username = username
-//    }
-//
-//    var body: some View {
-//        GeometryReader { geometry in
-//            VStack {
-//                HStack {
-//                    UserProfileInfoView()
-//                }
-//                .frame(width: geometry.size.width, height: geometry.size.height * 0.1)
-//                
-//                HStack {
-//                    ExerciseCardListView(viewModel: exerciseCardListViewModel)
-//                }
-//                .frame(height: geometry.size.height * 0.80)
-//                .padding(.horizontal)
-//                
-//                GeometryReader { actionBarGeo in
-//                    HStack {
-//                        NavigationBar(userId: userId, username: username)
-//                    }
-//                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-//                }
-//                .frame(maxWidth: .infinity)
-//            }
-//            .frame(width: geometry.size.width, height: geometry.size.height)
-//        }
-//    }
-//}
-//
-//
-//#Preview {
-//    let userId: String = getEnvironmentVariable("TEST_USER_ID")!
-//    let sampleUsername = "Test User"
-//    return ContentView(userId: userId, username: sampleUsername).previewLayout(.sizeThatFits)
-//}
+import SwiftUI
+
+struct ContentView: View {
+    @Binding var activePage: NavigationBar.Page?
+    let userId: String
+    let username: String
+
+    var body: some View {
+        NavigationStack {
+            VStack(spacing: 0) {
+                switch activePage {
+                case .home:
+                    HomeView(activePage: $activePage, userId: userId, username: username)
+                case .addEntry:
+                    AddEntryView(viewModel: AddEntryViewModel(), activePage: $activePage)
+                case .profile:
+                    ProfileView(userId: userId, username: username, activePage: $activePage)
+                case .none:
+                    ExerciseCardListView(viewModel: ExerciseCardListViewModel(userId: userId))
+                }
+            }
+        }
+    }
+}
+
+#Preview {
+    ContentView(activePage: .constant(.home), userId: "sampleUserId", username: "sampleUsername")
+}

@@ -46,7 +46,7 @@ class ExerciseCardListViewModel: ObservableObject {
     }
     
     static func sample() -> ExerciseCardListViewModel {
-        let userId: String = getEnvironmentVariable("TEST_USER_ID")!
+        let userId: String = "getEnvironmentVariable(\"TEST_USER_ID\")!"
         return ExerciseCardListViewModel(userId: userId)
     }
 }

@@ -14,7 +14,7 @@ struct ExerciseCardView: View {
     // Dimensions and other constants
     let exerciseCardViewOpacity: Double = 0.07
     let exerciseCardViewCornerSize: CGFloat = 10
-    let cardHeight: CGFloat = 150  // Set the height of the card
+    let cardHeight: CGFloat = 130  // Set the height of the card
     let cardDateOpacity: Double = 0.85
     
     var body: some View {

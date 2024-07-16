@@ -9,24 +9,29 @@ import SwiftUI
 
 struct AddEntryView: View {
     @State private var exerciseName: String = getDefaultTitle()
+    @State private var isEdited: Bool = false // Track if the text field has been edited
     @ObservedObject var viewModel: AddEntryViewModel
     @Binding var activePage: NavigationBar.Page?
     
     // Symbol displayed in the Default Title
     let writingSymbolSystemName: String = "pencil.line"
-    
 
     var body: some View {
+        Spacer()
+        TextFieldWithImage(
+            text: $exerciseName,
+            placeholder: "Enter Exercise Name",
+            systemImageName: writingSymbolSystemName,
+            isEdited: $isEdited
+        )
+        .padding()
+        .onChange(of: exerciseName) { newValue in
+            if !isEdited && newValue != getDefaultTitle() {
+                isEdited = true
+            }
+        }
         ScrollView {
             VStack {
-                Spacer()
-                TextFieldWithImage(
-                    text: $exerciseName,
-                    placeholder: "Enter Exercise Name",
-                    systemImageName: writingSymbolSystemName
-                )
-                .padding()
-                Spacer()
                 
                 DistanceInputView(viewModel: viewModel.distanceViewModel)
                 
@@ -50,7 +55,6 @@ struct AddEntryView: View {
                 .padding()
             }
             .padding()
-            .navigationTitle("Add Entry")
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {
@@ -65,7 +69,6 @@ struct AddEntryView: View {
 }
 
 private func getDefaultTitle() -> String {
-    
     let date = Date()
     let calendar = Calendar.current
     

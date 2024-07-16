@@ -29,7 +29,7 @@ struct TrophyApp: App {
         WindowGroup {
             Authenticator(totpOptions: .init(issuer: "Trophy")) { state in
                 NavigationStack {
-                    HomeView(
+                    ContentView(
                         activePage: $activePage,
                         userId: state.user.userId,
                         username: state.user.username

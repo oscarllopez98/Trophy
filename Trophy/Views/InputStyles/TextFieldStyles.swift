@@ -23,12 +23,13 @@ struct TextFieldWithImage: View {
     @Binding var text: String
     let placeholder: String
     let systemImageName: String
+    @Binding var isEdited: Bool // Track if the text field has been edited
 
     var body: some View {
         HStack(spacing: 0) {
             TextField(placeholder, text: $text)
+                .fontWeight(isEdited ? .regular : .light)
                 .font(.title2)
-                .fontWeight(.light)
                 .padding(.trailing, 0)
             Image(systemName: systemImageName)
                 .padding(.leading, 0)

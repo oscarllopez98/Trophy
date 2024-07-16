@@ -11,13 +11,8 @@ struct NavigationBar: View {
     let homeImageSystemName: String
     let addEntryImageSystemName: String
     let profileImageSystemName: String
-    let homeImageWidth: CGFloat = 40
-    let homeImageHeight: CGFloat = 40
-    let addEntryImageWidth: CGFloat = 40
-    let addEntryImageHeight: CGFloat = 40
-    let profileImageWidth: CGFloat = 40
-    let profileImageHeight: CGFloat = 40
-
+    let imageSize: CGFloat = 30 // Adjust this as needed
+    
     var userId: String
     var username: String
     let borderOpacity: Double
@@ -53,37 +48,55 @@ struct NavigationBar: View {
                     VStack {
                         Image(systemName: homeImageSystemName)
                             .resizable()
-                            .frame(width: homeImageWidth, height: homeImageHeight)
+                            .aspectRatio(contentMode: .fit) // Ensure the image fits without warping
+                            .frame(width: imageSize, height: imageSize)
                             .foregroundColor(activePage == .home ? .blue : .gray)
                         Text("Home")
+                            .font(.callout)
+                            .padding(.bottom)
+                            .foregroundColor(activePage == .home ? .blue : .gray)
                     }
                 }
                 .buttonStyle(PlainButtonStyle())
                 .padding()
+                
                 Spacer()
+                Spacer()
+                
                 Button(action: {
                     activePage = .addEntry
                 }) {
                     VStack {
                         Image(systemName: addEntryImageSystemName)
                             .resizable()
-                            .frame(width: addEntryImageWidth, height: addEntryImageHeight)
+                            .aspectRatio(contentMode: .fit) // Ensure the image fits without warping
+                            .frame(width: imageSize, height: imageSize)
                             .foregroundColor(activePage == .addEntry ? .blue : .gray)
                         Text("Add Entry")
+                            .font(.callout)
+                            .padding(.bottom)
+                            .foregroundColor(activePage == .addEntry ? .blue : .gray)
                     }
                 }
                 .buttonStyle(PlainButtonStyle())
                 .padding()
+                
                 Spacer()
+                Spacer()
+                
                 Button(action: {
                     activePage = .profile
                 }) {
                     VStack {
                         Image(systemName: profileImageSystemName)
                             .resizable()
-                            .frame(width: profileImageWidth, height: profileImageHeight)
+                            .aspectRatio(contentMode: .fit) // Ensure the image fits without warping
+                            .frame(width: imageSize, height: imageSize)
                             .foregroundColor(activePage == .profile ? .blue : .gray)
                         Text("Profile")
+                            .font(.callout)
+                            .padding(.bottom)
+                            .foregroundColor(activePage == .profile ? .blue : .gray)
                     }
                 }
                 .buttonStyle(PlainButtonStyle())

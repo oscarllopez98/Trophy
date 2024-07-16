@@ -11,7 +11,7 @@ struct ExerciseCardListView: View {
     
     @ObservedObject var viewModel: ExerciseCardListViewModel
     
-    var body: some View {        
+    var body: some View {
         // Main Container
         ScrollView {
             if viewModel.isLoading {
@@ -24,15 +24,13 @@ struct ExerciseCardListView: View {
                 }
             } else if viewModel.exercises.isEmpty {
                 VStack {
-                    Spacer()
                     Text("You don't have any Exercises tracked yet!")
                         .font(.headline)
-                        .multilineTextAlignment(.center)
+                    
                     Text("Click the + icon below to get started.")
                         .font(.subheadline)
-                        .multilineTextAlignment(.center)
-                    Spacer()
                 }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
             } else {
                 ForEach(viewModel.exercises, id: \.id) { exercise in
                     let exerciseCardViewModel = ExerciseCardViewModel(exercise: exercise)
@@ -43,6 +41,7 @@ struct ExerciseCardListView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
+
 
 #Preview {
     ExerciseCardListView(viewModel: ExerciseCardListViewModel.sample())
