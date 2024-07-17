@@ -8,8 +8,9 @@
 import Foundation
 
 class SummaryViewModel: ObservableObject {
-    let userId: String
+    var userId: String
     @Published var summaryItems: [String] = []
+    var exercise: Exercise?
 
     init(userId: String) {
         self.userId = userId
@@ -48,5 +49,16 @@ class SummaryViewModel: ObservableObject {
 
         summaryItems = items
         print(summaryItems)
+    }
+
+    func confirm(exercise: Exercise) async {
+        print("Third: \(exercise.name)")
+        let trophyRestAPI: TrophyRESTAPI = TrophyRESTAPI()
+        print("womp", userId)
+        if let exerciseId = await trophyRestAPI.PUTUserExercise(exercise: exercise, userId: userId) {
+            print("Received exercise ID: \(exerciseId)")
+        } else {
+            print("Failed to receive exercise ID.")
+        }
     }
 }

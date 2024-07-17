@@ -19,7 +19,10 @@ struct SummaryView: View {
                 Text(item)
             }
             Button("Confirm") {
-                confirm()
+                Task {
+                    await confirm()
+                    activePage = .home
+                }
             }
             .buttonStyle(.bordered)
             .padding()
@@ -35,9 +38,11 @@ struct SummaryView: View {
         }
     }
 
-    private func confirm() {
-        print("Confirmed!")
-        activePage = .home
+    private func confirm() async {
+        if let exercise = viewModel.exercise {
+            print("Second: \(exercise.name)")
+            await viewModel.confirm(exercise: exercise)
+        }
     }
 }
 
