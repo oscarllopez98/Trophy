@@ -40,7 +40,6 @@ struct SummaryView: View {
 
     private func confirm() async {
         if let exercise = viewModel.exercise {
-            print("Second: \(exercise.name)")
             await viewModel.confirm(exercise: exercise)
         }
     }

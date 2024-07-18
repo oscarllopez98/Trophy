@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct IntensityInputView: View {
-
     @ObservedObject var viewModel: IntensityInputViewModel
     
     var selectedIntensityUnit: IntensityAttribute.Intensity {
@@ -18,7 +17,6 @@ struct IntensityInputView: View {
     let unitArray = IntensityAttribute.Intensity.allCases.map { $0.rawValue }
     
     var body: some View {
-        
         HStack {
             Picker("Intensity", selection: $viewModel.selectedIntensityUnitIndex) {
                 ForEach(0..<unitArray.count, id: \.self) { index in
@@ -27,8 +25,6 @@ struct IntensityInputView: View {
             }
             .pickerStyle(WheelPickerStyle())
         }
-        
-//        Text("You Entered: \(viewModel.selectedIntensity) \(selectedIntensityUnit.rawValue)")
     }
 }
 

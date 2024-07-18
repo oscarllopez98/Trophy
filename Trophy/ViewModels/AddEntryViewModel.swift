@@ -10,25 +10,18 @@ import Combine
 
 class AddEntryViewModel: ObservableObject {
     @Published var exerciseName: String = ""
-    @Published var distanceViewModel: DistanceInputViewModel
-    @Published var timeViewModel: TimeInputViewModel
-    @Published var setsViewModel: SetsInputViewModel
-    @Published var repsViewModel: RepsInputViewModel
-    @Published var weightViewModel: WeightInputViewModel
-    @Published var intensityViewModel: IntensityInputViewModel
-    @Published var levelViewModel: LevelInputViewModel
+    @Published var distanceViewModel = DistanceInputViewModel()
+    @Published var timeViewModel = TimeInputViewModel()
+    @Published var setsViewModel = SetsInputViewModel()
+    @Published var repsViewModel = RepsInputViewModel()
+    @Published var weightViewModel = WeightInputViewModel()
+    @Published var intensityViewModel = IntensityInputViewModel()
+    @Published var levelViewModel = LevelInputViewModel()
     
-    init() {
-        self.distanceViewModel = DistanceInputViewModel()
-        self.timeViewModel = TimeInputViewModel()
-        self.setsViewModel = SetsInputViewModel()
-        self.repsViewModel = RepsInputViewModel()
-        self.weightViewModel = WeightInputViewModel()
-        self.intensityViewModel = IntensityInputViewModel()
-        self.levelViewModel = LevelInputViewModel()
-    }
-
     func hasValidAttributes() -> Bool {
+        if !exerciseName.isEmpty {
+            return true
+        }
         if let distance = Double(distanceViewModel.selectedDistance), distance > 0 {
             return true
         }
@@ -47,7 +40,7 @@ class AddEntryViewModel: ObservableObject {
         if let weight = Double(weightViewModel.selectedWeight), weight > 0 {
             return true
         }
-        if !intensityViewModel.selectedIntensity.isEmpty {
+        if intensityViewModel.selectedIntensity != .unset {
             return true
         }
         if levelViewModel.selectedLevelUnitIndex > 0 {

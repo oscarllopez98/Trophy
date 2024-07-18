@@ -11,7 +11,7 @@ struct ContentView: View {
     let userId: String
     let username: String
 
-    @StateObject private var summaryViewModel = SummaryViewModel(userId: "userId")
+    @StateObject private var summaryViewModel = SummaryViewModel(userId: "ToDo: Replace this with better implementation")
 
     var body: some View {
         NavigationStack {

@@ -8,28 +8,9 @@
 import Foundation
 
 class IntensityInputViewModel: ObservableObject {
-    @Published var selectedIntensity: String {
-        didSet {
-            isEdited = true
-        }
-    }
-    @Published var selectedIntensityUnitIndex: Int {
-        didSet {
-            isEdited = true
-        }
-    }
-    var isEdited: Bool = false
+    @Published var selectedIntensityUnitIndex: Int = 0
     
-    init(selectedIntensity: String = "", selectedIntensityUnitIndex: Int = 0) {
-        self.selectedIntensity = selectedIntensity
-        self.selectedIntensityUnitIndex = selectedIntensityUnitIndex
-    }
-    
-    func updateSelectedIntensity(_ intensity: String) {
-        selectedIntensity = intensity
-    }
-    
-    func updateSelectedIntensityUnitIndex(_ intensityUnitIndex: Int) {
-        selectedIntensityUnitIndex = intensityUnitIndex
+    var selectedIntensity: IntensityAttribute.Intensity {
+        return IntensityAttribute.Intensity.allCases[selectedIntensityUnitIndex]
     }
 }

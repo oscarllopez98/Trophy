@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AddEntryView: View {
     @State private var exerciseName: String = getDefaultTitle()
-    @State private var isEdited: Bool = false // Track if the text field has been edited
+    @State private var isEdited: Bool = false
     @ObservedObject var viewModel: AddEntryViewModel
     @ObservedObject var summaryViewModel: SummaryViewModel
     @Binding var activePage: NavigationBar.Page?
@@ -17,75 +17,67 @@ struct AddEntryView: View {
     @State private var alertMessage: String = ""
     let userId: String
     
-    // Symbol displayed in the Default Title
     let writingSymbolSystemName: String = "pencil.line"
 
     var body: some View {
-        Spacer()
-        HStack {
+        VStack {
             Spacer()
-            TextFieldWithImage(
-                text: $exerciseName,
-                placeholder: "Enter Exercise Name",
-                systemImageName: writingSymbolSystemName,
-                isEdited: $isEdited
-            )
-            .padding()
-            .onChange(of: exerciseName) { newValue in
-                if !isEdited && newValue != getDefaultTitle() {
-                    isEdited = true
+            HStack {
+                Spacer()
+                TextFieldWithImage(
+                    text: $exerciseName,
+                    placeholder: "Enter Exercise Name",
+                    systemImageName: writingSymbolSystemName,
+                    isEdited: $isEdited
+                )
+                .padding()
+                .onChange(of: exerciseName) { newValue in
+                    if !isEdited && newValue != getDefaultTitle() {
+                        isEdited = true
+                    }
                 }
-            }
-            Button("Save") {
-                if exerciseName.isEmpty {
-                    alertMessage = "You need to have an exercise name to continue."
-                    showAlert = true
-                } else if !viewModel.hasValidAttributes() {
-                    alertMessage = "You need to fill out at least 1 exercise attribute."
-                    showAlert = true
-                } else {
-                    let exercise = createExercise()
-                    summaryViewModel.prepareSummary(from: viewModel)
-                    summaryViewModel.exercise = exercise
-                    summaryViewModel.userId = userId
-                    print("First: \(summaryViewModel.exercise?.name)")
-                    activePage = .summary
+                Button("Save") {
+                    if exerciseName.isEmpty {
+                        alertMessage = "You need to have an exercise name to continue."
+                        showAlert = true
+                    } else if !viewModel.hasValidAttributes() {
+                        alertMessage = "You need to fill out at least 1 exercise attribute."
+                        showAlert = true
+                    } else {
+                        let exercise = createExercise()
+                        summaryViewModel.prepareSummary(from: viewModel)
+                        summaryViewModel.exercise = exercise
+                        summaryViewModel.userId = userId
+                        activePage = .summary
+                    }
                 }
+                .buttonStyle(.bordered)
+                .padding()
+                .alert(isPresented: $showAlert) {
+                    Alert(title: Text("Validation Error"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
+                }
+                Spacer()
             }
-            .buttonStyle(.bordered)
-            .padding()
-            .alert(isPresented: $showAlert) {
-                Alert(title: Text("Validation Error"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
-            }
-            Spacer()
-        }
 
-        ScrollView {
-            VStack {
-                
-                DistanceInputView(viewModel: viewModel.distanceViewModel)
-                
-                TimeInputView(viewModel: viewModel.timeViewModel)
-                
-                SetsInputView(viewModel: viewModel.setsViewModel)
-                
-                RepsInputView(viewModel: viewModel.repsViewModel)
-                
-                WeightInputView(viewModel: viewModel.weightViewModel)
-                
-                IntensityInputView(viewModel: viewModel.intensityViewModel)
-                
-                LevelInputView(viewModel: viewModel.levelViewModel)
-
+            ScrollView {
+                VStack {
+                    DistanceInputView(viewModel: viewModel.distanceViewModel)
+                    TimeInputView(viewModel: viewModel.timeViewModel)
+                    SetsInputView(viewModel: viewModel.setsViewModel)
+                    RepsInputView(viewModel: viewModel.repsViewModel)
+                    WeightInputView(viewModel: viewModel.weightViewModel)
+                    IntensityInputView(viewModel: viewModel.intensityViewModel)
+                    LevelInputView(viewModel: viewModel.levelViewModel)
+                }
+                .padding()
             }
-            .padding()
-        }
-        .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                Button(action: {
-                    activePage = .home
-                }) {
-                    Text("Back")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: {
+                        activePage = .home
+                    }) {
+                        Text("Back")
+                    }
                 }
             }
         }
@@ -111,14 +103,14 @@ struct AddEntryView: View {
             attributes[.reps] = RepsAttribute(reps: reps)
         }
         if let weight = Double(viewModel.weightViewModel.selectedWeight), weight > 0 {
-            attributes[.weight] = WeightAttribute(weight: weight, 
+            attributes[.weight] = WeightAttribute(weight: weight,
                                                   unit: WeightUnit(weightString: viewModel.weightViewModel.selectedWeightUnit.rawValue)!)
         }
-        if !viewModel.intensityViewModel.selectedIntensity.isEmpty {
-            attributes[.intensity] = IntensityAttribute(intensityString: viewModel.intensityViewModel.selectedIntensity)
+        if viewModel.intensityViewModel.selectedIntensity != .unset {
+            attributes[.intensity] = IntensityAttribute(intensityString: viewModel.intensityViewModel.selectedIntensity.rawValue)
         }
-        if viewModel.levelViewModel.selectedLevelUnitIndex > 0 {
-            attributes[.level] = LevelAttribute(levelInt: viewModel.levelViewModel.selectedLevelUnitIndex)
+        if viewModel.levelViewModel.selectedLevel != .NA {
+            attributes[.level] = LevelAttribute(levelInt: viewModel.levelViewModel.selectedLevel.rawValue)
         }
 
         return Exercise(name: exerciseName, type: .other, attributes: attributes, date: .now)
@@ -129,30 +121,18 @@ private func getDefaultTitle() -> String {
     let date = Date()
     let calendar = Calendar.current
     
-    // Get time of day from the current date
     let hour = calendar.component(.hour, from: date)
-    
-    // Get the weekday component from the current date
     let weekday = calendar.component(.weekday, from: date)
-
-    // Convert the weekday component (1-7) to a weekday name (Sunday-Saturday)
     let weekdaySymbols = calendar.weekdaySymbols
     let dayOfWeek = weekdaySymbols[weekday - 1]
     
-    // Check if Morning
-    if (hour >= 4 && hour < 12) {
+    if hour >= 4 && hour < 12 {
         return "\(dayOfWeek) Morning Exercise"
-    }
-    // Else, Check if Afternoon
-    else if (hour >= 12 && hour < 18){
+    } else if hour >= 12 && hour < 18 {
         return "\(dayOfWeek) Afternoon Exercise"
-    }
-    // Else, Check if Evening
-    else if (hour >= 18 && hour < 21) {
+    } else if hour >= 18 && hour < 21 {
         return "\(dayOfWeek) Evening Exercise"
-    }
-    // Else, Set Night
-    else {
+    } else {
         return "\(dayOfWeek) Night Exercise"
     }
 }

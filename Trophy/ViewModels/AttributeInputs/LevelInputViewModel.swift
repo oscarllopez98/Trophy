@@ -8,18 +8,9 @@
 import Foundation
 
 class LevelInputViewModel: ObservableObject {
-    @Published var selectedLevelUnitIndex: Int {
-        didSet {
-            isEdited = true
-        }
-    }
-    var isEdited: Bool = false
+    @Published var selectedLevelUnitIndex: Int = 0
     
-    init(selectedLevelUnitIndex: Int = 0) {
-        self.selectedLevelUnitIndex = selectedLevelUnitIndex
-    }
-    
-    func updateSelectedLevelUnitIndex(_ levelUnitIndex: Int) {
-        selectedLevelUnitIndex = levelUnitIndex
+    var selectedLevel: LevelAttribute.Level {
+        return LevelAttribute.Level(rawValue: selectedLevelUnitIndex) ?? .NA
     }
 }

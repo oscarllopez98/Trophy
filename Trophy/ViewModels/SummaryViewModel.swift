@@ -10,7 +10,7 @@ import Foundation
 class SummaryViewModel: ObservableObject {
     var userId: String
     @Published var summaryItems: [String] = []
-    var exercise: Exercise?
+    @Published var exercise: Exercise?
 
     init(userId: String) {
         self.userId = userId
@@ -40,25 +40,18 @@ class SummaryViewModel: ObservableObject {
         if let weight = Double(viewModel.weightViewModel.selectedWeight), weight > 0 {
             items.append("Weight: \(weight) \(viewModel.weightViewModel.selectedWeightUnit.rawValue)")
         }
-        if !viewModel.intensityViewModel.selectedIntensity.isEmpty {
-            items.append("Intensity: \(viewModel.intensityViewModel.selectedIntensity)")
+        if viewModel.intensityViewModel.selectedIntensity != .unset {
+            items.append("Intensity: \(viewModel.intensityViewModel.selectedIntensity.rawValue)")
         }
-        if viewModel.levelViewModel.selectedLevelUnitIndex > 0 {
-            items.append("Level: \(viewModel.levelViewModel.selectedLevelUnitIndex)")
+        if viewModel.levelViewModel.selectedLevel != .NA {
+            items.append("Level: \(viewModel.levelViewModel.selectedLevel.rawValue)")
         }
 
         summaryItems = items
         print(summaryItems)
     }
-
+    
     func confirm(exercise: Exercise) async {
-        print("Third: \(exercise.name)")
-        let trophyRestAPI: TrophyRESTAPI = TrophyRESTAPI()
-        print("womp", userId)
-        if let exerciseId = await trophyRestAPI.PUTUserExercise(exercise: exercise, userId: userId) {
-            print("Received exercise ID: \(exerciseId)")
-        } else {
-            print("Failed to receive exercise ID.")
-        }
+        // Your async code here
     }
 }

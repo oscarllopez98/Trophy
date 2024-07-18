@@ -103,17 +103,17 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "F189A0C3-21D3-48F2-BD10-7F1A062B1BE4"
+            uuid = "24D6A82D-608E-4FB7-B2FC-09A08EC318EE"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Trophy/ViewModels/SummaryViewModel.swift"
+            filePath = "Trophy/Views/AttributeInputs/LevelInputView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
-            landmarkName = "confirm(exercise:)"
-            landmarkType = "7">
+            startingLineNumber = "10"
+            endingLineNumber = "10"
+            landmarkName = "LevelInputView"
+            landmarkType = "14">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

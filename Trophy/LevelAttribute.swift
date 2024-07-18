@@ -41,4 +41,18 @@ class LevelAttribute: ExerciseAttribute {
     override var systemName: String {
         return "chart.bar.xaxis"
     }
+    
+    
 }
+
+extension LevelAttribute.Level {
+    var description: String {
+        switch self {
+        case .NA:
+            return "N/A"
+        default:
+            return "\(self.rawValue)"
+        }
+    }
+}
+
