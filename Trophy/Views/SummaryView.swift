@@ -15,6 +15,8 @@ struct SummaryView: View {
         VStack {
             Text("Summary")
                 .font(.title)
+            Text("\(viewModel.exerciseName)")
+                .font(.headline)
             List(viewModel.summaryItems, id: \.self) { item in
                 Text(item)
             }

@@ -11,6 +11,8 @@ class SummaryViewModel: ObservableObject {
     var userId: String
     @Published var summaryItems: [String] = []
     @Published var exercise: Exercise?
+    @Published var exerciseName: String = ""
+
 
     init(userId: String) {
         self.userId = userId
@@ -52,6 +54,9 @@ class SummaryViewModel: ObservableObject {
     }
     
     func confirm(exercise: Exercise) async {
-        // Your async code here
+        ExerciseLogger().logExercise(exercise)
+        let trophyRESTAPI: TrophyRESTAPI = TrophyRESTAPI()
+        let exerciseId: String = await trophyRESTAPI.PUTUserExercise(exercise: exercise, userId: userId) ?? "Error: Confirm failed getting Exercise ID"
+        print(exerciseId)
     }
 }
