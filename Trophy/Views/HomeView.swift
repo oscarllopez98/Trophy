@@ -13,13 +13,13 @@ struct HomeView: View {
     let username: String
     
     // Dimensions
-    let userProfileViewHeight: CGFloat = 0.2
+    let userProfileViewHeight: CGFloat = 0.20
     let userProfileViewWidth: CGFloat = 1
     
-    let exerciseCardListViewHeight: CGFloat = 0.75
+    let exerciseCardListViewHeight: CGFloat = 0.70
     let exerciseCardListViewWidth: CGFloat = 1
     
-    let navigationBarHeight: CGFloat = 0.05
+    let navigationBarHeight: CGFloat = 0.10
     let navigationBarWidth: CGFloat = 1
 
     var body: some View {

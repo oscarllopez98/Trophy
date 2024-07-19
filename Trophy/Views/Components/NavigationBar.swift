@@ -11,7 +11,8 @@ struct NavigationBar: View {
     let homeImageSystemName: String
     let addEntryImageSystemName: String
     let profileImageSystemName: String
-    let imageSize: CGFloat = 30 // Adjust this as needed
+    let imageSize: CGFloat = 30 // Adjust Image size as needed
+    let textSize: CGFloat = 16 // Adjust Text size as needed
     
     var userId: String
     var username: String
@@ -52,7 +53,7 @@ struct NavigationBar: View {
                             .frame(width: imageSize, height: imageSize)
                             .foregroundColor(activePage == .home ? .blue : .gray)
                         Text("Home")
-                            .font(.callout)
+                            .font(.system(size: textSize, weight: .light))
                             .padding(.bottom)
                             .foregroundColor(activePage == .home ? .blue : .gray)
                     }
@@ -73,7 +74,7 @@ struct NavigationBar: View {
                             .frame(width: imageSize, height: imageSize)
                             .foregroundColor(activePage == .addEntry ? .blue : .gray)
                         Text("Add Entry")
-                            .font(.callout)
+                            .font(.system(size: textSize, weight: .light))
                             .padding(.bottom)
                             .foregroundColor(activePage == .addEntry ? .blue : .gray)
                     }
@@ -94,7 +95,7 @@ struct NavigationBar: View {
                             .frame(width: imageSize, height: imageSize)
                             .foregroundColor(activePage == .profile ? .blue : .gray)
                         Text("Profile")
-                            .font(.callout)
+                            .font(.system(size: textSize, weight: .light))
                             .padding(.bottom)
                             .foregroundColor(activePage == .profile ? .blue : .gray)
                     }

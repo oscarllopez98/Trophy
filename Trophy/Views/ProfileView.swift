@@ -16,13 +16,13 @@ struct ProfileView: View {
     @State private var alertMessage: String = ""
     
     // Dimensions
-    let callToActionsRowHeight: CGFloat = 0.2
+    let callToActionsRowHeight: CGFloat = 0.20
     let callToActionsRowWidth: CGFloat = 1
 
-    let userDetailsHeight: CGFloat = 0.75
+    let userDetailsHeight: CGFloat = 0.70
     let userDetailsWidth: CGFloat = 1
 
-    let navigationBarHeight: CGFloat = 0.05
+    let navigationBarHeight: CGFloat = 0.10
     let navigationBarWidth: CGFloat = 1
 
     var body: some View {
