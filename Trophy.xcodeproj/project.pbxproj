@@ -11,6 +11,8 @@
 		81497F84B0E1C7A35E159B97 /* Pods_TrophyGroup_TrophyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 676CDAB98E9720EF1EAA2B24 /* Pods_TrophyGroup_TrophyTests.framework */; };
 		90D90D228564E192E9DED861 /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 48B27F9CD68FFF6833B12632 /* awsconfiguration.json */; };
 		9F0AF7C82C487A3400A31EB4 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0AF7C72C487A3400A31EB4 /* ProfileViewModel.swift */; };
+		9F0AF7CA2C4B2D0B00A31EB4 /* UserProfileInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0AF7C92C4B2D0B00A31EB4 /* UserProfileInfoViewModel.swift */; };
+		9F0AF7CE2C4B352400A31EB4 /* ViewErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0AF7CD2C4B352400A31EB4 /* ViewErrors.swift */; };
 		9F3D7BA32C437E3F000589D6 /* ExerciseCardListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D7BA22C437E3F000589D6 /* ExerciseCardListView.swift */; };
 		9F3D7BA52C437F56000589D6 /* ExerciseCardListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D7BA42C437F56000589D6 /* ExerciseCardListViewModel.swift */; };
 		9F3D7BA82C4492B2000589D6 /* ExerciseDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D7BA72C4492B2000589D6 /* ExerciseDetailView.swift */; };
@@ -177,6 +179,8 @@
 		67B0598E73321C5A91B8EE1D /* Pods-Trophy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trophy.release.xcconfig"; path = "Target Support Files/Pods-Trophy/Pods-Trophy.release.xcconfig"; sourceTree = "<group>"; };
 		9646CE3645D94A9E7659583E /* Pods-Trophy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trophy.debug.xcconfig"; path = "Target Support Files/Pods-Trophy/Pods-Trophy.debug.xcconfig"; sourceTree = "<group>"; };
 		9F0AF7C72C487A3400A31EB4 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		9F0AF7C92C4B2D0B00A31EB4 /* UserProfileInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileInfoViewModel.swift; sourceTree = "<group>"; };
+		9F0AF7CD2C4B352400A31EB4 /* ViewErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewErrors.swift; sourceTree = "<group>"; };
 		9F3D7BA22C437E3F000589D6 /* ExerciseCardListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCardListView.swift; sourceTree = "<group>"; };
 		9F3D7BA42C437F56000589D6 /* ExerciseCardListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCardListViewModel.swift; sourceTree = "<group>"; };
 		9F3D7BA72C4492B2000589D6 /* ExerciseDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailView.swift; sourceTree = "<group>"; };
@@ -388,6 +392,14 @@
 			children = (
 			);
 			name = AmplifyModels;
+			sourceTree = "<group>";
+		};
+		9F0AF7CB2C4B34FB00A31EB4 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				9F0AF7CD2C4B352400A31EB4 /* ViewErrors.swift */,
+			);
+			path = Errors;
 			sourceTree = "<group>";
 		};
 		9F2ACB682BADF4CE002A494B /* API */ = {
@@ -857,6 +869,7 @@
 		9FF1D8512B148401002F6EAC /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9F0AF7CB2C4B34FB00A31EB4 /* Errors */,
 				9F3D7BB12C45CB7C000589D6 /* InputStyles */,
 				9FE172BD2C30F60E005663FF /* Components */,
 				9FB62FA42B9F720400421424 /* AttributeInputs */,
@@ -887,6 +900,7 @@
 				9F3D7BAD2C44ABA5000589D6 /* AddEntryViewModel.swift */,
 				9F3D7BB62C463FC1000589D6 /* SummaryViewModel.swift */,
 				9F0AF7C72C487A3400A31EB4 /* ProfileViewModel.swift */,
+				9F0AF7C92C4B2D0B00A31EB4 /* UserProfileInfoViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -1260,6 +1274,7 @@
 				9FD4E75E2BF96E3A00C56E9B /* ExerciseConverter.swift in Sources */,
 				9F3D7BAE2C44ABA5000589D6 /* AddEntryViewModel.swift in Sources */,
 				9FB372842B97930300FFE87C /* DurationPickerView.swift in Sources */,
+				9F0AF7CA2C4B2D0B00A31EB4 /* UserProfileInfoViewModel.swift in Sources */,
 				9FAE6EF72BA14C440077E9AC /* MockExerciseDatabase.swift in Sources */,
 				9F585FFC2B3B655C0061F1EB /* BenchPress.swift in Sources */,
 				9F76C2032B90273600EB276F /* ExerciseCardViewController.swift in Sources */,
@@ -1344,6 +1359,7 @@
 				9F76C2012B90222B00EB276F /* WorkoutCardViewController.swift in Sources */,
 				9F3D7BAA2C4498A9000589D6 /* HomeView.swift in Sources */,
 				9FB3726E2B95136600FFE87C /* ExerciseModalView.swift in Sources */,
+				9F0AF7CE2C4B352400A31EB4 /* ViewErrors.swift in Sources */,
 				9FB62FB22B9F82BF00421424 /* IntensityInputView.swift in Sources */,
 				9FAE6EEE2BA129AF0077E9AC /* WeightInputViewModel.swift in Sources */,
 				9F3D7BAC2C4498E1000589D6 /* AddEntryView.swift in Sources */,

@@ -4,10 +4,12 @@
 //
 //  Created by Oscar Lopez on 6/30/24.
 //
-
 import SwiftUI
 
 struct UserProfileInfoView: View {
+    
+    @StateObject private var viewModel = UserProfileInfoViewModel()
+    @State private var userFullName: String = ""
     
     // System Names
     let userProfileImageSystemName: String
@@ -15,7 +17,6 @@ struct UserProfileInfoView: View {
     
     // Displays
     let userProfileImage: Image
-    let userFullName: String
     let userLocationImage: Image
     let userLocation: String
     
@@ -27,9 +28,9 @@ struct UserProfileInfoView: View {
         // Set: Displays
         userProfileImage = Image(systemName: userProfileImageSystemName)
         userLocationImage = Image(systemName: userLocationImageSystemName)
-        userFullName = "Firstname Lastname"
         userLocation = "City, State"
     }
+    
     var body: some View {
         
         // Home Image Dimensions
@@ -40,10 +41,19 @@ struct UserProfileInfoView: View {
             userProfileImage
                 .resizable()
                 .frame(width: userProfileImageWidth, height: userProfileImageHeight)
-            Text(userFullName)
+            Text(userFullName.isEmpty ? "Welcome!" : "Welcome, \(userFullName)")
+            
             HStack {
                 userLocationImage
                 Text(userLocation)
+            }
+        }
+        .onAppear {
+            Task {
+                // Fetch user profile data on appear
+                await viewModel.fetchUserProfile()
+                // Update userFullName with fetched data
+                userFullName = viewModel.userFullName
             }
         }
     }
