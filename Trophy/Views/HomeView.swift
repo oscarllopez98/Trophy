@@ -13,11 +13,17 @@ struct HomeView: View {
     let username: String
     
     // Dimensions
-    let userProfileViewHeight: CGFloat = 0.20
+    let userProfileViewHeight: CGFloat = 0.15
     let userProfileViewWidth: CGFloat = 1
     
-    let exerciseCardListViewHeight: CGFloat = 0.70
-    let exerciseCardListViewWidth: CGFloat = 1
+    let exerciseCardListAndVoiceToTextViewHeight: CGFloat = 0.75
+    let exerciseCardListAndVoiceToTextViewWidth: CGFloat = 1
+    
+//    let exerciseCardListViewHeight: CGFloat = 0.75
+//    let exerciseCardListViewWidth: CGFloat = 1
+//    
+    let voiceToTextViewHeight: CGFloat = 0.10
+    let voiceToTextViewWidth: CGFloat = 1
     
     let navigationBarHeight: CGFloat = 0.10
     let navigationBarWidth: CGFloat = 1
@@ -25,19 +31,41 @@ struct HomeView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack {
-                UserProfileInfoView()
-                    .frame(width: geometry.size.width * userProfileViewWidth,
-                           height: geometry.size.height * userProfileViewHeight)
-                ExerciseCardListView(viewModel: ExerciseCardListViewModel(userId: userId))
-                    .frame(width: geometry.size.width * exerciseCardListViewWidth,
-                           height: geometry.size.height * exerciseCardListViewHeight)
-                NavigationBar(userId: userId, username: username, activePage: $activePage)
-                    .frame(width: geometry.size.width * navigationBarWidth,
-                           height: geometry.size.height * navigationBarHeight)
+                HStack {
+                    UserProfileInfoView()
+                        .frame(width: geometry.size.width * userProfileViewWidth,
+                               height: geometry.size.height * userProfileViewHeight)
+                }
+                
+                HStack {
+                    ZStack {
+                        ExerciseCardListView(viewModel: ExerciseCardListViewModel(userId: userId))
+
+                        VStack {
+                            Spacer()
+                            HStack {
+                                Spacer()
+                                VoiceToTextView()
+                                    .padding(.bottom)
+                            }
+                            .padding(.bottom)
+                            .padding(.trailing)
+                        }
+
+                    }
+                    .frame(width: geometry.size.width *
+                           exerciseCardListAndVoiceToTextViewWidth,
+                           height: geometry.size.height *
+                           exerciseCardListAndVoiceToTextViewHeight)
+                }
+                
+                HStack {
+                    NavigationBar(userId: userId, username: username, activePage: $activePage)
+                        .frame(width: geometry.size.width * navigationBarWidth,
+                               height: geometry.size.height * navigationBarHeight)
+                }
             }
         }
-
-
     }
 }
 

@@ -27,6 +27,5 @@ enum ViewErrors: Error, Equatable {
     case UserProfileViewFailedFetchUserName
     case UserProfileViewFailedFetchUserEmail
     case UserProfileViewFailedFetchUserPhoneNumber
-    case UserProfileViewFailedFetchUserBirthday
-    
+    case UserProfileViewFailedFetchUserBirthDate
 }
