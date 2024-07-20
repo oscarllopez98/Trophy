@@ -6,13 +6,83 @@
 //
 
 import Foundation
+import SwiftUI
+import Speech
+import AVFoundation
 
 class VoiceToTextViewModel: ObservableObject {
+    @Published var isListening: Bool = false
+    @Published var transcribedText: String = ""
     
+    private let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-US"))
+    private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
+    private var recognitionTask: SFSpeechRecognitionTask?
+    private let audioEngine = AVAudioEngine()
     
-    func click() {
-        print("Clicked!")
+    func toggleListening() {
+        isListening.toggle()
+        if isListening {
+            startListening()
+        } else {
+            stopListening()
+        }
     }
-
     
+    private func startListening() {
+        SFSpeechRecognizer.requestAuthorization { authStatus in
+            switch authStatus {
+            case .authorized:
+                self.startRecording()
+            case .denied, .restricted, .notDetermined:
+                self.isListening = false
+                print("Speech recognition authorization denied")
+            @unknown default:
+                fatalError("Unknown authorization status")
+            }
+        }
+    }
+    
+    private func startRecording() {
+        recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
+        guard let recognitionRequest = recognitionRequest else { return }
+        
+        recognitionRequest.shouldReportPartialResults = true
+        let inputNode = audioEngine.inputNode
+        
+        let recordingFormat = inputNode.outputFormat(forBus: 0)
+        inputNode.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { buffer, _ in
+            recognitionRequest.append(buffer)
+        }
+        
+        audioEngine.prepare()
+        do {
+            try audioEngine.start()
+        } catch {
+            print("AudioEngine couldn't start: \(error.localizedDescription)")
+        }
+        
+        recognitionTask = speechRecognizer?.recognitionTask(with: recognitionRequest) { result, error in
+            if let result = result {
+                self.transcribedText = result.bestTranscription.formattedString
+            }
+            if error != nil || result?.isFinal == true {
+                self.stopListening()
+            }
+        }
+        
+        print("Started listening...")
+    }
+    
+    private func stopListening() {
+        audioEngine.stop()
+        recognitionRequest?.endAudio()
+        recognitionTask?.cancel()
+        
+        audioEngine.inputNode.removeTap(onBus: 0)
+        
+        recognitionRequest = nil
+        recognitionTask = nil
+        
+        print("Stopped listening.")
+    }
 }

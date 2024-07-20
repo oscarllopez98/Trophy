@@ -15,6 +15,7 @@
 		9F0AF7CE2C4B352400A31EB4 /* ViewErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0AF7CD2C4B352400A31EB4 /* ViewErrors.swift */; };
 		9F0AF7D02C4B47CF00A31EB4 /* VoiceToTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0AF7CF2C4B47CF00A31EB4 /* VoiceToTextView.swift */; };
 		9F0AF7D32C4B47E400A31EB4 /* VoiceToTextViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0AF7D22C4B47E400A31EB4 /* VoiceToTextViewModel.swift */; };
+		9F0AF7D62C4B84D800A31EB4 /* VoiceToTextBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0AF7D52C4B84D800A31EB4 /* VoiceToTextBoxView.swift */; };
 		9F3D7BA32C437E3F000589D6 /* ExerciseCardListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D7BA22C437E3F000589D6 /* ExerciseCardListView.swift */; };
 		9F3D7BA52C437F56000589D6 /* ExerciseCardListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D7BA42C437F56000589D6 /* ExerciseCardListViewModel.swift */; };
 		9F3D7BA82C4492B2000589D6 /* ExerciseDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D7BA72C4492B2000589D6 /* ExerciseDetailView.swift */; };
@@ -185,6 +186,7 @@
 		9F0AF7CD2C4B352400A31EB4 /* ViewErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewErrors.swift; sourceTree = "<group>"; };
 		9F0AF7CF2C4B47CF00A31EB4 /* VoiceToTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceToTextView.swift; sourceTree = "<group>"; };
 		9F0AF7D22C4B47E400A31EB4 /* VoiceToTextViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VoiceToTextViewModel.swift; path = Trophy/Views/Components/VoiceToTextViewModel.swift; sourceTree = SOURCE_ROOT; };
+		9F0AF7D52C4B84D800A31EB4 /* VoiceToTextBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceToTextBoxView.swift; sourceTree = "<group>"; };
 		9F3D7BA22C437E3F000589D6 /* ExerciseCardListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCardListView.swift; sourceTree = "<group>"; };
 		9F3D7BA42C437F56000589D6 /* ExerciseCardListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCardListViewModel.swift; sourceTree = "<group>"; };
 		9F3D7BA72C4492B2000589D6 /* ExerciseDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailView.swift; sourceTree = "<group>"; };
@@ -412,6 +414,13 @@
 				9F0AF7D22C4B47E400A31EB4 /* VoiceToTextViewModel.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		9F0AF7D42C4B839E00A31EB4 /* Sheets */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Sheets;
 			sourceTree = "<group>";
 		};
 		9F2ACB682BADF4CE002A494B /* API */ = {
@@ -882,6 +891,7 @@
 		9FF1D8512B148401002F6EAC /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9F0AF7D42C4B839E00A31EB4 /* Sheets */,
 				9F0AF7CB2C4B34FB00A31EB4 /* Errors */,
 				9F3D7BB12C45CB7C000589D6 /* InputStyles */,
 				9FE172BD2C30F60E005663FF /* Components */,
@@ -896,6 +906,7 @@
 				9F3D7BAB2C4498E1000589D6 /* AddEntryView.swift */,
 				9F3D7BAF2C44D658000589D6 /* ProfileView.swift */,
 				9F3D7BB42C463FA1000589D6 /* SummaryView.swift */,
+				9F0AF7D52C4B84D800A31EB4 /* VoiceToTextBoxView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1328,6 +1339,7 @@
 				9F585FF32B3A389E0061F1EB /* PredefinedTag.swift in Sources */,
 				9FF313C52BF6D61F000E2F53 /* TROPHYDeleteExerciseOutput_body.swift in Sources */,
 				9F3D7BA32C437E3F000589D6 /* ExerciseCardListView.swift in Sources */,
+				9F0AF7D62C4B84D800A31EB4 /* VoiceToTextBoxView.swift in Sources */,
 				9F3D7BB02C44D659000589D6 /* ProfileView.swift in Sources */,
 				9FD4E7472BF7D94700C56E9B /* RepsAttributeConverter.swift in Sources */,
 				9FD4E7722C00D1DA00C56E9B /* IdentifiableError.swift in Sources */,
@@ -1579,6 +1591,8 @@
 				DEVELOPMENT_TEAM = Z2BHKKWGC2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "\"We need access to speech recognition to transcribe your speech to text.\"";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "We need access to speech recognition to transcribe your speech to text.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1612,6 +1626,8 @@
 				DEVELOPMENT_TEAM = Z2BHKKWGC2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "\"We need access to speech recognition to transcribe your speech to text.\"";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "We need access to speech recognition to transcribe your speech to text.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
