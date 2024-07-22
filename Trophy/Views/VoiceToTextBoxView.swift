@@ -10,6 +10,8 @@ import SwiftUI
 struct VoiceToTextBoxView: View {
     @Binding var transcribedText: String
     @Binding var isTextBoxVisible: Bool
+    @Binding var activePage: NavigationBar.Page?
+    let viewModel: VoiceToTextViewModel = VoiceToTextViewModel()
 
     var body: some View {
         GeometryReader { geometry in
@@ -40,9 +42,23 @@ struct VoiceToTextBoxView: View {
                         .foregroundColor(Color.primary)
                         .cornerRadius(10)
                         .textFieldStyle(.roundedBorder)
+                        .onChange(of: transcribedText) { newValue in
+                            if transcribedText.count > 250 {
+                                transcribedText = String(transcribedText.prefix(250))
+                            }
+                        }
                     
+                    Text("\(transcribedText.count)/250 characters")
+                        .font(.caption)
+                        .foregroundColor(transcribedText.count > 250 ? .red : .gray)
+                        .padding(.bottom, 5)
+
                     Button(action: {
-                        print("Submit Clicked!")
+                        Task {
+                            await submit()
+                            isTextBoxVisible.toggle()
+                            activePage = .home
+                        }
                     }) {
                         Text("Submit")
                             .padding()
@@ -60,8 +76,15 @@ struct VoiceToTextBoxView: View {
             }
         }
     }
+    
+    private func submit() async {
+        // Verify that text exists
+        if !transcribedText.isEmpty {
+            await viewModel.submit(inputText: transcribedText)
+        }
+    }
 }
 
 #Preview {
-    VoiceToTextBoxView(transcribedText: .constant("Example: I ran a marathon today in 3 hours, 48 minutes, and 20 seconds"), isTextBoxVisible: .constant(true))
+    VoiceToTextBoxView(transcribedText: .constant("Example: I ran a marathon today in 3 hours, 48 minutes, and 20 seconds"), isTextBoxVisible: .constant(true), activePage: .constant(.home))
 }

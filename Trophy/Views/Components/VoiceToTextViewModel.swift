@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 import AVFoundation
 import Speech
+import Amplify
 
 class VoiceToTextViewModel: ObservableObject {
     @Published var isListening: Bool = false
@@ -67,5 +68,21 @@ class VoiceToTextViewModel: ObservableObject {
         
         isListening = false
         print("Stopped listening.")
+    }
+    
+    func submit(inputText: String) async {
+        do {
+            print("Submit!")
+
+            let trophyRESTAPI: TrophyRESTAPI = TrophyRESTAPI()
+            let user: AuthUser = try await Amplify.Auth.getCurrentUser()
+            if let exerciseId = await trophyRESTAPI.PUTUserExerciseWithGPT(userInput: inputText, userId: user.userId) {
+                print("Submitted using GPT with Exercise ID \(exerciseId)")
+            } else {
+                print("An error occurred")
+            }
+        } catch {
+            print("Error: Could not do async task")
+        }
     }
 }
