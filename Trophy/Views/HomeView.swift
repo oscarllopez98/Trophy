@@ -58,7 +58,12 @@ struct HomeView: View {
                 .blur(radius: isTextBoxVisible ? 10 : 0)
 
                 if isTextBoxVisible {
-                    Color.black.opacity(0.4).ignoresSafeArea()
+                    Color.black.opacity(0.4)
+                        .ignoresSafeArea()
+                        .onTapGesture {
+                            isTextBoxVisible = false
+                        }
+
                     VoiceToTextBoxView(transcribedText: $transcribedText, isTextBoxVisible: $isTextBoxVisible)
                         .transition(.scale)
                         .frame(width: geometry.size.width * 0.8, height: geometry.size.height * 0.65)
