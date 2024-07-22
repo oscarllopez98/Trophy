@@ -8,21 +8,59 @@
 import SwiftUI
 
 struct VoiceToTextBoxView: View {
-    @ObservedObject var viewModel: VoiceToTextViewModel
-    
+    @Binding var transcribedText: String
+    @Binding var isTextBoxVisible: Bool
+
     var body: some View {
         VStack {
-            Text(viewModel.transcribedText)
+            HStack {
+                Text("You can type or use voice input for your exercise description.")
+                    .font(.caption)
+                    .padding(.bottom, 5)
+
+                Spacer()
+
+                Button(action: {
+                    isTextBoxVisible = false
+                }) {
+                    Image(systemName: "xmark.circle.fill")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 24, height: 24)
+                        .foregroundColor(.red)
+                }
+            }
+            .padding([.horizontal, .top])
+
+            TextEditor(text: $transcribedText)
+                .frame(minHeight: 150, maxHeight: 150) // Adjust height as needed
                 .padding()
-                .background(Color.white)
-                .cornerRadius(10)
-                .shadow(radius: 10)
-                .padding()
-            Spacer()
+                .background(Color.primary.opacity(0.1))
+                .foregroundColor(Color.primary)
+                .cornerRadius(10) // Rounded corners
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(lineWidth: 1) // Thin outline
+                )
+
+            Button(action: {
+                print("Submit Clicked!")
+            }) {
+                Text("Submit")
+                    .padding()
+                    .background(Color.blue)
+                    .foregroundColor(.white)
+                    .cornerRadius(8)
+            }
+            .padding(.bottom, 20) // Adjust bottom padding as needed
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.white)
+        .cornerRadius(15)
+        .shadow(radius: 10)
     }
 }
 
 #Preview {
-    VoiceToTextBoxView(viewModel: VoiceToTextViewModel())
+    VoiceToTextBoxView(transcribedText: .constant("Example: I ran a marathon today in 3 hours, 48 minutes, and 20 seconds"), isTextBoxVisible: .constant(true))
 }

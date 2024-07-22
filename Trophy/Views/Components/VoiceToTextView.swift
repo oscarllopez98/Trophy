@@ -8,48 +8,25 @@
 import SwiftUI
 
 struct VoiceToTextView: View {
-    @StateObject private var viewModel = VoiceToTextViewModel()
-    @State private var showTextBox = false
-    
+    @Binding var isTextBoxVisible: Bool
+
     var body: some View {
-        ZStack {
-            VStack {
-                Image(systemName: viewModel.isListening ? "mic.circle.fill" : "mic.circle")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 40, height: 40)
-                    .onTapGesture {
-                        withAnimation {
-                            showTextBox.toggle()
-                            if showTextBox {
-                                viewModel.toggleListening()
-                            }
-                        }
-                    }
-                
-                if showTextBox {
-                    VoiceToTextBoxView(viewModel: viewModel)
-                        .transition(.move(edge: .bottom))
-                }
-            }
-            
-            if showTextBox {
-                // Overlay to detect taps outside the VoiceToTextBoxView
-                Color.clear
-                    .contentShape(Rectangle())
-                    .onTapGesture {
-                        withAnimation {
-                            showTextBox = false
-                            if viewModel.isListening {
-                                viewModel.toggleListening()
-                            }
-                        }
-                    }
-            }
+        Button(action: {
+            isTextBoxVisible = true
+        }) {
+            Image(systemName: "mic.fill")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 50, height: 50)
+                .foregroundColor(.blue)
+                .background(Color.white)
+                .clipShape(Circle())
+                .shadow(radius: 10)
         }
     }
 }
 
+
 #Preview {
-    VoiceToTextView()
+    VoiceToTextView(isTextBoxVisible: .constant(false))
 }

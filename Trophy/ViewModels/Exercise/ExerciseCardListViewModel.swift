@@ -13,32 +13,31 @@ class ExerciseCardListViewModel: ObservableObject {
     @Published var exercises: [Exercise] = []
     @Published var isLoading: Bool = false
     @Published var errorMessage: IdentifiableError? = nil
-    var lastExerciseCount: Int = 0
-    var initialLoad: Bool = true
+    private var fetchTask: Task<Void, Never>? = nil
 
     let userId: String
 
     init(userId: String) {
         self.userId = userId
-        Task {
-            await fetchExercises(userId: userId)
+    }
+
+    func fetchExercisesIfNeeded() {
+        if fetchTask == nil {
+            fetchTask = Task {
+                await fetchExercises(userId: userId)
+                fetchTask = nil
+            }
         }
     }
 
     func fetchExercises(userId: String) async {
         print("Fetching exercises for userId: \(userId)")
-        if self.initialLoad {
-            self.isLoading = true
-        }
+        self.isLoading = true
 
         do {
             let fetchedExercises = try await TrophyRESTAPI().GETLimitedUserExercises(userId: userId)
-            if fetchedExercises.count != self.lastExerciseCount {
-                self.exercises = fetchedExercises
-                self.lastExerciseCount = fetchedExercises.count
-            }
+            self.exercises = fetchedExercises
             self.isLoading = false
-            self.initialLoad = false
         } catch {
             self.errorMessage = IdentifiableError(message: error.localizedDescription)
             self.isLoading = false
