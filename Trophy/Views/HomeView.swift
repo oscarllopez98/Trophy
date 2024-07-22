@@ -61,7 +61,7 @@ struct HomeView: View {
                     Color.black.opacity(0.4).ignoresSafeArea()
                     VoiceToTextBoxView(transcribedText: $transcribedText, isTextBoxVisible: $isTextBoxVisible)
                         .transition(.scale)
-                        .frame(width: geometry.size.width * 0.8, height: geometry.size.height * 0.4)
+                        .frame(width: geometry.size.width * 0.8, height: geometry.size.height * 0.65)
                         .background(Color.white)
                         .cornerRadius(15)
                         .shadow(radius: 10)

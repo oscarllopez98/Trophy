@@ -8,24 +8,24 @@
 import SwiftUI
 
 struct VoiceToTextView: View {
+    @StateObject private var viewModel = VoiceToTextViewModel()
     @Binding var isTextBoxVisible: Bool
 
+    let voiceToTextSystemName: String = "mic.circle"
+    let voiceToTextImageSize: CGFloat = 40.0
+
     var body: some View {
-        Button(action: {
-            isTextBoxVisible = true
-        }) {
-            Image(systemName: "mic.fill")
+        VStack {
+            Image(systemName: voiceToTextSystemName)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(width: 50, height: 50)
-                .foregroundColor(.blue)
-                .background(Color.white)
-                .clipShape(Circle())
-                .shadow(radius: 10)
+                .frame(width: voiceToTextImageSize, height: voiceToTextImageSize)
+                .onTapGesture {
+                    isTextBoxVisible.toggle()
+                }
         }
     }
 }
-
 
 #Preview {
     VoiceToTextView(isTextBoxVisible: .constant(false))

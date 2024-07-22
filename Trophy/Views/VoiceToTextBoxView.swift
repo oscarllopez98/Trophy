@@ -12,52 +12,53 @@ struct VoiceToTextBoxView: View {
     @Binding var isTextBoxVisible: Bool
 
     var body: some View {
-        VStack {
-            HStack {
-                Text("You can type or use voice input for your exercise description.")
-                    .font(.caption)
-                    .padding(.bottom, 5)
-
-                Spacer()
-
-                Button(action: {
-                    isTextBoxVisible = false
-                }) {
-                    Image(systemName: "xmark.circle.fill")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 24, height: 24)
-                        .foregroundColor(.red)
+        GeometryReader { geometry in
+            ScrollView {
+                VStack {
+                    HStack {
+                        Text("Type or use voice input for your exercise description.")
+                            .font(.caption)
+                            .padding(.vertical, 5)
+                        
+                        Spacer()
+                        
+                        Button(action: {
+                            isTextBoxVisible = false
+                        }) {
+                            Image(systemName: "xmark.circle.fill")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 24, height: 24)
+                                .foregroundColor(.red)
+                        }
+                    }
+                    .padding([.horizontal])
+                    
+                    TextEditor(text: $transcribedText)
+                        .padding()
+                        .background(Color.primary.opacity(0.1))
+                        .foregroundColor(Color.primary)
+                        .cornerRadius(10)
+                        .textFieldStyle(.roundedBorder)
+                    
+                    Button(action: {
+                        print("Submit Clicked!")
+                    }) {
+                        Text("Submit")
+                            .padding()
+                            .background(Color.blue)
+                            .foregroundColor(.white)
+                            .cornerRadius(8)
+                    }
+                    .padding(.bottom, 20)
                 }
+                .frame(width: geometry.size.width,
+                       height: geometry.size.height)
+                .background(Color.white)
+                .cornerRadius(15)
+                .shadow(radius: 10)
             }
-            .padding([.horizontal, .top])
-
-            TextEditor(text: $transcribedText)
-                .frame(minHeight: 150, maxHeight: 150) // Adjust height as needed
-                .padding()
-                .background(Color.primary.opacity(0.1))
-                .foregroundColor(Color.primary)
-                .cornerRadius(10) // Rounded corners
-                .overlay(
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(lineWidth: 1) // Thin outline
-                )
-
-            Button(action: {
-                print("Submit Clicked!")
-            }) {
-                Text("Submit")
-                    .padding()
-                    .background(Color.blue)
-                    .foregroundColor(.white)
-                    .cornerRadius(8)
-            }
-            .padding(.bottom, 20) // Adjust bottom padding as needed
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.white)
-        .cornerRadius(15)
-        .shadow(radius: 10)
     }
 }
 
