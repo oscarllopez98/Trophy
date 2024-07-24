@@ -18,4 +18,8 @@ class WeightAttribute: ExerciseAttribute, AttributeType {
         self.weight = weight
         super.init(name: "Weight", value: .double(weight), unit: unit)
     }
+    
+    override var systemName: String {
+        return "scalemass"
+    }
 }

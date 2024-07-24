@@ -11,7 +11,7 @@ class IntensityAttribute: ExerciseAttribute {
     private var intensity: Intensity
     
     enum Intensity: String, CaseIterable, Hashable {
-        // Add other units as needed
+        case unset = "--"
         case high
         case med
         case low
@@ -26,7 +26,11 @@ class IntensityAttribute: ExerciseAttribute {
         if let intensityValue = Intensity(rawValue: intensityString) {
             self.init(value: intensityValue)
         } else {
-            return nil // Return nil if the string does not match any Intensity case
+            return nil
         }
+    }
+    
+    override var systemName: String {
+        return "flame"
     }
 }

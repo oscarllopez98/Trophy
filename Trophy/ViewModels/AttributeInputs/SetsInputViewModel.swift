@@ -8,8 +8,12 @@
 import Foundation
 
 class SetsInputViewModel: ObservableObject {
-    //State variables for tracking:
-    @Published var selectedSets: String    //Sets value
+    @Published var selectedSets: String {
+        didSet {
+            isEdited = true
+        }
+    }
+    var isEdited: Bool = false
     
     init(selectedSets: String = "") {
         self.selectedSets = selectedSets

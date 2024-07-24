@@ -10,6 +10,23 @@
 		587151AB34E8AC2044A6739A /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = D77FEB0D2D5D1765677D80C8 /* amplifyconfiguration.json */; };
 		81497F84B0E1C7A35E159B97 /* Pods_TrophyGroup_TrophyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 676CDAB98E9720EF1EAA2B24 /* Pods_TrophyGroup_TrophyTests.framework */; };
 		90D90D228564E192E9DED861 /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 48B27F9CD68FFF6833B12632 /* awsconfiguration.json */; };
+		9F0AF7C82C487A3400A31EB4 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0AF7C72C487A3400A31EB4 /* ProfileViewModel.swift */; };
+		9F0AF7CA2C4B2D0B00A31EB4 /* UserProfileInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0AF7C92C4B2D0B00A31EB4 /* UserProfileInfoViewModel.swift */; };
+		9F0AF7CE2C4B352400A31EB4 /* ViewErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0AF7CD2C4B352400A31EB4 /* ViewErrors.swift */; };
+		9F0AF7D02C4B47CF00A31EB4 /* VoiceToTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0AF7CF2C4B47CF00A31EB4 /* VoiceToTextView.swift */; };
+		9F0AF7D32C4B47E400A31EB4 /* VoiceToTextViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0AF7D22C4B47E400A31EB4 /* VoiceToTextViewModel.swift */; };
+		9F0AF7D62C4B84D800A31EB4 /* VoiceToTextBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0AF7D52C4B84D800A31EB4 /* VoiceToTextBoxView.swift */; };
+		9F0AF7DB2C4B922400A31EB4 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0AF7DA2C4B922400A31EB4 /* UIApplication.swift */; };
+		9F3D7BA32C437E3F000589D6 /* ExerciseCardListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D7BA22C437E3F000589D6 /* ExerciseCardListView.swift */; };
+		9F3D7BA52C437F56000589D6 /* ExerciseCardListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D7BA42C437F56000589D6 /* ExerciseCardListViewModel.swift */; };
+		9F3D7BA82C4492B2000589D6 /* ExerciseDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D7BA72C4492B2000589D6 /* ExerciseDetailView.swift */; };
+		9F3D7BAA2C4498A9000589D6 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D7BA92C4498A9000589D6 /* HomeView.swift */; };
+		9F3D7BAC2C4498E1000589D6 /* AddEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D7BAB2C4498E1000589D6 /* AddEntryView.swift */; };
+		9F3D7BAE2C44ABA5000589D6 /* AddEntryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D7BAD2C44ABA5000589D6 /* AddEntryViewModel.swift */; };
+		9F3D7BB02C44D659000589D6 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D7BAF2C44D658000589D6 /* ProfileView.swift */; };
+		9F3D7BB32C45CB9F000589D6 /* TextFieldStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D7BB22C45CB9F000589D6 /* TextFieldStyles.swift */; };
+		9F3D7BB52C463FA1000589D6 /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D7BB42C463FA1000589D6 /* SummaryView.swift */; };
+		9F3D7BB72C463FC1000589D6 /* SummaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D7BB62C463FC1000589D6 /* SummaryViewModel.swift */; };
 		9F585FEC2B3A19FF0061F1EB /* IntensityAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F585FEB2B3A19FF0061F1EB /* IntensityAttribute.swift */; };
 		9F585FF02B3A1CFD0061F1EB /* LevelAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F585FEF2B3A1CFD0061F1EB /* LevelAttribute.swift */; };
 		9F585FF32B3A389E0061F1EB /* PredefinedTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F585FF22B3A389E0061F1EB /* PredefinedTag.swift */; };
@@ -107,6 +124,9 @@
 		9FE172B82C2FB78E005663FF /* EnvironmentVariableManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE172B72C2FB78E005663FF /* EnvironmentVariableManager.swift */; };
 		9FE172BB2C2FB7E7005663FF /* EnvironmentVariableManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE172BA2C2FB7E7005663FF /* EnvironmentVariableManagerTests.swift */; };
 		9FE172BC2C2FB80E005663FF /* EnvironmentVariableManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE172B72C2FB78E005663FF /* EnvironmentVariableManager.swift */; };
+		9FE172BF2C30F629005663FF /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE172BE2C30F629005663FF /* NavigationBar.swift */; };
+		9FE172C12C31F2FC005663FF /* UserProfileInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE172C02C31F2FC005663FF /* UserProfileInfoView.swift */; };
+		9FE172C32C34C286005663FF /* ExerciseCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE172C22C34C286005663FF /* ExerciseCardViewModel.swift */; };
 		9FF1D8342B147F5E002F6EAC /* TrophyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF1D8332B147F5E002F6EAC /* TrophyApp.swift */; };
 		9FF1D8362B147F5E002F6EAC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF1D8352B147F5E002F6EAC /* ContentView.swift */; };
 		9FF1D8382B147F5F002F6EAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FF1D8372B147F5F002F6EAC /* Assets.xcassets */; };
@@ -162,6 +182,23 @@
 		676CDAB98E9720EF1EAA2B24 /* Pods_TrophyGroup_TrophyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TrophyGroup_TrophyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		67B0598E73321C5A91B8EE1D /* Pods-Trophy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trophy.release.xcconfig"; path = "Target Support Files/Pods-Trophy/Pods-Trophy.release.xcconfig"; sourceTree = "<group>"; };
 		9646CE3645D94A9E7659583E /* Pods-Trophy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trophy.debug.xcconfig"; path = "Target Support Files/Pods-Trophy/Pods-Trophy.debug.xcconfig"; sourceTree = "<group>"; };
+		9F0AF7C72C487A3400A31EB4 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		9F0AF7C92C4B2D0B00A31EB4 /* UserProfileInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileInfoViewModel.swift; sourceTree = "<group>"; };
+		9F0AF7CD2C4B352400A31EB4 /* ViewErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewErrors.swift; sourceTree = "<group>"; };
+		9F0AF7CF2C4B47CF00A31EB4 /* VoiceToTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceToTextView.swift; sourceTree = "<group>"; };
+		9F0AF7D22C4B47E400A31EB4 /* VoiceToTextViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VoiceToTextViewModel.swift; path = Trophy/Views/Components/VoiceToTextViewModel.swift; sourceTree = SOURCE_ROOT; };
+		9F0AF7D52C4B84D800A31EB4 /* VoiceToTextBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceToTextBoxView.swift; sourceTree = "<group>"; };
+		9F0AF7DA2C4B922400A31EB4 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
+		9F3D7BA22C437E3F000589D6 /* ExerciseCardListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCardListView.swift; sourceTree = "<group>"; };
+		9F3D7BA42C437F56000589D6 /* ExerciseCardListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCardListViewModel.swift; sourceTree = "<group>"; };
+		9F3D7BA72C4492B2000589D6 /* ExerciseDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailView.swift; sourceTree = "<group>"; };
+		9F3D7BA92C4498A9000589D6 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		9F3D7BAB2C4498E1000589D6 /* AddEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEntryView.swift; sourceTree = "<group>"; };
+		9F3D7BAD2C44ABA5000589D6 /* AddEntryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEntryViewModel.swift; sourceTree = "<group>"; };
+		9F3D7BAF2C44D658000589D6 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		9F3D7BB22C45CB9F000589D6 /* TextFieldStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldStyles.swift; sourceTree = "<group>"; };
+		9F3D7BB42C463FA1000589D6 /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
+		9F3D7BB62C463FC1000589D6 /* SummaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryViewModel.swift; sourceTree = "<group>"; };
 		9F585FEB2B3A19FF0061F1EB /* IntensityAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntensityAttribute.swift; sourceTree = "<group>"; };
 		9F585FEF2B3A1CFD0061F1EB /* LevelAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelAttribute.swift; sourceTree = "<group>"; };
 		9F585FF22B3A389E0061F1EB /* PredefinedTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredefinedTag.swift; sourceTree = "<group>"; };
@@ -255,6 +292,9 @@
 		9FD4E7712C00D1DA00C56E9B /* IdentifiableError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifiableError.swift; sourceTree = "<group>"; };
 		9FE172B72C2FB78E005663FF /* EnvironmentVariableManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentVariableManager.swift; sourceTree = "<group>"; };
 		9FE172BA2C2FB7E7005663FF /* EnvironmentVariableManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentVariableManagerTests.swift; sourceTree = "<group>"; };
+		9FE172BE2C30F629005663FF /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
+		9FE172C02C31F2FC005663FF /* UserProfileInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileInfoView.swift; sourceTree = "<group>"; };
+		9FE172C22C34C286005663FF /* ExerciseCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCardViewModel.swift; sourceTree = "<group>"; };
 		9FF1D8302B147F5E002F6EAC /* Trophy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Trophy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FF1D8332B147F5E002F6EAC /* TrophyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrophyApp.swift; sourceTree = "<group>"; };
 		9FF1D8352B147F5E002F6EAC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -362,6 +402,37 @@
 			name = AmplifyModels;
 			sourceTree = "<group>";
 		};
+		9F0AF7CB2C4B34FB00A31EB4 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				9F0AF7CD2C4B352400A31EB4 /* ViewErrors.swift */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
+		9F0AF7D12C4B47D400A31EB4 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				9F0AF7D22C4B47E400A31EB4 /* VoiceToTextViewModel.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		9F0AF7D42C4B839E00A31EB4 /* Sheets */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Sheets;
+			sourceTree = "<group>";
+		};
+		9F0AF7D92C4B921000A31EB4 /* UIExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				9F0AF7DA2C4B922400A31EB4 /* UIApplication.swift */,
+			);
+			path = UIExtensions;
+			sourceTree = "<group>";
+		};
 		9F2ACB682BADF4CE002A494B /* API */ = {
 			isa = PBXGroup;
 			children = (
@@ -375,6 +446,14 @@
 				9FB1F6F32BAE035400A27BE0 /* TrophyRESTAPI.swift */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		9F3D7BB12C45CB7C000589D6 /* InputStyles */ = {
+			isa = PBXGroup;
+			children = (
+				9F3D7BB22C45CB9F000589D6 /* TextFieldStyles.swift */,
+			);
+			path = InputStyles;
 			sourceTree = "<group>";
 		};
 		9F585FF12B3A38380061F1EB /* Tags */ = {
@@ -523,8 +602,17 @@
 			isa = PBXGroup;
 			children = (
 				9F76C1E32B8EB51900EB276F /* ExerciseViewModel.swift */,
+				9FE172C22C34C286005663FF /* ExerciseCardViewModel.swift */,
+				9F3D7BA42C437F56000589D6 /* ExerciseCardListViewModel.swift */,
 			);
 			path = Exercise;
+			sourceTree = "<group>";
+		};
+		9FAC4A982C35E59F00420E6A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 		9FAE6EE42BA122A80077E9AC /* AttributeInputs */ = {
@@ -689,6 +777,18 @@
 			path = EnvironmentVariables;
 			sourceTree = "<group>";
 		};
+		9FE172BD2C30F60E005663FF /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				9FE172BE2C30F629005663FF /* NavigationBar.swift */,
+				9FE172C02C31F2FC005663FF /* UserProfileInfoView.swift */,
+				9F3D7BA22C437E3F000589D6 /* ExerciseCardListView.swift */,
+				9F3D7BA72C4492B2000589D6 /* ExerciseDetailView.swift */,
+				9F0AF7CF2C4B47CF00A31EB4 /* VoiceToTextView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		9FF1D8272B147F5D002F6EAC = {
 			isa = PBXGroup;
 			children = (
@@ -714,6 +814,7 @@
 		9FF1D8322B147F5E002F6EAC /* Trophy */ = {
 			isa = PBXGroup;
 			children = (
+				9F0AF7D92C4B921000A31EB4 /* UIExtensions */,
 				9F2ACB682BADF4CE002A494B /* API */,
 				9FAE6EF32BA14B790077E9AC /* Database */,
 				9FB62FA32B9F71D700421424 /* Preview Content */,
@@ -769,6 +870,7 @@
 		9FF1D84B2B148327002F6EAC /* Attributes */ = {
 			isa = PBXGroup;
 			children = (
+				9FAC4A982C35E59F00420E6A /* Extensions */,
 				9FF1D8672B14853D002F6EAC /* ExerciseAttribute.swift */,
 				9F58601E2B44BA220061F1EB /* AttributeType.swift */,
 				9FF1D8692B148548002F6EAC /* UserDefinedAttribute.swift */,
@@ -800,6 +902,10 @@
 		9FF1D8512B148401002F6EAC /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9F0AF7D42C4B839E00A31EB4 /* Sheets */,
+				9F0AF7CB2C4B34FB00A31EB4 /* Errors */,
+				9F3D7BB12C45CB7C000589D6 /* InputStyles */,
+				9FE172BD2C30F60E005663FF /* Components */,
 				9FB62FA42B9F720400421424 /* AttributeInputs */,
 				9FB3726D2B95136600FFE87C /* ExerciseModalView.swift */,
 				9FB3726F2B9513B300FFE87C /* ExerciseCardView.swift */,
@@ -807,6 +913,11 @@
 				9FB372762B951CA800FFE87C /* ModalPresenterView.swift */,
 				9FB372812B96CFA800FFE87C /* NewExerciseModalView.swift */,
 				9FAE6EDE2B9FF6EC0077E9AC /* ActionBarView.swift */,
+				9F3D7BA92C4498A9000589D6 /* HomeView.swift */,
+				9F3D7BAB2C4498E1000589D6 /* AddEntryView.swift */,
+				9F3D7BAF2C44D658000589D6 /* ProfileView.swift */,
+				9F3D7BB42C463FA1000589D6 /* SummaryView.swift */,
+				9F0AF7D52C4B84D800A31EB4 /* VoiceToTextBoxView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -814,6 +925,7 @@
 		9FF1D8522B148405002F6EAC /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				9F0AF7D12C4B47D400A31EB4 /* Components */,
 				9FAE6EE42BA122A80077E9AC /* AttributeInputs */,
 				9F76C1FF2B90097C00EB276F /* Exercise */,
 				9F76C1FE2B90097000EB276F /* Workout */,
@@ -821,6 +933,10 @@
 				9FAE6EE22BA0D8C60077E9AC /* ActionBarViewModel.swift */,
 				9FAE6EF82BA14CB30077E9AC /* NewExerciseModalViewModel.swift */,
 				9FAE6EFA2BA18A7F0077E9AC /* ExerciseListViewModel.swift */,
+				9F3D7BAD2C44ABA5000589D6 /* AddEntryViewModel.swift */,
+				9F3D7BB62C463FC1000589D6 /* SummaryViewModel.swift */,
+				9F0AF7C72C487A3400A31EB4 /* ProfileViewModel.swift */,
+				9F0AF7C92C4B2D0B00A31EB4 /* UserProfileInfoViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -1190,9 +1306,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				9FAE6EF22BA12C1C0077E9AC /* LevelInputViewModel.swift in Sources */,
+				9F0AF7D32C4B47E400A31EB4 /* VoiceToTextViewModel.swift in Sources */,
 				9FAE6EE62BA122BC0077E9AC /* DistanceInputViewModel.swift in Sources */,
 				9FD4E75E2BF96E3A00C56E9B /* ExerciseConverter.swift in Sources */,
+				9F3D7BAE2C44ABA5000589D6 /* AddEntryViewModel.swift in Sources */,
 				9FB372842B97930300FFE87C /* DurationPickerView.swift in Sources */,
+				9F0AF7CA2C4B2D0B00A31EB4 /* UserProfileInfoViewModel.swift in Sources */,
 				9FAE6EF72BA14C440077E9AC /* MockExerciseDatabase.swift in Sources */,
 				9F585FFC2B3B655C0061F1EB /* BenchPress.swift in Sources */,
 				9F76C2032B90273600EB276F /* ExerciseCardViewController.swift in Sources */,
@@ -1201,16 +1320,19 @@
 				9FD4E75C2BF9627200C56E9B /* APIError.swift in Sources */,
 				9F585FF02B3A1CFD0061F1EB /* LevelAttribute.swift in Sources */,
 				9F76C1F92B8EC91B00EB276F /* WorkoutValidationHelper.swift in Sources */,
+				9FE172C32C34C286005663FF /* ExerciseCardViewModel.swift in Sources */,
 				9FB62FAE2B9F812D00421424 /* RepsInputView.swift in Sources */,
 				9F5860052B3B69C20061F1EB /* Sprints.swift in Sources */,
 				9FF1D8342B147F5E002F6EAC /* TrophyApp.swift in Sources */,
 				9F58600C2B3B6AD40061F1EB /* Pilates.swift in Sources */,
 				9F58601F2B44BA220061F1EB /* AttributeType.swift in Sources */,
+				9FE172BF2C30F629005663FF /* NavigationBar.swift in Sources */,
 				9FF313D42BF6D643000E2F53 /* DistanceAttributeConverter.swift in Sources */,
 				9FAE6EFB2BA18A7F0077E9AC /* ExerciseListViewModel.swift in Sources */,
 				9F58600F2B3B6AF20061F1EB /* Soccer.swift in Sources */,
 				9FD4E73F2BF7D65000C56E9B /* TimeAttributeConverter.swift in Sources */,
 				9FB372752B9518A700FFE87C /* WorkoutCardView.swift in Sources */,
+				9F3D7BA52C437F56000589D6 /* ExerciseCardListViewModel.swift in Sources */,
 				9FD4E7532BF7DC6100C56E9B /* LevelAttributeConverter.swift in Sources */,
 				9FD4E76F2BFC1BA800C56E9B /* UUIDFormatter.swift in Sources */,
 				9FAE6EE12BA0D7DA0077E9AC /* ActionBarViewController.swift in Sources */,
@@ -1219,13 +1341,18 @@
 				9FB372822B96CFA800FFE87C /* NewExerciseModalView.swift in Sources */,
 				9FF313C82BF6D61F000E2F53 /* TROPHYInputExercise_exercise.swift in Sources */,
 				9F585FFE2B3B691D0061F1EB /* Deadlift.swift in Sources */,
+				9F0AF7DB2C4B922400A31EB4 /* UIApplication.swift in Sources */,
 				9FF1D8582B1484A8002F6EAC /* UserManager.swift in Sources */,
 				9FAE6EF02BA12B510077E9AC /* IntensityInputViewModel.swift in Sources */,
 				9F76C1D82B8EAED100EB276F /* ItemListViewModel.swift in Sources */,
 				9F76C1F42B8EC65000EB276F /* WorkoutFactory.swift in Sources */,
+				9F3D7BA82C4492B2000589D6 /* ExerciseDetailView.swift in Sources */,
 				9FB62FAC2B9F7F7B00421424 /* SetsInputView.swift in Sources */,
 				9F585FF32B3A389E0061F1EB /* PredefinedTag.swift in Sources */,
 				9FF313C52BF6D61F000E2F53 /* TROPHYDeleteExerciseOutput_body.swift in Sources */,
+				9F3D7BA32C437E3F000589D6 /* ExerciseCardListView.swift in Sources */,
+				9F0AF7D62C4B84D800A31EB4 /* VoiceToTextBoxView.swift in Sources */,
+				9F3D7BB02C44D659000589D6 /* ProfileView.swift in Sources */,
 				9FD4E7472BF7D94700C56E9B /* RepsAttributeConverter.swift in Sources */,
 				9FD4E7722C00D1DA00C56E9B /* IdentifiableError.swift in Sources */,
 				9FB62FB02B9F81A000421424 /* WeightInputView.swift in Sources */,
@@ -1240,17 +1367,20 @@
 				9FD4E76B2BFC195700C56E9B /* ExerciseLogger.swift in Sources */,
 				9FF313CA2BF6D61F000E2F53 /* TROPHYOutputExercise_body.swift in Sources */,
 				9FF1D8662B148526002F6EAC /* DistanceUnit.swift in Sources */,
+				9F3D7BB52C463FA1000589D6 /* SummaryView.swift in Sources */,
 				9FD4E74B2BF7D9EA00C56E9B /* WeightAttributeConverter.swift in Sources */,
 				9FD4E7572BF7DCFD00C56E9B /* UserDefinedAttributeConverter.swift in Sources */,
 				9FF313CB2BF6D61F000E2F53 /* TROPHYOutputExercise.swift in Sources */,
 				9F585FF52B3A38A70061F1EB /* UserTag.swift in Sources */,
 				9FF1D85C2B1484CC002F6EAC /* User.swift in Sources */,
+				9FE172C12C31F2FC005663FF /* UserProfileInfoView.swift in Sources */,
 				9FF1D8702B14857D002F6EAC /* SetsAttribute.swift in Sources */,
 				9FD4E74F2BF7DB8F00C56E9B /* IntensityAttributeConverter.swift in Sources */,
 				9FF313C72BF6D61F000E2F53 /* TROPHYInputExercise_exercise_attributes.swift in Sources */,
 				9F585FF72B3A38AF0061F1EB /* Tag.swift in Sources */,
 				9FAE6EE82BA124AA0077E9AC /* TimeInputViewModel.swift in Sources */,
 				9FD4E7432BF7D7FC00C56E9B /* SetsAttributeConverter.swift in Sources */,
+				9F3D7BB72C463FC1000589D6 /* SummaryViewModel.swift in Sources */,
 				9FF1D86A2B148548002F6EAC /* UserDefinedAttribute.swift in Sources */,
 				9FB372772B951CA800FFE87C /* ModalPresenterView.swift in Sources */,
 				9FF313C92BF6D61F000E2F53 /* TROPHYInputExercise.swift in Sources */,
@@ -1258,15 +1388,20 @@
 				9FF313D02BF6D634000E2F53 /* TROPHYTrophyRESTAPIClient.swift in Sources */,
 				9FB372682B94019B00FFE87C /* ExerciseModalViewController.swift in Sources */,
 				9FF1D8622B14850F002F6EAC /* ExerciseUnit.swift in Sources */,
+				9F3D7BB32C45CB9F000589D6 /* TextFieldStyles.swift in Sources */,
 				9FF1D8722B14858E002F6EAC /* RepsAttribute.swift in Sources */,
 				9F76C1E72B8EBD6900EB276F /* ExerciseFactory.swift in Sources */,
 				9FAE6EF92BA14CB30077E9AC /* NewExerciseModalViewModel.swift in Sources */,
 				9FB62FA62B9F725500421424 /* DistanceInputView.swift in Sources */,
+				9F0AF7C82C487A3400A31EB4 /* ProfileViewModel.swift in Sources */,
 				9FF1D8552B14847A002F6EAC /* DatabaseManager.swift in Sources */,
 				9F76C2012B90222B00EB276F /* WorkoutCardViewController.swift in Sources */,
+				9F3D7BAA2C4498A9000589D6 /* HomeView.swift in Sources */,
 				9FB3726E2B95136600FFE87C /* ExerciseModalView.swift in Sources */,
+				9F0AF7CE2C4B352400A31EB4 /* ViewErrors.swift in Sources */,
 				9FB62FB22B9F82BF00421424 /* IntensityInputView.swift in Sources */,
 				9FAE6EEE2BA129AF0077E9AC /* WeightInputViewModel.swift in Sources */,
+				9F3D7BAC2C4498E1000589D6 /* AddEntryView.swift in Sources */,
 				9FAE6EF52BA14BE60077E9AC /* ExerciseDatabase.swift in Sources */,
 				9F76C1F22B8EC23800EB276F /* ExerciseValidationHelper.swift in Sources */,
 				9FAE6EE32BA0D8C60077E9AC /* ActionBarViewModel.swift in Sources */,
@@ -1278,6 +1413,7 @@
 				9FF313CD2BF6D61F000E2F53 /* TROPHYPutExerciseOutput.swift in Sources */,
 				9F5860112B3B6B070061F1EB /* Basketball.swift in Sources */,
 				9F76C1E42B8EB51900EB276F /* ExerciseViewModel.swift in Sources */,
+				9F0AF7D02C4B47CF00A31EB4 /* VoiceToTextView.swift in Sources */,
 				9FB2E8A62C2DDE95009F4E65 /* AppDelegate.swift in Sources */,
 				9F5860072B3B69EB0061F1EB /* Rowing.swift in Sources */,
 				9FB62FAA2B9F7E7200421424 /* TimeInputView.swift in Sources */,
@@ -1467,6 +1603,8 @@
 				DEVELOPMENT_TEAM = Z2BHKKWGC2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "\"We need access to speech recognition to transcribe your speech to text.\"";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "We need access to speech recognition to transcribe your speech to text.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1500,6 +1638,8 @@
 				DEVELOPMENT_TEAM = Z2BHKKWGC2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "\"We need access to speech recognition to transcribe your speech to text.\"";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "We need access to speech recognition to transcribe your speech to text.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

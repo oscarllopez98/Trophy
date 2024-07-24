@@ -8,14 +8,25 @@
 import Foundation
 
 class WeightInputViewModel: ObservableObject {
-    
-    //State variables for tracking:
-    @Published var selectedWeight: String    //Weight Value
-    @Published var selectedWeightUnitIndex: Int   //Weight Unit Value (by index)
+    @Published var selectedWeight: String {
+        didSet {
+            isEdited = true
+        }
+    }
+    @Published var selectedWeightUnitIndex: Int {
+        didSet {
+            isEdited = true
+        }
+    }
+    var isEdited: Bool = false
     
     init(selectedWeight: String = "", selectedWeightUnitIndex: Int = 0) {
         self.selectedWeight = selectedWeight
         self.selectedWeightUnitIndex = selectedWeightUnitIndex
+    }
+    
+    var selectedWeightUnit: WeightUnit.Symbol {
+        return WeightUnit.Symbol.allCases[selectedWeightUnitIndex]
     }
     
     func updateSelectedWeight(_ weight: String) {
@@ -25,5 +36,4 @@ class WeightInputViewModel: ObservableObject {
     func updateSelectedWeightUnitIndex(_ weightUnitIndex: Int) {
         selectedWeightUnitIndex = weightUnitIndex
     }
-    
 }

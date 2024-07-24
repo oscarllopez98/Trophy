@@ -8,27 +8,32 @@
 import Foundation
 
 class DistanceInputViewModel: ObservableObject {
-    //Properties to hold the State
-    @Published var selectedDistance: String
-    @Published var selectedDistanceUnitIndex: Int
+    @Published var selectedDistance: String {
+        didSet {
+            isEdited = true
+        }
+    }
+    @Published var selectedDistanceUnitIndex: Int {
+        didSet {
+            isEdited = true
+        }
+    }
+    var isEdited: Bool = false
     
     init(selectedDistance: String = "", selectedDistanceUnitIndex: Int = 0) {
         self.selectedDistance = selectedDistance
         self.selectedDistanceUnitIndex = selectedDistanceUnitIndex
     }
     
-    //Computed property to get the selected distance unit
     var selectedDistanceUnit: DistanceUnit.Symbol {
         return DistanceUnit.Symbol.allCases[selectedDistanceUnitIndex]
     }
     
-    //Function to update the selected distance
     func updateDistance(_ distance: String) {
         selectedDistance = distance
     }
     
-    //Function to update the selected distance unit index
-    func updateDistanceUnitIndes(_ index: Int) {
+    func updateDistanceUnitIndex(_ index: Int) {
         selectedDistanceUnitIndex = index
     }
 }

@@ -8,20 +8,9 @@
 import Foundation
 
 class IntensityInputViewModel: ObservableObject {
-    //State variables for tracking:
-    @Published var selectedIntensity: String    //Intensity Value
-    @Published var selectedIntensityUnitIndex: Int   //Intensity Value (by index)
+    @Published var selectedIntensityUnitIndex: Int = 0
     
-    init(selectedIntensity: String = "", selectedIntensityUnitIndex: Int = 0) {
-        self.selectedIntensity = selectedIntensity
-        self.selectedIntensityUnitIndex = selectedIntensityUnitIndex
-    }
-    
-    func updateSelectedIntensity(_ intensity: String) {
-        selectedIntensity = intensity
-    }
-    
-    func updateSelectedIntensityUnitIndex(_ intensityUnitIndex: Int) {
-        selectedIntensityUnitIndex = intensityUnitIndex
+    var selectedIntensity: IntensityAttribute.Intensity {
+        return IntensityAttribute.Intensity.allCases[selectedIntensityUnitIndex]
     }
 }

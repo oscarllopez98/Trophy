@@ -165,7 +165,7 @@ class TrophyRESTAPI {
         guard let url = URL(string: path) else {
             fatalError("Invalid URL: \(path)")
         }
-        print("Still good")
+
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.addValue(getEnvironmentVariable(API_KEY_PROD)!, forHTTPHeaderField: "x-api-key")
@@ -238,13 +238,15 @@ class TrophyRESTAPI {
      */
     func preparePUTUserExerciseRequest(userId: String) throws -> URLRequest {
         if (userId.isEmpty) { throw APIError.emptyParameter(parameterName: "userId") }
+        print("Here 1")
 
         let pathTemplate = getEnvironmentVariable(INVOKE_PATH_PUT_USER_EXERCISE_PROD)!
         
         var path = pathTemplate.replacingOccurrences(of: "{userId}", with: userId)
         path = path.replacingOccurrences(of: "\"", with: "")
 
-        
+        print("Here 2")
+
         guard let url = URL(string: path) else {
             fatalError("Invalid URL: \(path)")
         }
@@ -343,6 +345,7 @@ class TrophyRESTAPI {
         var outRequest = inRequest
         outRequest.httpBody = jsonData
         outRequest.addValue("application/json", forHTTPHeaderField: "Content-Type") // Ensure content type is set
+        print("Here 3")
         return outRequest
     }
 
@@ -355,14 +358,17 @@ class TrophyRESTAPI {
      - Returns: The ID of the updated exercise if successful, or nil otherwise.
      */
     func handlePUTUserExerciseResponse(inRequest: URLRequest, jsonObject: [String: Any]) async -> String? {
+        print("Here 4")
         // Perform the async network operation, e.g., using URLSession
         do {
             let (data, _) = try await URLSession.shared.data(for: inRequest)
             // Parse the data to extract the exercise ID
             if let jsonResponse = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
                let exerciseId = jsonResponse["exerciseId"] as? String {
+                print("Here 5")
                 return exerciseId
             } else {
+                print("Here 6")
                 return nil
             }
         } catch {
@@ -387,6 +393,9 @@ class TrophyRESTAPI {
             let jsonResponse = try JSONSerialization.jsonObject(with: data) as? [String: Any] ?? [:]
             print("JSON Response:")
             print(jsonResponse)
+            if let error = jsonResponse["error"] as? String {
+                print("Error: \(error)")
+            }
             
             // Print JSON response details (optional)
             if let exercisesJSON = jsonResponse["exercises"] as? [[String: Any]] {

@@ -32,7 +32,7 @@ struct ModalPresenter<T: View> {
     let modalPresenter = ModalPresenter<AnyView>(view: modalView)
     
     return Group {
-        ExerciseCardView(viewModel: ExerciseViewModel.sample())
+        ExerciseCardView(viewModel: ExerciseCardViewModel.sample())
             .onAppear() {
                 modalPresenter.present()
             }

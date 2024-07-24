@@ -1,47 +1,25 @@
-import SwiftUI
 import Combine
+import Foundation
 
+@MainActor
 class ExerciseListViewModel: ObservableObject {
     @Published var exercises: [Exercise] = []
-    @Published var errorMessage: IdentifiableError? = nil
     @Published var isLoading: Bool = false
-    @Published var initialLoad: Bool = true
-    private var cancellables = Set<AnyCancellable>()
-    private var timer: Timer?
-    private let pollingInterval: TimeInterval = 30.0
-    private var lastExerciseCount: Int = 0
+    @Published var errorMessage: IdentifiableError? = nil
+    var lastExerciseCount: Int = 0
+    var initialLoad: Bool = true
+
+    let userId: String
 
     init(userId: String) {
-        startPolling(userId: userId)
-    }
-
-    func startPolling(userId: String) {
-        // Immediately fetch exercises on initialization within the MainActor context
-        Task { @MainActor in
+        self.userId = userId
+        Task {
             await fetchExercises(userId: userId)
         }
-
-        // Set up the timer to fetch exercises at regular intervals
-        timer = Timer.scheduledTimer(withTimeInterval: pollingInterval, repeats: true) { [weak self] _ in
-            guard let self = self else { return }
-            // Fetch exercises periodically within the MainActor context
-            Task { @MainActor in
-                await self.fetchExercises(userId: userId)
-            }
-        }
-        
-        // Cancel the initial timer fire to avoid double execution
-        timer?.fireDate = Date().addingTimeInterval(pollingInterval)
     }
 
-
-    deinit {
-        timer?.invalidate()
-    }
-
-    @MainActor
     func fetchExercises(userId: String) async {
-        print("Fetching exercises for userId: \(userId)") // Debug print
+        print("Fetching exercises for userId: \(userId)")
         if self.initialLoad {
             self.isLoading = true
         }

@@ -14,4 +14,8 @@ class TimeAttribute: ExerciseAttribute {
         self.time = time
         super.init(name: "Time", value: .timeInterval(time), unit: nil)
     }
+    
+    override var systemName: String {
+        return "stopwatch"
+    }
 }

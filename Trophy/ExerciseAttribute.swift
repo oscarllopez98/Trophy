@@ -19,12 +19,18 @@ let weight: AttributeName = "weight"
 let intensity: AttributeName = "intensity"
 let level: AttributeName = "level"
 
-class ExerciseAttribute: Equatable {
+class ExerciseAttribute: Identifiable, Equatable {
+    var id: UUID?
     var name: String
     var value: AttributeValue
     var unit: Unit?
+    
+    var systemName: String {
+        return "" // Default system name, can be overridden by subclasses
+    }
 
-    init(name: String, value: AttributeValue, unit: Unit? = nil) {
+    init(id: UUID? = nil, name: String, value: AttributeValue, unit: Unit? = nil) {
+        self.id = id
         self.name = name
         self.value = value
         self.unit = unit

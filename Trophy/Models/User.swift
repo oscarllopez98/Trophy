@@ -6,3 +6,13 @@
 //
 
 import Foundation
+
+class User: ObservableObject {
+    @Published var userId: String
+    @Published var username: String
+    
+    init(userId: String, username: String) {
+        self.userId = userId
+        self.username = username
+    }
+}

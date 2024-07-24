@@ -9,11 +9,12 @@ import SwiftUI
 import Amplify
 import Authenticator
 import AWSCognitoAuthPlugin
-import SwiftUI
 
 @main
 struct TrophyApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+
+    @State private var activePage: NavigationBar.Page? = .home
 
     init() {
         do {
@@ -27,16 +28,9 @@ struct TrophyApp: App {
     var body: some Scene {
         WindowGroup {
             Authenticator(totpOptions: .init(issuer: "Trophy")) { state in
-                VStack {
-                    Text("Hello, \(state.user.username)")
-                    Button("Sign out") {
-                        Task {
-                            await state.signOut()
-                        }
-                    }
-                    // Instantiate the main Content View
+                NavigationStack {
                     ContentView(
-                        exerciseListViewModel: ExerciseListViewModel(userId: state.user.userId),
+                        activePage: $activePage,
                         userId: state.user.userId,
                         username: state.user.username
                     )
