@@ -11,7 +11,8 @@ struct VoiceToTextBoxView: View {
     @Binding var transcribedText: String
     @Binding var isTextBoxVisible: Bool
     @Binding var activePage: NavigationBar.Page?
-    let viewModel: VoiceToTextViewModel = VoiceToTextViewModel()
+    @ObservedObject var viewModel: VoiceToTextViewModel
+    @ObservedObject var homeViewModel: ExerciseCardListViewModel
 
     var body: some View {
         GeometryReader { geometry in
@@ -53,20 +54,30 @@ struct VoiceToTextBoxView: View {
                         .foregroundColor(transcribedText.count > 250 ? .red : .gray)
                         .padding(.bottom, 5)
 
-                    Button(action: {
-                        Task {
-                            await submit()
-                            isTextBoxVisible.toggle()
-                            activePage = .home
-                        }
-                    }) {
-                        Text("Submit")
+                    if viewModel.isLoading {
+                        ProgressView()
                             .padding()
                             .background(Color.blue)
                             .foregroundColor(.white)
                             .cornerRadius(8)
+                            .padding(.bottom, 20)
+                    } else {
+                        Button(action: {
+                            Task {
+                                await submit()
+                                isTextBoxVisible.toggle()
+                                activePage = .home
+                                homeViewModel.fetchExercisesIfNeeded()  // Refresh exercises on the home view
+                            }
+                        }) {
+                            Text("Submit")
+                                .padding()
+                                .background(Color.blue)
+                                .foregroundColor(.white)
+                                .cornerRadius(8)
+                        }
+                        .padding(.bottom, 20)
                     }
-                    .padding(.bottom, 20)
                 }
                 .frame(width: geometry.size.width,
                        height: geometry.size.height)
@@ -86,5 +97,5 @@ struct VoiceToTextBoxView: View {
 }
 
 #Preview {
-    VoiceToTextBoxView(transcribedText: .constant("Example: I ran a marathon today in 3 hours, 48 minutes, and 20 seconds"), isTextBoxVisible: .constant(true), activePage: .constant(.home))
+    VoiceToTextBoxView(transcribedText: .constant("Example: I ran a marathon today in 3 hours, 48 minutes, and 20 seconds"), isTextBoxVisible: .constant(true), activePage: .constant(.home), viewModel: VoiceToTextViewModel(), homeViewModel: ExerciseCardListViewModel(userId: "sampleUserId"))
 }

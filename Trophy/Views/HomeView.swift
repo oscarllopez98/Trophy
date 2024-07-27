@@ -64,7 +64,7 @@ struct HomeView: View {
                             isTextBoxVisible = false
                         }
 
-                    VoiceToTextBoxView(transcribedText: $transcribedText, isTextBoxVisible: $isTextBoxVisible, activePage: $activePage)
+                    VoiceToTextBoxView(transcribedText: $transcribedText, isTextBoxVisible: $isTextBoxVisible, activePage: $activePage, viewModel: VoiceToTextViewModel(), homeViewModel: exerciseCardListViewModel)
                         .transition(.scale)
                         .frame(width: geometry.size.width * 0.8, height: geometry.size.height * 0.65)
                         .background(Color.white)
