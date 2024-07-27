@@ -16,6 +16,7 @@ class TrophyRESTAPI {
     let INVOKE_PATH_PUT_USER_EXERCISE_PROD: String = "TROPHY_INVOKE_PATH_PUT_USER_EXERCISE_PROD"
     let INVOKE_PATH_PUT_USER_EXERCISE_WITH_EXERCISE_ID_PROD: String = "TROPHY_INVOKE_PATH_PUT_USER_EXERCISE_WITH_EXERCISE_ID_PROD"
     let INVOKE_PATH_PUT_USER_EXERCISE_GPT_PROD: String = "TROPHY_INVOKE_PATH_PUT_USER_EXERCISE_GPT_PROD"
+    let INVOKE_PATH_DELETE_USER_EXERCISE_PROD: String = "TROPHY_INVOKE_PATH_DELETE_USER_EXERCISE_PROD"
     
     let API_KEY_PROD: String = "TROPHY_API_KEY_PROD"
     
@@ -101,7 +102,6 @@ class TrophyRESTAPI {
      - Returns: The ID of the processed exercise if successful, or nil otherwise.
      */
     func PUTUserExerciseWithGPT(userInput: String, userId: String) async -> String? {
-        let userId = userId // Replace with your actual user ID
         
         do {
             var request = try preparePUTUserExerciseWithGPTRequest(userId: userId)
@@ -118,6 +118,78 @@ class TrophyRESTAPI {
             return nil
         }
     }
+    
+    /**
+     Sends a DELETE request to remove a user exercise.
+     
+     - Parameters:
+        - userId: The user ID associated with the exercise.
+        - exerciseId: The exercise ID to be removed.
+     - Returns: A boolean indicating whether the operation was successful.
+     */
+    func DELETEUserExercise(userId: String, exerciseId: String) async -> Bool {
+        do {
+            // Prepare the request
+            let request = prepareDELETEUserExerciseRequest(userId: userId, exerciseId: exerciseId)
+            
+            // Perform the async network operation
+            let (data, _) = try await URLSession.shared.data(for: request)
+            
+            // Log the raw response data
+            let responseString = String(data: data, encoding: .utf8) ?? "No data"
+            print("Response Data: \(responseString)")
+            
+            // Parse the JSON response
+            guard let jsonResponse = try JSONSerialization.jsonObject(with: data) as? [String: Any] else {
+                print("Failed to parse JSON response")
+                return false
+            }
+            
+            print("Response: \(jsonResponse)")
+            
+            // Extract and parse the body
+            guard let message = jsonResponse["message"] as? String else {
+                print("Body or message not found in response")
+                return false
+            }
+            
+            return message.contains("success")
+            
+        } catch {
+            print("Error handling DELETE user exercise response: \(error)")
+            return false
+        }
+    }
+
+
+
+    /**
+     Prepares a URLRequest for a DELETE user exercise API request.
+     
+     - Parameters:
+        - userId: The ID of the user.
+        - exerciseId: The ID of the exercise.
+     - Returns: A URLRequest object for the DELETE request.
+     - Throws: An APIError if the parameters are invalid.
+     */
+    func prepareDELETEUserExerciseRequest(userId: String, exerciseId: String) -> URLRequest {
+        let pathTemplate = getEnvironmentVariable(INVOKE_PATH_DELETE_USER_EXERCISE_PROD)!
+        
+        var path = pathTemplate.replacingOccurrences(of: "{userId}", with: userId)
+        path = path.replacingOccurrences(of: "{exerciseId}", with: exerciseId)
+        path = path.replacingOccurrences(of: "\"", with: "")
+        
+        guard let url = URL(string: path) else {
+            fatalError("Invalid URL: \(path)")
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "DELETE"
+        request.addValue(getEnvironmentVariable(API_KEY_PROD)!, forHTTPHeaderField: "x-api-key")
+        
+        return request
+    }
+
 
 
     /**
@@ -348,6 +420,7 @@ class TrophyRESTAPI {
         print("Here 3")
         return outRequest
     }
+
 
     /**
      Handles the response for a PUT user exercise API request.

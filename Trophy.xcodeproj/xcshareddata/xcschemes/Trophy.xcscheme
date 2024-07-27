@@ -110,6 +110,11 @@
             value = "a18eb51a-7104-4688-9659-8930752334d5"
             isEnabled = "YES">
          </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "TROPHY_INVOKE_PATH_DELETE_USER_EXERCISE_PROD"
+            value = "https://xhh2wpxj6f.execute-api.us-east-1.amazonaws.com/Prod/users/{userId}/exercises/{exerciseId}"
+            isEnabled = "YES">
+         </EnvironmentVariable>
       </EnvironmentVariables>
       <LocationScenarioReference
          identifier = "com.apple.dt.IDEFoundation.CurrentLocationScenarioIdentifier"
