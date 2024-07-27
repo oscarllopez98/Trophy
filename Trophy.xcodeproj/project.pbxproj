@@ -101,6 +101,7 @@
 		9FB62FB02B9F81A000421424 /* WeightInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB62FAF2B9F81A000421424 /* WeightInputView.swift */; };
 		9FB62FB22B9F82BF00421424 /* IntensityInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB62FB12B9F82BF00421424 /* IntensityInputView.swift */; };
 		9FB62FB42B9F845400421424 /* LevelInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB62FB32B9F845300421424 /* LevelInputView.swift */; };
+		9FC183DF2C54C413006BCCE0 /* SwipeActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC183DE2C54C413006BCCE0 /* SwipeActionView.swift */; };
 		9FD4E73D2BF7CFA900C56E9B /* DistanceAttributeConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD4E73C2BF7CFA900C56E9B /* DistanceAttributeConverterTests.swift */; };
 		9FD4E73F2BF7D65000C56E9B /* TimeAttributeConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD4E73E2BF7D65000C56E9B /* TimeAttributeConverter.swift */; };
 		9FD4E7412BF7D68F00C56E9B /* TimeAttributeConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD4E7402BF7D68F00C56E9B /* TimeAttributeConverterTests.swift */; };
@@ -270,6 +271,7 @@
 		9FB62FAF2B9F81A000421424 /* WeightInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightInputView.swift; sourceTree = "<group>"; };
 		9FB62FB12B9F82BF00421424 /* IntensityInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntensityInputView.swift; sourceTree = "<group>"; };
 		9FB62FB32B9F845300421424 /* LevelInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelInputView.swift; sourceTree = "<group>"; };
+		9FC183DE2C54C413006BCCE0 /* SwipeActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeActionView.swift; sourceTree = "<group>"; };
 		9FD4E73C2BF7CFA900C56E9B /* DistanceAttributeConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceAttributeConverterTests.swift; sourceTree = "<group>"; };
 		9FD4E73E2BF7D65000C56E9B /* TimeAttributeConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeAttributeConverter.swift; sourceTree = "<group>"; };
 		9FD4E7402BF7D68F00C56E9B /* TimeAttributeConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeAttributeConverterTests.swift; sourceTree = "<group>"; };
@@ -918,6 +920,7 @@
 				9F3D7BAF2C44D658000589D6 /* ProfileView.swift */,
 				9F3D7BB42C463FA1000589D6 /* SummaryView.swift */,
 				9F0AF7D52C4B84D800A31EB4 /* VoiceToTextBoxView.swift */,
+				9FC183DE2C54C413006BCCE0 /* SwipeActionView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1330,6 +1333,7 @@
 				9FF313D42BF6D643000E2F53 /* DistanceAttributeConverter.swift in Sources */,
 				9FAE6EFB2BA18A7F0077E9AC /* ExerciseListViewModel.swift in Sources */,
 				9F58600F2B3B6AF20061F1EB /* Soccer.swift in Sources */,
+				9FC183DF2C54C413006BCCE0 /* SwipeActionView.swift in Sources */,
 				9FD4E73F2BF7D65000C56E9B /* TimeAttributeConverter.swift in Sources */,
 				9FB372752B9518A700FFE87C /* WorkoutCardView.swift in Sources */,
 				9F3D7BA52C437F56000589D6 /* ExerciseCardListViewModel.swift in Sources */,
