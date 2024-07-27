@@ -39,8 +39,9 @@ struct ExerciseCardListView: View {
                         ExerciseCardView(viewModel: exerciseCardViewModel)
                             .swipeActions(edge: .trailing) {
                                 Button(action: {
-                                    // Handle delete action here
-                                    deleteExercise(exercise)
+                                    Task {
+                                        await deleteExercise(exercise)
+                                    }
                                 }) {
                                     Label("Delete", systemImage: "trash")
                                 }
@@ -57,15 +58,14 @@ struct ExerciseCardListView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
     
-    private func deleteExercise(_ exercise: Exercise) {
-        // Implement the deletion logic here
-        
-        // You may need to notify a parent view or perform additional actions
-        print("Deleting exercise: \(exercise.name)")
+    private func deleteExercise(_ exercise: Exercise) async {
+        // Call the viewModel's delete method
+        let deleteStatus = await viewModel.deleteExercise(exercise)
+        print("Delete was successful (true/false): \(deleteStatus)")
     }
 }
 
 #Preview {
-    ExerciseCardListView(viewModel: ExerciseCardListViewModel.sample())
+    ExerciseCardListView(viewModel: ExerciseCardListViewModel(userId: "sampleUserId"))
         .previewLayout(.sizeThatFits)
 }
