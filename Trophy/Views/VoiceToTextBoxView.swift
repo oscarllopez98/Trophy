@@ -14,12 +14,18 @@ struct VoiceToTextBoxView: View {
     @ObservedObject var viewModel: VoiceToTextViewModel
     @ObservedObject var homeViewModel: ExerciseCardListViewModel
 
+    @State private var placeholder: String = "Example: I ran a marathon today in 3 hours, 48 minutes, and 20 seconds"
+    @State private var isEditing: Bool = false
+
     var body: some View {
         GeometryReader { geometry in
             ScrollView {
                 VStack {
                     HStack {
-                        Text("Type or use voice input for your exercise description.")
+                        
+                        Spacer()
+                        
+                        Text("Type or use voice input.")
                             .font(.caption)
                             .padding(.vertical, 5)
                         
@@ -37,17 +43,30 @@ struct VoiceToTextBoxView: View {
                     }
                     .padding([.horizontal])
                     
-                    TextEditor(text: $transcribedText)
-                        .padding()
-                        .background(Color.primary.opacity(0.1))
-                        .foregroundColor(Color.primary)
-                        .cornerRadius(10)
-                        .textFieldStyle(.roundedBorder)
-                        .onChange(of: transcribedText) { newValue in
-                            if transcribedText.count > 250 {
-                                transcribedText = String(transcribedText.prefix(250))
-                            }
+                    ZStack(alignment: .leading) {
+                        if transcribedText.isEmpty && !isEditing {
+                            Text(placeholder)
+                                .foregroundColor(Color.gray)
+                                .padding(EdgeInsets(top: 8, leading: 4, bottom: 8, trailing: 4))
                         }
+                        TextEditor(text: $transcribedText)
+                            .padding()
+                            .background(Color.primary.opacity(0.1))
+                            .foregroundColor(Color.primary)
+                            .cornerRadius(10)
+                            .textFieldStyle(.roundedBorder)
+                            .onTapGesture {
+                                if !isEditing {
+                                    isEditing = true
+                                    transcribedText = ""
+                                }
+                            }
+                            .onChange(of: transcribedText) { newValue in
+                                if transcribedText.count > 250 {
+                                    transcribedText = String(transcribedText.prefix(250))
+                                }
+                            }
+                    }
                     
                     Text("\(transcribedText.count)/250 characters")
                         .font(.caption)
@@ -97,5 +116,5 @@ struct VoiceToTextBoxView: View {
 }
 
 #Preview {
-    VoiceToTextBoxView(transcribedText: .constant("Example: I ran a marathon today in 3 hours, 48 minutes, and 20 seconds"), isTextBoxVisible: .constant(true), activePage: .constant(.home), viewModel: VoiceToTextViewModel(), homeViewModel: ExerciseCardListViewModel(userId: "sampleUserId"))
+    VoiceToTextBoxView(transcribedText: .constant(""), isTextBoxVisible: .constant(true), activePage: .constant(.home), viewModel: VoiceToTextViewModel(), homeViewModel: ExerciseCardListViewModel(userId: "sampleUserId"))
 }

@@ -14,7 +14,7 @@ struct HomeView: View {
 
     @StateObject private var exerciseCardListViewModel: ExerciseCardListViewModel
     @State private var isTextBoxVisible: Bool = false
-    @State private var transcribedText: String = "Example: I ran a marathon today"
+    @State private var transcribedText: String = "Example: I ran a marathon today in 3 hours, 48 minutes, and 26 seconds"
 
     init(activePage: Binding<NavigationBar.Page?>, userId: String, username: String) {
         self._activePage = activePage
