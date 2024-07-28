@@ -21,12 +21,13 @@ struct VoiceToTextBoxView: View {
         GeometryReader { geometry in
             ScrollView {
                 VStack {
+                    Spacer()
                     HStack {
-                        
                         Spacer()
                         
-                        Text("Type or use voice input.")
-                            .font(.caption)
+                        Text("Type or use voice input")
+                            .font(.headline)
+                            .foregroundColor(Color.primary)
                             .padding(.vertical, 5)
                         
                         Spacer()
@@ -46,15 +47,15 @@ struct VoiceToTextBoxView: View {
                     ZStack(alignment: .leading) {
                         if transcribedText.isEmpty && !isEditing {
                             Text(placeholder)
-                                .foregroundColor(Color.gray)
-                                .padding(EdgeInsets(top: 8, leading: 4, bottom: 8, trailing: 4))
+                                .foregroundColor(Color.secondary)
+                                .padding(.horizontal)
                         }
+                        
                         TextEditor(text: $transcribedText)
-                            .padding()
-                            .background(Color.primary.opacity(0.1))
+                            .padding(.horizontal)
                             .foregroundColor(Color.primary)
+                            .background(Color(UIColor.systemBackground))
                             .cornerRadius(10)
-                            .textFieldStyle(.roundedBorder)
                             .onTapGesture {
                                 if !isEditing {
                                     isEditing = true
@@ -67,6 +68,7 @@ struct VoiceToTextBoxView: View {
                                 }
                             }
                     }
+                    .border(Color.secondary.opacity(0.25))
                     
                     Text("\(transcribedText.count)/250 characters")
                         .font(.caption)
@@ -100,7 +102,7 @@ struct VoiceToTextBoxView: View {
                 }
                 .frame(width: geometry.size.width,
                        height: geometry.size.height)
-                .background(Color.white)
+                .background(Color(UIColor.systemBackground))
                 .cornerRadius(15)
                 .shadow(radius: 10)
             }

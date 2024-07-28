@@ -102,6 +102,8 @@
 		9FB62FB22B9F82BF00421424 /* IntensityInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB62FB12B9F82BF00421424 /* IntensityInputView.swift */; };
 		9FB62FB42B9F845400421424 /* LevelInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB62FB32B9F845300421424 /* LevelInputView.swift */; };
 		9FC183DF2C54C413006BCCE0 /* SwipeActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC183DE2C54C413006BCCE0 /* SwipeActionView.swift */; };
+		9FC183E32C560DE9006BCCE0 /* CustomPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC183E22C560DE9006BCCE0 /* CustomPicker.swift */; };
+		9FC183E52C560E17006BCCE0 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC183E42C560E17006BCCE0 /* CustomTextField.swift */; };
 		9FD4E73D2BF7CFA900C56E9B /* DistanceAttributeConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD4E73C2BF7CFA900C56E9B /* DistanceAttributeConverterTests.swift */; };
 		9FD4E73F2BF7D65000C56E9B /* TimeAttributeConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD4E73E2BF7D65000C56E9B /* TimeAttributeConverter.swift */; };
 		9FD4E7412BF7D68F00C56E9B /* TimeAttributeConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD4E7402BF7D68F00C56E9B /* TimeAttributeConverterTests.swift */; };
@@ -272,6 +274,8 @@
 		9FB62FB12B9F82BF00421424 /* IntensityInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntensityInputView.swift; sourceTree = "<group>"; };
 		9FB62FB32B9F845300421424 /* LevelInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelInputView.swift; sourceTree = "<group>"; };
 		9FC183DE2C54C413006BCCE0 /* SwipeActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeActionView.swift; sourceTree = "<group>"; };
+		9FC183E22C560DE9006BCCE0 /* CustomPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPicker.swift; sourceTree = "<group>"; };
+		9FC183E42C560E17006BCCE0 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		9FD4E73C2BF7CFA900C56E9B /* DistanceAttributeConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceAttributeConverterTests.swift; sourceTree = "<group>"; };
 		9FD4E73E2BF7D65000C56E9B /* TimeAttributeConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeAttributeConverter.swift; sourceTree = "<group>"; };
 		9FD4E7402BF7D68F00C56E9B /* TimeAttributeConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeAttributeConverterTests.swift; sourceTree = "<group>"; };
@@ -454,6 +458,8 @@
 			isa = PBXGroup;
 			children = (
 				9F3D7BB22C45CB9F000589D6 /* TextFieldStyles.swift */,
+				9FC183E22C560DE9006BCCE0 /* CustomPicker.swift */,
+				9FC183E42C560E17006BCCE0 /* CustomTextField.swift */,
 			);
 			path = InputStyles;
 			sourceTree = "<group>";
@@ -1388,6 +1394,7 @@
 				9FF1D86A2B148548002F6EAC /* UserDefinedAttribute.swift in Sources */,
 				9FB372772B951CA800FFE87C /* ModalPresenterView.swift in Sources */,
 				9FF313C92BF6D61F000E2F53 /* TROPHYInputExercise.swift in Sources */,
+				9FC183E52C560E17006BCCE0 /* CustomTextField.swift in Sources */,
 				9FAE6EDF2B9FF6EC0077E9AC /* ActionBarView.swift in Sources */,
 				9FF313D02BF6D634000E2F53 /* TROPHYTrophyRESTAPIClient.swift in Sources */,
 				9FB372682B94019B00FFE87C /* ExerciseModalViewController.swift in Sources */,
@@ -1429,6 +1436,7 @@
 				9FF313CC2BF6D61F000E2F53 /* TROPHYPutExerciseOutput_body.swift in Sources */,
 				9F5860002B3B693E0061F1EB /* Squat.swift in Sources */,
 				9F76C1DF2B8EB00800EB276F /* ItemListViewController.swift in Sources */,
+				9FC183E32C560DE9006BCCE0 /* CustomPicker.swift in Sources */,
 				9FF1D8762B1485DE002F6EAC /* Exercise.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

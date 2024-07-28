@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct ExerciseCardListView: View {
-    
+
     @ObservedObject var viewModel: ExerciseCardListViewModel
-    
+
     var body: some View {
         VStack {
             if viewModel.isLoading {
@@ -43,7 +43,11 @@ struct ExerciseCardListView: View {
                                         await deleteExercise(exercise)
                                     }
                                 }) {
-                                    Label("Delete", systemImage: "trash")
+                                    if viewModel.deletingExerciseId == exercise.id {
+                                        ProgressView()
+                                    } else {
+                                        Label("Delete", systemImage: "trash")
+                                    }
                                 }
                                 .tint(.red)
                             }
@@ -57,9 +61,8 @@ struct ExerciseCardListView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
-    
+
     private func deleteExercise(_ exercise: Exercise) async {
-        // Call the viewModel's delete method
         let deleteStatus = await viewModel.deleteExercise(exercise)
         print("Delete was successful (true/false): \(deleteStatus)")
     }

@@ -8,19 +8,26 @@
 import SwiftUI
 
 struct SetsInputView: View {
-
     @ObservedObject var viewModel: SetsInputViewModel
-        
+
     var body: some View {
-        
         HStack {
+            Text("Sets:")
+                .frame(width: 100, alignment: .leading)
+
             TextField("Enter Sets", text: $viewModel.selectedSets)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .textFieldStyle(PlainTextFieldStyle())
                 .keyboardType(.numberPad)
-                .padding()
+                .padding(.vertical)
+                .overlay(
+                    Rectangle()
+                        .frame(height: 2)
+                        .padding(.top, 35),
+                    alignment: .bottom
+                )
         }
-        
-//        Text("You Entered: \(viewModel.selectedSets)")
+        .frame(maxWidth: .infinity)
+        .padding(.bottom, 10)
     }
 }
 
