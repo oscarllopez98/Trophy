@@ -4,6 +4,7 @@
 //
 //  Created by Oscar Lopez on 7/14/24.
 //
+
 import SwiftUI
 
 struct AddEntryView: View {
@@ -31,6 +32,9 @@ struct AddEntryView: View {
             )
             .padding()
             .onChange(of: exerciseName) { newValue in
+                if newValue.count > 20 {
+                    exerciseName = String(newValue.prefix(20))
+                }
                 if !isEdited && newValue != getDefaultTitle() {
                     isEdited = true
                 }
@@ -43,7 +47,7 @@ struct AddEntryView: View {
                     alertMessage = "You need to fill out at least 1 exercise attribute."
                     showAlert = true
                 } else {
-                    let exercise = createExercise()
+                    let exercise = viewModel.createExercise(exerciseName: exerciseName)
                     summaryViewModel.prepareSummary(from: viewModel)
                     summaryViewModel.exercise = exercise
                     summaryViewModel.exerciseName = exerciseName // Pass the exercise name
@@ -60,22 +64,14 @@ struct AddEntryView: View {
         }
 
         ScrollView {
-            VStack {
-
+            VStack(alignment: .leading) {
                 DistanceInputView(viewModel: viewModel.distanceViewModel)
-
                 TimeInputView(viewModel: viewModel.timeViewModel)
-
                 SetsInputView(viewModel: viewModel.setsViewModel)
-
                 RepsInputView(viewModel: viewModel.repsViewModel)
-
                 WeightInputView(viewModel: viewModel.weightViewModel)
-
                 IntensityInputView(viewModel: viewModel.intensityViewModel)
-
                 LevelInputView(viewModel: viewModel.levelViewModel)
-
             }
             .padding()
         }
@@ -88,39 +84,6 @@ struct AddEntryView: View {
                 }
             }
         }
-    }
-
-    private func createExercise() -> Exercise {
-        var attributes: [Exercise.AttributeName: ExerciseAttribute] = [:]
-
-        if let distance = Double(viewModel.distanceViewModel.selectedDistance), distance > 0 {
-            attributes[.distance] = DistanceAttribute(distance: distance,
-                                                      unit: DistanceUnit(stringValue: viewModel.distanceViewModel.selectedDistanceUnit.rawValue))
-        }
-        let time = TimeInterval(viewModel.timeViewModel.selectedHours * 3600 +
-                                viewModel.timeViewModel.selectedMinutes * 60 +
-                                viewModel.timeViewModel.selectedSeconds)
-        if time > 0 {
-            attributes[.time] = TimeAttribute(time: time)
-        }
-        if let sets = Int(viewModel.setsViewModel.selectedSets), sets > 0 {
-            attributes[.sets] = SetsAttribute(sets: sets)
-        }
-        if let reps = Int(viewModel.repsViewModel.selectedReps), reps > 0 {
-            attributes[.reps] = RepsAttribute(reps: reps)
-        }
-        if let weight = Double(viewModel.weightViewModel.selectedWeight), weight > 0 {
-            attributes[.weight] = WeightAttribute(weight: weight,
-                                                  unit: WeightUnit(weightString: viewModel.weightViewModel.selectedWeightUnit.rawValue)!)
-        }
-        if viewModel.intensityViewModel.selectedIntensity != .unset {
-            attributes[.intensity] = IntensityAttribute(intensityString: viewModel.intensityViewModel.selectedIntensity.rawValue)
-        }
-        if viewModel.levelViewModel.selectedLevelUnitIndex > 0 {
-            attributes[.level] = LevelAttribute(levelInt: viewModel.levelViewModel.selectedLevelUnitIndex)
-        }
-
-        return Exercise(name: exerciseName, type: .other, attributes: attributes, date: .now)
     }
 }
 
@@ -137,22 +100,23 @@ private func getDefaultTitle() -> String {
     // Convert the weekday component (1-7) to a weekday name (Sunday-Saturday)
     let weekdaySymbols = calendar.weekdaySymbols
     let dayOfWeek = weekdaySymbols[weekday - 1]
+    let abbreviatedDayOfWeek = String(dayOfWeek.prefix(3))
 
     // Check if Morning
     if (hour >= 4 && hour < 12) {
-        return "\(dayOfWeek) Morning Exercise"
+        return "\(abbreviatedDayOfWeek) Morning Exer."
     }
     // Else, Check if Afternoon
     else if (hour >= 12 && hour < 18){
-        return "\(dayOfWeek) Afternoon Exercise"
+        return "\(abbreviatedDayOfWeek) Afternoon Exer."
     }
     // Else, Check if Evening
     else if (hour >= 18 && hour < 21) {
-        return "\(dayOfWeek) Evening Exercise"
+        return "\(abbreviatedDayOfWeek) Evening Exer."
     }
     // Else, Set Night
     else {
-        return "\(dayOfWeek) Night Exercise"
+        return "\(abbreviatedDayOfWeek) Night Exer."
     }
 }
 

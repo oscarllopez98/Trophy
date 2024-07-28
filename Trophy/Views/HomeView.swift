@@ -14,7 +14,7 @@ struct HomeView: View {
 
     @StateObject private var exerciseCardListViewModel: ExerciseCardListViewModel
     @State private var isTextBoxVisible: Bool = false
-    @State private var transcribedText: String = "Example: I ran a marathon today"
+    @State private var transcribedText: String = "Example: I ran a marathon today in 3 hours, 48 minutes, and 26 seconds"
 
     init(activePage: Binding<NavigationBar.Page?>, userId: String, username: String) {
         self._activePage = activePage
@@ -64,7 +64,7 @@ struct HomeView: View {
                             isTextBoxVisible = false
                         }
 
-                    VoiceToTextBoxView(transcribedText: $transcribedText, isTextBoxVisible: $isTextBoxVisible, activePage: $activePage)
+                    VoiceToTextBoxView(transcribedText: $transcribedText, isTextBoxVisible: $isTextBoxVisible, activePage: $activePage, viewModel: VoiceToTextViewModel(), homeViewModel: exerciseCardListViewModel)
                         .transition(.scale)
                         .frame(width: geometry.size.width * 0.8, height: geometry.size.height * 0.65)
                         .background(Color.white)

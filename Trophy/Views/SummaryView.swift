@@ -10,6 +10,7 @@ import SwiftUI
 struct SummaryView: View {
     @ObservedObject var viewModel: SummaryViewModel
     @Binding var activePage: NavigationBar.Page?
+    @State private var isLoading: Bool = false // State to track loading
 
     var body: some View {
         VStack {
@@ -20,14 +21,20 @@ struct SummaryView: View {
             List(viewModel.summaryItems, id: \.self) { item in
                 Text(item)
             }
-            Button("Confirm") {
-                Task {
-                    await confirm()
-                    activePage = .home
+            if isLoading {
+                ProgressView() // Display loading spinner
+            } else {
+                Button("Confirm") {
+                    Task {
+                        isLoading = true // Start loading
+                        await confirm()
+                        isLoading = false // Stop loading
+                        activePage = .home
+                    }
                 }
+                .buttonStyle(.bordered)
+                .padding()
             }
-            .buttonStyle(.bordered)
-            .padding()
         }
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {

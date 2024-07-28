@@ -20,7 +20,7 @@ struct ExerciseDetailView: View {
                 .font(.subheadline)
                 .padding()
             
-            List(viewModel.displayedAttributes.sorted(by: { $0.key.rawValue < $1.key.rawValue }), id: \.key.rawValue) { key, attribute in
+            List(viewModel.exercise.attributes.sorted(by: { $0.key.rawValue < $1.key.rawValue }), id: \.key.rawValue) { key, attribute in
                 HStack {
                     Image(systemName: attribute.systemName)
                     

@@ -34,18 +34,19 @@ struct UserProfileInfoView: View {
     var body: some View {
         
         // Home Image Dimensions
-        let userProfileImageWidth: CGFloat = 40
-        let userProfileImageHeight: CGFloat = 40
+//        let userProfileImageWidth: CGFloat = 40
+//        let userProfileImageHeight: CGFloat = 40
         
         VStack {
-            userProfileImage
-                .resizable()
-                .frame(width: userProfileImageWidth, height: userProfileImageHeight)
-            Text(userFullName.isEmpty ? "Welcome!" : "Welcome, \(userFullName)")
-            
+//            userProfileImage
+//                .resizable()
+//                .frame(width: userProfileImageWidth, height: userProfileImageHeight)
+            Text("Welcome")
+            if (!userFullName.isEmpty) {Text("\(userFullName)")}
+                        
             HStack {
-                userLocationImage
-                Text(userLocation)
+//                userLocationImage
+//                Text(userLocation)
             }
         }
         .onAppear {

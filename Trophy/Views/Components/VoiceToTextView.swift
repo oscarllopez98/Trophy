@@ -11,11 +11,18 @@ struct VoiceToTextView: View {
     @StateObject private var viewModel = VoiceToTextViewModel()
     @Binding var isTextBoxVisible: Bool
 
-    let voiceToTextSystemName: String = "mic.circle"
-    let voiceToTextImageSize: CGFloat = 40.0
+    // Background Sizing
+    let backgroundSize: CGFloat = 50.0
+    
+    // Foreground Sizing
+    let voiceToTextSystemName: String = "mic"
+    let voiceToTextImageSize: CGFloat = 20.0
 
     var body: some View {
-        VStack {
+        ZStack {
+            Circle()
+                .fill(Color("PrimaryVTTVBackgroundColor"))
+                .frame(width: backgroundSize)
             Image(systemName: voiceToTextSystemName)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
@@ -23,6 +30,7 @@ struct VoiceToTextView: View {
                 .onTapGesture {
                     isTextBoxVisible.toggle()
                 }
+                .foregroundStyle(Color("PrimaryVTTVForegroundColor"))
         }
     }
 }

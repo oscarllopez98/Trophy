@@ -102,5 +102,25 @@ final class TrophyRESTAPITests: XCTestCase {
             XCTFail("Failed to receive GPT processed exercise ID.")
         }
     }
+    
+    func testPUT_DELETEUserExercise() async {
+        
+        // PUT
+        let trophyRestAPI = TrophyRESTAPI()
+        let exercise = ExerciseFactory.shared.createTestExerciseV3()
+        
+        if let exerciseId = await trophyRestAPI.PUTUserExercise(exercise: exercise, userId: testUserId) {
+            print("Received exercise ID: \(exerciseId)")
+            
+            // DELETE
+            let result = await trophyRestAPI.DELETEUserExercise(userId: testUserId, exerciseId: exerciseId)
+            
+            // Assert
+            XCTAssertTrue(result, "The DELETE request should return true for successful deletion")
+        } else {
+            XCTFail("Failed to receive exercise ID")
+        }
+    
+    }
 
 }

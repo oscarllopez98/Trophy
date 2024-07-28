@@ -17,7 +17,7 @@ class AddEntryViewModel: ObservableObject {
     @Published var weightViewModel = WeightInputViewModel()
     @Published var intensityViewModel = IntensityInputViewModel()
     @Published var levelViewModel = LevelInputViewModel()
-    
+
     func hasValidAttributes() -> Bool {
         if !exerciseName.isEmpty {
             return true
@@ -47,5 +47,38 @@ class AddEntryViewModel: ObservableObject {
             return true
         }
         return false
+    }
+
+    func createExercise(exerciseName: String) -> Exercise {
+        var attributes: [Exercise.AttributeName: ExerciseAttribute] = [:]
+
+        if let distance = Double(distanceViewModel.selectedDistance), distance > 0 {
+            attributes[.distance] = DistanceAttribute(distance: distance,
+                                                      unit: DistanceUnit(stringValue: distanceViewModel.selectedDistanceUnit.rawValue))
+        }
+        let time = TimeInterval(timeViewModel.selectedHours * 3600 +
+                                timeViewModel.selectedMinutes * 60 +
+                                timeViewModel.selectedSeconds)
+        if time > 0 {
+            attributes[.time] = TimeAttribute(time: time)
+        }
+        if let sets = Int(setsViewModel.selectedSets), sets > 0 {
+            attributes[.sets] = SetsAttribute(sets: sets)
+        }
+        if let reps = Int(repsViewModel.selectedReps), reps > 0 {
+            attributes[.reps] = RepsAttribute(reps: reps)
+        }
+        if let weight = Double(weightViewModel.selectedWeight), weight > 0 {
+            attributes[.weight] = WeightAttribute(weight: weight,
+                                                  unit: WeightUnit(weightString: weightViewModel.selectedWeightUnit.rawValue)!)
+        }
+        if intensityViewModel.selectedIntensity != .unset {
+            attributes[.intensity] = IntensityAttribute(intensityString: intensityViewModel.selectedIntensity.rawValue)
+        }
+        if levelViewModel.selectedLevelUnitIndex > 0 {
+            attributes[.level] = LevelAttribute(levelInt: levelViewModel.selectedLevelUnitIndex)
+        }
+
+        return Exercise(name: exerciseName, type: .other, attributes: attributes, date: .now)
     }
 }

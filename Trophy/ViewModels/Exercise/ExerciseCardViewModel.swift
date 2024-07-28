@@ -16,7 +16,7 @@ class ExerciseCardViewModel: ObservableObject {
         let prefixAttributes = Array(exercise.attributes.prefix(3))
         return Dictionary(uniqueKeysWithValues: prefixAttributes)
     }
-    
+        
     init(exercise: Exercise) {
         self.exercise = exercise
     }

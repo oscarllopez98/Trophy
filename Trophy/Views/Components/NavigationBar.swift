@@ -8,23 +8,31 @@
 import SwiftUI
 
 struct NavigationBar: View {
+    // Image System Names
     let homeImageSystemName: String
     let addEntryImageSystemName: String
     let profileImageSystemName: String
+    
+    // Image + Text sizes
     let imageSize: CGFloat = 30 // Adjust Image size as needed
     let textSize: CGFloat = 16 // Adjust Text size as needed
+    
+    // Colors taken from the Assets file
+    let imageColor: Color = Color("PrimaryNavigationBarImageColor")
+    let textColor: Color = Color("PrimaryNavigationBarTextColor")
     
     var userId: String
     var username: String
     let borderOpacity: Double
     
+    // Available pages to navigate to
     enum Page: Hashable {
         case home, addEntry, profile, summary
     }
 
     @Binding var activePage: Page?
 
-    init(userId: String, username: String, borderOpacity: Double = 1.0, activePage: Binding<Page?>) {
+    init(userId: String, username: String, borderOpacity: Double = 0.2, activePage: Binding<Page?>) {
         self.userId = userId
         self.username = username
         self.borderOpacity = borderOpacity
@@ -36,13 +44,11 @@ struct NavigationBar: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            Rectangle()
-                .frame(height: 1)
-                .opacity(borderOpacity)
-                .foregroundColor(.black)
-
+            // Button Content
             HStack {
                 Spacer()
+                
+                // Home Button
                 Button(action: {
                     activePage = .home
                 }) {
@@ -51,11 +57,11 @@ struct NavigationBar: View {
                             .resizable()
                             .aspectRatio(contentMode: .fit) // Ensure the image fits without warping
                             .frame(width: imageSize, height: imageSize)
-                            .foregroundColor(activePage == .home ? .blue : .gray)
+                            .foregroundColor(activePage == .home ? imageColor : .gray)
                         Text("Home")
                             .font(.system(size: textSize, weight: .light))
                             .padding(.bottom)
-                            .foregroundColor(activePage == .home ? .blue : .gray)
+                            .foregroundColor(activePage == .home ? textColor : .gray)
                     }
                 }
                 .buttonStyle(PlainButtonStyle())
@@ -64,19 +70,21 @@ struct NavigationBar: View {
                 Spacer()
                 Spacer()
                 
+                // Add Entry Button
                 Button(action: {
                     activePage = .addEntry
                 }) {
                     VStack {
                         Image(systemName: addEntryImageSystemName)
                             .resizable()
-                            .aspectRatio(contentMode: .fit) // Ensure the image fits without warping
+                            // Ensure the image fits without warping
+                            .aspectRatio(contentMode: .fit)
                             .frame(width: imageSize, height: imageSize)
-                            .foregroundColor(activePage == .addEntry ? .blue : .gray)
+                            .foregroundColor(activePage == .addEntry ? imageColor : .gray)
                         Text("Add Entry")
                             .font(.system(size: textSize, weight: .light))
                             .padding(.bottom)
-                            .foregroundColor(activePage == .addEntry ? .blue : .gray)
+                            .foregroundColor(activePage == .addEntry ? textColor : .gray)
                     }
                 }
                 .buttonStyle(PlainButtonStyle())
@@ -85,6 +93,7 @@ struct NavigationBar: View {
                 Spacer()
                 Spacer()
                 
+                // Profile Button
                 Button(action: {
                     activePage = .profile
                 }) {
@@ -93,11 +102,11 @@ struct NavigationBar: View {
                             .resizable()
                             .aspectRatio(contentMode: .fit) // Ensure the image fits without warping
                             .frame(width: imageSize, height: imageSize)
-                            .foregroundColor(activePage == .profile ? .blue : .gray)
+                            .foregroundColor(activePage == .profile ? imageColor : .gray)
                         Text("Profile")
                             .font(.system(size: textSize, weight: .light))
                             .padding(.bottom)
-                            .foregroundColor(activePage == .profile ? .blue : .gray)
+                            .foregroundColor(activePage == .profile ? textColor : .gray)
                     }
                 }
                 .buttonStyle(PlainButtonStyle())
@@ -110,5 +119,5 @@ struct NavigationBar: View {
 }
 
 #Preview {
-    NavigationBar(userId: "sampleUserId", username: "sampleUsername", borderOpacity: 0.5, activePage: .constant(.home))
+    NavigationBar(userId: "sampleUserId", username: "sampleUsername", borderOpacity: 0.2, activePage: .constant(.home))
 }

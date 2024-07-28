@@ -14,6 +14,7 @@ import Amplify
 class VoiceToTextViewModel: ObservableObject {
     @Published var isListening: Bool = false
     @Published var transcribedText: String = ""
+    @Published var isLoading: Bool = false
 
     private var audioEngine = AVAudioEngine()
     private var inputNode: AVAudioInputNode!
@@ -71,6 +72,7 @@ class VoiceToTextViewModel: ObservableObject {
     }
     
     func submit(inputText: String) async {
+        isLoading = true
         do {
             print("Submit!")
 
@@ -84,5 +86,6 @@ class VoiceToTextViewModel: ObservableObject {
         } catch {
             print("Error: Could not do async task")
         }
+        isLoading = false
     }
 }
