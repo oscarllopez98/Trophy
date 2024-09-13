@@ -104,6 +104,7 @@
 		9FC183DF2C54C413006BCCE0 /* SwipeActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC183DE2C54C413006BCCE0 /* SwipeActionView.swift */; };
 		9FC183E32C560DE9006BCCE0 /* CustomPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC183E22C560DE9006BCCE0 /* CustomPicker.swift */; };
 		9FC183E52C560E17006BCCE0 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC183E42C560E17006BCCE0 /* CustomTextField.swift */; };
+		9FC183E72C572F8F006BCCE0 /* TrophyLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FC183E62C572F8F006BCCE0 /* TrophyLaunchScreen.storyboard */; };
 		9FD4E73D2BF7CFA900C56E9B /* DistanceAttributeConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD4E73C2BF7CFA900C56E9B /* DistanceAttributeConverterTests.swift */; };
 		9FD4E73F2BF7D65000C56E9B /* TimeAttributeConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD4E73E2BF7D65000C56E9B /* TimeAttributeConverter.swift */; };
 		9FD4E7412BF7D68F00C56E9B /* TimeAttributeConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD4E7402BF7D68F00C56E9B /* TimeAttributeConverterTests.swift */; };
@@ -276,6 +277,7 @@
 		9FC183DE2C54C413006BCCE0 /* SwipeActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeActionView.swift; sourceTree = "<group>"; };
 		9FC183E22C560DE9006BCCE0 /* CustomPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPicker.swift; sourceTree = "<group>"; };
 		9FC183E42C560E17006BCCE0 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		9FC183E62C572F8F006BCCE0 /* TrophyLaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TrophyLaunchScreen.storyboard; sourceTree = "<group>"; };
 		9FD4E73C2BF7CFA900C56E9B /* DistanceAttributeConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceAttributeConverterTests.swift; sourceTree = "<group>"; };
 		9FD4E73E2BF7D65000C56E9B /* TimeAttributeConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeAttributeConverter.swift; sourceTree = "<group>"; };
 		9FD4E7402BF7D68F00C56E9B /* TimeAttributeConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeAttributeConverterTests.swift; sourceTree = "<group>"; };
@@ -927,6 +929,7 @@
 				9F3D7BB42C463FA1000589D6 /* SummaryView.swift */,
 				9F0AF7D52C4B84D800A31EB4 /* VoiceToTextBoxView.swift */,
 				9FC183DE2C54C413006BCCE0 /* SwipeActionView.swift */,
+				9FC183E62C572F8F006BCCE0 /* TrophyLaunchScreen.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1208,6 +1211,7 @@
 				9FF1D8382B147F5F002F6EAC /* Assets.xcassets in Resources */,
 				90D90D228564E192E9DED861 /* awsconfiguration.json in Resources */,
 				587151AB34E8AC2044A6739A /* amplifyconfiguration.json in Resources */,
+				9FC183E72C572F8F006BCCE0 /* TrophyLaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1615,13 +1619,16 @@
 				DEVELOPMENT_TEAM = Z2BHKKWGC2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Trophy;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "\"We need access to speech recognition to transcribe your speech to text.\"";
 				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "We need access to speech recognition to transcribe your speech to text.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UILaunchStoryboardName = TrophyLaunchScreen.storyboard;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1650,13 +1657,16 @@
 				DEVELOPMENT_TEAM = Z2BHKKWGC2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Trophy;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "\"We need access to speech recognition to transcribe your speech to text.\"";
 				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "We need access to speech recognition to transcribe your speech to text.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UILaunchStoryboardName = TrophyLaunchScreen.storyboard;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
