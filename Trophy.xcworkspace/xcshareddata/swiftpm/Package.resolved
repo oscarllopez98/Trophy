@@ -6,8 +6,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/aws-amplify/amplify-swift",
       "state" : {
-        "revision" : "dbc4a0412f4b5cd96f3e756e78bbd1e8e0a35a2f",
-        "version" : "2.35.4"
+        "revision" : "c13d7b723b236a68d32d04718011ad1f4c6f2f49",
+        "version" : "2.39.0"
       }
     },
     {
@@ -24,8 +24,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/aws-amplify/amplify-ui-swift-authenticator",
       "state" : {
-        "revision" : "6561a42866883bd446f33ddb447215d0357d0e43",
-        "version" : "1.1.5"
+        "revision" : "068bd3c5fc06c7ffe9363fa3d2b56f86f7df7bd1",
+        "version" : "1.1.7"
       }
     },
     {

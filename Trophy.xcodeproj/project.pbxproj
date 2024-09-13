@@ -466,13 +466,6 @@
 			path = InputStyles;
 			sourceTree = "<group>";
 		};
-		9F501ACC2C94CE8300B32200 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Preview Content";
-			sourceTree = "<group>";
-		};
 		9F585FF12B3A38380061F1EB /* Tags */ = {
 			isa = PBXGroup;
 			children = (
@@ -732,13 +725,6 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
-		9FB62FA32B9F71D700421424 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Preview Content";
-			sourceTree = "<group>";
-		};
 		9FB62FA42B9F720400421424 /* AttributeInputs */ = {
 			isa = PBXGroup;
 			children = (
@@ -831,11 +817,9 @@
 		9FF1D8322B147F5E002F6EAC /* Trophy */ = {
 			isa = PBXGroup;
 			children = (
-				9F501ACC2C94CE8300B32200 /* Preview Content */,
 				9F0AF7D92C4B921000A31EB4 /* UIExtensions */,
 				9F2ACB682BADF4CE002A494B /* API */,
 				9FAE6EF32BA14B790077E9AC /* Database */,
-				9FB62FA32B9F71D700421424 /* Preview Content */,
 				9FB372852B9A9C9900FFE87C /* Assets */,
 				9FF1D8332B147F5E002F6EAC /* TrophyApp.swift */,
 				9FF1D8352B147F5E002F6EAC /* ContentView.swift */,
@@ -1623,7 +1607,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = NO;
-				DEVELOPMENT_ASSET_PATHS = "\"$(SRCROOT)/Trophy/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"$(SRCROOT)/Trophy/PreviewContent\"";
 				DEVELOPMENT_TEAM = Z2BHKKWGC2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1661,7 +1645,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = NO;
-				DEVELOPMENT_ASSET_PATHS = "\"$(SRCROOT)/Trophy/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"$(SRCROOT)/Trophy/PreviewContent\"";
 				DEVELOPMENT_TEAM = Z2BHKKWGC2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
