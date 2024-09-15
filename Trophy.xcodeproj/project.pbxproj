@@ -17,6 +17,7 @@
 		9F0AF7D32C4B47E400A31EB4 /* VoiceToTextViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0AF7D22C4B47E400A31EB4 /* VoiceToTextViewModel.swift */; };
 		9F0AF7D62C4B84D800A31EB4 /* VoiceToTextBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0AF7D52C4B84D800A31EB4 /* VoiceToTextBoxView.swift */; };
 		9F0AF7DB2C4B922400A31EB4 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0AF7DA2C4B922400A31EB4 /* UIApplication.swift */; };
+		9F18F63B2C977B0D00D1A700 /* envConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F18F63A2C977B0C00D1A700 /* envConfig.swift */; };
 		9F3D7BA32C437E3F000589D6 /* ExerciseCardListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D7BA22C437E3F000589D6 /* ExerciseCardListView.swift */; };
 		9F3D7BA52C437F56000589D6 /* ExerciseCardListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D7BA42C437F56000589D6 /* ExerciseCardListViewModel.swift */; };
 		9F3D7BA82C4492B2000589D6 /* ExerciseDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D7BA72C4492B2000589D6 /* ExerciseDetailView.swift */; };
@@ -196,6 +197,7 @@
 		9F0AF7D22C4B47E400A31EB4 /* VoiceToTextViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VoiceToTextViewModel.swift; path = Trophy/Views/Components/VoiceToTextViewModel.swift; sourceTree = SOURCE_ROOT; };
 		9F0AF7D52C4B84D800A31EB4 /* VoiceToTextBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceToTextBoxView.swift; sourceTree = "<group>"; };
 		9F0AF7DA2C4B922400A31EB4 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
+		9F18F63A2C977B0C00D1A700 /* envConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = envConfig.swift; sourceTree = "<group>"; };
 		9F3D7BA22C437E3F000589D6 /* ExerciseCardListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCardListView.swift; sourceTree = "<group>"; };
 		9F3D7BA42C437F56000589D6 /* ExerciseCardListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCardListViewModel.swift; sourceTree = "<group>"; };
 		9F3D7BA72C4492B2000589D6 /* ExerciseDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailView.swift; sourceTree = "<group>"; };
@@ -845,6 +847,7 @@
 				9FF1D84A2B148323002F6EAC /* Units */,
 				9FF1D84B2B148327002F6EAC /* Attributes */,
 				9FB2E8A52C2DDE95009F4E65 /* AppDelegate.swift */,
+				9F18F63A2C977B0C00D1A700 /* envConfig.swift */,
 			);
 			path = Trophy;
 			sourceTree = "<group>";
@@ -1379,6 +1382,7 @@
 				9FF313C82BF6D61F000E2F53 /* TROPHYInputExercise_exercise.swift in Sources */,
 				9F585FFE2B3B691D0061F1EB /* Deadlift.swift in Sources */,
 				9F0AF7DB2C4B922400A31EB4 /* UIApplication.swift in Sources */,
+				9F18F63B2C977B0D00D1A700 /* envConfig.swift in Sources */,
 				9FF1D8582B1484A8002F6EAC /* UserManager.swift in Sources */,
 				9FAE6EF02BA12B510077E9AC /* IntensityInputViewModel.swift in Sources */,
 				9F76C1D82B8EAED100EB276F /* ItemListViewModel.swift in Sources */,
@@ -1673,6 +1677,13 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TROPHY_API_KEY_PROD = "";
+				TROPHY_INVOKE_PATH_DELETE_USER_EXERCISE_PROD = "";
+				TROPHY_INVOKE_PATH_GET_USER_EXERCISES_PROD = "";
+				TROPHY_INVOKE_PATH_GET_USER_EXERCISE_PROD = "";
+				TROPHY_INVOKE_PATH_PUT_USER_EXERCISE_GPT_PROD = "";
+				TROPHY_INVOKE_PATH_PUT_USER_EXERCISE_PROD = "";
+				TROPHY_INVOKE_PATH_PUT_USER_EXERCISE_WITH_EXERCISE_ID_PROD = "";
 				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
@@ -1721,6 +1732,13 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TROPHY_API_KEY_PROD = "";
+				TROPHY_INVOKE_PATH_DELETE_USER_EXERCISE_PROD = "";
+				TROPHY_INVOKE_PATH_GET_USER_EXERCISES_PROD = "";
+				TROPHY_INVOKE_PATH_GET_USER_EXERCISE_PROD = "";
+				TROPHY_INVOKE_PATH_PUT_USER_EXERCISE_GPT_PROD = "";
+				TROPHY_INVOKE_PATH_PUT_USER_EXERCISE_PROD = "";
+				TROPHY_INVOKE_PATH_PUT_USER_EXERCISE_WITH_EXERCISE_ID_PROD = "";
 				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Release;
