@@ -5,7 +5,7 @@ import AWSCognitoAuthPlugin
 
 @main
 struct TrophyApp: App {
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    //@UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
     @State private var activePage: NavigationBar.Page? = .home
 
