@@ -1311,7 +1311,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/Users/oscarlopez/Developer/Trophy/pre-build.sh\n";
+			shellScript = "${SRCROOT}/pre-build.sh\n";
 		};
 		FAEDAAC0E7054251B41FC970 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
