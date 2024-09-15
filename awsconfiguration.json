@@ -1,0 +1,33 @@
+{
+    "UserAgent": "aws-amplify/cli",
+    "Version": "0.1.0",
+    "IdentityManager": {
+        "Default": {}
+    },
+    "CredentialsProvider": {
+        "CognitoIdentity": {
+            "Default": {
+                "PoolId": "{{COGNITO_IDENTITY_POOL_ID}}",
+                "Region": "{{AWS_REGION}}"
+            }
+        }
+    },
+    "CognitoUserPool": {
+        "Default": {
+            "PoolId": "{{COGNITO_USER_POOL_ID}}",
+            "AppClientId": "{{COGNITO_APP_CLIENT_ID}}",
+            "Region": "{{AWS_REGION}}"
+        }
+    },
+    "PinpointAnalytics": {
+        "Default": {
+            "AppId": "{{AMPLIFY_PINPOINT_APP_ID}}",
+            "Region": "{{AWS_REGION}}"
+        }
+    },
+    "PinpointTargeting": {
+        "Default": {
+            "Region": "{{AWS_REGION}}"
+        }
+    }
+}

@@ -125,6 +125,9 @@
 		9FD4E76B2BFC195700C56E9B /* ExerciseLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD4E76A2BFC195700C56E9B /* ExerciseLogger.swift */; };
 		9FD4E76F2BFC1BA800C56E9B /* UUIDFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD4E76E2BFC1BA800C56E9B /* UUIDFormatter.swift */; };
 		9FD4E7722C00D1DA00C56E9B /* IdentifiableError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD4E7712C00D1DA00C56E9B /* IdentifiableError.swift */; };
+		9FDD0DE32C95265800EC411E /* amplifyconfiguration.template.json in Resources */ = {isa = PBXBuildFile; fileRef = 9FDD0DE22C95265800EC411E /* amplifyconfiguration.template.json */; };
+		9FDD0DE52C95268700EC411E /* awsconfiguration.template.json in Resources */ = {isa = PBXBuildFile; fileRef = 9FDD0DE42C95268600EC411E /* awsconfiguration.template.json */; };
+		9FDD0DE72C9526EB00EC411E /* pre-build.sh in Resources */ = {isa = PBXBuildFile; fileRef = 9FDD0DE62C9526EB00EC411E /* pre-build.sh */; };
 		9FE172B82C2FB78E005663FF /* EnvironmentVariableManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE172B72C2FB78E005663FF /* EnvironmentVariableManager.swift */; };
 		9FE172BB2C2FB7E7005663FF /* EnvironmentVariableManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE172BA2C2FB7E7005663FF /* EnvironmentVariableManagerTests.swift */; };
 		9FE172BC2C2FB80E005663FF /* EnvironmentVariableManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE172B72C2FB78E005663FF /* EnvironmentVariableManager.swift */; };
@@ -298,6 +301,9 @@
 		9FD4E76A2BFC195700C56E9B /* ExerciseLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseLogger.swift; sourceTree = "<group>"; };
 		9FD4E76E2BFC1BA800C56E9B /* UUIDFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UUIDFormatter.swift; sourceTree = "<group>"; };
 		9FD4E7712C00D1DA00C56E9B /* IdentifiableError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifiableError.swift; sourceTree = "<group>"; };
+		9FDD0DE22C95265800EC411E /* amplifyconfiguration.template.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = amplifyconfiguration.template.json; sourceTree = "<group>"; };
+		9FDD0DE42C95268600EC411E /* awsconfiguration.template.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = awsconfiguration.template.json; sourceTree = "<group>"; };
+		9FDD0DE62C9526EB00EC411E /* pre-build.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "pre-build.sh"; sourceTree = "<group>"; };
 		9FE172B72C2FB78E005663FF /* EnvironmentVariableManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentVariableManager.swift; sourceTree = "<group>"; };
 		9FE172BA2C2FB7E7005663FF /* EnvironmentVariableManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentVariableManagerTests.swift; sourceTree = "<group>"; };
 		9FE172BE2C30F629005663FF /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
@@ -795,6 +801,9 @@
 		9FF1D8272B147F5D002F6EAC = {
 			isa = PBXGroup;
 			children = (
+				9FDD0DE62C9526EB00EC411E /* pre-build.sh */,
+				9FDD0DE42C95268600EC411E /* awsconfiguration.template.json */,
+				9FDD0DE22C95265800EC411E /* amplifyconfiguration.template.json */,
 				9FF1D8322B147F5E002F6EAC /* Trophy */,
 				9FF1D87E2B37889E002F6EAC /* TrophyTests */,
 				9FF1D8312B147F5E002F6EAC /* Products */,
@@ -1112,6 +1121,7 @@
 			buildConfigurationList = 9FF1D83E2B147F5F002F6EAC /* Build configuration list for PBXNativeTarget "Trophy" */;
 			buildPhases = (
 				93A485E15E84DB8603E101BC /* [CP] Check Pods Manifest.lock */,
+				9FDD0DE12C95087E00EC411E /* Run Script */,
 				9FF1D82C2B147F5E002F6EAC /* Sources */,
 				9FF1D82D2B147F5E002F6EAC /* Frameworks */,
 				9FF1D82E2B147F5E002F6EAC /* Resources */,
@@ -1199,8 +1209,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FDD0DE32C95265800EC411E /* amplifyconfiguration.template.json in Resources */,
+				9FDD0DE72C9526EB00EC411E /* pre-build.sh in Resources */,
 				9FF1D83B2B147F5F002F6EAC /* Preview Assets.xcassets in Resources */,
 				9FF1D8382B147F5F002F6EAC /* Assets.xcassets in Resources */,
+				9FDD0DE52C95268700EC411E /* awsconfiguration.template.json in Resources */,
 				90D90D228564E192E9DED861 /* awsconfiguration.json in Resources */,
 				587151AB34E8AC2044A6739A /* amplifyconfiguration.json in Resources */,
 				9FC183E72C572F8F006BCCE0 /* TrophyLaunchScreen.storyboard in Resources */,
@@ -1281,6 +1294,24 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		9FDD0DE12C95087E00EC411E /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/Users/oscarlopez/Developer/Trophy/pre-build.sh\n";
 		};
 		FAEDAAC0E7054251B41FC970 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;

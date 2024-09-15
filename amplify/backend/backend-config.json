@@ -1,4 +1,10 @@
 {
+  "analytics": {
+    "trophy": {
+      "providerPlugin": "awscloudformation",
+      "service": "Pinpoint"
+    }
+  },
   "auth": {
     "trophy773993fc": {
       "customAuth": false,

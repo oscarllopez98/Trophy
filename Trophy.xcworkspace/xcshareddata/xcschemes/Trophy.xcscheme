@@ -115,6 +115,31 @@
             value = "https://xhh2wpxj6f.execute-api.us-east-1.amazonaws.com/Prod/users/{userId}/exercises/{exerciseId}"
             isEnabled = "YES">
          </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "AMPLIFY_PINPOINT_APP_ID"
+            value = "00c83f809b1e4ae9b2ec3c305231b6b7"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "COGNITO_IDENTITY_POOL_ID"
+            value = "us-east-1:c074905f-796a-4ffa-aeeb-6b46753d6202"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "COGNITO_USER_POOL_ID"
+            value = "us-east-1_Iiv9KydRw"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "COGNITO_APP_CLIENT_ID"
+            value = "6shlmlsq0m87eupdljkb2gvi1d"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "AWS_REGION"
+            value = "us-east-1"
+            isEnabled = "YES">
+         </EnvironmentVariable>
       </EnvironmentVariables>
       <LocationScenarioReference
          identifier = "com.apple.dt.IDEFoundation.CurrentLocationScenarioIdentifier"

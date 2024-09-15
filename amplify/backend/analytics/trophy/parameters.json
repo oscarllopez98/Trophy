@@ -1,0 +1,21 @@
+{
+    "appName": "trophy",
+    "roleName": "pinpointLambdaRole3767e3e1",
+    "cloudformationPolicyName": "cloudformationPolicy3767e3e1",
+    "cloudWatchPolicyName": "cloudWatchPolicy3767e3e1",
+    "pinpointPolicyName": "pinpointPolicy3767e3e1",
+    "authPolicyName": "pinpoint_amplify_3767e3e1",
+    "unauthPolicyName": "pinpoint_amplify_3767e3e1",
+    "authRoleName": {
+        "Ref": "AuthRoleName"
+    },
+    "unauthRoleName": {
+        "Ref": "UnauthRoleName"
+    },
+    "authRoleArn": {
+        "Fn::GetAtt": [
+            "AuthRole",
+            "Arn"
+        ]
+    }
+}
