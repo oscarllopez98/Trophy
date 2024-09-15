@@ -85,7 +85,7 @@ struct TrophyApp: App {
             try Amplify.add(plugin: AWSCognitoAuthPlugin())
             print("Successfully added Auth plugin.")
             
-            try Amplify.configure(config)
+            try Amplify.configure()
             print("Amplify configured successfully using environment variables.")
             
         } catch {
