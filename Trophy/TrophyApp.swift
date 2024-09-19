@@ -39,11 +39,11 @@ struct TrophyApp: App {
                     "plugins": {
                         "awsPinpointAnalyticsPlugin": {
                             "pinpointAnalytics": {
-                                "appId": "\(pinpointAppId)",
-                                "region": "\(region)"
+                                "appId": "\(EnvConfig.AMPLIFY_PINPOINT_APP_ID)",
+                                "region": "\(EnvConfig.AWS_REGION)"
                             },
                             "pinpointTargeting": {
-                                "region": "\(region)"
+                                "region": "\(EnvConfig.AWS_REGION)"
                             }
                         }
                     }
@@ -55,16 +55,16 @@ struct TrophyApp: App {
                             "CredentialsProvider": {
                                 "CognitoIdentity": {
                                     "Default": {
-                                        "PoolId": "\(identityPoolId)",
-                                        "Region": "\(region)"
+                                        "PoolId": "\(EnvConfig.COGNITO_IDENTITY_POOL_ID)",
+                                        "Region": "\(EnvConfig.AWS_REGION)"
                                     }
                                 }
                             },
                             "CognitoUserPool": {
                                 "Default": {
-                                    "PoolId": "\(userPoolId)",
-                                    "AppClientId": "\(appClientId)",
-                                    "Region": "\(region)"
+                                    "PoolId": "\(EnvConfig.COGNITO_USER_POOL_ID)",
+                                    "AppClientId": "\(EnvConfig.COGNITO_APP_CLIENT_ID)",
+                                    "Region": "\(EnvConfig.AWS_REGION)"
                                 }
                             },
                             "Auth": {
