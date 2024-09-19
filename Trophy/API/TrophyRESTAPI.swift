@@ -6,20 +6,18 @@
 //
 
 import Foundation
-import AWSAPIGateway
 
 class TrophyRESTAPI {
     
     // Access the environment variables via EnvConfig
-    let INVOKE_PATH_GET_USER_EXERCISE_PROD: String = EnvConfig.INVOKE_PATH_GET_USER_EXERCISE_PROD
-    let INVOKE_PATH_GET_USER_EXERCISES_PROD: String = EnvConfig.INVOKE_PATH_GET_USER_EXERCISES_PROD
-    let INVOKE_PATH_PUT_USER_EXERCISE_PROD: String = EnvConfig.INVOKE_PATH_PUT_USER_EXERCISE_PROD
-    let INVOKE_PATH_PUT_USER_EXERCISE_WITH_EXERCISE_ID_PROD: String = EnvConfig.INVOKE_PATH_PUT_USER_EXERCISE_WITH_EXERCISE_ID_PROD
-    let INVOKE_PATH_PUT_USER_EXERCISE_GPT_PROD: String = EnvConfig.INVOKE_PATH_PUT_USER_EXERCISE_GPT_PROD
-    let INVOKE_PATH_DELETE_USER_EXERCISE_PROD: String = EnvConfig.INVOKE_PATH_DELETE_USER_EXERCISE_PROD
-    
-    let API_KEY_PROD: String = EnvConfig.API_KEY_PROD
-    
+//    let INVOKE_PATH_GET_USER_EXERCISE_PROD: String = EnvConfig.INVOKE_PATH_GET_USER_EXERCISE_PROD
+//    let INVOKE_PATH_GET_USER_EXERCISES_PROD: String = EnvConfig.INVOKE_PATH_GET_USER_EXERCISES_PROD
+//    let INVOKE_PATH_PUT_USER_EXERCISE_PROD: String = EnvConfig.INVOKE_PATH_PUT_USER_EXERCISE_PROD
+//    let INVOKE_PATH_PUT_USER_EXERCISE_WITH_EXERCISE_ID_PROD: String = EnvConfig.INVOKE_PATH_PUT_USER_EXERCISE_WITH_EXERCISE_ID_PROD
+//    let INVOKE_PATH_PUT_USER_EXERCISE_GPT_PROD: String = EnvConfig.INVOKE_PATH_PUT_USER_EXERCISE_GPT_PROD
+//    let INVOKE_PATH_DELETE_USER_EXERCISE_PROD: String = EnvConfig.INVOKE_PATH_DELETE_USER_EXERCISE_PROD
+//    let API_KEY_PROD: String = EnvConfig.API_KEY_PROD
+//    
     /**
      Sends a PUT request to update a user exercise.
      
@@ -161,8 +159,6 @@ class TrophyRESTAPI {
         }
     }
 
-
-
     /**
      Prepares a URLRequest for a DELETE user exercise API request.
      
@@ -173,7 +169,7 @@ class TrophyRESTAPI {
      - Throws: An APIError if the parameters are invalid.
      */
     func prepareDELETEUserExerciseRequest(userId: String, exerciseId: String) -> URLRequest {
-        let pathTemplate = getEnvironmentVariable(INVOKE_PATH_DELETE_USER_EXERCISE_PROD)!
+        let pathTemplate = EnvConfig.INVOKE_PATH_DELETE_USER_EXERCISE_PROD
         
         var path = pathTemplate.replacingOccurrences(of: "{userId}", with: userId)
         path = path.replacingOccurrences(of: "{exerciseId}", with: exerciseId)
@@ -185,7 +181,7 @@ class TrophyRESTAPI {
         
         var request = URLRequest(url: url)
         request.httpMethod = "DELETE"
-        request.addValue(getEnvironmentVariable(API_KEY_PROD)!, forHTTPHeaderField: "x-api-key")
+        request.addValue(EnvConfig.API_KEY_PROD, forHTTPHeaderField: "x-api-key")
         
         return request
     }
@@ -204,7 +200,7 @@ class TrophyRESTAPI {
             throw APIError.emptyParameter(parameterName: "userId")
         }
         
-        let pathTemplate: String = getEnvironmentVariable(INVOKE_PATH_PUT_USER_EXERCISE_GPT_PROD)!
+        let pathTemplate: String = EnvConfig.INVOKE_PATH_PUT_USER_EXERCISE_GPT_PROD
         
         var path: String = pathTemplate.replacingOccurrences(of: "{userId}", with: userId)
         path = path.replacingOccurrences(of: "\"", with: "")
@@ -216,7 +212,7 @@ class TrophyRESTAPI {
         var request = URLRequest(url: url)
         request.httpMethod = "PUT"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue(getEnvironmentVariable(API_KEY_PROD)!, forHTTPHeaderField: "x-api-key")
+        request.setValue(EnvConfig.API_KEY_PROD, forHTTPHeaderField: "x-api-key")
         
         return request
     }
@@ -228,19 +224,19 @@ class TrophyRESTAPI {
      - Returns: A URLRequest object for the GET request.
      */
     func prepareGETLimitedUserExercisesRequest(userId: String) -> URLRequest {
-        let pathTemplate = getEnvironmentVariable(INVOKE_PATH_GET_USER_EXERCISES_PROD)!
+        let pathTemplate: String = EnvConfig.INVOKE_PATH_GET_USER_EXERCISES_PROD
+        print("pathTemplate", pathTemplate)
         
         var path = pathTemplate.replacingOccurrences(of: "{userId}", with: userId)
         path = path.replacingOccurrences(of: "\"", with: "")
-
         
         guard let url = URL(string: path) else {
             fatalError("Invalid URL: \(path)")
         }
-
+        
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
-        request.addValue(getEnvironmentVariable(API_KEY_PROD)!, forHTTPHeaderField: "x-api-key")
+        request.addValue(EnvConfig.API_KEY_PROD, forHTTPHeaderField: "x-api-key")
         return request
     }
     
@@ -253,7 +249,7 @@ class TrophyRESTAPI {
      - Returns: A URLRequest object for the GET request.
      */
     func prepareGETUserExerciseRequest(userId: String, exerciseId: String) -> URLRequest {
-        let pathTemplate: String = getEnvironmentVariable(INVOKE_PATH_GET_USER_EXERCISE_PROD)!
+        let pathTemplate: String = EnvConfig.INVOKE_PATH_GET_USER_EXERCISE_PROD
         
         var path: String = pathTemplate.replacingOccurrences(of: "{userId}", with: userId)
         path = path.replacingOccurrences(of: "{exerciseId}", with: exerciseId)
@@ -262,10 +258,10 @@ class TrophyRESTAPI {
         guard let url = URL(string: path) else {
             fatalError("Invalid URL: \(path)")
         }
-        print("URL", url)
+        
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
-        request.addValue(getEnvironmentVariable(API_KEY_PROD)!, forHTTPHeaderField: "x-api-key")
+        request.addValue(EnvConfig.API_KEY_PROD, forHTTPHeaderField: "x-api-key")
         return request
     }
     
@@ -280,9 +276,10 @@ class TrophyRESTAPI {
      */
     func preparePUTUserExerciseRequest(userId: String, exerciseId: String) throws -> URLRequest {
         if (userId.isEmpty) { throw APIError.emptyParameter(parameterName: "userId") }
-        if (exerciseId.isEmpty) { throw APIError.emptyParameter(parameterName: "userId") }
+        if (exerciseId.isEmpty) { throw APIError.emptyParameter(parameterName: "exerciseId") }
 
-        let pathTemplate = getEnvironmentVariable(INVOKE_PATH_PUT_USER_EXERCISE_WITH_EXERCISE_ID_PROD)!
+        let pathTemplate = EnvConfig.INVOKE_PATH_PUT_USER_EXERCISE_WITH_EXERCISE_ID_PROD
+        print("other pathTemplate", pathTemplate)
         
         var path = pathTemplate.replacingOccurrences(of: "{userId}", with: userId)
         path = path.replacingOccurrences(of: "{exerciseId}", with: exerciseId)
@@ -292,12 +289,9 @@ class TrophyRESTAPI {
             fatalError("Invalid URL: \(path)")
         }
         
-        // Create a URLRequest with the URL + Set the HTTP method to PUT
         var request = URLRequest(url: url)
         request.httpMethod = "PUT"
-        
-        // Set the API key in the request headers
-        request.addValue(getEnvironmentVariable(API_KEY_PROD)!, forHTTPHeaderField: "x-api-key")
+        request.addValue(EnvConfig.API_KEY_PROD, forHTTPHeaderField: "x-api-key")
         return request
     }
     
@@ -310,25 +304,19 @@ class TrophyRESTAPI {
      */
     func preparePUTUserExerciseRequest(userId: String) throws -> URLRequest {
         if (userId.isEmpty) { throw APIError.emptyParameter(parameterName: "userId") }
-        print("Here 1")
 
-        let pathTemplate = getEnvironmentVariable(INVOKE_PATH_PUT_USER_EXERCISE_PROD)!
+        let pathTemplate = EnvConfig.INVOKE_PATH_PUT_USER_EXERCISE_PROD
         
         var path = pathTemplate.replacingOccurrences(of: "{userId}", with: userId)
         path = path.replacingOccurrences(of: "\"", with: "")
-
-        print("Here 2")
 
         guard let url = URL(string: path) else {
             fatalError("Invalid URL: \(path)")
         }
         
-        // Create a URLRequest with the URL + Set the HTTP method to PUT
         var request = URLRequest(url: url)
         request.httpMethod = "PUT"
-        
-        // Set the API key in the request headers
-        request.addValue(getEnvironmentVariable(API_KEY_PROD)!, forHTTPHeaderField: "x-api-key")
+        request.addValue(EnvConfig.API_KEY_PROD, forHTTPHeaderField: "x-api-key")
         return request
     }
     
