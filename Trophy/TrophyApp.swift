@@ -14,19 +14,36 @@ struct TrophyApp: App {
     }
 
     private func configureAmplify() {
+        // Extract environment variables
+        let pinpointAppId = ProcessInfo.processInfo.environment["AMPLIFY_PINPOINT_APP_ID"] ?? ""
+        let region = ProcessInfo.processInfo.environment["AWS_REGION"] ?? ""
+        let identityPoolId = ProcessInfo.processInfo.environment["COGNITO_IDENTITY_POOL_ID"] ?? ""
+        let userPoolId = ProcessInfo.processInfo.environment["COGNITO_USER_POOL_ID"] ?? ""
+        let appClientId = ProcessInfo.processInfo.environment["COGNITO_APP_CLIENT_ID"] ?? ""
+
+        // Validate environment variables
+        guard !pinpointAppId.isEmpty,
+              !region.isEmpty,
+              !identityPoolId.isEmpty,
+              !userPoolId.isEmpty,
+              !appClientId.isEmpty else {
+            print("Error: Missing environment variables for Amplify configuration.")
+            return
+        }
+
         do {
-            // Load JSON configuration strings
+            // Load JSON configuration strings using environment variables
             let amplifyConfigString = """
             {
                 "analytics": {
                     "plugins": {
                         "awsPinpointAnalyticsPlugin": {
                             "pinpointAnalytics": {
-                                "appId": "\(ProcessInfo.processInfo.environment["AMPLIFY_PINPOINT_APP_ID"] ?? "")",
-                                "region": "\(ProcessInfo.processInfo.environment["AWS_REGION"] ?? "")"
+                                "appId": "\(pinpointAppId)",
+                                "region": "\(region)"
                             },
                             "pinpointTargeting": {
-                                "region": "\(ProcessInfo.processInfo.environment["AWS_REGION"] ?? "")"
+                                "region": "\(region)"
                             }
                         }
                     }
@@ -38,16 +55,16 @@ struct TrophyApp: App {
                             "CredentialsProvider": {
                                 "CognitoIdentity": {
                                     "Default": {
-                                        "PoolId": "\(ProcessInfo.processInfo.environment["COGNITO_IDENTITY_POOL_ID"] ?? "")",
-                                        "Region": "\(ProcessInfo.processInfo.environment["AWS_REGION"] ?? "")"
+                                        "PoolId": "\(identityPoolId)",
+                                        "Region": "\(region)"
                                     }
                                 }
                             },
                             "CognitoUserPool": {
                                 "Default": {
-                                    "PoolId": "\(ProcessInfo.processInfo.environment["COGNITO_USER_POOL_ID"] ?? "")",
-                                    "AppClientId": "\(ProcessInfo.processInfo.environment["COGNITO_APP_CLIENT_ID"] ?? "")",
-                                    "Region": "\(ProcessInfo.processInfo.environment["AWS_REGION"] ?? "")"
+                                    "PoolId": "\(userPoolId)",
+                                    "AppClientId": "\(appClientId)",
+                                    "Region": "\(region)"
                                 }
                             },
                             "Auth": {
@@ -70,7 +87,7 @@ struct TrophyApp: App {
                 }
             }
             """
-                        
+            
             // Convert JSON string to Data
             guard let amplifyConfigData = amplifyConfigString.data(using: .utf8) else {
                 print("Error converting JSON string to Data.")
@@ -85,7 +102,7 @@ struct TrophyApp: App {
             try Amplify.add(plugin: AWSCognitoAuthPlugin())
             print("Successfully added Auth plugin.")
             
-            try Amplify.configure()
+            try Amplify.configure(config)
             print("Amplify configured successfully using environment variables.")
             
         } catch {
@@ -95,7 +112,6 @@ struct TrophyApp: App {
         print("End of configuration process.")
     }
     
-
     var body: some Scene {
         WindowGroup {
             Authenticator(totpOptions: .init(issuer: "Trophy")) { state in

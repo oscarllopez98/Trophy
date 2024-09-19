@@ -5,11 +5,11 @@
         "plugins": {
             "awsPinpointAnalyticsPlugin": {
                 "pinpointAnalytics": {
-                    "appId": "{{AMPLIFY_PINPOINT_APP_ID}}",
-                    "region": "{{AWS_REGION}}"
+                    "appId": "00c83f809b1e4ae9b2ec3c305231b6b7",
+                    "region": "us-east-1"
                 },
                 "pinpointTargeting": {
-                    "region": "{{AWS_REGION}}"
+                    "region": "us-east-1"
                 }
             }
         }
@@ -25,16 +25,16 @@
                 "CredentialsProvider": {
                     "CognitoIdentity": {
                         "Default": {
-                            "PoolId": "{{COGNITO_IDENTITY_POOL_ID}}",
-                            "Region": "{{AWS_REGION}}"
+                            "PoolId": "us-east-1:c074905f-796a-4ffa-aeeb-6b46753d6202",
+                            "Region": "us-east-1"
                         }
                     }
                 },
                 "CognitoUserPool": {
                     "Default": {
-                        "PoolId": "{{COGNITO_USER_POOL_ID}}",
-                        "AppClientId": "{{COGNITO_APP_CLIENT_ID}}",
-                        "Region": "{{AWS_REGION}}"
+                        "PoolId": "us-east-1_liv9KydRw",
+                        "AppClientId": "6shlmlsq0m87eupdljkb2gvi1d",
+                        "Region": "us-east-1"
                     }
                 },
                 "Auth": {
@@ -66,13 +66,13 @@
                 },
                 "PinpointAnalytics": {
                     "Default": {
-                        "AppId": "{{AMPLIFY_PINPOINT_APP_ID}}",
-                        "Region": "{{AWS_REGION}}"
+                        "AppId": "00c83f809b1e4ae9b2ec3c305231b6b7",
+                        "Region": "us-east-1"
                     }
                 },
                 "PinpointTargeting": {
                     "Default": {
-                        "Region": "{{AWS_REGION}}"
+                        "Region": "us-east-1"
                     }
                 }
             }
