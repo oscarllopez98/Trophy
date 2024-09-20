@@ -51,7 +51,7 @@ check_var() {
         MISSING_VARS+="$var_name "
         log_message "Error: $var_name is missing."
     else
-        log_message "$var_name is set."
+        log_message "$var_name is set to $var_value."
     fi
 }
 
