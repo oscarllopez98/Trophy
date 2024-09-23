@@ -1109,9 +1109,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9FF1D83E2B147F5F002F6EAC /* Build configuration list for PBXNativeTarget "Trophy" */;
 			buildPhases = (
-				9FDD0DE12C95087E00EC411E /* Run Script */,
 				9FF1D82C2B147F5E002F6EAC /* Sources */,
 				9FF1D82D2B147F5E002F6EAC /* Frameworks */,
+				9FDD0DE12C95087E00EC411E /* Run Script */,
 				9FF1D82E2B147F5E002F6EAC /* Resources */,
 			);
 			buildRules = (
