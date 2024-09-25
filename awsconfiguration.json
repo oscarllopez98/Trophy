@@ -7,27 +7,27 @@
     "CredentialsProvider": {
         "CognitoIdentity": {
             "Default": {
-                "PoolId": "{{COGNITO_IDENTITY_POOL_ID}}",
-                "Region": "{{AWS_REGION}}"
+                "PoolId": "",
+                "Region": ""
             }
         }
     },
     "CognitoUserPool": {
         "Default": {
-            "PoolId": "{{COGNITO_USER_POOL_ID}}",
-            "AppClientId": "{{COGNITO_APP_CLIENT_ID}}",
-            "Region": "{{AWS_REGION}}"
+            "PoolId": "",
+            "AppClientId": "",
+            "Region": ""
         }
     },
     "PinpointAnalytics": {
         "Default": {
-            "AppId": "{{AMPLIFY_PINPOINT_APP_ID}}",
-            "Region": "{{AWS_REGION}}"
+            "AppId": "",
+            "Region": ""
         }
     },
     "PinpointTargeting": {
         "Default": {
-            "Region": "{{AWS_REGION}}"
+            "Region": ""
         }
     }
 }
