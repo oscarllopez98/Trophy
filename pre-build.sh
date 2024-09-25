@@ -64,6 +64,10 @@ echo "Copying awsconfiguration.template.json to awsconfiguration.json..."
 # Copy the template file to the output file
 cp "$TEMPLATE_FILE" "$OUTPUT_FILE"
 
+# Log the content of awsconfiguration.json before replacing placeholders
+echo "Content of awsconfiguration.json before replacing placeholders:"
+cat "$OUTPUT_FILE"
+
 echo "Replacing placeholders in awsconfiguration.json..."
 
 # Replace placeholders in awsconfiguration.json with environment variable values
@@ -72,5 +76,9 @@ sed -i '' "s/{{COGNITO_USER_POOL_ID}}/$COGNITO_USER_POOL_ID/g" "$OUTPUT_FILE"
 sed -i '' "s/{{COGNITO_APP_CLIENT_ID}}/$COGNITO_APP_CLIENT_ID/g" "$OUTPUT_FILE"
 sed -i '' "s/{{AMPLIFY_PINPOINT_APP_ID}}/$AMPLIFY_PINPOINT_APP_ID/g" "$OUTPUT_FILE"
 sed -i '' "s/{{AWS_REGION}}/$AWS_REGION/g" "$OUTPUT_FILE"
+
+# Log the content of awsconfiguration.json after replacing placeholders
+echo "Content of awsconfiguration.json after replacing placeholders:"
+cat "$OUTPUT_FILE"
 
 echo "awsconfiguration.json has been updated successfully!"
