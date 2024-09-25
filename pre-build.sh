@@ -54,3 +54,23 @@ fi
 if [ -z "$TROPHY_API_KEY_PROD" ]; then
   echo "TROPHY_API_KEY_PROD is not set!"
 fi
+
+# Copy and update awsconfiguration.json file
+TEMPLATE_FILE="${SRCROOT}/awsconfiguration.template.json"
+OUTPUT_FILE="${SRCROOT}/awsconfiguration.json"
+
+echo "Copying awsconfiguration.template.json to awsconfiguration.json..."
+
+# Copy the template file to the output file
+cp "$TEMPLATE_FILE" "$OUTPUT_FILE"
+
+echo "Replacing placeholders in awsconfiguration.json..."
+
+# Replace placeholders in awsconfiguration.json with environment variable values
+sed -i '' "s/{{COGNITO_IDENTITY_POOL_ID}}/$COGNITO_IDENTITY_POOL_ID/g" "$OUTPUT_FILE"
+sed -i '' "s/{{COGNITO_USER_POOL_ID}}/$COGNITO_USER_POOL_ID/g" "$OUTPUT_FILE"
+sed -i '' "s/{{COGNITO_APP_CLIENT_ID}}/$COGNITO_APP_CLIENT_ID/g" "$OUTPUT_FILE"
+sed -i '' "s/{{AMPLIFY_PINPOINT_APP_ID}}/$AMPLIFY_PINPOINT_APP_ID/g" "$OUTPUT_FILE"
+sed -i '' "s/{{AWS_REGION}}/$AWS_REGION/g" "$OUTPUT_FILE"
+
+echo "awsconfiguration.json has been updated successfully!"
